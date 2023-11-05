@@ -1,0 +1,36 @@
+name: nifty_mobile
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment: 
+  sdk: '>=3.1.5 <4.0.0'
+
+dependencies: 
+  cupertino_icons: ^1.0.2
+  get: 4.6.6
+  flutter: 
+    sdk: flutter
+  fluttertoast: ^8.2.2
+  cached_network_image: ^3.2.0
+  flutter_neumorphic:
+    git:
+      url: https://github.com/den0206/Flutter-Neumorphic.git
+      ref: feature/remoce_accentcolor
+
+dev_dependencies: 
+  flutter_lints: ^2.0.0
+  flutter_test: 
+    sdk: flutter
+  flutter_native_splash: ^2.0.2
+
+flutter_native_splash:
+  image: assets/images/logo.png
+  color: "5E92F3"
+  android_disable_fullscreen: true
+
+flutter: 
+  uses-material-design: true
+  assets:
+    - assets/images/logo.png
+    - assets/images/2.0x/logo.png
+    - assets/images/3.0x/logo.png

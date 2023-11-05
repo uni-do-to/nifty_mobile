@@ -1,0 +1,6 @@
+package com.unido.nifty_mobile
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}
