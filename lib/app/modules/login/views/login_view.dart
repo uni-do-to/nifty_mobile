@@ -1,17 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/modules/login/controllers/login_controller.dart';
 
+import '../../../routes/app_pages.dart';
 import '../../../utils/size_utils.dart';
 import '../../../widgets/NeuFormFiled.dart';
 
 class LoginView extends GetView<LoginController> {
-  final GlobalKey<FormState> _key = GlobalKey<FormState>();
-  final _passwordController = TextEditingController();
-  final _emailController = TextEditingController();
+
 
   LoginView({Key? key}) : super(key: key);
+
+  void _showError(String error) async {
+    await Fluttertoast.showToast(
+        msg: error,
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 3,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +40,7 @@ class LoginView extends GetView<LoginController> {
                           fontSize: 48,
                           fontWeight: FontWeight.w800,
                         ),
-                        style: NeumorphicStyle(
+                        style: const NeumorphicStyle(
                           shape: NeumorphicShape.flat,
                           depth: 2,
                           intensity: 0.8,
@@ -38,13 +49,13 @@ class LoginView extends GetView<LoginController> {
                 Padding(
                   padding: const EdgeInsets.all(32.0),
                   child: Form(
-                    key: _key,
+                    key: controller.loginFormKey,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
                         NeuFormFiled(
                           hintText: 'Email address',
-                          controller: _emailController,
+                          controller: controller.emailController,
                           keyboardType: TextInputType.emailAddress,
                           autocorrect: false,
                           prefixIcon: const Icon(Icons.email),
@@ -55,14 +66,14 @@ class LoginView extends GetView<LoginController> {
                             return null;
                           },
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 12,
                         ),
                         NeuFormFiled(
                           hintText: 'Password',
                           obscureText: true,
-                          controller: _passwordController,
-                          prefixIcon: Icon(Icons.password),
+                          controller: controller.passwordController,
+                          prefixIcon: const Icon(Icons.password),
                           validator: (value) {
                             // if (value!.isEmpty) {
                             //   return 'Password is required.';
@@ -99,8 +110,30 @@ class LoginView extends GetView<LoginController> {
                                       .textTheme
                                       .bodyText1),
                             ),
-                            onPressed: () {
+                            onPressed: () async{
+                              if (controller.loginFormKey.currentState!
+                                  .validate()) {
+                                try {
+                                  await controller.login();
+                                  Get.offAllNamed(Routes.HOME);
+                                } catch (err, _) {
+                                  printError(info: err.toString());
+                                  Get.snackbar(
+                                    "Error",
+                                    err.toString(),
+                                    snackPosition: SnackPosition.TOP,
+                                    backgroundColor:
+                                    Colors.red.withOpacity(.75),
+                                    colorText: Colors.white,
+                                    icon: const Icon(Icons.error,
+                                        color: Colors.white),
+                                    shouldIconPulse: true,
+                                    barBlur: 20,
+                                  );
+                                } finally {}
 
+                                controller.loginFormKey.currentState!.save();
+                              }
                             })
                       ],
                     ),

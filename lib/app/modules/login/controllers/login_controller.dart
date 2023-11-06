@@ -1,12 +1,36 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nifty_mobile/app/controllers/auth_controller.dart';
+import 'package:nifty_mobile/app/data/auth_provider.dart';
 
-class LoginController extends GetxController {
-  //TODO: Implement LoginController
+class LoginController extends AuthController {
+  final AuthProvider provider ;
 
-  final count = 0.obs;
+  final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
+  final passwordController = TextEditingController();
+  final emailController = TextEditingController();
+
+  LoginController(this.provider):super(provider);
+
   @override
   void onInit() {
     super.onInit();
+  }
+
+  Future<void> login() async {
+    if (loginFormKey.currentState!.validate()) {
+      try {
+        await signIn(emailController.text, passwordController.text);
+      } catch (err, _) {
+        // message = 'There is an issue with the app during request the data, '
+        //         'please contact admin for fixing the issues ' +
+
+        passwordController.clear();
+        rethrow;
+      }
+    } else {
+      throw Exception('An error occurred, invalid inputs value');
+    }
   }
 
   @override
@@ -19,5 +43,4 @@ class LoginController extends GetxController {
     super.onClose();
   }
 
-  void increment() => count.value++;
 }

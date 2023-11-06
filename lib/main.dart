@@ -1,33 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
+import 'app.dart';
 
-import 'app/routes/app_pages.dart';
-import 'generated/locales.g.dart';
-
-void main() {
-  runApp(NeumorphicTheme(
-    themeMode: ThemeMode.light,
-    theme: const NeumorphicThemeData(
-        defaultTextColor: Color(0xFF3E3E3E),
-        accentColor: Colors.grey,
-        variantColor: Colors.black38,
-        depth: 3,
-        intensity: 0.65,
-        buttonStyle: NeumorphicStyle(depth: 3)),
-    darkTheme: const NeumorphicThemeData(
-        baseColor: Color(0xFF3E3E3E),
-        lightSource: LightSource.topLeft,
-        depth: 4,
-        intensity: 0.65,
-        buttonStyle: NeumorphicStyle(depth: 4)),
-
-    child: GetMaterialApp(
-      title: "Application",
-      translationsKeys: AppTranslation.translations,
-      initialRoute: AppPages.INITIAL,
-      getPages: AppPages.routes,
-
-    ),
-  ));
+void main() async{
+  await GetStorage.init("auth");
+  runApp(const App());
 }

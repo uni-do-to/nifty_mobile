@@ -2,7 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 class CachedImage extends StatelessWidget {
-  CachedImage({
+
+  const CachedImage({
     Key? key,
     required this.imageUrl,
     this.fit = BoxFit.cover,
@@ -27,9 +28,9 @@ class CachedImage extends StatelessWidget {
       fit: fit,
       height: height,
       width: width,
-      placeholder: (context, url) => placeholder ?? CircularProgressIndicator(),
+      placeholder: (context, url) => placeholder ?? const CircularProgressIndicator(),
       errorWidget: (context, url, err) =>
-          errorWidget ?? Icon(Icons.error_outline),
+          errorWidget ?? const Icon(Icons.error_outline),
     );
   }
 }

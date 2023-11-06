@@ -9,6 +9,7 @@ class NeuFormFiled extends StatelessWidget {
   final bool autocorrect ;
   final bool obscureText ;
   final Widget? prefixIcon ;
+  final Widget? suffixIcon ;
 
   const NeuFormFiled({
     required this.hintText,
@@ -16,6 +17,7 @@ class NeuFormFiled extends StatelessWidget {
     this.keyboardType,
     this.validator,
     this.prefixIcon,
+    this.suffixIcon,
     this.autocorrect = false,
     this.obscureText = false,
     this.padding = const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
@@ -41,7 +43,12 @@ class NeuFormFiled extends StatelessWidget {
           prefixIconConstraints: const BoxConstraints(
               maxHeight: 16,
             minWidth: 24
-          )
+          ),
+          suffixIcon: suffixIcon,
+          suffixIconConstraints: const BoxConstraints(
+              maxHeight: 16,
+              minWidth: 24
+          ),
           // isCollapsed: true,
         ),
         obscureText: obscureText,
