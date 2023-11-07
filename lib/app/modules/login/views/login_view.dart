@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
@@ -91,28 +90,27 @@ class LoginView extends GetView<LoginController> {
                             child: Container(
                               height: 48.toHeight,
                               alignment: Alignment.center,
-                              child: false
+                              child: ObxValue((isLogin) {
+                              return isLogin.value
                                   ? Container(
-                                width: 32.toHeight,
-                                height: 32.toHeight,
-                                child: CircularProgressIndicator(
-                                  backgroundColor:
-                                  NeumorphicTheme.currentTheme(
-                                      context)
-                                      .textTheme
-                                      .bodyText1
-                                      ?.color,
-                                ),
-                              )
+                                      width: 32.toHeight,
+                                      height: 32.toHeight,
+                                      child: CircularProgressIndicator(
+                                        backgroundColor:
+                                            NeumorphicTheme.currentTheme(
+                                                    context)
+                                                .textTheme
+                                                .bodyText1
+                                                ?.color,
+                                      ),
+                                    )
                                   : Text('Login',
-                                  style:
-                                  NeumorphicTheme.currentTheme(context)
-                                      .textTheme
-                                      .bodyText1),
-                            ),
+                                      style:
+                                          NeumorphicTheme.currentTheme(context)
+                                              .textTheme
+                                              .bodyText1);
+                            }, controller.isLogin)),
                             onPressed: () async{
-                              if (controller.loginFormKey.currentState!
-                                  .validate()) {
                                 try {
                                   await controller.login();
                                   Get.offAllNamed(Routes.HOME);
@@ -134,8 +132,6 @@ class LoginView extends GetView<LoginController> {
                                   );
                                 } finally {}
 
-                                controller.loginFormKey.currentState!.save();
-                              }
                             })
                       ],
                     ),
