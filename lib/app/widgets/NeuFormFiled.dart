@@ -8,6 +8,8 @@ class NeuFormFiled extends StatelessWidget {
   final EdgeInsets padding ;
   final bool autocorrect ;
   final bool obscureText ;
+  final bool readOnly ;
+  final GestureTapCallback? onTap ;
   final Widget? prefixIcon ;
   final Widget? suffixIcon ;
 
@@ -18,6 +20,8 @@ class NeuFormFiled extends StatelessWidget {
     this.validator,
     this.prefixIcon,
     this.suffixIcon,
+    this.onTap,
+    this.readOnly = false,
     this.autocorrect = false,
     this.obscureText = false,
     this.padding = const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
@@ -51,6 +55,8 @@ class NeuFormFiled extends StatelessWidget {
           ),
           // isCollapsed: true,
         ),
+        readOnly: readOnly,
+        onTap: onTap,
         obscureText: obscureText,
         controller: controller,
         keyboardType: keyboardType,
