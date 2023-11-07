@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'app.dart';
+import 'app/data/auth_provider.dart';
+import 'app/services/auth_service.dart';
 
 void main() async{
   await GetStorage.init("auth");
+  Get.put(AuthService());
+  Get.put(AuthProvider()) ;
   runApp(const App());
 }

@@ -118,9 +118,11 @@ class LoginView extends GetView<LoginController> {
                                   Get.offAllNamed(Routes.HOME);
                                 } catch (err, _) {
                                   printError(info: err.toString());
+                                  final strippedMessage = err.toString().replaceFirst('Exception: ', '');
+
                                   Get.snackbar(
                                     "Error",
-                                    err.toString(),
+                                    strippedMessage,
                                     snackPosition: SnackPosition.TOP,
                                     backgroundColor:
                                     Colors.red.withOpacity(.75),

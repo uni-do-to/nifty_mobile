@@ -9,6 +9,6 @@ class ConfigAPI {
   //for security reason and the password generated after verification mail
   static const bool signupWithPassword = true;
 
-  static const String signInUrl = '/auth/locale';
+  static const String signInUrl = '/auth/local';
   static const String signUpUrl = '/auth/local/register';
 }

@@ -1,0 +1,25 @@
+{
+  "error": {
+    "status": 400,
+    "name": "ValidationError",
+    "message": "2 errors occurred",
+    "details": {
+      "errors": [
+        {
+          "path": [
+            "identifier"
+          ],
+          "message": "identifier is a required field",
+          "name": "ValidationError"
+        },
+        {
+          "path": [
+            "password"
+          ],
+          "message": "password is a required field",
+          "name": "ValidationError"
+        }
+      ]
+    }
+  }
+}

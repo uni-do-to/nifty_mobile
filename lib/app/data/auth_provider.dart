@@ -10,7 +10,9 @@ class AuthProvider extends BaseProvider {
     final response = await post(ConfigAPI.signInUrl , {
       "identifier": identifier,
       "password": password
-    }, decoder: (v) => UserPermission.fromJson(v));
+    });
+
+    return decode<UserPermission?>(response, UserPermission.fromJson);
 
     return response.body;
   }

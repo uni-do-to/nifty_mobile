@@ -15,3 +15,15 @@ class AuthMiddleware extends GetMiddleware {
     return null ;
   }
 }
+
+class NotAuthMiddleware extends GetMiddleware {
+  final AuthService authService = Get.find();
+
+  @override
+  RouteSettings? redirect(String? route) {
+    if (!authService.sessionIsEmpty()) {
+      return const RouteSettings(name: Routes.HOME);
+    }
+    return null ;
+  }
+}

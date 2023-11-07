@@ -1,6 +1,5 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:nifty_mobile/app/bindings/home_binding.dart';
 
 import 'app/routes/app_pages.dart';
 import 'generated/locales.g.dart';
@@ -31,7 +30,6 @@ class App extends StatelessWidget {
         translationsKeys: AppTranslation.translations,
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes,
-        initialBinding: AppBindings(),
       ),
     );
   }

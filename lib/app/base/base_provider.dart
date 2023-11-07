@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:get/get.dart';
+import 'package:nifty_mobile/app/data/models/backend_error_model.dart';
 import 'package:nifty_mobile/app/services/auth_service.dart';
 
 import '../config/api_constants.dart';
@@ -15,6 +16,26 @@ class BaseProvider extends GetConnect {
         request.url.toString());
   }
 
+
+  T decode<T>(Response response, T Function(Map<String, dynamic>) decoder) {
+    if (response.hasError) {
+      if (response.body is Map) {
+        var backendError = BackendError.fromJson(response.body);
+        if (backendError.error?.details?.errors != null) {
+          // Combine all error messages into a single string
+          var combinedErrorMessage = backendError.error!.details!.errors!
+              .map((e) => e.message)
+              .join('\n');
+          throw Exception(combinedErrorMessage);
+        } else {
+          throw Exception(backendError.error?.message ?? 'Unknown error');
+        }
+      } else {
+        throw Exception(response.body);
+      }
+    }
+    return decoder(response.body);
+  }
 
   int retry = 0;
 
@@ -64,7 +85,7 @@ class BaseProvider extends GetConnect {
 
     httpClient.addRequestModifier<dynamic>((request) async {
 
-      if (!_authService.sessionIsEmpty()) {
+      if (!isLoginRequest(request) && !_authService.sessionIsEmpty()) {
         // log('Add Request Modifier is authenticated');
         request.headers['Authorization'] =
         'Bearer ${_authService.credentials?.jwt}';

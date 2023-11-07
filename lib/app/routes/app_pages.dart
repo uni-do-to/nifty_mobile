@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:nifty_mobile/app/middleware/auth_middleware.dart';
 
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
@@ -17,11 +18,13 @@ class AppPages {
       name: _Paths.HOME,
       page: () => const HomeView(),
       binding: HomeBinding(),
+      middlewares: [AuthMiddleware()]
     ),
     GetPage(
       name: _Paths.LOGIN,
       page: () => LoginView(),
       binding: LoginBinding(),
+      middlewares: [NotAuthMiddleware()]
     ),
   ];
 }
