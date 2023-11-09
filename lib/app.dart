@@ -12,12 +12,30 @@ class App extends StatelessWidget {
     return NeumorphicTheme(
       themeMode: ThemeMode.light,
       theme: const NeumorphicThemeData(
-          defaultTextColor: Color(0xFF3E3E3E),
-          accentColor: Colors.grey,
-          variantColor: Colors.black38,
-          depth: 3,
-          intensity: 0.65,
-          buttonStyle: NeumorphicStyle(depth: 3)),
+          lightSource: LightSource.topLeft,
+          accentColor: NeumorphicColors.accent,
+          variantColor: NeumorphicColors.variant,
+          defaultTextColor: NeumorphicColors.defaultTextColor,
+          appBarTheme: NeumorphicAppBarThemeData(
+            buttonStyle: NeumorphicStyle(boxShape: NeumorphicBoxShape.circle()  , depth: 2 ),
+            textStyle: TextStyle(color: Colors.black54 , fontSize: 24 ),
+            iconTheme: IconThemeData(color: Colors.black54, size: 24 ),
+          ),
+          textTheme: TextTheme(
+            labelLarge: TextStyle(
+              fontWeight: FontWeight.w800,
+              color: Colors.black54 ,
+              letterSpacing: 1.5
+            ),
+            bodySmall: TextStyle(
+                color: Colors.black54 ,
+            )
+          ),
+          depth: 4,
+          intensity: 0.9,
+          buttonStyle: NeumorphicStyle(depth: 4 , intensity: 0.9)
+      ),
+
       darkTheme: const NeumorphicThemeData(
           baseColor: Color(0xFF3E3E3E),
           lightSource: LightSource.topLeft,

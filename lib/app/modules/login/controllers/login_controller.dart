@@ -10,6 +10,8 @@ class LoginController extends AuthController {
   final passwordController = TextEditingController();
   final emailController = TextEditingController();
   RxBool isLogin = false.obs ;
+  var emailError = ''.obs;
+  var passwordError = ''.obs;
 
   LoginController(this.provider):super(provider);
 
@@ -18,8 +20,25 @@ class LoginController extends AuthController {
     super.onInit();
   }
 
+  bool validateForm() {
+
+    if (emailController.text.isEmpty) {
+      emailError.value = 'Email is required.';
+    } else {
+      emailError.value = '';
+    }
+
+    if (passwordController.text.isEmpty) {
+      passwordError.value = 'Password is required.';
+    } else {
+      passwordError.value = '';
+    }
+
+    return emailError.isEmpty && passwordError.isEmpty;
+  }
+
   Future<void> login() async {
-    if (loginFormKey.currentState!.validate() && !isLogin.value) {
+    if (validateForm() && !isLogin.value) {
       try {
         isLogin.value = true ;
 

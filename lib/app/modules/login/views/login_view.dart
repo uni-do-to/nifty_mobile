@@ -5,7 +5,7 @@ import 'package:nifty_mobile/app/modules/login/controllers/login_controller.dart
 
 import '../../../routes/app_pages.dart';
 import '../../../utils/size_utils.dart';
-import '../../../widgets/NeuFormFiled.dart';
+import '../../../widgets/form_field.dart';
 
 class LoginView extends GetView<LoginController> {
 
@@ -52,34 +52,28 @@ class LoginView extends GetView<LoginController> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: <Widget>[
-                        NeuFormFiled(
-                          hintText: 'Email address',
-                          controller: controller.emailController,
-                          keyboardType: TextInputType.emailAddress,
-                          autocorrect: false,
-                          prefixIcon: const Icon(Icons.email),
-                          validator: (value) {
-                            // if (value?.isEmpty == true) {
-                            //   return 'Email is required.';
-                            // }
-                            return null;
-                          },
-                        ),
+                        ObxValue((state) {
+                          return NeuFormField(
+                            hintText: 'Email address',
+                            controller: controller.emailController,
+                            keyboardType: TextInputType.emailAddress,
+                            autocorrect: false,
+                            prefixIcon: const Icon(Icons.email),
+                            errorText: controller.emailError.value,
+                          ) ;
+                        }, controller.emailError),
                         const SizedBox(
                           height: 12,
                         ),
-                        NeuFormFiled(
-                          hintText: 'Password',
-                          obscureText: true,
-                          controller: controller.passwordController,
-                          prefixIcon: const Icon(Icons.password),
-                          validator: (value) {
-                            // if (value!.isEmpty) {
-                            //   return 'Password is required.';
-                            // }
-                            return null;
-                          },
-                        ),
+                        ObxValue((state) {
+                          return NeuFormField(
+                            hintText: 'Password',
+                            obscureText: true,
+                            controller: controller.passwordController,
+                            prefixIcon: const Icon(Icons.password),
+                            errorText: controller.passwordError.value,
+                          );
+                        }, controller.passwordError),
                         const SizedBox(
                           height: 16,
                         ),
@@ -100,7 +94,7 @@ class LoginView extends GetView<LoginController> {
                                             NeumorphicTheme.currentTheme(
                                                     context)
                                                 .textTheme
-                                                .bodyText1
+                                                .labelLarge
                                                 ?.color,
                                       ),
                                     )
@@ -108,7 +102,7 @@ class LoginView extends GetView<LoginController> {
                                       style:
                                           NeumorphicTheme.currentTheme(context)
                                               .textTheme
-                                              .bodyText1);
+                                              .labelLarge);
                             }, controller.isLogin)),
                             onPressed: () async{
                                 try {
