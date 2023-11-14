@@ -46,7 +46,6 @@ class RegisterView extends GetView<RegisterController> {
           Padding(
             padding: const EdgeInsets.all(32.0),
             child: AboutYouView(),
-
           ),
           Expanded(child: Container(),) ,
           Container(

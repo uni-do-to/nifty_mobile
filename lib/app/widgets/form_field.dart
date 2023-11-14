@@ -52,6 +52,7 @@ class NeuFormField extends StatelessWidget {
               isDense: true,
               fillColor: Colors.transparent,
               prefixIcon: prefixIcon,
+              prefixIconColor: NeumorphicTheme.accentColor(context),
               prefixIconConstraints: const BoxConstraints(
                 maxHeight: 16,
                 minWidth: 24,
@@ -62,6 +63,7 @@ class NeuFormField extends StatelessWidget {
                 minWidth: 24,
               ),
             ),
+            style: NeumorphicTheme.of(context)?.current?.textTheme.titleMedium,
             readOnly: readOnly,
             onTap: onTap,
             obscureText: obscureText,

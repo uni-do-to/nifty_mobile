@@ -1,5 +1,6 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'app/routes/app_pages.dart';
 import 'generated/locales.g.dart';
@@ -11,29 +12,35 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return NeumorphicTheme(
       themeMode: ThemeMode.light,
-      theme: const NeumorphicThemeData(
+      theme: NeumorphicThemeData(
           lightSource: LightSource.topLeft,
-          accentColor: NeumorphicColors.accent,
+          accentColor: Color(0xFF3E3E3E),
           variantColor: NeumorphicColors.variant,
-          defaultTextColor: NeumorphicColors.defaultTextColor,
-          appBarTheme: NeumorphicAppBarThemeData(
+          defaultTextColor: Color(0xff274c5b),
+          appBarTheme: const NeumorphicAppBarThemeData(
             buttonStyle: NeumorphicStyle(boxShape: NeumorphicBoxShape.circle()  , depth: 2 ),
-            textStyle: TextStyle(color: Colors.black54 , fontSize: 24 ),
-            iconTheme: IconThemeData(color: Colors.black54, size: 24 ),
+            textStyle: TextStyle(color: Color(0xff274c5b) , fontSize: 24 ),
+            iconTheme: IconThemeData(color: Color(0xff274c5b), size: 24 ),
           ),
-          textTheme: TextTheme(
-            labelLarge: TextStyle(
-              fontWeight: FontWeight.w800,
-              color: Colors.black54 ,
-              letterSpacing: 1.5
+          textTheme: GoogleFonts.robotoTextTheme().copyWith(
+            labelLarge: const TextStyle(
+              fontWeight: FontWeight.w600,
+              color: Color(0xff274c5b) ,
+              letterSpacing: 1.2,
             ),
-            bodySmall: TextStyle(
-                color: Colors.black54 ,
-            )
+            bodySmall: const TextStyle(
+                color: Color(0xff274c5b) ,
+              fontWeight: FontWeight.w400,
+            ),
+            titleMedium: const TextStyle(
+              color: Color(0xff274c5b) ,
+                fontWeight: FontWeight.w400,
+                fontSize: 16.0
+            ),
           ),
           depth: 4,
           intensity: 0.9,
-          buttonStyle: NeumorphicStyle(depth: 4 , intensity: 0.9)
+          buttonStyle: const NeumorphicStyle(depth: 4 , intensity: 0.9 , )
       ),
 
       darkTheme: const NeumorphicThemeData(

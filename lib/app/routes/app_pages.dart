@@ -1,7 +1,4 @@
 import 'package:get/get.dart';
-import 'package:nifty_mobile/app/modules/register/views/about_you_view.dart';
-import 'package:nifty_mobile/app/modules/register/views/nifty_points_view.dart';
-import 'package:nifty_mobile/app/modules/register/views/your_bmi_view.dart';
 
 import '../middleware/auth_middleware.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -32,21 +29,6 @@ class AppPages {
     GetPage(
       name: _Paths.REGISTER,
       page: () => const RegisterView(),
-      binding: RegisterBinding(),
-    ),
-    GetPage(
-      name: _Paths.ABOUT_YOU,
-      page: () => AboutYouView(),
-      binding: RegisterBinding(),
-    ),
-    GetPage(
-      name: _Paths.YOUR_BMI,
-      page: () => const YourBmiView(),
-      binding: RegisterBinding(),
-    ),
-    GetPage(
-      name: _Paths.NIFTY_POINTS,
-      page: () => const NiftyPointsView(),
       binding: RegisterBinding(),
     ),
   ];

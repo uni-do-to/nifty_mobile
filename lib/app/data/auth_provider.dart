@@ -14,7 +14,6 @@ class AuthProvider extends BaseProvider {
 
     return decode<UserPermission?>(response, UserPermission.fromJson);
 
-    return response.body;
   }
 
 }
