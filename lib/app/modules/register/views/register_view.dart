@@ -30,6 +30,7 @@ class RegisterView extends GetView<RegisterController> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(80.0),
         child: NeumorphicAppBar(
+          leading: Container(),
           title: Center(child: Text("Create new Account")),
         ),
       ),
