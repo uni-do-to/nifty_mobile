@@ -1,10 +1,14 @@
 {
-  "buttons": {
-    "login": "Entrar",
-    "sign_in": "Cadastrar-se",
-    "logout": "Sair",
-    "sign_in_fb": "Entrar com o Facebook",
-    "sign_in_google": "Entrar com o Google",
-    "sign_in_apple": "Entrar com a  Apple"
-  }
+  "login": "Entrar",
+  "sign_in": "Cadastrar-se",
+  "logout": "Sair",
+  "about_you_screen_title": "à propos de vous ?",
+  "choose_gender_label": "Vous êtes ?",
+  "your_name_label": "Votre nom",
+  "male_radio_label": "Un homme",
+  "female_radio_label": "Une femme",
+  "birthdate_label": "Vous êtes né",
+  "calender_label": "Date",
+  "back_button_label": "Retour",
+  "continue_button_label": "Continuer"
 }

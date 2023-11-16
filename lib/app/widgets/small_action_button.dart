@@ -24,7 +24,7 @@ class SmallActionButton extends StatelessWidget {
         alignment: Alignment.center,
         child: Text(
           text,
-          style: NeumorphicTheme.of(context)?.current?.textTheme.labelLarge
+          style: NeumorphicTheme.of(context)?.current?.textTheme.bodyMedium
         ),
       ),
     );

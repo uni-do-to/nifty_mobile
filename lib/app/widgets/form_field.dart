@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:nifty_mobile/app/utils/size_utils.dart';
 
 class NeuFormField extends StatelessWidget {
   final String hintText;
@@ -41,29 +42,35 @@ class NeuFormField extends StatelessWidget {
         Neumorphic(
           style: NeumorphicStyle(
             depth: NeumorphicTheme.embossDepth(context),
-            boxShape: NeumorphicBoxShape.stadium(),
+            boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(8)),
+            color: Colors.transparent,
+            border: NeumorphicBorder(
+              width: 0.5,
+            ),
           ),
           padding: padding,
           child: TextFormField(
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: hintText,
+              hintStyle:NeumorphicTheme.of(context)?.current?.textTheme.bodySmall ,
               filled: true,
               isDense: true,
               fillColor: Colors.transparent,
+              contentPadding: EdgeInsets.symmetric(vertical: 15.toHeight),
               prefixIcon: prefixIcon,
               prefixIconColor: NeumorphicTheme.accentColor(context),
-              prefixIconConstraints: const BoxConstraints(
-                maxHeight: 16,
-                minWidth: 24,
+              prefixIconConstraints:  BoxConstraints(
+                minHeight: 50.toHeight,
+                minWidth: 50.toWidth,
               ),
               suffixIcon: suffixIcon,
-              suffixIconConstraints: const BoxConstraints(
-                maxHeight: 16,
-                minWidth: 24,
+              suffixIconConstraints:  BoxConstraints(
+                minHeight: 50.toHeight,
+                minWidth: 50.toWidth,
               ),
             ),
-            style: NeumorphicTheme.of(context)?.current?.textTheme.titleMedium,
+            style: NeumorphicTheme.of(context)?.current?.textTheme.bodyMedium,
             readOnly: readOnly,
             onTap: onTap,
             obscureText: obscureText,
@@ -73,22 +80,24 @@ class NeuFormField extends StatelessWidget {
             validator: validator,
           ),
         ),
-          Visibility(
-            visible: errorText != null &&
-                errorText!
-                    .isNotEmpty,
-            maintainSize: true,
-            maintainAnimation: true,
-            maintainState: true,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 5, left: 14),
-              // Adjust the padding as needed
-              child: Text(
-                errorText ?? "",
-                style: NeumorphicTheme.of(context)?.current?.textTheme.bodySmall?.copyWith(color: Colors.red),
-              ),
+        Visibility(
+          visible: errorText != null && errorText!.isNotEmpty,
+          maintainSize: true,
+          maintainAnimation: true,
+          maintainState: true,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 5, left: 14),
+            // Adjust the padding as needed
+            child: Text(
+              errorText ?? "",
+              style: NeumorphicTheme.of(context)
+                  ?.current
+                  ?.textTheme
+                  .bodySmall
+                  ?.copyWith(color: Colors.red),
             ),
           ),
+        ),
       ],
     );
   }

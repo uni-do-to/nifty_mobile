@@ -1,10 +1,14 @@
 {
-  "buttons": {
-    "login": "Login",
-    "sign_in": "Sign-in",
-    "logout": "Logout",
-    "sign_in_fb": "Sign-in with Facebook",
-    "sign_in_google": "Sign-in with Google",
-    "sign_in_apple": "Sign-in with Apple"
-  }
+  "login": "Login",
+  "sign_in": "Sign-in",
+  "logout": "Logout",
+  "about_you_screen_title": "About you ?",
+  "choose_gender_label": "Choose your gender",
+  "your_name_label": "Your name",
+  "male_radio_label": "Male",
+  "female_radio_label": "Female",
+  "birthdate_label": "Your Birthdate",
+  "calender_label": "Date",
+  "back_button_label": "Back",
+  "continue_button_label": "Continue"
 }

@@ -11,29 +11,47 @@ class AppTranslation {
 
 class LocaleKeys {
   LocaleKeys._();
-  static const buttons_login = 'buttons_login';
-  static const buttons_sign_in = 'buttons_sign_in';
-  static const buttons_logout = 'buttons_logout';
-  static const buttons_sign_in_fb = 'buttons_sign_in_fb';
-  static const buttons_sign_in_google = 'buttons_sign_in_google';
-  static const buttons_sign_in_apple = 'buttons_sign_in_apple';
+  static const login = 'login';
+  static const sign_in = 'sign_in';
+  static const logout = 'logout';
+  static const about_you_screen_title = 'about_you_screen_title';
+  static const choose_gender_label = 'choose_gender_label';
+  static const your_name_label = 'your_name_label';
+  static const male_radio_label = 'male_radio_label';
+  static const female_radio_label = 'female_radio_label';
+  static const birthdate_label = 'birthdate_label';
+  static const calender_label = 'calender_label';
+  static const back_button_label = 'back_button_label';
+  static const continue_button_label = 'continue_button_label';
 }
 
 class Locales {
   static const en_US = {
-    'buttons_login': 'Login',
-    'buttons_sign_in': 'Sign-in',
-    'buttons_logout': 'Logout',
-    'buttons_sign_in_fb': 'Sign-in with Facebook',
-    'buttons_sign_in_google': 'Sign-in with Google',
-    'buttons_sign_in_apple': 'Sign-in with Apple',
+    'login': 'Login',
+    'sign_in': 'Sign-in',
+    'logout': 'Logout',
+    'about_you_screen_title': 'About you ?',
+    'choose_gender_label': 'Choose your gender',
+    'your_name_label': 'Your name',
+    'male_radio_label': 'Male',
+    'female_radio_label': 'Female',
+    'birthdate_label': 'Your Birthdate',
+    'calender_label': 'Date',
+    'back_button_label': 'Back',
+    'continue_button_label': 'Continue',
   };
   static const fr_FR = {
-    'buttons_login': 'Entrar',
-    'buttons_sign_in': 'Cadastrar-se',
-    'buttons_logout': 'Sair',
-    'buttons_sign_in_fb': 'Entrar com o Facebook',
-    'buttons_sign_in_google': 'Entrar com o Google',
-    'buttons_sign_in_apple': 'Entrar com a  Apple',
+    'login': 'Entrar',
+    'sign_in': 'Cadastrar-se',
+    'logout': 'Sair',
+    'about_you_screen_title': 'à propos de vous ?',
+    'choose_gender_label': 'Vous êtes ?',
+    'your_name_label': 'Votre nom',
+    'male_radio_label': 'Un homme',
+    'female_radio_label': 'Une femme',
+    'birthdate_label': 'Vous êtes né',
+    'calender_label': 'Date',
+    'back_button_label': 'Retour',
+    'continue_button_label': 'Continuer',
   };
 }
