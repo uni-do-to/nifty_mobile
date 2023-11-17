@@ -8,7 +8,10 @@ class RegisterController extends GetxController {
   RxInt currentStep = 0.obs;
 
   final GlobalKey<FormState> yourInfoFormKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> yourBmiFormKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
+  final tallController = TextEditingController();
+  final weightController = TextEditingController();
   final TextEditingController dateOfBirthController = TextEditingController();
 
   RxString selectedGender = ''.obs;

@@ -15,12 +15,21 @@ class LocaleKeys {
   static const sign_in = 'sign_in';
   static const logout = 'logout';
   static const about_you_screen_title = 'about_you_screen_title';
+  static const your_bmi_screen_title = 'your_bmi_screen_title';
   static const choose_gender_label = 'choose_gender_label';
   static const your_name_label = 'your_name_label';
+  static const your_tall_label = 'your_tall_label';
+  static const your_weight_label = 'your_weight_label';
+  static const tall_measurement = 'tall_measurement';
+  static const weight_measurement = 'weight_measurement';
   static const male_radio_label = 'male_radio_label';
   static const female_radio_label = 'female_radio_label';
   static const birthdate_label = 'birthdate_label';
   static const calender_label = 'calender_label';
+  static const your_goals_title = 'your_goals_title';
+  static const target_bmi_instructions = 'target_bmi_instructions';
+  static const current_bmi_label = 'current_bmi_label';
+  static const target_bmi_label = 'target_bmi_label';
   static const back_button_label = 'back_button_label';
   static const continue_button_label = 'continue_button_label';
 }
@@ -31,12 +40,21 @@ class Locales {
     'sign_in': 'Sign-in',
     'logout': 'Logout',
     'about_you_screen_title': 'About you ?',
+    'your_bmi_screen_title': 'Your BMI ?',
     'choose_gender_label': 'Choose your gender',
     'your_name_label': 'Your name',
+    'your_tall_label': 'Your tall',
+    'your_weight_label': 'Your weight',
+    'tall_measurement': 'cm',
+    'weight_measurement': 'kg',
     'male_radio_label': 'Male',
     'female_radio_label': 'Female',
     'birthdate_label': 'Your Birthdate',
     'calender_label': 'Date',
+    'your_goals_title': 'Your goals',
+    'target_bmi_instructions': 'Move markers as you wish to achieve your goals',
+    'current_bmi_label': 'Your BMI',
+    'target_bmi_label': 'Target BMI',
     'back_button_label': 'Back',
     'continue_button_label': 'Continue',
   };
@@ -45,12 +63,22 @@ class Locales {
     'sign_in': 'Cadastrar-se',
     'logout': 'Sair',
     'about_you_screen_title': 'à propos de vous ?',
+    'your_bmi_screen_title': 'Votre IMC ?',
     'choose_gender_label': 'Vous êtes ?',
     'your_name_label': 'Votre nom',
+    'your_tall_label': 'Votre taille',
+    'your_weight_label': 'Votre poids',
+    'tall_measurement': 'cm',
+    'weight_measurement': 'kg',
     'male_radio_label': 'Un homme',
     'female_radio_label': 'Une femme',
     'birthdate_label': 'Vous êtes né',
     'calender_label': 'Date',
+    'your_goals_title': 'Vos objectifs',
+    'target_bmi_instructions':
+        'Déplacez les repères comme vous le souhaitez pour atteindre vos objectifs',
+    'current_bmi_label': 'Votre IMC',
+    'target_bmi_label': 'Cible IMC',
     'back_button_label': 'Retour',
     'continue_button_label': 'Continuer',
   };
