@@ -17,7 +17,7 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.light,
       theme: NeumorphicThemeData(
           lightSource: LightSource.topLeft,
-          accentColor: Color(0xFF3E3E3E),
+          accentColor: Color(0xff274c5b),
           baseColor: Color(0xffF9F8F8),
           variantColor: NeumorphicColors.variant,
           defaultTextColor: Color(0xff274c5b),
@@ -33,7 +33,7 @@ class App extends StatelessWidget {
               fontWeight: FontWeight.w800,
               color: Color(0xff274c5b),
               letterSpacing: 1.2,
-              fontSize: 45.toFont,
+              fontSize: 40.toFont,
             ),
             bodySmall: TextStyle(
               color: Color(0xff274c5b),

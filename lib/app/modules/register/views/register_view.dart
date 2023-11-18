@@ -2,6 +2,7 @@ import 'package:date_format/date_format.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/modules/register/views/about_you_view.dart';
+import 'package:nifty_mobile/app/modules/register/views/nifty_points_view.dart';
 import 'package:nifty_mobile/app/modules/register/views/your_bmi_view.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:nifty_mobile/app/widgets/small_action_button.dart';
@@ -57,6 +58,13 @@ class RegisterView extends GetView<RegisterController> {
                   child: YourBmiView(),
                 ),
               );
+            } else if (state.value == 2) {
+              return Expanded(
+                child: Padding(
+                  padding: EdgeInsets.all(40.0.toHeight),
+                  child: NiftyPointsView(),
+                ),
+              );
             } else {
               return Container();
             }
@@ -88,11 +96,14 @@ class RegisterView extends GetView<RegisterController> {
                       color: Colors.white,
                     ),
                     onPressed: () {
-                      if (
-                      (controller.currentStep.value == 0 && (controller.yourInfoFormKey.currentState?.validate() ?? false)) ||
-                      (controller.currentStep.value == 1 && (controller.yourBmiFormKey.currentState?.validate() ?? false))
-
-                      ) {
+                      if ((controller.currentStep.value == 0 &&
+                              (controller.yourInfoFormKey.currentState
+                                      ?.validate() ??
+                                  false)) ||
+                          (controller.currentStep.value == 1 &&
+                              (controller.yourBmiFormKey.currentState
+                                      ?.validate() ??
+                                  false))) {
                         controller.currentStep.value++;
                       }
                     },

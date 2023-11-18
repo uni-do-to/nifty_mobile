@@ -19,5 +19,10 @@
   "current_bmi_label": "Votre IMC",
   "target_bmi_label": "Cible IMC",
   "back_button_label": "Retour",
-  "continue_button_label": "Continuer"
+  "continue_button_label": "Continuer",
+  "nifty_points_screen_title": "Il est temps de commencer !",
+  "daily_quantity_label": "Votre quantité jounalière :",
+  "username_daily_calories_label": "Kévin, votre quantité quotidienne de calories est de :",
+  "terms_and_conditions_label": "En cliquant ici, vous acceptez que vos données soient stockées et utilisées uniquement à des fins opérationnelles.*",
+  "nifty_points_measurement_unit": "Nifty Points"
 }

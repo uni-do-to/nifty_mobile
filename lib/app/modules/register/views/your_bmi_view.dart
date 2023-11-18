@@ -144,6 +144,5 @@ class YourBmiView extends GetView<RegisterController> {
         ],
       ),
     );
-    ;
   }
 }

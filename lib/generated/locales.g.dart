@@ -32,6 +32,11 @@ class LocaleKeys {
   static const target_bmi_label = 'target_bmi_label';
   static const back_button_label = 'back_button_label';
   static const continue_button_label = 'continue_button_label';
+  static const nifty_points_screen_title = 'nifty_points_screen_title';
+  static const daily_quantity_label = 'daily_quantity_label';
+  static const username_daily_calories_label = 'username_daily_calories_label';
+  static const terms_and_conditions_label = 'terms_and_conditions_label';
+  static const nifty_points_measurement_unit = 'nifty_points_measurement_unit';
 }
 
 class Locales {
@@ -57,6 +62,13 @@ class Locales {
     'target_bmi_label': 'Target BMI',
     'back_button_label': 'Back',
     'continue_button_label': 'Continue',
+    'nifty_points_screen_title': 'It\'s time to start !',
+    'daily_quantity_label': 'Your daily quantity :',
+    'username_daily_calories_label':
+        'Kevin, your daily amount of calories is :',
+    'terms_and_conditions_label':
+        'By clicking here, you agree that your data will be stored and used for operational purposes only.*',
+    'nifty_points_measurement_unit': 'Nifty Points',
   };
   static const fr_FR = {
     'login': 'Entrar',
@@ -81,5 +93,12 @@ class Locales {
     'target_bmi_label': 'Cible IMC',
     'back_button_label': 'Retour',
     'continue_button_label': 'Continuer',
+    'nifty_points_screen_title': 'Il est temps de commencer !',
+    'daily_quantity_label': 'Votre quantité jounalière :',
+    'username_daily_calories_label':
+        'Kévin, votre quantité quotidienne de calories est de :',
+    'terms_and_conditions_label':
+        'En cliquant ici, vous acceptez que vos données soient stockées et utilisées uniquement à des fins opérationnelles.*',
+    'nifty_points_measurement_unit': 'Nifty Points',
   };
 }

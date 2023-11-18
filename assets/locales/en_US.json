@@ -19,5 +19,10 @@
   "current_bmi_label": "Your BMI",
   "target_bmi_label": "Target BMI",
   "back_button_label": "Back",
-  "continue_button_label": "Continue"
+  "continue_button_label": "Continue",
+  "nifty_points_screen_title": "It's time to start !",
+  "daily_quantity_label": "Your daily quantity :",
+  "username_daily_calories_label": "Kevin, your daily amount of calories is :",
+  "terms_and_conditions_label": "By clicking here, you agree that your data will be stored and used for operational purposes only.*",
+  "nifty_points_measurement_unit": "Nifty Points"
 }
