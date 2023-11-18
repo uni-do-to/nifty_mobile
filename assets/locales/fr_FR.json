@@ -24,5 +24,18 @@
   "daily_quantity_label": "Votre quantité jounalière :",
   "username_daily_calories_label": "Kévin, votre quantité quotidienne de calories est de :",
   "terms_and_conditions_label": "En cliquant ici, vous acceptez que vos données soient stockées et utilisées uniquement à des fins opérationnelles.*",
-  "nifty_points_measurement_unit": "Nifty Points"
+  "nifty_points_measurement_unit": "Nifty Points",
+  "signup_screen_title": "Créer votre compte",
+  "email_label": "Votre email",
+  "password_label": "Votre mot de passe",
+  "confirm_password_label": "Confirmez votre mot de passe",
+  "already_have_account_label": "Vous avez déjà un compte ?",
+  "login_label": "Connectez-vous",
+  "error_snackbar_label": "Erreur",
+  "exception_snackbar_label": "Exception : ",
+  "email_error_message": "Un e-mail est requis.",
+  "password_error_message": "Mot de passe requis.",
+  "confirm_password_error_message": "Confirmer que le mot de passe est requis.",
+  "password_not_match_error_message": "Confirmez que le mot de passe ne correspond pas au mot de passe.",
+  "global_error_message": "Une erreur s'est produite, valeur d'entrée non valide"
 }

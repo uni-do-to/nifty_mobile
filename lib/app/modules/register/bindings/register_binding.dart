@@ -6,7 +6,7 @@ class RegisterBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut<RegisterController>(
-      () => RegisterController(),
+      () => RegisterController(Get.find()),
     );
   }
 }

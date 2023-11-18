@@ -3,6 +3,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/modules/register/views/about_you_view.dart';
 import 'package:nifty_mobile/app/modules/register/views/nifty_points_view.dart';
+import 'package:nifty_mobile/app/modules/register/views/signup_view.dart';
 import 'package:nifty_mobile/app/modules/register/views/your_bmi_view.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:nifty_mobile/app/widgets/small_action_button.dart';
@@ -65,6 +66,13 @@ class RegisterView extends GetView<RegisterController> {
                   child: NiftyPointsView(),
                 ),
               );
+            } else if (state.value == 3) {
+              return Expanded(
+                child: Padding(
+                  padding: EdgeInsets.all(40.0.toHeight),
+                  child: SignupView(),
+                ),
+              );
             } else {
               return Container();
             }
@@ -87,27 +95,21 @@ class RegisterView extends GetView<RegisterController> {
                       // Optionally, specify width and height
                     ),
                   ),
-                  SmallActionButton(
-                    text: LocaleKeys.continue_button_label.tr,
-                    backgroundColor: Color(0xff274C5B),
-                    textColor: Colors.white,
-                    icon: Icon(
-                      Icons.arrow_forward_ios_sharp,
-                      color: Colors.white,
-                    ),
-                    onPressed: () {
-                      if ((controller.currentStep.value == 0 &&
-                              (controller.yourInfoFormKey.currentState
-                                      ?.validate() ??
-                                  false)) ||
-                          (controller.currentStep.value == 1 &&
-                              (controller.yourBmiFormKey.currentState
-                                      ?.validate() ??
-                                  false))) {
+                  Visibility(
+                    visible: controller.currentStep.value < 3,
+                    child: SmallActionButton(
+                      text: LocaleKeys.continue_button_label.tr,
+                      backgroundColor: Color(0xff274C5B),
+                      textColor: Colors.white,
+                      icon: Icon(
+                        Icons.arrow_forward_ios_sharp,
+                        color: Colors.white,
+                      ),
+                      onPressed: () {
                         controller.currentStep.value++;
-                      }
-                    },
-                    // Optionally, specify width and height
+                      },
+                      // Optionally, specify width and height
+                    ),
                   ),
                 ],
               );

@@ -28,6 +28,22 @@ class AuthController extends GetxController {
     }
   }
 
+  Future<UserPermission?> signUp(String email, String password) async {
+    try {
+      UserPermission? user = await authProvider.loginLocal(email, password);
+
+      if(user?.jwt != null) {
+        _authService.saveCredentials(user) ;
+      }
+      return user ;
+    } catch (e) {
+      // printLog(e);
+      printError(info: e.toString());
+      rethrow;
+    }
+  }
+
+
   @override
   void onInit() {
     super.onInit();

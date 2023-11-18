@@ -16,6 +16,7 @@ class LocaleKeys {
   static const logout = 'logout';
   static const about_you_screen_title = 'about_you_screen_title';
   static const your_bmi_screen_title = 'your_bmi_screen_title';
+  static const nifty_points_screen_title = 'nifty_points_screen_title';
   static const choose_gender_label = 'choose_gender_label';
   static const your_name_label = 'your_name_label';
   static const your_tall_label = 'your_tall_label';
@@ -32,11 +33,25 @@ class LocaleKeys {
   static const target_bmi_label = 'target_bmi_label';
   static const back_button_label = 'back_button_label';
   static const continue_button_label = 'continue_button_label';
-  static const nifty_points_screen_title = 'nifty_points_screen_title';
   static const daily_quantity_label = 'daily_quantity_label';
   static const username_daily_calories_label = 'username_daily_calories_label';
   static const terms_and_conditions_label = 'terms_and_conditions_label';
   static const nifty_points_measurement_unit = 'nifty_points_measurement_unit';
+  static const signup_screen_title = 'signup_screen_title';
+  static const email_label = 'email_label';
+  static const password_label = 'password_label';
+  static const confirm_password_label = 'confirm_password_label';
+  static const already_have_account_label = 'already_have_account_label';
+  static const login_label = 'login_label';
+  static const error_snackbar_label = 'error_snackbar_label';
+  static const exception_snackbar_label = 'exception_snackbar_label';
+  static const email_error_message = 'email_error_message';
+  static const password_error_message = 'password_error_message';
+  static const confirm_password_error_message =
+      'confirm_password_error_message';
+  static const password_not_match_error_message =
+      'password_not_match_error_message';
+  static const global_error_message = 'global_error_message';
 }
 
 class Locales {
@@ -46,6 +61,7 @@ class Locales {
     'logout': 'Logout',
     'about_you_screen_title': 'About you ?',
     'your_bmi_screen_title': 'Your BMI ?',
+    'nifty_points_screen_title': 'It\'s time to start !',
     'choose_gender_label': 'Choose your gender',
     'your_name_label': 'Your name',
     'your_tall_label': 'Your tall',
@@ -62,13 +78,26 @@ class Locales {
     'target_bmi_label': 'Target BMI',
     'back_button_label': 'Back',
     'continue_button_label': 'Continue',
-    'nifty_points_screen_title': 'It\'s time to start !',
     'daily_quantity_label': 'Your daily quantity :',
     'username_daily_calories_label':
         'Kevin, your daily amount of calories is :',
     'terms_and_conditions_label':
         'By clicking here, you agree that your data will be stored and used for operational purposes only.*',
     'nifty_points_measurement_unit': 'Nifty Points',
+    'signup_screen_title': 'Create your account',
+    'email_label': 'Your email',
+    'password_label': 'Your password',
+    'confirm_password_label': 'Confirm your password',
+    'already_have_account_label': 'Already have an account ?',
+    'login_label': 'login',
+    'error_snackbar_label': 'Error',
+    'exception_snackbar_label': 'Exception : ',
+    'email_error_message': 'Email is required.',
+    'password_error_message': 'Password is required.',
+    'confirm_password_error_message': 'Confirm password is required.',
+    'password_not_match_error_message':
+        'Confirm password is not match password.',
+    'global_error_message': 'An error occurred, invalid inputs value',
   };
   static const fr_FR = {
     'login': 'Entrar',
@@ -100,5 +129,21 @@ class Locales {
     'terms_and_conditions_label':
         'En cliquant ici, vous acceptez que vos données soient stockées et utilisées uniquement à des fins opérationnelles.*',
     'nifty_points_measurement_unit': 'Nifty Points',
+    'signup_screen_title': 'Créer votre compte',
+    'email_label': 'Votre email',
+    'password_label': 'Votre mot de passe',
+    'confirm_password_label': 'Confirmez votre mot de passe',
+    'already_have_account_label': 'Vous avez déjà un compte ?',
+    'login_label': 'Connectez-vous',
+    'error_snackbar_label': 'Erreur',
+    'exception_snackbar_label': 'Exception : ',
+    'email_error_message': 'Un e-mail est requis.',
+    'password_error_message': 'Mot de passe requis.',
+    'confirm_password_error_message':
+        'Confirmer que le mot de passe est requis.',
+    'password_not_match_error_message':
+        'Confirmez que le mot de passe ne correspond pas au mot de passe.',
+    'global_error_message':
+        'Une erreur s\'est produite, valeur d\'entrée non valide',
   };
 }

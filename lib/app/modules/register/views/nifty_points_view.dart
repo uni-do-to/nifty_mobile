@@ -16,7 +16,7 @@ class NiftyPointsView extends GetView<RegisterController> {
     SizeConfig().init(context);
     var theme = NeumorphicTheme.of(context)?.current;
     return Form(
-      key: controller.yourBmiFormKey,
+      key: controller.niftyPointsFormKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
