@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/controllers/auth_controller.dart';
+import 'package:nifty_mobile/app/modules/register/signup_request_model.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
 class RegisterController extends AuthController {
@@ -99,9 +100,9 @@ class RegisterController extends AuthController {
   }
 
   bool validateNiftyPointsForm() {
-
     if (!termsAndConditions.value) {
-      termsAndConditionsError.value = LocaleKeys.terms_and_conditions_error_message.tr;
+      termsAndConditionsError.value =
+          LocaleKeys.terms_and_conditions_error_message.tr;
     } else {
       termsAndConditionsError.value = '';
     }
@@ -109,7 +110,7 @@ class RegisterController extends AuthController {
     return termsAndConditionsError.isEmpty;
   }
 
-  bool validateForm() {
+  bool validateSignUpForm() {
     if (emailController.text.isEmpty) {
       emailError.value = LocaleKeys.email_error_message.tr;
     } else {
@@ -250,11 +251,29 @@ class RegisterController extends AuthController {
   }
 
   Future<void> signup() async {
-    if (validateForm() && !isSignup.value) {
+    if (!validateUserInfoForm() &&
+        !validateBMIForm() &&
+        !validateNiftyPointsForm() &&
+        !validateSignUpForm()) return;
+
+    if (validateSignUpForm() && !isSignup.value) {
       try {
         isSignup.value = true;
+        SignupRequest data = SignupRequest(
+            username: emailController.text,
+            // or another appropriate field for username
+            email: emailController.text,
+            password: passwordController.text,
+            name: nameController.text,
+            gender: selectedGender.value,
+            birthDate: dateOfBirthController.text,
+            height: tallController.text,
+            weight: weightController.text,
+            bmi: currentBMI.value.toString(),
+            targetBmi: targetBMI.value.toString(),
+            targetWeight: targetWeight.value.toString());
 
-        await signUp(emailController.text, passwordController.text);
+        await signUp(data);
       } catch (err, _) {
         // message = 'There is an issue with the app during request the data, '
         //         'please contact admin for fixing the issues ' +

@@ -16,4 +16,5 @@ class ColorConstants {
   static Color secondaryAppColor = hexToColor('#5E92F3');
   static Color secondaryDarkAppColor = Colors.white;
   static Color targetBMiColor = hexToColor('#7EB693');
+  static Color lightGray = hexToColor('#D4D4D4');
 }

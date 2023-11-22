@@ -9,6 +9,7 @@ abstract class Routes {
   static const ABOUT_YOU = _Paths.ABOUT_YOU;
   static const YOUR_BMI = _Paths.YOUR_BMI;
   static const NIFTY_POINTS = _Paths.NIFTY_POINTS;
+  static const SUBSCRIPTION = _Paths.SUBSCRIPTION;
 }
 
 abstract class _Paths {
@@ -19,4 +20,5 @@ abstract class _Paths {
   static const ABOUT_YOU = '/about_you';
   static const YOUR_BMI = '/your_bmi';
   static const NIFTY_POINTS = '/nifty_points';
+  static const SUBSCRIPTION = '/subscription';
 }

@@ -62,9 +62,7 @@ class SignupView extends GetView<RegisterController> {
             height: 40.toHeight,
           ),
           NeumorphicButton(
-              // style: NeumorphicTheme.of(context)
-              //     ?.current
-              //     ?.buttonStyle,
+
               child: Container(
                   height: 48.toHeight,
                   alignment: Alignment.center,

@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/data/models/user_permission_model.dart';
+import 'package:nifty_mobile/app/modules/register/signup_request_model.dart';
 
 import '../data/auth_provider.dart';
 import '../services/auth_service.dart';
@@ -28,9 +29,9 @@ class AuthController extends GetxController {
     }
   }
 
-  Future<UserPermission?> signUp(String email, String password) async {
+  Future<UserPermission?> signUp(SignupRequest userData) async {
     try {
-      UserPermission? user = await authProvider.loginLocal(email, password);
+      UserPermission? user = await authProvider.registerLocal(userData);
 
       if(user?.jwt != null) {
         _authService.saveCredentials(user) ;

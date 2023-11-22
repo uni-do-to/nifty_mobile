@@ -25,6 +25,8 @@ class LocaleKeys {
   static const weight_measurement = 'weight_measurement';
   static const bmi_measurement = 'bmi_measurement';
   static const calories_per_gram_measurement = 'calories_per_gram_measurement';
+  static const subscription_per_year = 'subscription_per_year';
+  static const euro_mark = 'euro_mark';
   static const male_radio_label = 'male_radio_label';
   static const female_radio_label = 'female_radio_label';
   static const birthdate_label = 'birthdate_label';
@@ -47,6 +49,8 @@ class LocaleKeys {
   static const confirm_password_label = 'confirm_password_label';
   static const already_have_account_label = 'already_have_account_label';
   static const login_label = 'login_label';
+  static const subscription_button_label = 'subscription_button_label';
+  static const subscription_view_title = 'subscription_view_title';
   static const error_snackbar_label = 'error_snackbar_label';
   static const exception_snackbar_label = 'exception_snackbar_label';
   static const email_error_message = 'email_error_message';
@@ -82,6 +86,8 @@ class Locales {
     'weight_measurement': 'kg',
     'bmi_measurement': 'BMI',
     'calories_per_gram_measurement': 'kCal/J',
+    'subscription_per_year': '/year',
+    'euro_mark': '€',
     'male_radio_label': 'Male',
     'female_radio_label': 'Female',
     'birthdate_label': 'Your Birthdate',
@@ -105,6 +111,8 @@ class Locales {
     'confirm_password_label': 'Confirm your password',
     'already_have_account_label': 'Already have an account ?',
     'login_label': 'login',
+    'subscription_button_label': 'Choose this formula',
+    'subscription_view_title': 'Choose your formula',
     'error_snackbar_label': 'Error',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Email is required.',
@@ -136,6 +144,8 @@ class Locales {
     'weight_measurement': 'kg',
     'bmi_measurement': 'IMC',
     'calories_per_gram_measurement': 'kCal/J',
+    'subscription_per_year': '/an',
+    'euro_mark': '€',
     'male_radio_label': 'Un homme',
     'female_radio_label': 'Une femme',
     'birthdate_label': 'Vous êtes né',
@@ -162,6 +172,8 @@ class Locales {
     'confirm_password_label': 'Confirmez votre mot de passe',
     'already_have_account_label': 'Vous avez déjà un compte ?',
     'login_label': 'Connectez-vous',
+    'subscription_button_label': 'Choisir cette formule',
+    'subscription_view_title': 'Choisissez votre formule',
     'error_snackbar_label': 'Erreur',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Un e-mail est requis.',
