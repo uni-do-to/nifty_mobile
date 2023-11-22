@@ -34,7 +34,8 @@ class NiftyPointsView extends GetView<RegisterController> {
             height: 10.toHeight,
           ),
           Text(
-            LocaleKeys.username_daily_calories_label.tr,
+            controller.nameController.text +
+                LocaleKeys.username_daily_calories_label.tr,
             style: theme?.textTheme.bodySmall,
             textAlign: TextAlign.start,
           ),
@@ -45,7 +46,7 @@ class NiftyPointsView extends GetView<RegisterController> {
             padding: EdgeInsets.all(70.toHeight),
             color: theme?.accentColor,
             child: Text(
-              "63 ${LocaleKeys.nifty_points_measurement_unit.tr}",
+              "${controller.niftyPoints.value.round()} ${LocaleKeys.nifty_points_measurement_unit.tr}",
               style: theme?.textTheme.labelLarge?.copyWith(
                 color: Colors.white,
               ),
@@ -56,12 +57,15 @@ class NiftyPointsView extends GetView<RegisterController> {
             height: 40.toHeight,
           ),
           Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            Radio(
-              value: false,
-              groupValue: "",
-              activeColor: theme?.accentColor,
-              onChanged: (val) {},
-            ),
+            ObxValue((state) {
+              return Checkbox(
+                value: state.value,
+                activeColor: theme?.accentColor,
+                onChanged: (val) {
+                  state.value = val!;
+                },
+              );
+            }, controller.termsAndConditions),
             Expanded(
               child: Text(
                 LocaleKeys.terms_and_conditions_label.tr,
@@ -72,6 +76,17 @@ class NiftyPointsView extends GetView<RegisterController> {
 
             // more widgets ...
           ]),
+          SizedBox(
+            height: 20.toHeight,
+          ),
+          ObxValue((state) {
+            return Text(
+              state.value,
+              style: theme?.textTheme.bodySmall?.copyWith(
+                color: Colors.red,
+              ),
+            );
+          }, controller.termsAndConditionsError),
           Expanded(child: Container()),
         ],
       ),

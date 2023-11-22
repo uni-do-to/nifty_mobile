@@ -106,6 +106,22 @@ class RegisterView extends GetView<RegisterController> {
                         color: Colors.white,
                       ),
                       onPressed: () {
+                        if (controller.currentStep.value == 0 &&
+                            !controller.validateUserInfoForm()) return;
+
+                        if (controller.currentStep.value == 1 &&
+                            !controller.validateBMIForm()) return;
+
+                        if (controller.currentStep.value == 2 &&
+                            !controller.validateNiftyPointsForm()) return;
+
+                        if (controller.currentStep.value == 0) {
+                          controller.userAge.value =
+                              controller.calculateUserAge();
+                        }
+                        if (controller.currentStep.value == 1) {
+                          controller.calculateNiftyPoints();
+                        }
                         controller.currentStep.value++;
                       },
                       // Optionally, specify width and height

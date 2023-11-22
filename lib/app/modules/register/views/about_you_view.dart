@@ -22,7 +22,7 @@ class AboutYouView extends GetView<RegisterController> {
         lastDate: DateTime(2021));
     if (picked != null) {
       controller.dateOfBirthController.text =
-          formatDate(picked, [dd, '/', mm, '/', yyyy]);
+          formatDate(picked, [yyyy, '-', mm, '-', dd]);
     }
   }
 
@@ -36,34 +36,34 @@ class AboutYouView extends GetView<RegisterController> {
         children: <Widget>[
           RegisterViewsTitle(text: LocaleKeys.about_you_screen_title.tr),
           Expanded(child: Container()),
-          NeuFormField(
-            hintText: LocaleKeys.your_name_label.tr,
-            controller: controller.nameController,
-            keyboardType: TextInputType.text,
-            autocorrect: false,
-            prefixIcon: const Icon(Icons.person),
-            validator: (value) {
-              return null;
-            },
-          ),
+          ObxValue((state) {
+            return NeuFormField(
+              hintText: LocaleKeys.your_name_label.tr,
+              controller: controller.nameController,
+              keyboardType: TextInputType.text,
+              autocorrect: false,
+              prefixIcon: const Icon(Icons.person),
+              errorText: controller.nameError.value,
+            );
+          }, controller.nameError),
           const SizedBox(
             height: 24,
           ),
-          NeuFormField(
-            hintText: LocaleKeys.birthdate_label.tr,
-            controller: controller.dateOfBirthController,
-            keyboardType: TextInputType.datetime,
-            autocorrect: false,
-            readOnly: true,
-            onTap: () {
-              // Call the _selectDate function when the text field is tapped.
-              _selectDate(context);
-            },
-            prefixIcon: const Icon(Icons.date_range),
-            validator: (value) {
-              return null;
-            },
-          ),
+          ObxValue((state) {
+            return NeuFormField(
+              hintText: LocaleKeys.birthdate_label.tr,
+              controller: controller.dateOfBirthController,
+              keyboardType: TextInputType.datetime,
+              autocorrect: false,
+              readOnly: true,
+              onTap: () {
+                // Call the _selectDate function when the text field is tapped.
+                _selectDate(context);
+              },
+              prefixIcon: const Icon(Icons.date_range),
+              errorText: controller.birthDateError.value,
+            );
+          }, controller.birthDateError),
           const SizedBox(
             height: 24,
           ),
@@ -98,6 +98,17 @@ class AboutYouView extends GetView<RegisterController> {
               ],
             );
           }, controller.selectedGender),
+          SizedBox(
+            height: 24.toHeight,
+          ),
+          ObxValue((state) {
+            return Text(
+              state.value,
+              style: theme?.textTheme.bodySmall?.copyWith(
+                color: Colors.red,
+              ),
+            );
+          }, controller.birthDateError),
           Expanded(child: Container()),
         ],
       ),

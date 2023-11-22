@@ -1,3 +1,5 @@
+import 'package:another_xlider/another_xlider.dart';
+import 'package:another_xlider/models/trackbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
@@ -9,6 +11,7 @@ import 'package:nifty_mobile/app/widgets/form_field.dart';
 import 'package:nifty_mobile/app/widgets/gender_radio.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
+import '../../../config/color_constants.dart';
 import '../controllers/register_controller.dart';
 
 class YourBmiView extends GetView<RegisterController> {
@@ -24,43 +27,43 @@ class YourBmiView extends GetView<RegisterController> {
         children: <Widget>[
           RegisterViewsTitle(text: LocaleKeys.your_bmi_screen_title.tr),
           Expanded(child: Container()),
-          NeuFormField(
-            hintText: LocaleKeys.your_tall_label.tr,
-            controller: controller.tallController,
-            keyboardType: TextInputType.number,
-            autocorrect: false,
-            suffixIcon: Container(
-              width: 20.toWidth,
-              alignment: Alignment.centerRight,
-              child: Text(
-                LocaleKeys.tall_measurement.tr,
-                style: theme?.textTheme.bodySmall,
+          ObxValue((state) {
+            return NeuFormField(
+              hintText: LocaleKeys.your_tall_label.tr,
+              controller: controller.tallController,
+              keyboardType: TextInputType.number,
+              autocorrect: false,
+              suffixIcon: Container(
+                width: 20.toWidth,
+                alignment: Alignment.centerRight,
+                child: Text(
+                  LocaleKeys.tall_measurement.tr,
+                  style: theme?.textTheme.bodySmall,
+                ),
               ),
-            ),
-            validator: (value) {
-              return null;
-            },
-          ),
+              errorText: controller.tallError.value,
+            );
+          }, controller.tallError),
           SizedBox(
             height: 24.toHeight,
           ),
-          NeuFormField(
-            hintText: LocaleKeys.your_weight_label.tr,
-            controller: controller.weightController,
-            keyboardType: TextInputType.number,
-            autocorrect: false,
-            suffixIcon: Container(
-              width: 20.toWidth,
-              alignment: Alignment.centerRight,
-              child: Text(
-                LocaleKeys.weight_measurement.tr,
-                style: theme?.textTheme.bodySmall,
+          ObxValue((state) {
+            return NeuFormField(
+              hintText: LocaleKeys.your_weight_label.tr,
+              controller: controller.weightController,
+              keyboardType: TextInputType.number,
+              autocorrect: false,
+              suffixIcon: Container(
+                width: 20.toWidth,
+                alignment: Alignment.centerRight,
+                child: Text(
+                  LocaleKeys.weight_measurement.tr,
+                  style: theme?.textTheme.bodySmall,
+                ),
               ),
-            ),
-            validator: (value) {
-              return null;
-            },
-          ),
+              errorText: controller.weightError.value,
+            );
+          }, controller.weightError),
           SizedBox(
             height: 24.toHeight,
           ),
@@ -94,12 +97,13 @@ class YourBmiView extends GetView<RegisterController> {
                 height: 50.toHeight,
               ),
               Row(
+                mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   NeuCard(
                     child: Container(
-                      width: 200.toWidth,
-                      height: 150.toHeight,
+                      width: 230.toWidth,
+                      height: 200.toHeight,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -107,14 +111,28 @@ class YourBmiView extends GetView<RegisterController> {
                             height: 20.toHeight,
                           ),
                           Text(LocaleKeys.current_bmi_label.tr),
+                          SizedBox(
+                            height: 20.toHeight,
+                          ),
+                          ObxValue((state) {
+                            return Visibility(
+                              visible: state.value > 0,
+                              child: Text(
+                                (state.value.round()).toString(),
+                                style: theme?.textTheme.bodySmall?.copyWith(
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            );
+                          }, controller.currentBMI),
                         ],
                       ),
                     ),
                   ),
                   NeuCard(
                     child: Container(
-                      width: 200.toWidth,
-                      height: 150.toHeight,
+                      width: 230.toWidth,
+                      height: 200.toHeight,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -122,6 +140,44 @@ class YourBmiView extends GetView<RegisterController> {
                             height: 20.toHeight,
                           ),
                           Text(LocaleKeys.target_bmi_label.tr),
+                          SizedBox(
+                            height: 20.toHeight,
+                          ),
+                          ObxValue((state) {
+                            return Visibility(
+                              visible: state.value > 0,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "${state.value.round()} ${LocaleKeys.bmi_measurement.tr}",
+                                    style: theme?.textTheme.bodySmall?.copyWith(
+                                        fontWeight: FontWeight.w600,
+                                        color: ColorConstants.targetBMiColor),
+                                  ),
+                                  SizedBox(
+                                    height: 10.toHeight,
+                                  ),
+                                  Text(
+                                    "${controller.targetWeight.round()} ${LocaleKeys.weight_measurement.tr}",
+                                    style: theme?.textTheme.bodySmall?.copyWith(
+                                        fontWeight: FontWeight.w600,
+                                        color: ColorConstants.targetBMiColor),
+                                  ),
+                                  SizedBox(
+                                    height: 10.toHeight,
+                                  ),
+                                  Text(
+                                    "${controller.targetCaloriesPerDay.round()} ${LocaleKeys.calories_per_gram_measurement.tr}",
+                                    style: theme?.textTheme.bodySmall?.copyWith(
+                                        fontWeight: FontWeight.w600,
+                                        color: ColorConstants.targetBMiColor),
+                                  ),
+                                ],
+                              ),
+                            );
+                          }, controller.targetBMI),
                         ],
                       ),
                     ),
@@ -129,15 +185,73 @@ class YourBmiView extends GetView<RegisterController> {
                 ],
               ),
               SizedBox(
-                height: 30.toHeight,
+                height: 20.toHeight,
               ),
-              RangeSlider(
-                values: RangeValues(20,30),
-                min: 0,
-                max: 100,
-                onChanged: (val) {},
-              ),
+              ObxValue((state) {
+                return Visibility(
+                  visible: !(controller.tallController.text.isEmpty &&
+                      controller.weightController.text.isEmpty),
+                  child: Column(
+                    children: [
+                      FlutterSlider(
+                          values: [controller.targetBMI.value],
+                          max: controller.maxBMIValue.value,
+                          min: controller.minBMIValue.value,
+                          centeredOrigin: true,
+                          trackBar: FlutterSliderTrackBar(),
+                          onDragging: (handlerIndex, lowerValue, upperValue) {
+                            controller.targetBMI.value = lowerValue;
+                            controller.calculateUserGoalMeasurements();
 
+                            // if (lowerValue > (max - min) / 2) {
+                            //   // trackBarColor = Colors.blueAccent;
+                            // } else {
+                            //   // trackBarColor = Colors.redAccent;
+                            // }
+                            // setState(() {});
+                          }),
+                      SizedBox(
+                        height: 10.toHeight,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text(
+                            LocaleKeys.above_bmi_slider_label.tr,
+                            style: theme?.textTheme.bodySmall?.copyWith(
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Expanded(child: Container()),
+                          Text(
+                            LocaleKeys.below_bmi_slider_label.tr,
+                            style: theme?.textTheme.bodySmall?.copyWith(
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
+                );
+              }, controller.targetBMI),
+              SizedBox(
+                height: 10.toHeight,
+              ),
+              ObxValue((state) {
+                return Container(
+                  alignment: Alignment.center,
+                  child: Text(
+                    state.value,
+                    style: theme?.textTheme.bodySmall?.copyWith(
+                      color: Colors.red,
+                    ),
+                  ),
+                );
+              }, controller.targetBMIError),
+              SizedBox(
+                height: 20.toHeight,
+              ),
             ],
           ),
           Expanded(child: Container()),

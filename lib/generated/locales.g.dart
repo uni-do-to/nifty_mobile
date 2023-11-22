@@ -23,6 +23,8 @@ class LocaleKeys {
   static const your_weight_label = 'your_weight_label';
   static const tall_measurement = 'tall_measurement';
   static const weight_measurement = 'weight_measurement';
+  static const bmi_measurement = 'bmi_measurement';
+  static const calories_per_gram_measurement = 'calories_per_gram_measurement';
   static const male_radio_label = 'male_radio_label';
   static const female_radio_label = 'female_radio_label';
   static const birthdate_label = 'birthdate_label';
@@ -31,6 +33,8 @@ class LocaleKeys {
   static const target_bmi_instructions = 'target_bmi_instructions';
   static const current_bmi_label = 'current_bmi_label';
   static const target_bmi_label = 'target_bmi_label';
+  static const above_bmi_slider_label = 'above_bmi_slider_label';
+  static const below_bmi_slider_label = 'below_bmi_slider_label';
   static const back_button_label = 'back_button_label';
   static const continue_button_label = 'continue_button_label';
   static const daily_quantity_label = 'daily_quantity_label';
@@ -51,6 +55,14 @@ class LocaleKeys {
       'confirm_password_error_message';
   static const password_not_match_error_message =
       'password_not_match_error_message';
+  static const name_error_message = 'name_error_message';
+  static const birth_date_error_message = 'birth_date_error_message';
+  static const gender_error_message = 'gender_error_message';
+  static const tall_error_message = 'tall_error_message';
+  static const weight_error_message = 'weight_error_message';
+  static const target_bmi_error_message = 'target_bmi_error_message';
+  static const terms_and_conditions_error_message =
+      'terms_and_conditions_error_message';
   static const global_error_message = 'global_error_message';
 }
 
@@ -68,19 +80,22 @@ class Locales {
     'your_weight_label': 'Your weight',
     'tall_measurement': 'cm',
     'weight_measurement': 'kg',
+    'bmi_measurement': 'BMI',
+    'calories_per_gram_measurement': 'kCal/J',
     'male_radio_label': 'Male',
     'female_radio_label': 'Female',
     'birthdate_label': 'Your Birthdate',
     'calender_label': 'Date',
     'your_goals_title': 'Your goals',
     'target_bmi_instructions': 'Move markers as you wish to achieve your goals',
-    'current_bmi_label': 'Your BMI',
-    'target_bmi_label': 'Target BMI',
+    'current_bmi_label': 'Your current BMI',
+    'target_bmi_label': 'Your goal',
+    'above_bmi_slider_label': 'Severe obesity',
+    'below_bmi_slider_label': 'Anorexia',
     'back_button_label': 'Back',
     'continue_button_label': 'Continue',
     'daily_quantity_label': 'Your daily quantity :',
-    'username_daily_calories_label':
-        'Kevin, your daily amount of calories is :',
+    'username_daily_calories_label': ', your daily amount of calories is :',
     'terms_and_conditions_label':
         'By clicking here, you agree that your data will be stored and used for operational purposes only.*',
     'nifty_points_measurement_unit': 'Nifty Points',
@@ -97,6 +112,14 @@ class Locales {
     'confirm_password_error_message': 'Confirm password is required.',
     'password_not_match_error_message':
         'Confirm password is not match password.',
+    'name_error_message': 'Name is required.',
+    'birth_date_error_message': 'Birth date is required.',
+    'gender_error_message': 'Gender is required.',
+    'tall_error_message': 'Height is required.',
+    'weight_error_message': 'Weight is required.',
+    'target_bmi_error_message': 'Choose target BMI.',
+    'terms_and_conditions_error_message':
+        'You must agree to the terms and conditions to complete the registration process.',
     'global_error_message': 'An error occurred, invalid inputs value',
   };
   static const fr_FR = {
@@ -111,6 +134,8 @@ class Locales {
     'your_weight_label': 'Votre poids',
     'tall_measurement': 'cm',
     'weight_measurement': 'kg',
+    'bmi_measurement': 'IMC',
+    'calories_per_gram_measurement': 'kCal/J',
     'male_radio_label': 'Un homme',
     'female_radio_label': 'Une femme',
     'birthdate_label': 'Vous êtes né',
@@ -118,14 +143,16 @@ class Locales {
     'your_goals_title': 'Vos objectifs',
     'target_bmi_instructions':
         'Déplacez les repères comme vous le souhaitez pour atteindre vos objectifs',
-    'current_bmi_label': 'Votre IMC',
-    'target_bmi_label': 'Cible IMC',
+    'current_bmi_label': 'Votre IMC actuel',
+    'target_bmi_label': 'Votre objectif',
+    'above_bmi_slider_label': 'Obésité sévère',
+    'below_bmi_slider_label': 'Anorexie',
     'back_button_label': 'Retour',
     'continue_button_label': 'Continuer',
     'nifty_points_screen_title': 'Il est temps de commencer !',
     'daily_quantity_label': 'Votre quantité jounalière :',
     'username_daily_calories_label':
-        'Kévin, votre quantité quotidienne de calories est de :',
+        ', votre quantité quotidienne de calories est de :',
     'terms_and_conditions_label':
         'En cliquant ici, vous acceptez que vos données soient stockées et utilisées uniquement à des fins opérationnelles.*',
     'nifty_points_measurement_unit': 'Nifty Points',
@@ -143,6 +170,14 @@ class Locales {
         'Confirmer que le mot de passe est requis.',
     'password_not_match_error_message':
         'Confirmez que le mot de passe ne correspond pas au mot de passe.',
+    'name_error_message': 'Le nom est requis.',
+    'birth_date_error_message': 'La date de naissance est requise.',
+    'gender_error_message': 'Le sexe est requis.',
+    'tall_error_message': 'grand est requis.',
+    'weight_error_message': 'Le poids est requis.',
+    'target_bmi_error_message': 'Choisissez l’IMC cible.',
+    'terms_and_conditions_error_message':
+        'Vous devez accepter les termes et conditions pour terminer le processus d\'inscription.',
     'global_error_message':
         'Une erreur s\'est produite, valeur d\'entrée non valide',
   };
