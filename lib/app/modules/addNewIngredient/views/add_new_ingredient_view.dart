@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
@@ -285,7 +287,6 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                                     try {
                                       await controller.createNewIngredient();
                                       Get.offAllNamed(Routes.HOME);
-
                                     } catch (err, _) {
                                       printError(info: err.toString());
                                       final strippedMessage =
@@ -315,6 +316,12 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                   ),
                   SizedBox(
                     height: 20.toHeight,
+                  ),
+                  Text(
+                    LocaleKeys.tutorial_link_label.tr,
+                    style: theme?.textTheme.bodySmall?.copyWith(
+                      decoration: TextDecoration.underline,
+                    ),
                   ),
                 ],
               ),
