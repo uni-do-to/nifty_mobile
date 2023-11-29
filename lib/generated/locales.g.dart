@@ -25,6 +25,8 @@ class LocaleKeys {
   static const weight_measurement = 'weight_measurement';
   static const bmi_measurement = 'bmi_measurement';
   static const calories_per_gram_measurement = 'calories_per_gram_measurement';
+  static const calories_measurement = 'calories_measurement';
+  static const nifty_points_measurement = 'nifty_points_measurement';
   static const subscription_per_year = 'subscription_per_year';
   static const euro_mark = 'euro_mark';
   static const male_radio_label = 'male_radio_label';
@@ -51,6 +53,18 @@ class LocaleKeys {
   static const login_label = 'login_label';
   static const subscription_button_label = 'subscription_button_label';
   static const subscription_view_title = 'subscription_view_title';
+  static const daily_calories_home_title = 'daily_calories_home_title';
+  static const add_something_to_daily_label = 'add_something_to_daily_label';
+  static const your_meals_label = 'your_meals_label';
+  static const new_meal_button_label = 'new_meal_button_label';
+  static const nifty_points_budget_label = 'nifty_points_budget_label';
+  static const remaining_budget_label = 'remaining_budget_label';
+  static const sport_budget_label = 'sport_budget_label';
+  static const meal_tab_number_label = 'meal_tab_number_label';
+  static const ingredient_tab_label = 'ingredient_tab_label';
+  static const recipe_tab_label = 'recipe_tab_label';
+  static const new_recipe_tab_label = 'new_recipe_tab_label';
+  static const empty_meal_tab_hint = 'empty_meal_tab_hint';
   static const error_snackbar_label = 'error_snackbar_label';
   static const exception_snackbar_label = 'exception_snackbar_label';
   static const email_error_message = 'email_error_message';
@@ -86,6 +100,8 @@ class Locales {
     'weight_measurement': 'kg',
     'bmi_measurement': 'BMI',
     'calories_per_gram_measurement': 'kCal/J',
+    'calories_measurement': 'KCal',
+    'nifty_points_measurement': 'NP',
     'subscription_per_year': '/year',
     'euro_mark': '€',
     'male_radio_label': 'Male',
@@ -113,6 +129,19 @@ class Locales {
     'login_label': 'login',
     'subscription_button_label': 'Choose this formula',
     'subscription_view_title': 'Choose your formula',
+    'daily_calories_home_title': 'Your daily calories',
+    'add_something_to_daily_label': 'Something to add ?',
+    'your_meals_label': 'Your meals',
+    'new_meal_button_label': 'New meal',
+    'nifty_points_budget_label': 'My budget',
+    'remaining_budget_label': 'Spent',
+    'sport_budget_label': 'Sport',
+    'meal_tab_number_label': 'Meal n°1',
+    'ingredient_tab_label': 'Ingredients',
+    'recipe_tab_label': 'Recipe',
+    'new_recipe_tab_label': 'New recipe',
+    'empty_meal_tab_hint':
+        'You haven\'t eaten yet today, add an ingredient or recipe to your meal',
     'error_snackbar_label': 'Error',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Email is required.',
@@ -174,6 +203,21 @@ class Locales {
     'login_label': 'Connectez-vous',
     'subscription_button_label': 'Choisir cette formule',
     'subscription_view_title': 'Choisissez votre formule',
+    'calories_measurement': 'KCal',
+    'nifty_points_measurement': 'NP',
+    'daily_calories_home_title': 'Vos calories journalières',
+    'add_something_to_daily_label': 'Quelque chose à ajouter ?',
+    'your_meals_label': 'Vos repas',
+    'nifty_points_budget_label': 'Mon Budget',
+    'remaining_budget_label': 'Depensé',
+    'sport_budget_label': 'Sport',
+    'meal_tab_number_label': 'Repas n°1',
+    'ingredient_tab_label': 'Ingrédients',
+    'recipe_tab_label': 'Recette',
+    'new_recipe_tab_label': 'Nouvelle recette',
+    'new_meal_button_label': 'Nouveau repas',
+    'empty_meal_tab_hint':
+        'Vous n\'avez pas encore mangé aujourd\'hui, ajoutez un ingrédient ou une recette à votre repas',
     'error_snackbar_label': 'Erreur',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Un e-mail est requis.',

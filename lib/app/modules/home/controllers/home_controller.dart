@@ -1,23 +1,21 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nifty_mobile/app/controllers/auth_controller.dart';
 
-class HomeController extends GetxController {
-  //TODO: Implement HomeController
+class HomeController extends AuthController {
+  List<String> mealsList = [];
 
-  final count = 0.obs;
+  RxInt selectedMeal = 0.obs;
+
+  HomeController(super.authProvider);
+
   @override
   void onInit() {
     super.onInit();
   }
 
   @override
-  void onReady() {
-    super.onReady();
+  void dispose() {
+    super.dispose();
   }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }
