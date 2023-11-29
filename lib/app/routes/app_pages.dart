@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 
 import '../middleware/auth_middleware.dart';
+import '../modules/addNewIngredient/bindings/add_new_ingredient_binding.dart';
+import '../modules/addNewIngredient/views/add_new_ingredient_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -37,6 +39,12 @@ class AppPages {
       name: _Paths.SUBSCRIPTION,
       page: () => const SubscriptionView(),
       binding: SubscriptionBinding(),
+    ),
+    GetPage(
+      name: _Paths.ADD_NEW_INGREDIENT,
+      page: () => const AddNewIngredientView(),
+      binding: AddNewIngredientBinding(),
+      middlewares: [NotAuthMiddleware()],
     ),
   ];
 }

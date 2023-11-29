@@ -65,6 +65,28 @@ class LocaleKeys {
   static const recipe_tab_label = 'recipe_tab_label';
   static const new_recipe_tab_label = 'new_recipe_tab_label';
   static const empty_meal_tab_hint = 'empty_meal_tab_hint';
+  static const add_new_ingredient_screen_title =
+      'add_new_ingredient_screen_title';
+  static const add_new_ingredient_screen_sub_title =
+      'add_new_ingredient_screen_sub_title';
+  static const add_new_ingredient_screen_hint =
+      'add_new_ingredient_screen_hint';
+  static const mandatory_fields_mark = 'mandatory_fields_mark';
+  static const ingredient_name_france_label = 'ingredient_name_france_label';
+  static const ingredient_name_english_label = 'ingredient_name_english_label';
+  static const grams_per_circle_label = 'grams_per_circle_label';
+  static const calories_per_gram_label = 'calories_per_gram_label';
+  static const extra_measurement_section_label =
+      'extra_measurement_section_label';
+  static const unit_name_measurement_label = 'unit_name_measurement_label';
+  static const equivalent_unit_in_grams_label =
+      'equivalent_unit_in_grams_label';
+  static const unit_name_another_measurement_label =
+      'unit_name_another_measurement_label';
+  static const tutorial_link_label = 'tutorial_link_label';
+  static const cancel_button_label = 'cancel_button_label';
+  static const create_ingredient_button_label =
+      'create_ingredient_button_label';
   static const error_snackbar_label = 'error_snackbar_label';
   static const exception_snackbar_label = 'exception_snackbar_label';
   static const email_error_message = 'email_error_message';
@@ -142,6 +164,22 @@ class Locales {
     'new_recipe_tab_label': 'New recipe',
     'empty_meal_tab_hint':
         'You haven\'t eaten yet today, add an ingredient or recipe to your meal',
+    'add_new_ingredient_screen_title': 'New ingredient',
+    'add_new_ingredient_screen_sub_title': 'Add a new ingredient',
+    'add_new_ingredient_screen_hint':
+        'Complete all fields to add a new ingredient',
+    'mandatory_fields_mark': '* mandatory',
+    'ingredient_name_france_label': 'Ingredient name* (French)',
+    'ingredient_name_english_label': 'Ingredient name (English)',
+    'grams_per_circle_label': 'Grams per circle*',
+    'calories_per_gram_label': 'Calories/100g*',
+    'extra_measurement_section_label': 'extra measurements units',
+    'unit_name_measurement_label': 'Unit name',
+    'equivalent_unit_in_grams_label': 'Eq. grams',
+    'unit_name_another_measurement_label': 'Another unit name',
+    'tutorial_link_label': 'You do not know how ? See the tutorial :',
+    'cancel_button_label': 'Cancel',
+    'create_ingredient_button_label': 'Create this ingredient',
     'error_snackbar_label': 'Error',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Email is required.',
@@ -218,6 +256,23 @@ class Locales {
     'new_meal_button_label': 'Nouveau repas',
     'empty_meal_tab_hint':
         'Vous n\'avez pas encore mangé aujourd\'hui, ajoutez un ingrédient ou une recette à votre repas',
+    'add_new_ingredient_screen_title': 'Nouvel ingrédient',
+    'add_new_ingredient_screen_sub_title': 'Ajouter un nouvel ingrédient',
+    'add_new_ingredient_screen_hint':
+        'Remplissez tous les champs pour ajouter un nouvel ingrédient',
+    'mandatory_fields_mark': '* obligatoire',
+    'ingredient_name_france_label': 'Nom de l\'ingrédient* (Français)',
+    'ingredient_name_english_label': 'Nom de l\'ingrédient (English)',
+    'grams_per_circle_label': 'Grammes par cercle*',
+    'calories_per_gram_label': 'Calories/100g*',
+    'extra_measurement_section_label': 'unités de mesures supplémentaires',
+    'unit_name_measurement_label': 'Nom de l\'unité',
+    'equivalent_unit_in_grams_label': 'Éq. grammes',
+    'unit_name_another_measurement_label': 'Un autre nom d\'unité',
+    'tutorial_link_label':
+        'Vous ne savez pas comment faire ? Voir le tutoriel :',
+    'cancel_button_label': 'Annuler',
+    'create_ingredient_button_label': 'Créer cet ingrédient',
     'error_snackbar_label': 'Erreur',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Un e-mail est requis.',

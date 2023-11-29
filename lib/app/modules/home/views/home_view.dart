@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/modules/home/views/tab_bar_child.dart';
 import 'package:nifty_mobile/app/modules/home/views/tab_bar_view_child.dart';
+import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
 import '../../../utils/size_utils.dart';
@@ -309,6 +310,7 @@ class HomeView extends GetView<HomeController> {
               color: theme?.iconTheme.color,
             ),
             label: LocaleKeys.ingredient_tab_label.tr,
+            onTap: () => Get.toNamed(Routes.ADD_NEW_INGREDIENT),
           ),
           SpeedDialChild(
             child: Icon(

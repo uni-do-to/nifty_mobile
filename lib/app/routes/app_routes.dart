@@ -10,6 +10,7 @@ abstract class Routes {
   static const YOUR_BMI = _Paths.YOUR_BMI;
   static const NIFTY_POINTS = _Paths.NIFTY_POINTS;
   static const SUBSCRIPTION = _Paths.SUBSCRIPTION;
+  static const ADD_NEW_INGREDIENT = _Paths.ADD_NEW_INGREDIENT;
 }
 
 abstract class _Paths {
@@ -21,4 +22,5 @@ abstract class _Paths {
   static const YOUR_BMI = '/your_bmi';
   static const NIFTY_POINTS = '/nifty_points';
   static const SUBSCRIPTION = '/subscription';
+  static const ADD_NEW_INGREDIENT = '/add-new-ingredient';
 }
