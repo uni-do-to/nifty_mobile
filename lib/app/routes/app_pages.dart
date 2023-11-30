@@ -21,30 +21,30 @@ class AppPages {
 
   static final routes = [
     GetPage(
-        name: _Paths.HOME,
-        page: () => const HomeView(),
-        binding: HomeBinding(),
-        middlewares: [AuthMiddleware()]),
-    GetPage(
         name: _Paths.LOGIN,
         page: () => LoginView(),
         binding: LoginBinding(),
         middlewares: [NotAuthMiddleware()]),
     GetPage(
-      name: _Paths.REGISTER,
-      page: () => const RegisterView(),
-      binding: RegisterBinding(),
-    ),
+        name: _Paths.REGISTER,
+        page: () => const RegisterView(),
+        binding: RegisterBinding(),
+        middlewares: [NotAuthMiddleware()]),
     GetPage(
-      name: _Paths.SUBSCRIPTION,
-      page: () => const SubscriptionView(),
-      binding: SubscriptionBinding(),
-    ),
+        name: _Paths.SUBSCRIPTION,
+        page: () => const SubscriptionView(),
+        binding: SubscriptionBinding(),
+        middlewares: [NotAuthMiddleware()]),
+    GetPage(
+        name: _Paths.HOME,
+        page: () => const HomeView(),
+        binding: HomeBinding(),
+        middlewares: [AuthMiddleware()]),
     GetPage(
       name: _Paths.ADD_NEW_INGREDIENT,
       page: () => const AddNewIngredientView(),
       binding: AddNewIngredientBinding(),
-      middlewares: [NotAuthMiddleware()],
+      middlewares: [AuthMiddleware()],
     ),
   ];
 }

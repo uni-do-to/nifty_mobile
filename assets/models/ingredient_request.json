@@ -1,0 +1,17 @@
+{
+  "data": {
+    "nameEn": "string",
+    "nameFr": "string",
+    "sub_category": "string or id",
+    "caloriesPer100grams": 0,
+    "niftyPoints": 0,
+    "gramsPerCircle": 0,
+    "units": [
+      {
+        "id": 0,
+        "name": "string",
+        "grams": 0
+      }
+    ]
+  }
+}

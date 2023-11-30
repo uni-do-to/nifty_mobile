@@ -107,6 +107,7 @@ class LoginView extends GetView<LoginController> {
                             onPressed: () async{
                                 try {
                                   await controller.login();
+                                  print("go home") ;
                                   Get.offAllNamed(Routes.HOME);
                                 } catch (err, _) {
                                   printError(info: err.toString());

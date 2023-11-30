@@ -35,6 +35,7 @@ class AuthService extends GetxService {
   Future<bool> saveCredentials(UserPermission? credentials) async {
     await authBox.write("credentials" , json.encode(credentials!.toJson()));
     this.credentials = credentials;
+    print("after save ${sessionIsEmpty()}") ;
     return true;
   }
 
@@ -45,7 +46,6 @@ class AuthService extends GetxService {
   }
 
   bool sessionIsEmpty() {
-    if (credentials == null) return true;
-    return false;
+    return credentials == null;
   }
 }

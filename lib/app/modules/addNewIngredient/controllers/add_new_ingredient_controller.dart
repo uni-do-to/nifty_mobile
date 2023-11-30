@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/controllers/auth_controller.dart';
+import 'package:nifty_mobile/app/data/models/ingredient_request_model.dart';
+import 'package:nifty_mobile/app/data/models/unit_model.dart';
+import 'package:nifty_mobile/app/data/providers/ingredient_provider.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
-class AddNewIngredientController extends AuthController {
+class AddNewIngredientController extends GetxController {
+
   final GlobalKey<FormState> addIngredientFormKey = GlobalKey<FormState>();
   final ingredientNameFranceController = TextEditingController();
   final ingredientNameEnglishController = TextEditingController();
@@ -26,7 +30,9 @@ class AddNewIngredientController extends AuthController {
   var equivalentUnitInGramsError2 = ''.obs;
   RxBool ingredientCreated = false.obs;
 
-  AddNewIngredientController(super.authProvider);
+  final IngredientProvider ingredientProvider ;
+
+  AddNewIngredientController(this.ingredientProvider);
 
   @override
   void onInit() {
@@ -73,34 +79,30 @@ class AddNewIngredientController extends AuthController {
     if (validateNewIngredientForm() && !ingredientCreated.value) {
       try {
         ingredientCreated.value = true;
-        // SignupRequest data = SignupRequest(
-        //     username: emailController.text,
-        //     // or another appropriate field for username
-        //     email: emailController.text,
-        //     password: passwordController.text,
-        //     name: nameController.text,
-        //     gender: selectedGender.value,
-        //     birthDate: dateOfBirthController.text,
-        //     height: tallController.text,
-        //     weight: weightController.text,
-        //     bmi: currentBMI.value.toString(),
-        //     targetBmi: targetBMI.value.toString(),
-        //     targetWeight: targetWeight.value.toString());
-        //
-        // await signUp(data);
+        IngredientRequest request = IngredientRequest(
+          data: Data(
+            nameEn: ingredientNameEnglishController.text,
+            nameFr: ingredientNameFranceController.text ,
+            caloriesPer100grams: int.tryParse(caloriesPerGramController.text),
+            niftyPoints: int.tryParse(niftyPointsController.text) ,
+            gramsPerCircle: int.tryParse(gramsPerCircleController.text),
+            units: [
+              Units(
+                name: unitNameMeasurementController.text,
+                grams: int.tryParse(equivalentUnitInGramsController.text)
+              ),
+              Units(
+                name: unitNameAnotherMeasurementController.text ,
+                grams: int.tryParse(equivalentUnitInGramsController2.text)
+              )
+            ]
+          )
+        );
+
+        await ingredientProvider.createIngredient(request);
       } catch (err, _) {
         // message = 'There is an issue with the app during request the data, '
         //         'please contact admin for fixing the issues ' +
-
-        ingredientNameFranceController.clear();
-        ingredientNameEnglishController.clear();
-        gramsPerCircleController.clear();
-        caloriesPerGramController.clear();
-        niftyPointsController.clear();
-        unitNameAnotherMeasurementController.clear();
-        unitNameMeasurementController.clear();
-        equivalentUnitInGramsController.clear();
-        equivalentUnitInGramsController2.clear();
 
         rethrow;
       } finally {

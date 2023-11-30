@@ -9,6 +9,7 @@ class AuthMiddleware extends GetMiddleware {
 
   @override
   RouteSettings? redirect(String? route) {
+    print("on redirect ${authService.sessionIsEmpty()}") ;
     if (authService.sessionIsEmpty()) {
       return const RouteSettings(name: Routes.LOGIN);
     }

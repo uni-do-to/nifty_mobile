@@ -19,7 +19,8 @@ class AuthController extends GetxController {
       UserPermission? user = await authProvider.loginLocal(email, password);
 
       if(user?.jwt != null) {
-        _authService.saveCredentials(user) ;
+        print("saving credintials ${user?.toJson()}") ;
+        await _authService.saveCredentials(user) ;
       }
       return user ;
     } catch (e) {
@@ -34,7 +35,7 @@ class AuthController extends GetxController {
       UserPermission? user = await authProvider.registerLocal(userData);
 
       if(user?.jwt != null) {
-        _authService.saveCredentials(user) ;
+        await _authService.saveCredentials(user) ;
       }
       return user ;
     } catch (e) {
