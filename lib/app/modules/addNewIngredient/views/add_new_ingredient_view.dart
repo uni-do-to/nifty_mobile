@@ -233,7 +233,7 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                             hintText:
                                 LocaleKeys.equivalent_unit_in_grams_label.tr,
                             controller:
-                                controller.equivalentUnitInGramsController,
+                                controller.equivalentUnitInGramsController2,
                             keyboardType: TextInputType.number,
                             autocorrect: false,
                             padding: const EdgeInsets.symmetric(
@@ -279,11 +279,9 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                                             ?.copyWith(
                                                 fontWeight: FontWeight.bold),
                                       );
-                              }, controller.ingredientCreated),
+                              }, controller.loading),
                             ),
-                            onPressed: !controller.ingredientCreated.value
-                                ? null
-                                : () async {
+                            onPressed: () async {
                                     try {
                                       await controller.createNewIngredient();
                                       Get.offAllNamed(Routes.HOME);

@@ -28,7 +28,7 @@ class AddNewIngredientController extends GetxController {
   var unitNameAnotherMeasurementError = ''.obs;
   var equivalentUnitInGramsError = ''.obs;
   var equivalentUnitInGramsError2 = ''.obs;
-  RxBool ingredientCreated = false.obs;
+  RxBool loading = false.obs;
 
   final IngredientProvider ingredientProvider ;
 
@@ -60,25 +60,19 @@ class AddNewIngredientController extends GetxController {
     } else {
       caloriesPerGramError.value = '';
     }
-    if (niftyPointsController.text.isEmpty) {
-      niftyPointsError.value = LocaleKeys.email_error_message.tr;
-    } else {
-      niftyPointsError.value = '';
-    }
+
 
     return ingredientNameFranceError.isEmpty &&
         ingredientNameEnglishError.isEmpty &&
         gramsPerCircleError.isEmpty &&
-        caloriesPerGramError.isEmpty &&
-        niftyPointsError.isEmpty;
+        caloriesPerGramError.isEmpty ;
   }
 
   Future<void> createNewIngredient() async {
-    if (!validateNewIngredientForm()) return;
 
-    if (validateNewIngredientForm() && !ingredientCreated.value) {
+    if (validateNewIngredientForm() && !loading.value) {
       try {
-        ingredientCreated.value = true;
+        loading.value = true;
         IngredientRequest request = IngredientRequest(
           data: Data(
             nameEn: ingredientNameEnglishController.text,
@@ -106,7 +100,7 @@ class AddNewIngredientController extends GetxController {
 
         rethrow;
       } finally {
-        ingredientCreated.value = false;
+        loading.value = false;
       }
       addIngredientFormKey.currentState!.save();
     } else {

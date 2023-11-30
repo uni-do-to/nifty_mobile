@@ -15,7 +15,7 @@ class IngredientProvider extends BaseProvider {
   Future<Ingredient?> createIngredient(
           IngredientRequest ingredientRequest) async {
 
-    var response = await post( ConfigAPI.signInUrl, ingredientRequest );
+    var response = await post( ConfigAPI.ingredientsUrl, ingredientRequest.toJson() );
 
     return decode<Ingredient?>(response, Ingredient.fromJson);
   }

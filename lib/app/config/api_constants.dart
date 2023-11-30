@@ -11,4 +11,5 @@ class ConfigAPI {
 
   static const String signInUrl = '/auth/local';
   static const String signUpUrl = '/auth/local/register';
+  static const String ingredientsUrl = '/ingredients';
 }
