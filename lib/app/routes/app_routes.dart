@@ -11,6 +11,7 @@ abstract class Routes {
   static const NIFTY_POINTS = _Paths.NIFTY_POINTS;
   static const SUBSCRIPTION = _Paths.SUBSCRIPTION;
   static const ADD_NEW_INGREDIENT = _Paths.ADD_NEW_INGREDIENT;
+  static const ADD_INGREDIENT_MEAL = _Paths.ADD_INGREDIENT_MEAL;
 }
 
 abstract class _Paths {
@@ -23,4 +24,5 @@ abstract class _Paths {
   static const NIFTY_POINTS = '/nifty_points';
   static const SUBSCRIPTION = '/subscription';
   static const ADD_NEW_INGREDIENT = '/add-new-ingredient';
+  static const ADD_INGREDIENT_MEAL = '/add-ingredient-meal';
 }

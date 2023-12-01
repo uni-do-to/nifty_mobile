@@ -1,12 +1,12 @@
 import 'category_model.dart';
 
 class SubCategory {
-  Data? data;
+  SubCategoryData? data;
 
   SubCategory({this.data});
 
   SubCategory.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? Data?.fromJson(json['data']) : null;
+    data = json['data'] != null ? SubCategoryData?.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -18,13 +18,13 @@ class SubCategory {
   }
 }
 
-class Data {
+class SubCategoryData {
   int? id;
   Attributes? attributes;
 
-  Data({this.id, this.attributes});
+  SubCategoryData({this.id, this.attributes});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  SubCategoryData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     attributes = json['attributes'] != null
         ? Attributes?.fromJson(json['attributes'])

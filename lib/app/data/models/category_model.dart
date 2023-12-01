@@ -1,10 +1,10 @@
 class Category {
-  Data? data;
+  CategoryData? data;
 
   Category({this.data});
 
   Category.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? Data?.fromJson(json['data']) : null;
+    data = json['data'] != null ? CategoryData?.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -16,36 +16,36 @@ class Category {
   }
 }
 
-class Data {
+class CategoryData {
   int? id;
-  AttributesB? attributesB;
+  Attributes? attributes;
 
-  Data({this.id, this.attributesB});
+  CategoryData({this.id, this.attributes});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  CategoryData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    attributesB = json['attributesB'] != null
-        ? AttributesB?.fromJson(json['attributesB'])
+    attributes = json['attributes'] != null
+        ? Attributes?.fromJson(json['attributes'])
         : null;
   }
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['id'] = id;
-    if (attributesB != null) {
-      data['attributesB'] = attributesB?.toJson();
+    if (attributes != null) {
+      data['attributes'] = attributes?.toJson();
     }
     return data;
   }
 }
 
-class AttributesB {
+class Attributes {
   String? nameEn;
   String? nameFr;
 
-  AttributesB({this.nameEn, this.nameFr});
+  Attributes({this.nameEn, this.nameFr});
 
-  AttributesB.fromJson(Map<String, dynamic> json) {
+  Attributes.fromJson(Map<String, dynamic> json) {
     nameEn = json['nameEn'];
     nameFr = json['nameFr'];
   }

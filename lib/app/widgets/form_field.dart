@@ -16,6 +16,7 @@ class NeuFormField extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final String? errorText; // Add an errorText property
+  final FocusNode? focusNode; // Add an errorText property
 
   const NeuFormField({
     required this.hintText,
@@ -24,6 +25,7 @@ class NeuFormField extends StatelessWidget {
     this.validator,
     this.prefixIcon,
     this.suffixIcon,
+    this.focusNode,
     this.onTap,
     this.errorText, // Initialize in constructor
     this.readOnly = false,
@@ -53,24 +55,26 @@ class NeuFormField extends StatelessWidget {
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: hintText,
-              hintStyle:NeumorphicTheme.of(context)?.current?.textTheme.bodySmall ,
+              hintStyle:
+                  NeumorphicTheme.of(context)?.current?.textTheme.bodySmall,
               filled: true,
               isDense: true,
               fillColor: Colors.transparent,
               contentPadding: EdgeInsets.symmetric(vertical: 15.toHeight),
               prefixIcon: prefixIcon,
               prefixIconColor: NeumorphicTheme.accentColor(context),
-              prefixIconConstraints:  BoxConstraints(
+              prefixIconConstraints: BoxConstraints(
                 minHeight: 50.toHeight,
                 minWidth: 50.toWidth,
               ),
               suffixIcon: suffixIcon,
-              suffixIconConstraints:  BoxConstraints(
+              suffixIconConstraints: BoxConstraints(
                 minHeight: 50.toHeight,
                 minWidth: 50.toWidth,
               ),
             ),
             style: NeumorphicTheme.of(context)?.current?.textTheme.bodyMedium,
+            focusNode: focusNode,
             readOnly: readOnly,
             onTap: onTap,
             obscureText: obscureText,

@@ -87,6 +87,24 @@ class LocaleKeys {
   static const cancel_button_label = 'cancel_button_label';
   static const create_ingredient_button_label =
       'create_ingredient_button_label';
+  static const choose_title = 'choose_title';
+  static const choose_sub_title = 'choose_sub_title';
+  static const find_my_ingredient_hint = 'find_my_ingredient_hint';
+  static const find_ingredient_searchbar_or_categories_hint =
+      'find_ingredient_searchbar_or_categories_hint';
+  static const research_dropdown_label = 'research_dropdown_label';
+  static const personal_ingredient_dropdown_label =
+      'personal_ingredient_dropdown_label';
+  static const categories_dropdown_label = 'categories_dropdown_label';
+  static const sub_categories_dropdown_label = 'sub_categories_dropdown_label';
+  static const choose_ingredient_dropdown_label =
+      'choose_ingredient_dropdown_label';
+  static const choose_category_dropdown_label =
+      'choose_category_dropdown_label';
+  static const choose_sub_category_dropdown_label =
+      'choose_sub_category_dropdown_label';
+  static const search_ingredients_dropdown_label =
+      'search_ingredients_dropdown_label';
   static const error_snackbar_label = 'error_snackbar_label';
   static const exception_snackbar_label = 'exception_snackbar_label';
   static const email_error_message = 'email_error_message';
@@ -180,6 +198,20 @@ class Locales {
     'tutorial_link_label': 'You do not know how ? See the tutorial :',
     'cancel_button_label': 'Cancel',
     'create_ingredient_button_label': 'Create this ingredient',
+    'choose_title': 'Choose',
+    'choose_sub_title': 'What I\'m going to eat',
+    'find_my_ingredient_hint': 'Find my ingredient',
+    'find_ingredient_searchbar_or_categories_hint':
+        'Find your ingredient using the search bar or categories',
+    'research_dropdown_label': 'Research',
+    'personal_ingredient_dropdown_label': 'personal food list',
+    'categories_dropdown_label': 'categories',
+    'sub_categories_dropdown_label': 'subcategories',
+    'choose_ingredient_dropdown_label': 'Choose your ingredient',
+    'choose_category_dropdown_label': 'Choose your category',
+    'choose_sub_category_dropdown_label': 'Choose your subcategory',
+    'search_ingredients_dropdown_label':
+        'Look for a fruit, a vegetable, an ingredient',
     'error_snackbar_label': 'Error',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Email is required.',
@@ -273,6 +305,20 @@ class Locales {
         'Vous ne savez pas comment faire ? Voir le tutoriel :',
     'cancel_button_label': 'Annuler',
     'create_ingredient_button_label': 'Créer cet ingrédient',
+    'choose_title': 'Choisir',
+    'choose_sub_title': 'Ce que je vais manger',
+    'find_my_ingredient_hint': 'Trouver mon ingrédient',
+    'find_ingredient_searchbar_or_categories_hint':
+        'Trouver votre ingrédient à l\'aide de la barre de recherche ou des catégories',
+    'research_dropdown_label': 'Recherche',
+    'personal_ingredient_dropdown_label': 'liste alimentaire personnelle',
+    'categories_dropdown_label': 'catégories',
+    'sub_categories_dropdown_label': 'sous-catégories',
+    'choose_ingredient_dropdown_label': 'Choississez votre ingrédient',
+    'choose_sub_category_dropdown_label': 'Choississez votre sous-catégorie',
+    'choose_category_dropdown_label': 'Choississez votre catégorie',
+    'search_ingredients_dropdown_label':
+        'Recherchez le un fruit, un légume, un ingrédient',
     'error_snackbar_label': 'Erreur',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Un e-mail est requis.',

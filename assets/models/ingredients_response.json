@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "id": 0,
+      "attributes": {
+        "nameEn": "string",
+        "nameFr": "string",
+        "caloriesPer100grams": 0,
+        "niftyPoints": 0,
+        "gramsPerCircle": 0
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "page": 0,
+      "pageSize": 25,
+      "pageCount": 1,
+      "total": 0
+    }
+  }
+}

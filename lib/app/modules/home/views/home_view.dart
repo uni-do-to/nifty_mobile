@@ -154,35 +154,35 @@ class HomeView extends GetView<HomeController> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   _buildNeumorphicButton(
-                    context,
-                    LocaleKeys.ingredient_tab_label.tr,
-                    Icon(
-                      Icons.egg,
-                      color: theme?.iconTheme.color,
-                    ),
-                  ),
+                      context: context,
+                      text: LocaleKeys.ingredient_tab_label.tr,
+                      icon: Icon(
+                        Icons.egg,
+                        color: theme?.iconTheme.color,
+                      ),
+                      onPressed: () => Get.toNamed(Routes.ADD_INGREDIENT_MEAL)),
                   SizedBox(
                     width: 10.toWidth,
                   ),
                   _buildNeumorphicButton(
-                    context,
-                    LocaleKeys.recipe_tab_label.tr,
-                    Icon(
-                      Icons.restaurant_menu_rounded,
-                      color: theme?.iconTheme.color,
-                    ),
-                  ),
+                      context: context,
+                      text: LocaleKeys.recipe_tab_label.tr,
+                      icon: Icon(
+                        Icons.restaurant_menu_rounded,
+                        color: theme?.iconTheme.color,
+                      ),
+                      onPressed: () => Get.toNamed(Routes.ADD_INGREDIENT_MEAL)),
                   SizedBox(
                     width: 10.toWidth,
                   ),
                   _buildNeumorphicButton(
-                    context,
-                    LocaleKeys.sport_budget_label.tr,
-                    Icon(
-                      Icons.fitness_center_sharp,
-                      color: theme?.iconTheme.color,
-                    ),
-                  ),
+                      context: context,
+                      text: LocaleKeys.sport_budget_label.tr,
+                      icon: Icon(
+                        Icons.fitness_center_sharp,
+                        color: theme?.iconTheme.color,
+                      ),
+                      onPressed: () => Get.toNamed(Routes.ADD_INGREDIENT_MEAL)),
                 ],
               ),
             ),
@@ -325,11 +325,12 @@ class HomeView extends GetView<HomeController> {
   }
 
   Widget _buildNeumorphicButton(
-      BuildContext context, String text, Widget icon) {
+      {BuildContext? context,
+      String? text,
+      Widget? icon,
+      VoidCallback? onPressed}) {
     return NeumorphicButton(
-      onPressed: () {
-        // TODO: Button tap functionality
-      },
+      onPressed: onPressed,
       style: NeumorphicStyle(
         shape: NeumorphicShape.flat,
         boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(10)),
@@ -338,11 +339,11 @@ class HomeView extends GetView<HomeController> {
         width: 150.toWidth,
         child: Column(
           children: [
-            icon,
+            icon!,
             SizedBox(
               height: 10.toHeight,
             ),
-            Text(text),
+            Text(text!),
           ],
         ),
       ),

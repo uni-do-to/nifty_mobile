@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 
 import '../middleware/auth_middleware.dart';
+import '../modules/addIngredientMeal/bindings/add_ingredient_meal_binding.dart';
+import '../modules/addIngredientMeal/views/add_ingredient_meal_view.dart';
 import '../modules/addNewIngredient/bindings/add_new_ingredient_binding.dart';
 import '../modules/addNewIngredient/views/add_new_ingredient_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -46,5 +48,10 @@ class AppPages {
       binding: AddNewIngredientBinding(),
       middlewares: [AuthMiddleware()],
     ),
+    GetPage(
+        name: _Paths.ADD_INGREDIENT_MEAL,
+        page: () => const AddIngredientMealView(),
+        binding: AddIngredientMealBinding(),
+        middlewares: [AuthMiddleware()]),
   ];
 }

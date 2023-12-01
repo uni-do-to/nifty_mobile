@@ -2,12 +2,12 @@ import 'package:nifty_mobile/app/data/models/sub_category_model.dart';
 import 'package:nifty_mobile/app/data/models/unit_model.dart';
 
 class Ingredient {
-  Data? data;
+  IngredientsData? data;
 
   Ingredient({this.data});
 
   Ingredient.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? Data?.fromJson(json['data']) : null;
+    data = json['data'] != null ? IngredientsData?.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -19,13 +19,13 @@ class Ingredient {
   }
 }
 
-class Data {
+class IngredientsData {
   int? id;
   Attributes? attributes;
 
-  Data({this.id, this.attributes});
+  IngredientsData({this.id, this.attributes});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  IngredientsData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     attributes = json['attributes'] != null
         ? Attributes?.fromJson(json['attributes'])
