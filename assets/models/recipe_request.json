@@ -1,0 +1,25 @@
+{
+  "data": {
+    "name": "string",
+    "caloriesPer100grams": 0,
+    "niftyPoints": 0,
+    "totalWeight": 1,
+    "totalCalories": 1,
+    "gramsPerCircle": 1,
+    "owner": "string or id",
+    "ingredients": [
+      {
+        "id": 0,
+        "ingredient": 1,
+        "grams": 1,
+        "calories": 1
+      } ,
+      {
+        "id": 0,
+        "ingredient": 3,
+        "grams": 1,
+        "calories": 1
+      }
+    ]
+  }
+}
