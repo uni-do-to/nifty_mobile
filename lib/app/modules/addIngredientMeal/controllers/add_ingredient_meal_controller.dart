@@ -3,9 +3,11 @@ import 'package:get/get.dart';
 import 'package:nifty_mobile/app/controllers/auth_controller.dart';
 import 'package:nifty_mobile/app/data/models/category_model.dart';
 import 'package:nifty_mobile/app/data/models/ingredient_model.dart';
+import 'package:nifty_mobile/app/data/models/quantity_dropdown_item.dart';
 import 'package:nifty_mobile/app/data/models/sub_category_model.dart';
 import 'package:nifty_mobile/app/data/providers/ingredient_provider.dart';
 import 'package:nifty_mobile/app/widgets/loading_overlay.dart';
+import 'package:nifty_mobile/generated/locales.g.dart';
 
 class AddIngredientMealController extends GetxController {
 
@@ -14,6 +16,7 @@ class AddIngredientMealController extends GetxController {
   final categoriesController = TextEditingController();
   final subcategoriesController = TextEditingController();
   final ingredientsSubCategoriesController = TextEditingController();
+  final measurementUnitGramsController = TextEditingController();
 
   List<IngredientsData> ingredientsList = [];
   List<IngredientsData> ingredientsSubcategoryList = [];
@@ -23,6 +26,9 @@ class AddIngredientMealController extends GetxController {
   RxInt selectedCategoryId = 0.obs;
   RxInt selectedSubCategoryId = 0.obs;
   IngredientsData selectedIngredient= IngredientsData();
+
+  Rx<QuantityDropdownItem?> selectedMeasurementUnit = Rx(null);
+  List<QuantityDropdownItem> measurementUnitsItems=[];
 
   final IngredientProvider provider;
 
@@ -121,5 +127,28 @@ class AddIngredientMealController extends GetxController {
 
       return matchesKeyword;
     }).toList();
+  }
+
+
+   initMeasurementUnits() {
+    List<QuantityDropdownItem> items = [
+      QuantityDropdownItem(name: LocaleKeys.grams_unit_label.tr, grams: 1),
+    ];
+
+    // Add gramsPerCircle if conditions are met
+    if (selectedIngredient.attributes?.gramsPerCircle != null &&
+        selectedIngredient.attributes!.gramsPerCircle! > 0) {
+      items.add(QuantityDropdownItem(name: LocaleKeys.circle_unit_label.tr, grams: selectedIngredient.attributes!.gramsPerCircle!));
+    }
+
+    // Add units if conditions are met
+    selectedIngredient.attributes?.units?.forEach((unit) {
+      if (unit.grams != null && unit.grams! > 0) {
+        items.add(QuantityDropdownItem(name: unit.name ?? '', grams: unit.grams!));
+      }
+    });
+
+    measurementUnitsItems= items;
+    selectedMeasurementUnit.value = items[0] ;
   }
 }

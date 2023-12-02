@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:nifty_mobile/app/modules/addIngredientMeal/views/add_quantity_meal_view.dart';
 
 import '../middleware/auth_middleware.dart';
 import '../modules/addIngredientMeal/bindings/add_ingredient_meal_binding.dart';
@@ -52,6 +53,15 @@ class AppPages {
         name: _Paths.ADD_INGREDIENT_MEAL,
         page: () => const AddIngredientMealView(),
         binding: AddIngredientMealBinding(),
-        middlewares: [AuthMiddleware()]),
+        middlewares: [AuthMiddleware()],
+      children: [
+        GetPage(
+          name: _Paths.ADD_QUANTITY_MEAL,
+          page: () => const AddQuantityMealView(),
+          middlewares: [AuthMiddleware()],
+        ),
+      ]
+    ),
+
   ];
 }

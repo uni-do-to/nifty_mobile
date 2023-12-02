@@ -105,6 +105,15 @@ class LocaleKeys {
       'choose_sub_category_dropdown_label';
   static const search_ingredients_dropdown_label =
       'search_ingredients_dropdown_label';
+  static const quantity_screen_title = 'quantity_screen_title';
+  static const quantity_screen_sub_title = 'quantity_screen_sub_title';
+  static const unit_drop_down_label = 'unit_drop_down_label';
+  static const quantity_text_field_label = 'quantity_text_field_label';
+  static const grams_unit_label = 'grams_unit_label';
+  static const circle_unit_label = 'circle_unit_label';
+  static const minutes_unit_label = 'minutes_unit_label';
+  static const calories_unit_label = 'calories_unit_label';
+  static const your_ingredient_label = 'your_ingredient_label';
   static const error_snackbar_label = 'error_snackbar_label';
   static const exception_snackbar_label = 'exception_snackbar_label';
   static const email_error_message = 'email_error_message';
@@ -212,6 +221,15 @@ class Locales {
     'choose_sub_category_dropdown_label': 'Choose your subcategory',
     'search_ingredients_dropdown_label':
         'Look for a fruit, a vegetable, an ingredient',
+    'quantity_screen_title': 'Quantify',
+    'quantity_screen_sub_title': 'The quantity of food',
+    'unit_drop_down_label': 'Unit',
+    'quantity_text_field_label': 'Quantity',
+    'grams_unit_label': 'Grams (g)',
+    'circle_unit_label': 'Circle',
+    'minutes_unit_label': 'Minutes',
+    'calories_unit_label': 'Calories',
+    'your_ingredient_label': 'Your ingredient',
     'error_snackbar_label': 'Error',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Email is required.',
@@ -319,6 +337,15 @@ class Locales {
     'choose_category_dropdown_label': 'Choississez votre catégorie',
     'search_ingredients_dropdown_label':
         'Recherchez le un fruit, un légume, un ingrédient',
+    'quantity_screen_title': 'Quantifier',
+    'quantity_screen_sub_title': 'La quantité des aliments',
+    'unit_drop_down_label': 'Unité',
+    'quantity_text_field_label': 'Quantité',
+    'grams_unit_label': 'Grammes (g)',
+    'circle_unit_label': 'Cercle',
+    'minutes_unit_label': 'Minutes',
+    'calories_unit_label': 'Calories',
+    'your_ingredient_label': 'Votre ingrédient',
     'error_snackbar_label': 'Erreur',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Un e-mail est requis.',

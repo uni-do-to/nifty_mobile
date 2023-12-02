@@ -7,6 +7,7 @@ import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/data/models/category_model.dart';
 import 'package:nifty_mobile/app/data/models/ingredient_model.dart';
 import 'package:nifty_mobile/app/data/models/sub_category_model.dart';
+import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:nifty_mobile/app/widgets/form_field.dart';
 import 'package:nifty_mobile/app/widgets/loading_overlay.dart';
@@ -154,7 +155,11 @@ class AddIngredientMealView extends GetView<AddIngredientMealController> {
                               },
                               itemBuilder: (context, ingredient) {
                                 return ListTile(
-                                  title: Text(ingredient.attributes!.nameEn!),
+                                  title: Text(
+                                    Get.locale?.languageCode == 'fr'
+                                        ? ingredient.attributes!.nameFr!
+                                        : ingredient.attributes!.nameEn!,
+                                  ),
                                 );
                               },
                               onSelected: (ingredient) {
@@ -408,33 +413,41 @@ class AddIngredientMealView extends GetView<AddIngredientMealController> {
                       ),
                     ),
                     NeumorphicButton(
-                        style: NeumorphicStyle(
-                          color: theme?.accentColor,
-                          boxShape: NeumorphicBoxShape.roundRect(
-                              BorderRadius.circular(8)),
+                      style: NeumorphicStyle(
+                        color: theme?.accentColor,
+                        boxShape: NeumorphicBoxShape.roundRect(
+                          BorderRadius.circular(8),
                         ),
-                        margin: EdgeInsets.only(left: 300.toWidth),
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 5, vertical: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              LocaleKeys.continue_button_label.tr,
-                              style: theme?.textTheme.bodyMedium?.copyWith(
-                                color: ColorConstants.white,
-                              ),
-                            ),
-                            SizedBox(
-                              width: 10.toWidth,
-                            ),
-                            Icon(
-                              Icons.navigate_next,
+                      ),
+                      margin: EdgeInsets.only(left: 300.toWidth),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 5, vertical: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            LocaleKeys.continue_button_label.tr,
+                            style: theme?.textTheme.bodyMedium?.copyWith(
                               color: ColorConstants.white,
                             ),
-                          ],
-                        ),
-                        onPressed: () async {}),
+                          ),
+                          SizedBox(
+                            width: 10.toWidth,
+                          ),
+                          Icon(
+                            Icons.navigate_next,
+                            color: ColorConstants.white,
+                          ),
+                        ],
+                      ),
+                      onPressed: () async {
+                        if (controller.selectedIngredient.id! > 0) {
+                          controller.initMeasurementUnits();
+                          Get.toNamed(Routes.ADD_INGREDIENT_MEAL +
+                              Routes.ADD_QUANTITY_MEAL);
+                        }
+                      },
+                    ),
                     SizedBox(height: 20.toHeight),
                   ],
                 ),
