@@ -137,16 +137,15 @@ class AddSportView extends GetView<AddSportController> {
                                 return Container(
                                   padding: EdgeInsets.only(bottom: 10.toHeight),
                                   child: SportListItem(
-                                    text: Get.locale?.languageCode == 'fr'
-                                        ? controller.sportsList[index]
-                                            .attributes!.nameFr!
-                                        : controller.sportsList[index]
-                                            .attributes!.nameEn!,
                                     controller: controller,
+                                    sportItem: controller.sportsList[index],
                                     onClick: () {
+                                      controller.sportListItemIsSelected.value =
+                                          (controller.selectedSport ==
+                                              controller.sportsList[index]);
                                       controller.initMeasurementUnits();
                                       controller.isSportSelected.value = true;
-                                      controller.selectedSport =
+                                      controller.selectedSport.value =
                                           controller.sportsList[index];
                                     },
                                   ),
@@ -338,7 +337,7 @@ class AddSportView extends GetView<AddSportController> {
                         ],
                       ),
                       onPressed: () async {
-                        if (controller.selectedSport.id! > 0 &&
+                        if (controller.selectedSport.value != null &&
                             controller.selectedMeasurementUnit.value?.minutes !=
                                 null &&
                             controller.selectedMeasurementUnit.value!.minutes! >

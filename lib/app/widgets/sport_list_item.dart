@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
+import 'package:nifty_mobile/app/data/models/sports_response_model.dart';
 import 'package:nifty_mobile/app/modules/addSport/controllers/add_sport_controller.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 
 class SportListItem extends StatelessWidget {
-  final String text;
+  final SportData sportItem;
   final VoidCallback onClick;
   final AddSportController controller;
 
   SportListItem(
       {Key? key,
-      required this.text,
+      required this.sportItem,
       required this.onClick,
       required this.controller})
       : super(key: key);
@@ -35,20 +36,23 @@ class SportListItem extends StatelessWidget {
               width: 20.toWidth,
             ),
             Text(
-              text,
+              Get.locale?.languageCode == 'fr'
+                  ? sportItem.attributes!.nameFr!
+                  : sportItem.attributes!.nameEn!,
               style: NeumorphicTheme.of(context)?.current?.textTheme.bodySmall,
             ),
             Expanded(child: Container()),
-            ObxValue((state) {
+            Obx(() {
+              bool isSelected = controller.selectedSport == sportItem;
               return Visibility(
-                visible: state.value,
+                visible: isSelected,
                 child: Icon(
                   Icons.check_circle,
                   color: NeumorphicTheme.of(context)?.current?.iconTheme.color,
                   size: 30.toWidth,
                 ),
               );
-            }, controller.isSportSelected),
+            }),
           ],
         ),
       ),

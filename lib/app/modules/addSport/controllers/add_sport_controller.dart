@@ -10,8 +10,9 @@ class AddSportController extends GetxController {
   List<SportData> sportsList = [];
 
   RxBool isSportSelected = false.obs;
+  RxBool sportListItemIsSelected = false.obs;
   RxBool loading = false.obs;
-  SportData selectedSport = SportData();
+  Rx<SportData?> selectedSport = Rx(null);
   Rx<QuantityDropdownItem?> selectedMeasurementUnit = Rx(null);
   List<QuantityDropdownItem> measurementUnitsItems = [];
 
@@ -44,11 +45,11 @@ class AddSportController extends GetxController {
     ];
 
     // Add calories burned per minutes if conditions are met
-    if (selectedSport.attributes?.caloriesPerMinute != null &&
-        selectedSport.attributes!.caloriesPerMinute! > 0) {
+    if (selectedSport.value?.attributes?.caloriesPerMinute != null &&
+        selectedSport.value!.attributes!.caloriesPerMinute! > 0) {
       items.add(QuantityDropdownItem(
           name: LocaleKeys.calories_unit_label.tr,
-          grams: selectedSport.attributes!.caloriesPerMinute!));
+          grams: selectedSport.value?.attributes!.caloriesPerMinute!));
     }
     measurementUnitsItems = items;
     selectedMeasurementUnit.value = items[0];
