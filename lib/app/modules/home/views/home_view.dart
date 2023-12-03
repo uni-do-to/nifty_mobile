@@ -182,7 +182,7 @@ class HomeView extends GetView<HomeController> {
                         Icons.fitness_center_sharp,
                         color: theme?.iconTheme.color,
                       ),
-                      onPressed: () => Get.toNamed(Routes.ADD_INGREDIENT_MEAL)),
+                      onPressed: () => Get.toNamed(Routes.ADD_SPORT)),
                 ],
               ),
             ),

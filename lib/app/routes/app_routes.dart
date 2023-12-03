@@ -14,6 +14,7 @@ abstract class Routes {
   static const ADD_INGREDIENT_MEAL = _Paths.ADD_INGREDIENT_MEAL;
   static const ADD_QUANTITY_MEAL = _Paths.ADD_QUANTITY_MEAL;
   static const ADD_RECIPE_MEAL = _Paths.ADD_RECIPE_MEAL;
+  static const ADD_SPORT = _Paths.ADD_SPORT;
 }
 
 abstract class _Paths {
@@ -29,4 +30,5 @@ abstract class _Paths {
   static const ADD_INGREDIENT_MEAL = '/add-ingredient-meal';
   static const ADD_QUANTITY_MEAL = '/add-quantity-meal';
   static const ADD_RECIPE_MEAL = '/add-recipe-meal';
+  static const ADD_SPORT = '/add-sport';
 }

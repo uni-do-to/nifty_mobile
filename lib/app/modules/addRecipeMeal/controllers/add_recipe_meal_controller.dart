@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nifty_mobile/app/data/models/ingredient_model.dart';
 import 'package:nifty_mobile/app/data/models/quantity_dropdown_item.dart';
 import 'package:nifty_mobile/app/data/models/recipes_response_model.dart';
 import 'package:nifty_mobile/app/data/providers/recipe_provider.dart';

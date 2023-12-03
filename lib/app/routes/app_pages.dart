@@ -8,6 +8,8 @@ import '../modules/addNewIngredient/bindings/add_new_ingredient_binding.dart';
 import '../modules/addNewIngredient/views/add_new_ingredient_view.dart';
 import '../modules/addRecipeMeal/bindings/add_recipe_meal_binding.dart';
 import '../modules/addRecipeMeal/views/add_recipe_meal_view.dart';
+import '../modules/addSport/bindings/add_sport_binding.dart';
+import '../modules/addSport/views/add_sport_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -69,6 +71,14 @@ class AppPages {
       name: _Paths.ADD_RECIPE_MEAL,
       page: () => const AddRecipeMealView(),
       binding: AddRecipeMealBinding(),
+      middlewares: [AuthMiddleware()],
+
+    ),
+    GetPage(
+      name: _Paths.ADD_SPORT,
+      page: () => const AddSportView(),
+      binding: AddSportBinding(),
+      middlewares: [AuthMiddleware()],
     ),
   ];
 }

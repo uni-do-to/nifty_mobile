@@ -114,12 +114,19 @@ class LocaleKeys {
   static const circle_unit_label = 'circle_unit_label';
   static const minutes_unit_label = 'minutes_unit_label';
   static const calories_unit_label = 'calories_unit_label';
+  static const calories_burned_unit_label = 'calories_burned_unit_label';
   static const your_ingredient_label = 'your_ingredient_label';
   static const recipes_screen_title = 'recipes_screen_title';
   static const find_your_recipes_title = 'find_your_recipes_title';
   static const find_your_recipes_sub_title = 'find_your_recipes_sub_title';
   static const recipes_list_label = 'recipes_list_label';
   static const your_recipe_label = 'your_recipe_label';
+  static const calculate_your_effort_title = 'calculate_your_effort_title';
+  static const calculate_your_effort_sub_title =
+      'calculate_your_effort_sub_title';
+  static const intensity_physical_effort_sub_title =
+      'intensity_physical_effort_sub_title';
+  static const duration_label = 'duration_label';
   static const error_snackbar_label = 'error_snackbar_label';
   static const exception_snackbar_label = 'exception_snackbar_label';
   static const email_error_message = 'email_error_message';
@@ -236,6 +243,7 @@ class Locales {
     'circle_unit_label': 'Circle',
     'minutes_unit_label': 'Minutes',
     'calories_unit_label': 'Calories',
+    'calories_burned_unit_label': 'calories burned',
     'your_ingredient_label': 'Your ingredient',
     'recipes_screen_title': 'recipes',
     'find_your_recipes_title': 'Find your recipes',
@@ -243,6 +251,11 @@ class Locales {
         'Search for your recipes using the search bar or delete any one you want',
     'recipes_list_label': 'your latest recipes added',
     'your_recipe_label': 'Your recipe',
+    'calculate_your_effort_title': 'Calculate my physical effort',
+    'calculate_your_effort_sub_title':
+        'Get the number of calories you burned during your physical exercise',
+    'intensity_physical_effort_sub_title': 'Intensity of physical effort',
+    'duration_label': 'Duration',
     'error_snackbar_label': 'Error',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Email is required.',
@@ -360,12 +373,18 @@ class Locales {
     'circle_unit_label': 'Cercle',
     'minutes_unit_label': 'Minutes',
     'calories_unit_label': 'Calories',
+    'calories_burned_unit_label': 'calories brûlées',
     'your_ingredient_label': 'Votre ingrédient',
     'recipes_screen_title': 'recettes',
     'find_your_recipes_title': 'Trouvez vos recettes',
     'find_your_recipes_sub_title':
         'Recherchez vos recettes à l\'aide de la barre de recherche ou supprimez celle de votre choix',
     'recipes_list_label': 'vos dernières recettes ajoutées',
+    'calculate_your_effort_title': 'Calculer mon effort physique',
+    'calculate_your_effort_sub_title':
+        'Obtenez le nombre de calories que vous avez brulées au cours de votre effort physique',
+    'intensity_physical_effort_sub_title': 'Intensité de l\'effort physique',
+    'duration_label': 'Durée',
     'error_snackbar_label': 'Erreur',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Un e-mail est requis.',

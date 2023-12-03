@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
 
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/data/models/quantity_dropdown_item.dart';
-import 'package:nifty_mobile/app/data/models/recipes_response_model.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:nifty_mobile/app/widgets/form_field.dart';
+import 'package:nifty_mobile/app/widgets/sport_list_item.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
-import '../controllers/add_recipe_meal_controller.dart';
+import '../controllers/add_sport_controller.dart';
 
-class AddRecipeMealView extends GetView<AddRecipeMealController> {
-  const AddRecipeMealView({Key? key}) : super(key: key);
+class AddSportView extends GetView<AddSportController> {
+  const AddSportView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,12 +30,12 @@ class AddRecipeMealView extends GetView<AddRecipeMealController> {
         titleSpacing: 20,
         title: Row(
           children: [
-            Icon(Icons.restaurant_menu_rounded),
+            Icon(Icons.fitness_center_sharp),
             SizedBox(
               width: 30.toWidth,
             ),
             Text(
-              LocaleKeys.recipes_screen_title.tr,
+              LocaleKeys.sport_budget_label.tr,
             ),
           ],
         ),
@@ -105,7 +104,7 @@ class AddRecipeMealView extends GetView<AddRecipeMealController> {
                             height: 30.toHeight,
                           ),
                           Text(
-                            LocaleKeys.find_your_recipes_title.tr,
+                            LocaleKeys.calculate_your_effort_title.tr,
                             style: theme?.textTheme.bodyMedium
                                 ?.copyWith(fontWeight: FontWeight.bold),
                           ),
@@ -113,7 +112,7 @@ class AddRecipeMealView extends GetView<AddRecipeMealController> {
                             height: 20.toHeight,
                           ),
                           Text(
-                            LocaleKeys.find_your_recipes_sub_title.tr,
+                            LocaleKeys.calculate_your_effort_sub_title.tr,
                             style: theme?.textTheme.bodySmall
                                 ?.copyWith(height: 1.8),
                           ),
@@ -123,39 +122,38 @@ class AddRecipeMealView extends GetView<AddRecipeMealController> {
 
                           //search in admin ingredients
                           Text(
-                            LocaleKeys.research_dropdown_label.tr,
+                            LocaleKeys.intensity_physical_effort_sub_title.tr,
                             style: theme?.textTheme.bodySmall,
                           ),
                           SizedBox(
                             height: 20.toHeight,
                           ),
-                          TypeAheadField<RecipeData>(
-                            controller: controller.searchRecipesController,
-                            suggestionsCallback: (search) =>
-                                controller.searchRecipes(search),
-                            builder: (context, controller, focusNode) {
-                              return NeuFormField(
-                                hintText:
-                                    LocaleKeys.search_recipes_dropdown_label.tr,
-                                controller: controller,
-                                focusNode: focusNode,
-                                suffixIcon: Icon(Icons.search),
-                              );
-                            },
-                            itemBuilder: (context, recipe) {
-                              return ListTile(
-                                title: Text(recipe.attributes!.name!),
-                              );
-                            },
-                            onSelected: (recipe) {
-                              controller.initMeasurementUnits();
-                              controller.selectedRecipe = recipe;
-                              controller.isRecipeSelected.value = true;
-                              controller.searchRecipesController.text =
-                                  recipe.attributes!.name!;
-                            },
-                          ),
 
+                          // sports list
+                          Flexible(
+                            child: ListView.builder(
+                              itemCount: controller.sportsList.length,
+                              itemBuilder: (context, index) {
+                                return Container(
+                                  padding: EdgeInsets.only(bottom: 10.toHeight),
+                                  child: SportListItem(
+                                    text: Get.locale?.languageCode == 'fr'
+                                        ? controller.sportsList[index]
+                                            .attributes!.nameFr!
+                                        : controller.sportsList[index]
+                                            .attributes!.nameEn!,
+                                    controller: controller,
+                                    onClick: () {
+                                      controller.initMeasurementUnits();
+                                      controller.isSportSelected.value = true;
+                                      controller.selectedSport =
+                                          controller.sportsList[index];
+                                    },
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
                           ObxValue((state) {
                             return Visibility(
                               visible: state.value,
@@ -278,12 +276,13 @@ class AddRecipeMealView extends GetView<AddRecipeMealController> {
                                             return Text(
                                               state.value?.name ==
                                                       LocaleKeys
-                                                          .circle_unit_label.tr
+                                                          .calories_unit_label
+                                                          .tr
                                                   ? LocaleKeys
-                                                      .circle_unit_label.tr
+                                                      .calories_burned_unit_label
+                                                      .tr
                                                   : LocaleKeys
-                                                      .quantity_text_field_label
-                                                      .tr,
+                                                      .duration_label.tr,
                                               style: theme?.textTheme.bodySmall,
                                             );
                                           },
@@ -293,8 +292,7 @@ class AddRecipeMealView extends GetView<AddRecipeMealController> {
                                             height: 10.toHeight,
                                           ),
                                           NeuFormField(
-                                            hintText: LocaleKeys
-                                                .quantity_text_field_label.tr,
+                                            hintText: 'ex : 60',
                                             controller: controller
                                                 .measurementUnitGramsController,
                                             keyboardType: TextInputType.number,
@@ -307,7 +305,7 @@ class AddRecipeMealView extends GetView<AddRecipeMealController> {
                                 ),
                               ),
                             );
-                          }, controller.isRecipeSelected)
+                          }, controller.isSportSelected)
                         ],
                       ),
                     ),
@@ -340,13 +338,13 @@ class AddRecipeMealView extends GetView<AddRecipeMealController> {
                         ],
                       ),
                       onPressed: () async {
-                        if (controller.selectedRecipe.id! > 0 &&
-                            controller.selectedMeasurementUnit.value?.grams !=
+                        if (controller.selectedSport.id! > 0 &&
+                            controller.selectedMeasurementUnit.value?.minutes !=
                                 null &&
-                            controller.selectedMeasurementUnit.value!.grams! >
+                            controller.selectedMeasurementUnit.value!.minutes! >
                                 0) {
                           Get.offNamed(Routes.HOME, arguments: [
-                            controller.selectedRecipe,
+                            controller.selectedSport,
                             controller.selectedMeasurementUnit
                           ]);
                         }

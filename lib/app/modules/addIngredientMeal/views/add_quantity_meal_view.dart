@@ -186,7 +186,7 @@ class AddQuantityMealView extends GetView<AddIngredientMealController> {
               ),
               onPressed: () async {
                 if (controller.selectedMeasurementUnit.value?.grams != null &&
-                    controller.selectedMeasurementUnit.value!.grams > 1) {
+                    controller.selectedMeasurementUnit.value!.grams! > 0) {
                   Get.offNamed(Routes.HOME, arguments: [
                     controller.selectedIngredient,
                     controller.selectedMeasurementUnit
