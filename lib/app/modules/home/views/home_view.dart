@@ -171,7 +171,7 @@ class HomeView extends GetView<HomeController> {
                         Icons.restaurant_menu_rounded,
                         color: theme?.iconTheme.color,
                       ),
-                      onPressed: () => Get.toNamed(Routes.ADD_INGREDIENT_MEAL)),
+                      onPressed: () => Get.toNamed(Routes.ADD_RECIPE_MEAL)),
                   SizedBox(
                     width: 10.toWidth,
                   ),

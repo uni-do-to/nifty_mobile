@@ -14,4 +14,5 @@ class ConfigAPI {
   static const String ingredientsUrl = '/ingredients';
   static const String subCategoriesUrl = '/sub-categories';
   static const String categoriesUrl = '/categories';
+  static const String recipesUrl = '/recipes';
 }

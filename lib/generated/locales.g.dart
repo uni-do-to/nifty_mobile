@@ -105,6 +105,7 @@ class LocaleKeys {
       'choose_sub_category_dropdown_label';
   static const search_ingredients_dropdown_label =
       'search_ingredients_dropdown_label';
+  static const search_recipes_dropdown_label = 'search_recipes_dropdown_label';
   static const quantity_screen_title = 'quantity_screen_title';
   static const quantity_screen_sub_title = 'quantity_screen_sub_title';
   static const unit_drop_down_label = 'unit_drop_down_label';
@@ -114,6 +115,11 @@ class LocaleKeys {
   static const minutes_unit_label = 'minutes_unit_label';
   static const calories_unit_label = 'calories_unit_label';
   static const your_ingredient_label = 'your_ingredient_label';
+  static const recipes_screen_title = 'recipes_screen_title';
+  static const find_your_recipes_title = 'find_your_recipes_title';
+  static const find_your_recipes_sub_title = 'find_your_recipes_sub_title';
+  static const recipes_list_label = 'recipes_list_label';
+  static const your_recipe_label = 'your_recipe_label';
   static const error_snackbar_label = 'error_snackbar_label';
   static const exception_snackbar_label = 'exception_snackbar_label';
   static const email_error_message = 'email_error_message';
@@ -221,6 +227,7 @@ class Locales {
     'choose_sub_category_dropdown_label': 'Choose your subcategory',
     'search_ingredients_dropdown_label':
         'Look for a fruit, a vegetable, an ingredient',
+    'search_recipes_dropdown_label': 'Look for a recipe',
     'quantity_screen_title': 'Quantify',
     'quantity_screen_sub_title': 'The quantity of food',
     'unit_drop_down_label': 'Unit',
@@ -230,6 +237,12 @@ class Locales {
     'minutes_unit_label': 'Minutes',
     'calories_unit_label': 'Calories',
     'your_ingredient_label': 'Your ingredient',
+    'recipes_screen_title': 'recipes',
+    'find_your_recipes_title': 'Find your recipes',
+    'find_your_recipes_sub_title':
+        'Search for your recipes using the search bar or delete any one you want',
+    'recipes_list_label': 'your latest recipes added',
+    'your_recipe_label': 'Your recipe',
     'error_snackbar_label': 'Error',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Email is required.',
@@ -337,6 +350,8 @@ class Locales {
     'choose_category_dropdown_label': 'Choississez votre catégorie',
     'search_ingredients_dropdown_label':
         'Recherchez le un fruit, un légume, un ingrédient',
+    'search_recipes_dropdown_label': 'Cherchez une recette',
+    'your_recipe_label': 'Votre recette',
     'quantity_screen_title': 'Quantifier',
     'quantity_screen_sub_title': 'La quantité des aliments',
     'unit_drop_down_label': 'Unité',
@@ -346,6 +361,11 @@ class Locales {
     'minutes_unit_label': 'Minutes',
     'calories_unit_label': 'Calories',
     'your_ingredient_label': 'Votre ingrédient',
+    'recipes_screen_title': 'recettes',
+    'find_your_recipes_title': 'Trouvez vos recettes',
+    'find_your_recipes_sub_title':
+        'Recherchez vos recettes à l\'aide de la barre de recherche ou supprimez celle de votre choix',
+    'recipes_list_label': 'vos dernières recettes ajoutées',
     'error_snackbar_label': 'Erreur',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Un e-mail est requis.',

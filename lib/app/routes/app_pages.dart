@@ -1,11 +1,13 @@
 import 'package:get/get.dart';
-import 'package:nifty_mobile/app/modules/addIngredientMeal/views/add_quantity_meal_view.dart';
 
 import '../middleware/auth_middleware.dart';
 import '../modules/addIngredientMeal/bindings/add_ingredient_meal_binding.dart';
 import '../modules/addIngredientMeal/views/add_ingredient_meal_view.dart';
+import '../modules/addIngredientMeal/views/add_quantity_meal_view.dart';
 import '../modules/addNewIngredient/bindings/add_new_ingredient_binding.dart';
 import '../modules/addNewIngredient/views/add_new_ingredient_view.dart';
+import '../modules/addRecipeMeal/bindings/add_recipe_meal_binding.dart';
+import '../modules/addRecipeMeal/views/add_recipe_meal_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -53,15 +55,20 @@ class AppPages {
         name: _Paths.ADD_INGREDIENT_MEAL,
         page: () => const AddIngredientMealView(),
         binding: AddIngredientMealBinding(),
-        middlewares: [AuthMiddleware()],
-      children: [
-        GetPage(
-          name: _Paths.ADD_QUANTITY_MEAL,
-          page: () => const AddQuantityMealView(),
-          middlewares: [AuthMiddleware()],
-        ),
-      ]
+        middlewares: [
+          AuthMiddleware()
+        ],
+        children: [
+          GetPage(
+            name: _Paths.ADD_QUANTITY_MEAL,
+            page: () => const AddQuantityMealView(),
+            middlewares: [AuthMiddleware()],
+          ),
+        ]),
+    GetPage(
+      name: _Paths.ADD_RECIPE_MEAL,
+      page: () => const AddRecipeMealView(),
+      binding: AddRecipeMealBinding(),
     ),
-
   ];
 }
