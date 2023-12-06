@@ -33,11 +33,17 @@ class DailyListItem extends StatelessWidget {
                     color: theme?.iconTheme.color,
                     size: 18,
                   )
-                : Icon(
-                    Icons.menu_book_rounded,
-                    color: theme?.iconTheme.color,
-                    size: 18,
-                  ),
+                : type == 'recipe'
+                    ? Icon(
+                        Icons.menu_book_rounded,
+                        color: theme?.iconTheme.color,
+                        size: 18,
+                      )
+                    : Icon(
+                        Icons.fitness_center_sharp,
+                        color: theme?.iconTheme.color,
+                        size: 18,
+                      ),
             SizedBox(
               width: 15.toWidth,
             ),
@@ -54,12 +60,19 @@ class DailyListItem extends StatelessWidget {
             SizedBox(
               width: 5.toWidth,
             ),
-            Text(
-              "Kcal",
-              style: theme?.textTheme.bodySmall?.copyWith(
-                fontWeight: FontWeight.w800,
-              ),
-            ),
+            type == 'sport'
+                ? Text(
+                    "NP",
+                    style: theme?.textTheme.bodySmall?.copyWith(
+                      fontWeight: FontWeight.w800,
+                    ),
+                  )
+                : Text(
+                    "Kcal",
+                    style: theme?.textTheme.bodySmall?.copyWith(
+                      fontWeight: FontWeight.w800,
+                    ),
+                  ),
             SizedBox(
               width: 10.toWidth,
             ),

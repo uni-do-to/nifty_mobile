@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/modules/daily/views/chart_view.dart';
 import 'package:nifty_mobile/app/modules/daily/views/meal_tab_view.dart';
+import 'package:nifty_mobile/app/modules/daily/views/sport_tab_view.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 
 import '../controllers/daily_controller.dart';
@@ -150,7 +151,10 @@ class DailyView extends GetView<DailyController> {
                                 mealsList: controller.mealsList,
                                 theme: theme!,
                               ),
-                              Icon(Icons.directions_transit, size: 30),
+                              SportTabView(
+                                sportsList: controller.sportsList,
+                                theme: theme,
+                              ),
                             ],
                           ),
                         ),
