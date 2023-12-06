@@ -46,9 +46,9 @@ class Attributes {
   String? nameEn;
   String? nameFr;
   SubCategory? subCategory;
-  int? caloriesPer100grams;
-  int? niftyPoints;
-  int? gramsPerCircle;
+  double? caloriesPer100grams;
+  double? niftyPoints;
+  double? gramsPerCircle;
   List<Units>? units;
 
   Attributes(

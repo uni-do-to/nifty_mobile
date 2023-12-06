@@ -1,7 +1,7 @@
 class Units {
   int? id;
   String? name;
-  int? grams;
+  double? grams;
 
   Units({this.id, this.name, this.grams});
 

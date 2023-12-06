@@ -51,11 +51,11 @@ class RecipeData {
 
 class Attributes {
   String? name;
-  int? caloriesPer100grams;
-  int? niftyPoints;
-  int? totalWeight;
-  int? totalCalories;
-  int? gramsPerCircle;
+  double? caloriesPer100grams;
+  double? niftyPoints;
+  double? totalWeight;
+  double? totalCalories;
+  double? gramsPerCircle;
 
   Attributes(
       {this.name,

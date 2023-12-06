@@ -77,17 +77,17 @@ class AddNewIngredientController extends GetxController {
           data: Data(
             nameEn: ingredientNameEnglishController.text,
             nameFr: ingredientNameFranceController.text ,
-            caloriesPer100grams: int.tryParse(caloriesPerGramController.text),
-            niftyPoints: int.tryParse(niftyPointsController.text) ,
-            gramsPerCircle: int.tryParse(gramsPerCircleController.text),
+            caloriesPer100grams: double.tryParse(caloriesPerGramController.text),
+            niftyPoints: double.tryParse(niftyPointsController.text) ,
+            gramsPerCircle: double.tryParse(gramsPerCircleController.text),
             units: [
               Units(
                 name: unitNameMeasurementController.text,
-                grams: int.tryParse(equivalentUnitInGramsController.text)
+                grams: double.tryParse(equivalentUnitInGramsController.text)
               ),
               Units(
                 name: unitNameAnotherMeasurementController.text ,
-                grams: int.tryParse(equivalentUnitInGramsController2.text)
+                grams: double.tryParse(equivalentUnitInGramsController2.text)
               )
             ]
           )

@@ -52,7 +52,7 @@ class SportData {
 class Attributes {
   String? nameEn;
   String? nameFr;
-  int? caloriesPerMinute;
+  double? caloriesPerMinute;
 
   Attributes({this.nameEn, this.nameFr, this.caloriesPerMinute});
 

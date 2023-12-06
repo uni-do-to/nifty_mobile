@@ -18,11 +18,11 @@ class RecipeRequest {
 
 class Data {
   String? name;
-  int? caloriesPer100grams;
-  int? niftyPoints;
-  int? totalWeight;
-  int? totalCalories;
-  int? gramsPerCircle;
+  double? caloriesPer100grams;
+  double? niftyPoints;
+  double? totalWeight;
+  double? totalCalories;
+  double? gramsPerCircle;
   String? owner;
   List<Ingredients>? ingredients;
 
@@ -71,8 +71,8 @@ class Data {
 class Ingredients {
   int? id;
   int? ingredient;
-  int? grams;
-  int? calories;
+  double? grams;
+  double? calories;
 
   Ingredients({this.id, this.ingredient, this.grams, this.calories});
 

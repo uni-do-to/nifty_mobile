@@ -22,9 +22,9 @@ class Data {
   String? nameEn;
   String? nameFr;
   String? subCategory;
-  int? caloriesPer100grams;
-  int? niftyPoints;
-  int? gramsPerCircle;
+  double? caloriesPer100grams;
+  double? niftyPoints;
+  double? gramsPerCircle;
   List<Units>? units;
 
   Data(

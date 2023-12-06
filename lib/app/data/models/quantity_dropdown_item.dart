@@ -1,7 +1,7 @@
 class QuantityDropdownItem {
   String name;
-  int? grams;
-  int? minutes;
+  double? grams;
+  double? minutes;
 
   QuantityDropdownItem({required this.name, this.grams, this.minutes});
 }
