@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/data/models/quantity_dropdown_item.dart';
-import 'package:nifty_mobile/app/data/models/sports_response_model.dart';
+import 'package:nifty_mobile/app/data/models/sports_model.dart';
 import 'package:nifty_mobile/app/data/providers/sport_provider.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
 class AddSportController extends GetxController {
   final measurementUnitGramsController = TextEditingController();
-  List<SportData> sportsList = [];
+  List<Sport> sportsList = [];
 
   RxBool isSportSelected = false.obs;
   RxBool sportListItemIsSelected = false.obs;
   RxBool loading = false.obs;
-  Rx<SportData?> selectedSport = Rx(null);
+  Rx<Sport?> selectedSport = Rx(null);
   Rx<QuantityDropdownItem?> selectedMeasurementUnit = Rx(null);
   List<QuantityDropdownItem> measurementUnitsItems = [];
 
@@ -31,7 +31,7 @@ class AddSportController extends GetxController {
       loading.value = true;
 
       var responseSportList = await provider.getSportsList();
-      this.sportsList = responseSportList.data ?? [];
+      this.sportsList = responseSportList?.data ?? [];
     } catch (err, _) {
       print(err);
     } finally {

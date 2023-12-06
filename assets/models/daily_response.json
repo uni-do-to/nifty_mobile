@@ -21,7 +21,7 @@
                 "ingredient": {
                   "dataA": {
                     "id": 171,
-                    "attributes": {
+                    "attributesA": {
                       "nameEn": "Accras, caviar, mackerel",
                       "nameFr": "Accras, caviar, maquereau",
                       "caloriesPer100grams": 262,
@@ -34,7 +34,7 @@
                 "recipe": {
                   "dataB": {
                     "id": 1,
-                    "attributes": {
+                    "attributesB": {
                       "name": "breakfast",
                       "caloriesPer100grams": 26.3,
                       "niftyPoints": 22.2,
@@ -62,7 +62,7 @@
                 "sport": {
                   "dataC": {
                     "id": 1,
-                    "attributes": {
+                    "attributesC": {
                       "nameEn": "Intensive physical activity",
                       "nameFr": "Activité physique intensive",
                       "caloriesPerMinute": 1

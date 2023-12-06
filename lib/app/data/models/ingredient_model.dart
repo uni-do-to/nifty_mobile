@@ -1,37 +1,22 @@
+import 'package:nifty_mobile/app/data/models/api_response.dart';
 import 'package:nifty_mobile/app/data/models/sub_category_model.dart';
 import 'package:nifty_mobile/app/data/models/unit_model.dart';
 
-class Ingredient {
-  IngredientsData? data;
 
-  Ingredient({this.data});
-
-  Ingredient.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? IngredientsData?.fromJson(json['data']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final json = <String, dynamic>{};
-    if (data != null) {
-      json['data'] = data?.toJson();
-    }
-    return json;
-  }
-}
-
-class IngredientsData {
+class Ingredient extends ApiDataModel {
   int? id;
   Attributes? attributes;
 
-  IngredientsData({this.id, this.attributes});
+  Ingredient({this.id, this.attributes});
 
-  IngredientsData.fromJson(Map<String, dynamic> json) {
+  Ingredient.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     attributes = json['attributes'] != null
         ? Attributes?.fromJson(json['attributes'])
         : null;
   }
 
+  @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['id'] = id;
@@ -45,7 +30,7 @@ class IngredientsData {
 class Attributes {
   String? nameEn;
   String? nameFr;
-  SubCategory? subCategory;
+  ApiSingleResponse<SubCategory>? subCategory;
   double? caloriesPer100grams;
   double? niftyPoints;
   double? gramsPerCircle;
@@ -64,7 +49,7 @@ class Attributes {
     nameEn = json['nameEn'];
     nameFr = json['nameFr'];
     subCategory = json['sub_category'] != null
-        ? SubCategory?.fromJson(json['sub_category'])
+        ? ApiSingleResponse.fromJson(json['sub_category'], (json) => SubCategory?.fromJson(json))
         : null;
     caloriesPer100grams = json['caloriesPer100grams'];
     niftyPoints = json['niftyPoints'];

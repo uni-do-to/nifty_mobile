@@ -18,14 +18,14 @@ class AddIngredientMealController extends GetxController {
   final ingredientsSubCategoriesController = TextEditingController();
   final measurementUnitGramsController = TextEditingController();
 
-  List<IngredientsData> ingredientsList = [];
-  List<IngredientsData> ingredientsSubcategoryList = [];
-  List<SubCategoryData> subCategoriesList = [];
-  List<CategoryData> categoriesList = [];
+  List<Ingredient> ingredientsList = [];
+  List<Ingredient> ingredientsSubcategoryList = [];
+  List<SubCategory> subCategoriesList = [];
+  List<Category> categoriesList = [];
   RxBool loading = false.obs;
   RxInt selectedCategoryId = 0.obs;
   RxInt selectedSubCategoryId = 0.obs;
-  IngredientsData selectedIngredient= IngredientsData();
+  Ingredient selectedIngredient= Ingredient();
 
   Rx<QuantityDropdownItem?> selectedMeasurementUnit = Rx(null);
   List<QuantityDropdownItem> measurementUnitsItems=[];
@@ -45,10 +45,10 @@ class AddIngredientMealController extends GetxController {
       loading.value = true;
 
       var responseIngredientList = await provider.getIngredientList();
-      this.ingredientsList = responseIngredientList.data ?? [];
+      this.ingredientsList = responseIngredientList?.data ?? [];
 
       var responseCategories = await provider.getCategoriesList();
-      this.categoriesList = responseCategories.data ?? [];
+      this.categoriesList = responseCategories?.data ?? [];
     } catch (err, _) {
       print(err);
     } finally {
@@ -61,7 +61,7 @@ class AddIngredientMealController extends GetxController {
 
       var responseSubCategories =
           await provider.getSubCategoriesList(categoryId);
-      this.subCategoriesList = responseSubCategories.data ?? [];
+      this.subCategoriesList = responseSubCategories?.data ?? [];
     } catch (err, _) {
       print(err);
     } finally {
@@ -73,14 +73,14 @@ class AddIngredientMealController extends GetxController {
       var responseIngredientsSubCategories =
           await provider.getIngredientList(subCategoryId: subCategoryId);
       this.ingredientsSubcategoryList =
-          responseIngredientsSubCategories.data ?? [];
+          responseIngredientsSubCategories?.data ?? [];
     } catch (err, stacktrace) {
       print(err);
     } finally {
     }
   }
 
-  Future<List<IngredientsData>> searchIngredients(String searchKeyword) async {
+  Future<List<Ingredient>> searchIngredients(String searchKeyword) async {
     return ingredientsList.where((ingredient) {
       return ingredient.attributes!.nameEn!
               .toLowerCase()
@@ -91,7 +91,7 @@ class AddIngredientMealController extends GetxController {
     }).toList();
   }
 
-  Future<List<CategoryData>> searchCategory(String searchKeyword) async {
+  Future<List<Category>> searchCategory(String searchKeyword) async {
     return categoriesList.where((category) {
       return category.attributes!.nameEn!
               .toLowerCase()
@@ -102,7 +102,7 @@ class AddIngredientMealController extends GetxController {
     }).toList();
   }
 
-  Future<List<SubCategoryData>> searchSubCategory(String searchKeyword) async {
+  Future<List<SubCategory>> searchSubCategory(String searchKeyword) async {
     return subCategoriesList.where((subCategory) {
       bool matchesKeyword = subCategory.attributes!.nameEn!
               .toLowerCase()
@@ -115,7 +115,7 @@ class AddIngredientMealController extends GetxController {
     }).toList();
   }
 
-  Future<List<IngredientsData>> searchIngredientsSubCategory(
+  Future<List<Ingredient>> searchIngredientsSubCategory(
       String searchKeyword) async {
     return ingredientsSubcategoryList.where((ingredientSubCategory) {
       bool matchesKeyword = ingredientSubCategory.attributes!.nameEn!

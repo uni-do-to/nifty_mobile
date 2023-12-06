@@ -2,12 +2,17 @@ import 'package:get/get.dart';
 import 'package:nifty_mobile/app/base/base_provider.dart';
 import 'package:nifty_mobile/app/config/api_constants.dart';
 
-import '../models/sports_response_model.dart';
+import '../models/api_response.dart';
+import '../models/recipe_model.dart';
+import '../models/sports_model.dart';
 
 class SportProvider extends BaseProvider {
-  Future<SportsResponse> getSportsList() async {
+  Future<ApiListResponse<Sport>?> getSportsList() async {
     final response = await get(ConfigAPI.sportUrl);
 
-    return decode<SportsResponse>(response, SportsResponse.fromJson);
+    return decode<ApiListResponse<Sport>?>(
+        response,
+            (data) => ApiListResponse.fromJson(
+            data, (data) => Sport.fromJson(data)));
   }
 }

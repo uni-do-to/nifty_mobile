@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/data/models/quantity_dropdown_item.dart';
-import 'package:nifty_mobile/app/data/models/recipes_response_model.dart';
+import 'package:nifty_mobile/app/data/models/recipe_model.dart';
 import 'package:nifty_mobile/app/data/providers/recipe_provider.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
@@ -9,11 +9,11 @@ class AddRecipeMealController extends GetxController {
   final searchRecipesController = TextEditingController();
   final measurementUnitGramsController = TextEditingController();
 
-  List<RecipeData> recipesList = [];
+  List<Recipe> recipesList = [];
 
   RxBool isRecipeSelected = false.obs;
   RxBool loading = false.obs;
-  RecipeData selectedRecipe = RecipeData();
+  Recipe selectedRecipe = Recipe();
   Rx<QuantityDropdownItem?> selectedMeasurementUnit = Rx(null);
   List<QuantityDropdownItem> measurementUnitsItems = [];
 
@@ -32,7 +32,7 @@ class AddRecipeMealController extends GetxController {
       loading.value = true;
 
       var responseRecipeList = await provider.getRecipeList();
-      this.recipesList = responseRecipeList.data ?? [];
+      this.recipesList = responseRecipeList?.data ?? [];
     } catch (err, _) {
       print(err);
     } finally {
@@ -40,7 +40,7 @@ class AddRecipeMealController extends GetxController {
     }
   }
 
-  Future<List<RecipeData>> searchRecipes(String searchKeyword) async {
+  Future<List<Recipe>> searchRecipes(String searchKeyword) async {
     return recipesList.where((recipe) {
       return recipe.attributes!.name!
           .toLowerCase()

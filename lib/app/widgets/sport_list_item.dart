@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
-import 'package:nifty_mobile/app/data/models/sports_response_model.dart';
+import 'package:nifty_mobile/app/data/models/sports_model.dart';
 import 'package:nifty_mobile/app/modules/addSport/controllers/add_sport_controller.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 
 class SportListItem extends StatelessWidget {
-  final SportData sportItem;
+  final Sport sportItem;
   final VoidCallback onClick;
   final AddSportController controller;
 

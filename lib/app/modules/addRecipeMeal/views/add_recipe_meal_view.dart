@@ -5,7 +5,7 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/data/models/quantity_dropdown_item.dart';
-import 'package:nifty_mobile/app/data/models/recipes_response_model.dart';
+import 'package:nifty_mobile/app/data/models/recipe_model.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:nifty_mobile/app/widgets/form_field.dart';
@@ -129,7 +129,7 @@ class AddRecipeMealView extends GetView<AddRecipeMealController> {
                           SizedBox(
                             height: 20.toHeight,
                           ),
-                          TypeAheadField<RecipeData>(
+                          TypeAheadField<Recipe>(
                             controller: controller.searchRecipesController,
                             suggestionsCallback: (search) =>
                                 controller.searchRecipes(search),

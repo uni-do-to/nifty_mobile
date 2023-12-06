@@ -1,13 +1,12 @@
 import 'package:nifty_mobile/app/data/models/api_response.dart';
 
-
-class Category extends ApiDataModel{
+class Sport extends ApiDataModel {
   int? id;
   Attributes? attributes;
 
-  Category({this.id, this.attributes});
+  Sport({this.id, this.attributes});
 
-  Category.fromJson(Map<String, dynamic> json) {
+  Sport.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     attributes = json['attributes'] != null
         ? Attributes?.fromJson(json['attributes'])
@@ -28,18 +27,21 @@ class Category extends ApiDataModel{
 class Attributes {
   String? nameEn;
   String? nameFr;
+  double? caloriesPerMinute;
 
-  Attributes({this.nameEn, this.nameFr});
+  Attributes({this.nameEn, this.nameFr, this.caloriesPerMinute});
 
   Attributes.fromJson(Map<String, dynamic> json) {
     nameEn = json['nameEn'];
     nameFr = json['nameFr'];
+    caloriesPerMinute = json['caloriesPerMinute'];
   }
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['nameEn'] = nameEn;
     data['nameFr'] = nameFr;
+    data['caloriesPerMinute'] = caloriesPerMinute;
     return data;
   }
 }

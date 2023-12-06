@@ -1,16 +1,13 @@
-import 'package:nifty_mobile/app/data/models/ingredient_model.dart';
 
-class IngredientsResponse {
-  List<IngredientsData>? data;
+class ApiListResponse<T extends ApiDataModel> {
+  List<T>? data;
   Meta? meta;
 
-  IngredientsResponse({this.data, this.meta});
-
-  IngredientsResponse.fromJson(Map<String, dynamic> json) {
+  ApiListResponse.fromJson(Map<String, dynamic> json , ItemCreator<T> creator) {
     if (json['data'] != null) {
-      data = <IngredientsData>[];
+      data = <T>[];
       json['data'].forEach((v) {
-        data?.add(IngredientsData.fromJson(v));
+        data?.add(creator(v));
       });
     }
     meta = json['meta'] != null ? Meta?.fromJson(json['meta']) : null;
@@ -28,6 +25,23 @@ class IngredientsResponse {
   }
 }
 
+class ApiSingleResponse<T extends ApiDataModel> {
+  T? data;
+
+  ApiSingleResponse({this.data});
+
+  ApiSingleResponse.fromJson(Map<String, dynamic> json, ItemCreator<T> creator) {
+    data = json['data'] != null ? creator(json['data']) : null;
+  }
+
+  Map<String, dynamic> toJson() {
+    final json = <String, dynamic>{};
+    if (data != null) {
+      json['data'] = data?.toJson();
+    }
+    return json;
+  }
+}
 class Meta {
   Pagination? pagination;
 
@@ -71,4 +85,12 @@ class Pagination {
     data['total'] = total;
     return data;
   }
+}
+
+
+typedef ItemCreator<S> = S Function(Map<String, dynamic> json);
+
+
+abstract class ApiDataModel {
+  Map<String, dynamic> toJson() ;
 }

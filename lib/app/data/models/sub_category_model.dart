@@ -1,36 +1,20 @@
+import 'package:nifty_mobile/app/data/models/api_response.dart';
+
 import 'category_model.dart';
-
-class SubCategory {
-  SubCategoryData? data;
-
-  SubCategory({this.data});
-
-  SubCategory.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? SubCategoryData?.fromJson(json['data']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final json = <String, dynamic>{};
-    if (data != null) {
-      json['data'] = data?.toJson();
-    }
-    return json;
-  }
-}
-
-class SubCategoryData {
+class SubCategory extends ApiDataModel {
   int? id;
   Attributes? attributes;
 
-  SubCategoryData({this.id, this.attributes});
+  SubCategory({this.id, this.attributes});
 
-  SubCategoryData.fromJson(Map<String, dynamic> json) {
+  SubCategory.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     attributes = json['attributes'] != null
         ? Attributes?.fromJson(json['attributes'])
         : null;
   }
 
+  @override
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['id'] = id;
@@ -44,7 +28,7 @@ class SubCategoryData {
 class Attributes {
   String? nameEn;
   String? nameFr;
-  Category? category;
+  ApiSingleResponse<Category>? category;
 
   Attributes({this.nameEn, this.nameFr, this.category});
 
@@ -52,7 +36,7 @@ class Attributes {
     nameEn = json['nameEn'];
     nameFr = json['nameFr'];
     category =
-    json['category'] != null ? Category?.fromJson(json['category']) : null;
+    json['category'] != null ? ApiSingleResponse.fromJson(json['category'], (json) => Category?.fromJson(json)) : null;
   }
 
   Map<String, dynamic> toJson() {
