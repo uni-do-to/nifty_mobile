@@ -1,4 +1,12 @@
 import 'package:get/get.dart';
+import 'package:nifty_mobile/app/modules/daily/bindings/daily_binding.dart';
+import 'package:nifty_mobile/app/modules/daily/views/daily_view.dart';
+import 'package:nifty_mobile/app/modules/ingredient/bindings/ingredient_binding.dart';
+import 'package:nifty_mobile/app/modules/ingredient/views/ingredient_view.dart';
+import 'package:nifty_mobile/app/modules/profile/bindings/profile_binding.dart';
+import 'package:nifty_mobile/app/modules/profile/views/profile_view.dart';
+import 'package:nifty_mobile/app/modules/recipe/bindings/recipe_binding.dart';
+import 'package:nifty_mobile/app/modules/recipe/views/recipe_view.dart';
 
 import '../middleware/auth_middleware.dart';
 import '../modules/addIngredientMeal/bindings/add_ingredient_meal_binding.dart';
@@ -72,13 +80,12 @@ class AppPages {
       page: () => const AddRecipeMealView(),
       binding: AddRecipeMealBinding(),
       middlewares: [AuthMiddleware()],
-
     ),
     GetPage(
       name: _Paths.ADD_SPORT,
       page: () => const AddSportView(),
       binding: AddSportBinding(),
       middlewares: [AuthMiddleware()],
-    ),
+    )
   ];
 }
