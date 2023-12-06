@@ -8,6 +8,7 @@ class SmallActionButton extends StatelessWidget {
   final Widget? icon;
   final Color? backgroundColor;
   final Color? textColor;
+  final double? fontSize;
 
   const SmallActionButton({
     Key? key,
@@ -18,6 +19,7 @@ class SmallActionButton extends StatelessWidget {
     this.icon,
     this.backgroundColor,
     this.textColor,
+    this.fontSize,
   }) : super(key: key);
 
   @override
@@ -38,7 +40,7 @@ class SmallActionButton extends StatelessWidget {
                     ?.current
                     ?.textTheme
                     .bodyMedium
-                    ?.copyWith(color: textColor)),
+                    ?.copyWith(color: textColor, fontSize: fontSize)),
             if (icon != null) icon!
           ],
         ),

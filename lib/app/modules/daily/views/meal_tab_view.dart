@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:nifty_mobile/app/modules/daily/controllers/daily_controller.dart';
 import 'package:nifty_mobile/app/modules/daily/views/custom_tab_view.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
+import 'package:nifty_mobile/app/widgets/daily_list_item.dart';
 import 'dart:collection';
 
 import 'package:nifty_mobile/app/widgets/small_action_button.dart';
@@ -84,15 +85,21 @@ class MealTabView extends HookWidget {
             //navigation button to create ingredient/ recipe
             Row(
               children: [
-                SmallActionButton(
-                  text: 'Ajouter un nouvel élément ',
-                  backgroundColor: Color(0xff42A4A0),
-                  textColor: Colors.white,
-                  icon: Icon(
-                    Icons.arrow_forward,
-                    color: Colors.white,
+                Padding(
+                  padding: EdgeInsets.only(left: 15.toWidth),
+                  child: SmallActionButton(
+                    text: 'Ajouter un nouvel élément ',
+                    backgroundColor: Color(0xff42A4A0),
+                    textColor: Colors.white,
+                    fontSize: 24.toFont,
+                    height: 35.toHeight,
+                    icon: Icon(
+                      Icons.arrow_forward,
+                      color: Colors.white,
+                      size: 20,
+                    ),
+                    onPressed: () {},
                   ),
-                  onPressed: () {},
                 ),
                 Expanded(
                   child: Container(),
@@ -101,16 +108,36 @@ class MealTabView extends HookWidget {
             ),
             Expanded(
               child: Container(
-                decoration: BoxDecoration(
-                  color: Color(0xffF9F8F8),
-                ),
+                color: Color(0xffF9F8F8),
+                padding: EdgeInsets.symmetric(
+                    horizontal: 15.toWidth, vertical: 10.toHeight),
                 child: TabBarView(
                   controller: mealsTabController,
+                  physics: NeverScrollableScrollPhysics(),
+
                   children: [
-                    Icon(Icons.flight, size: 89),
-                    Icon(Icons.directions_transit, size: 89),
-                    Icon(Icons.directions_transit, size: 89),
-                    Icon(Icons.directions_transit, size: 89),
+                    ...mealsList
+                        .mapIndexed(
+                          (index, element) => Container(
+                            child: Column(
+                              children: [
+                                ...mealsList.mapIndexed(
+                                  (index, element) => Container(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: 10.toHeight,
+                                    ),
+                                    child: DailyListItem(
+                                        text: 'Steak tartare',
+                                        calories: 190,
+                                        type: 'recipe'),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        )
+                        .toList(),
+                    Container(),
                   ],
                 ),
               ),

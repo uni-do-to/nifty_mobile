@@ -9,7 +9,7 @@ import 'package:nifty_mobile/app/utils/size_utils.dart';
 
 import '../controllers/daily_controller.dart';
 
-class DailyView extends GetView<DailyController>{
+class DailyView extends GetView<DailyController> {
   const DailyView({Key? key}) : super(key: key);
 
   @override
@@ -111,14 +111,14 @@ class DailyView extends GetView<DailyController>{
                         ),
                         labelColor: ColorConstants.accentColor,
                         labelStyle: theme?.textTheme.bodyMedium?.copyWith(
-                          fontSize: 30.toFont,
+                          fontSize: 28.toFont,
                           fontWeight: FontWeight.w800,
                           decoration: TextDecoration.underline,
                           color: ColorConstants.accentColor,
                         ),
                         unselectedLabelStyle:
                             theme?.textTheme.bodyMedium?.copyWith(
-                          fontSize: 30.toFont,
+                          fontSize: 28.toFont,
                           decoration: TextDecoration.none,
                           fontWeight: FontWeight.normal,
                           color: ColorConstants.accentColor,
@@ -128,11 +128,13 @@ class DailyView extends GetView<DailyController>{
                             child: Text(
                               "Vos repas",
                             ),
+                            height: 70.toHeight,
                           ),
                           Tab(
                             child: Text(
                               "Sport",
                             ),
+                            height: 70.toHeight,
                           ),
                         ],
                       ),
