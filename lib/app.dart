@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
+import 'package:responsive_framework/breakpoint.dart';
+import 'package:responsive_framework/responsive_breakpoints.dart';
 
 import 'app/routes/app_pages.dart';
 import 'generated/locales.g.dart';
@@ -19,12 +21,12 @@ class App extends StatelessWidget {
       theme: NeumorphicThemeData(
           lightSource: LightSource.topLeft,
           accentColor: ColorConstants.accentColor,
-          baseColor: Color(0xffF9F8F8),
+          baseColor: ColorConstants.grayBackgroundColor,
           variantColor: NeumorphicColors.variant,
           defaultTextColor: ColorConstants.accentColor,
-          borderColor: Color(0xffD4D4D4),
+          borderColor: const Color(0xffD4D4D4),
           appBarTheme: NeumorphicAppBarThemeData(
-            buttonStyle: NeumorphicStyle(
+            buttonStyle: const NeumorphicStyle(
                 boxShape: NeumorphicBoxShape.circle(), depth: 2),
             textStyle:
                 TextStyle(color: ColorConstants.accentColor, fontSize: 24),
@@ -53,6 +55,12 @@ class App extends StatelessWidget {
               fontWeight: FontWeight.w400,
               fontSize: 16.toFont,
             ),
+            //finals
+            titleLarge: TextStyle(
+              color: ColorConstants.accentColor,
+              fontWeight: FontWeight.w900,
+              fontSize: 20,
+            ),
           ),
           depth: 1,
           intensity: 0.9,
@@ -79,6 +87,15 @@ class App extends StatelessWidget {
         fallbackLocale: const Locale('fr', 'FR'),
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes,
+        builder: (context, child) => ResponsiveBreakpoints.builder(
+          child: child!,
+          breakpoints: [
+            const Breakpoint(start: 0, end: 450, name: MOBILE),
+            const Breakpoint(start: 451, end: 800, name: TABLET),
+            const Breakpoint(start: 801, end: 1920, name: DESKTOP),
+            const Breakpoint(start: 1921, end: double.infinity, name: '4K'),
+          ],
+        ),
       ),
     );
   }

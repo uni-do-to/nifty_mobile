@@ -11,6 +11,8 @@ import 'dart:collection';
 
 import 'package:nifty_mobile/app/widgets/small_action_button.dart';
 
+import '../../../config/color_constants.dart';
+
 class MealTabView extends HookWidget {
   final NeumorphicThemeData theme;
   final RxList<String> mealsList;
@@ -108,7 +110,7 @@ class MealTabView extends HookWidget {
             ),
             Expanded(
               child: Container(
-                color: Color(0xffF9F8F8),
+                color: ColorConstants.grayBackgroundColor,
                 padding: EdgeInsets.symmetric(
                     horizontal: 15.toWidth, vertical: 10.toHeight),
                 child: TabBarView(
