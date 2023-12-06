@@ -1,0 +1,31 @@
+{
+  "id": 1,
+  "calories": 200.2,
+  "weight": 200.1,
+  "ingredient": {
+    "dataA": {
+      "id": 171,
+      "attributes": {
+        "nameEn": "Accras, caviar, mackerel",
+        "nameFr": "Accras, caviar, maquereau",
+        "caloriesPer100grams": 262.2,
+        "niftyPoints": 8.1,
+        "gramsPerCircle": 120.1,
+        "isAdmin": true
+      }
+    }
+  },
+  "recipe": {
+    "dataB": {
+      "id": 1,
+      "attributes": {
+        "name": "breakfast",
+        "caloriesPer100grams": 26.3,
+        "niftyPoints": 22.2,
+        "totalWeight": 500.2,
+        "totalCalories": 130.2,
+        "gramsPerCircle": 100.1
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "data": {
+      "id": 1,
+      "attributes": {
+        "date": "2023-12-06",
+        "dailyCalories": 700.3,
+        "consumedCalories": 900.2,
+        "calorieBurned": 300.1,
+        "meals": [
+          {
+            "id": 3,
+            "index": 1,
+            "title": "Meal 1",
+            "calories": 300.2,
+            "weight": 300.1,
+            "items": [
+              {
+                "id": 1,
+                "calories": 200,
+                "weight": 200.1,
+                "ingredient": {
+                  "dataA": {
+                    "id": 171,
+                    "attributes": {
+                      "nameEn": "Accras, caviar, mackerel",
+                      "nameFr": "Accras, caviar, maquereau",
+                      "caloriesPer100grams": 262,
+                      "niftyPoints": 8,
+                      "gramsPerCircle": 120,
+                      "isAdmin": true
+                    }
+                  }
+                },
+                "recipe": {
+                  "dataB": {
+                    "id": 1,
+                    "attributes": {
+                      "name": "breakfast",
+                      "caloriesPer100grams": 26.3,
+                      "niftyPoints": 22.2,
+                      "totalWeight": 500.2,
+                      "totalCalories": 130.2,
+                      "gramsPerCircle": 100.1
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ],
+        "sports": [
+          {
+            "id": 2,
+            "index": 1,
+            "title": "Sport 1",
+            "calories": 300.1,
+            "items": [
+              {
+                "id": 1,
+                "calories": 300.1,
+                "minutes": 30,
+                "sport": {
+                  "dataC": {
+                    "id": 1,
+                    "attributes": {
+                      "nameEn": "Intensive physical activity",
+                      "nameFr": "Activité physique intensive",
+                      "caloriesPerMinute": 1
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+}

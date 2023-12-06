@@ -1,0 +1,54 @@
+{
+  "data": {
+    "date": "2023-12-06",
+    "dailyCalories": 0,
+    "consumedCalories": 0,
+    "calorieBurned": 0,
+    "meals": [
+      {
+        "index": 0,
+        "title": "string",
+        "calories": 0,
+        "weight": 0,
+        "items": [
+          {
+            "calories": ,
+            "weight": 0,
+            "ingredient": {
+              "data": {
+                "id": 0
+              }
+            },
+            "recipe": {
+              "data": {
+                "id": 0
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "sports": [
+      {
+        "id": 0,
+        "index": 0,
+        "title": "string",
+        "calories": 0,
+        "items": [
+          {
+            "id": 0,
+            "calories": 0,
+            "minutes": 0,
+            "sport": {
+              "data": {
+                "id": 0,
+                "attributes": {}
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "owner": "string or id"
+  }
+}
