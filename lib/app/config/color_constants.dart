@@ -27,4 +27,5 @@ class ColorConstants {
   static Color toolbarTextColor = const Color(0xff707070);
   static Color shadowColor = const Color(0xff000000).withOpacity(0.09) ;
   static Color grayBackgroundColor = const Color(0xffF9F8F8) ;
+  static Color mainThemeColor = const Color(0xff42A4A0) ;
 }

@@ -25,16 +25,17 @@ class AddIngredientFormWidget extends StatelessWidget {
         //search in admin ingredients
         Text(
           LocaleKeys.research_dropdown_label.tr,
-          style: theme.textTheme.bodySmall,
+          style: theme.textTheme.bodySmall?.copyWith(fontSize: 14),
         ),
-        SizedBox(
-          height: 20.toHeight,
+        const SizedBox(
+          height: 6,
         ),
         TypeAheadField<Ingredient>(
           controller: controller.searchIngredientsController,
           suggestionsCallback: (search) => controller.searchIngredients(search),
           builder: (context, controller, focusNode) {
             return NeuFormField(
+              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 18),
               hintText: LocaleKeys.search_ingredients_dropdown_label.tr,
               controller: controller,
               focusNode: focusNode,
@@ -67,22 +68,23 @@ class AddIngredientFormWidget extends StatelessWidget {
           },
         ),
 
-        SizedBox(
-          height: 20.toHeight,
+        const SizedBox(
+          height: 6,
         ),
         //search in user ingredient
         Text(
           LocaleKeys.personal_ingredient_dropdown_label.tr,
-          style: theme.textTheme.bodySmall,
+          style: theme.textTheme.bodySmall?.copyWith(fontSize: 14),
         ),
-        SizedBox(
-          height: 20.toHeight,
+        const SizedBox(
+          height: 6,
         ),
         TypeAheadField<Ingredient>(
           controller: controller.userIngredientsController,
           suggestionsCallback: (search) => controller.searchIngredients(search),
           builder: (context, controller, focusNode) {
             return NeuFormField(
+              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 18),
               hintText: LocaleKeys.choose_ingredient_dropdown_label.tr,
               controller: controller,
               focusNode: focusNode,
@@ -115,23 +117,22 @@ class AddIngredientFormWidget extends StatelessWidget {
           },
         ),
 
-        SizedBox(
-          height: 20.toHeight,
-        ),
+        const SizedBox(height: 6),
 
         //search in categories
         Text(
           LocaleKeys.categories_dropdown_label.tr,
-          style: theme.textTheme.bodySmall,
+          style: theme.textTheme.bodySmall?.copyWith(fontSize: 14),
         ),
-        SizedBox(
-          height: 10.toHeight,
+        const SizedBox(
+          height: 6,
         ),
         TypeAheadField<Category>(
           controller: controller.categoriesController,
           suggestionsCallback: (search) => controller.searchCategory(search),
           builder: (context, controller, focusNode) {
             return NeuFormField(
+              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 18),
               hintText: LocaleKeys.choose_category_dropdown_label.tr,
               controller: controller,
               focusNode: focusNode,
@@ -162,8 +163,8 @@ class AddIngredientFormWidget extends StatelessWidget {
           },
         ),
 
-        SizedBox(
-          height: 20.toHeight,
+        const SizedBox(
+          height: 6,
         ),
 
         //search in subcategories
@@ -175,17 +176,16 @@ class AddIngredientFormWidget extends StatelessWidget {
               children: [
                 Text(
                   LocaleKeys.sub_categories_dropdown_label.tr,
-                  style: theme.textTheme.bodySmall,
+                  style: theme.textTheme.bodySmall?.copyWith(fontSize: 14),
                 ),
-                SizedBox(
-                  height: 10.toHeight,
-                ),
+                const SizedBox(height: 6),
                 TypeAheadField<SubCategory>(
                   controller: controller.subcategoriesController,
                   suggestionsCallback: (search) =>
                       controller.searchSubCategory(search),
                   builder: (context, controller, focusNode) {
                     return NeuFormField(
+                      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 18),
                       hintText:
                           LocaleKeys.choose_sub_category_dropdown_label.tr,
                       controller: controller,
@@ -221,8 +221,8 @@ class AddIngredientFormWidget extends StatelessWidget {
           );
         }, controller.selectedCategoryId),
 
-        SizedBox(
-          height: 20.toHeight,
+        const SizedBox(
+          height: 6,
         ),
 
         //search in ingredients of subcategories
@@ -234,10 +234,10 @@ class AddIngredientFormWidget extends StatelessWidget {
               children: [
                 Text(
                   LocaleKeys.ingredient_tab_label.tr,
-                  style: theme.textTheme.bodySmall,
+                  style: theme.textTheme.bodySmall?.copyWith(fontSize: 14),
                 ),
-                SizedBox(
-                  height: 10.toHeight,
+                const SizedBox(
+                  height: 6,
                 ),
                 TypeAheadField<Ingredient>(
                   controller: controller.ingredientsSubCategoriesController,
@@ -245,6 +245,7 @@ class AddIngredientFormWidget extends StatelessWidget {
                       controller.searchIngredientsSubCategory(search),
                   builder: (context, controller, focusNode) {
                     return NeuFormField(
+                      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 18),
                       hintText: LocaleKeys.choose_ingredient_dropdown_label.tr,
                       controller: controller,
                       focusNode: focusNode,
@@ -278,7 +279,7 @@ class AddIngredientFormWidget extends StatelessWidget {
           );
         }, controller.selectedSubCategoryId),
         SizedBox(
-          height: 20.toHeight,
+          height: 6,
         ),
       ],
     );

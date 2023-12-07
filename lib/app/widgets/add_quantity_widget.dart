@@ -29,42 +29,42 @@ class AddQuantityWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 30.toWidth),
+      padding: EdgeInsets.symmetric(horizontal: 17),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Neumorphic(
             style: NeumorphicStyle(depth: 1.3, intensity: 1),
             padding: EdgeInsets.symmetric(
-                horizontal: 30.toWidth, vertical: 10.toHeight),
+                horizontal: 17, vertical: 17),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   LocaleKeys.unit_drop_down_label.tr,
-                  style: theme.textTheme.bodySmall,
+                  style: theme.textTheme.bodySmall?.copyWith(fontSize: 14),
                 ),
                 SizedBox(
-                  height: 10.toHeight,
+                  height: 5,
                 ),
                 Neumorphic(
                   style: NeumorphicStyle(
                     depth: NeumorphicTheme.embossDepth(context),
                     boxShape:
-                    NeumorphicBoxShape.roundRect(BorderRadius.circular(8)),
+                        NeumorphicBoxShape.roundRect(BorderRadius.circular(8)),
                     color: Colors.transparent,
                     border: NeumorphicBorder(
                       width: 0.5,
                     ),
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 30.toWidth),
                   child: DropdownButtonFormField<QuantityDropdownItem>(
+
                     value: selectedMeasurementUnit,
                     onChanged: (newValue) {
                       onMeasurementUnitChange(newValue);
                     },
                     items:
-                    measurementUnitsItems.map((QuantityDropdownItem item) {
+                        measurementUnitsItems.map((QuantityDropdownItem item) {
                       return DropdownMenuItem<QuantityDropdownItem>(
                         value: item,
                         child: Text(item.name),
@@ -73,19 +73,20 @@ class AddQuantityWidget extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 10.toHeight,
+                  height:8,
                 ),
                 Text(
                   selectedMeasurementUnit?.name ==
-                      LocaleKeys.circle_unit_label.tr
+                          LocaleKeys.circle_unit_label.tr
                       ? LocaleKeys.circle_unit_label.tr
                       : LocaleKeys.quantity_text_field_label.tr,
                   style: theme.textTheme.bodySmall,
                 ),
                 SizedBox(
-                  height: 10.toHeight,
+                  height: 5,
                 ),
                 NeuFormField(
+                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 18),
                   hintText: LocaleKeys.quantity_text_field_label.tr,
                   initialValue: quantityValue,
                   keyboardType: TextInputType.number,
@@ -96,7 +97,7 @@ class AddQuantityWidget extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 20.toHeight),
+          const SizedBox(height: 10),
         ],
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 class SmallActionButton extends StatelessWidget {
@@ -34,6 +35,7 @@ class SmallActionButton extends StatelessWidget {
         height: height,
         alignment: Alignment.center,
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(text,
                 style: NeumorphicTheme.of(context)
