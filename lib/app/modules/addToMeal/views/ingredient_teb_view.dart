@@ -34,17 +34,17 @@ class IngredientTabView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
+            height: 37.35,
+            width: 250,
             margin: const EdgeInsets.only(
               left: 21,
-              right: 120,
               top: 21,
             ),
             child: SmallActionButton(
               text: 'Ajouter un nouvel Ingrédient',
               backgroundColor: ColorConstants.mainThemeColor,
               textColor: Colors.white,
-              fontSize: 18,
-              height: 30,
+              fontSize: 14,
               icon: const Icon(
                 Icons.arrow_forward,
                 color: Colors.white,
@@ -80,6 +80,7 @@ class IngredientTabView extends StatelessWidget {
           ),
           ObxValue((state) {
             return Container(
+              height: 177,
               child: AddQuantityWidget(
                 theme: theme,
                 measurementUnitsItems: controller.measurementUnitsIngredientItems,
@@ -92,14 +93,15 @@ class IngredientTabView extends StatelessWidget {
               ),
             );
           }, controller.selectedIngredientMeasurementUnit),
-          SizedBox(
-            height: 21,
+          const SizedBox(
+            height: 11,
           ),
           Obx(
             () {
               return Column(
                 children: [
                   Container(
+                    height: 61,
                     child: SelectedIngredientRecipeItem(
                       theme: theme,
                       selectedItemName: Get.locale?.languageCode == 'fr'
@@ -128,9 +130,9 @@ class IngredientTabView extends StatelessWidget {
                         child: Container(),
                       ),
                       Container(
+                        height: 54,
                         padding: const EdgeInsets.only(right: 24),
                         child: SmallActionButton(
-                          height: 54,
                           width: 181,
                           text: 'Ajouter au repas',
                           backgroundColor: controller.selectedIngredient.value

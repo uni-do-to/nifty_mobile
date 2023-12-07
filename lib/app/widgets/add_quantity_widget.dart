@@ -35,7 +35,7 @@ class AddQuantityWidget extends StatelessWidget {
         children: <Widget>[
           Neumorphic(
             style: NeumorphicStyle(depth: 1.3, intensity: 1),
-            padding: EdgeInsets.symmetric(horizontal: 17, vertical: 17),
+            padding: EdgeInsets.symmetric(horizontal: 17, vertical: 4),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -96,7 +96,6 @@ class AddQuantityWidget extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: 10),
         ],
       ),
     );

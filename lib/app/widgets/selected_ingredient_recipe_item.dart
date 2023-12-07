@@ -25,7 +25,6 @@ class SelectedIngredientRecipeItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 65,
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 21),
       color: ColorConstants.mainThemeColor.withOpacity(0.25),
       child: Row(
