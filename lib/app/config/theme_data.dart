@@ -230,4 +230,16 @@ class ThemeConfig {
     blurRadius: 8.0,
     offset: Offset(0.0, 3.0),
   );
+
+  static BoxShadow secondaryTabShadow = BoxShadow(
+    color: Color(0xffDDDDDD),
+    blurRadius: SizeConstants.shadowBlurRadius,
+    offset: Offset(3.0, 3.0),
+  );
+
+  static const secondaryTabsAddCornerRadius = BorderRadius.only(
+    bottomLeft: Radius.circular(5),
+    topLeft: Radius.circular(5),
+  );
+
 }

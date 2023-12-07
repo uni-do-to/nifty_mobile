@@ -53,7 +53,7 @@ class App extends StatelessWidget {
             titleMedium: TextStyle(
               color: ColorConstants.accentColor,
               fontWeight: FontWeight.w400,
-              fontSize: 16.toFont,
+              fontSize: 16,
             ),
             //finals
             titleLarge: TextStyle(

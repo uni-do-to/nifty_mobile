@@ -1,14 +1,11 @@
 import 'package:collection/collection.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/modules/daily/controllers/daily_controller.dart';
-import 'package:nifty_mobile/app/modules/daily/views/custom_tab_view.dart';
-import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:nifty_mobile/app/widgets/daily_list_item.dart';
-import 'dart:collection';
-
+import 'package:nifty_mobile/app/widgets/secondary_tab_bar.dart';
 import 'package:nifty_mobile/app/widgets/small_action_button.dart';
 
 import '../../../config/color_constants.dart';
@@ -23,78 +20,52 @@ class MealTabView extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    final mealsTabController = useTabController(
-      initialLength: mealsList.length + 1,
-    );
-    mealsTabController.addListener(() {
-      if (mealsTabController.index == mealsList.length) {
-        //do add
-        mealsList.add("new tab");
-        mealsTabController.index = controller.selectedMealTabIndex.value;
-      } else {
-        controller.selectedMealTabIndex.value = mealsTabController.index;
-      }
-    });
 
     return DefaultTabController(
       length: mealsList.length,
       child: Container(
+        padding: EdgeInsets.only(left: 18, top: 12),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             //TabView
             ObxValue((state) {
-              return TabBar(
-                isScrollable: true,
-                tabAlignment: TabAlignment.start,
-                padding: EdgeInsets.only(right: 20.toWidth),
-                labelPadding: EdgeInsets.only(
-                  left: 15.toWidth,
-                  top: 30.toHeight,
-                  bottom: 10.toHeight,
-                ),
-                indicatorColor: Colors.transparent,
-                controller: mealsTabController,
+              return SecondaryTabBar(
+                onAddPressed: ()=>{},
                 tabs: [
                   ...mealsList
                       .mapIndexed(
                         (index, element) => ObxValue((state) {
-                          return CustomTab(
+                          return SecondaryTab(
                             title: 'Repas n°$index',
                             isSelected: state.value == index,
+                            icon: state.value == index ? SvgPicture.asset(
+                              'assets/images/meal_icon.svg',
+                              width: 23,
+                              height: 20,
+                              color: ColorConstants.secondaryTabBarTextColor,) : null,
                           );
                         }, controller.selectedMealTabIndex),
                       )
                       .toList(),
-                  Container(
-                    width: 150.toWidth,
-                    height: 90.toHeight,
-                    padding: EdgeInsets.only(left: 20.toWidth),
-                    decoration: BoxDecoration(
-                      color: Color(0xffDEEBEB),
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    alignment: Alignment.centerLeft,
-                    child: Icon(
-                      Icons.add,
-                      size: 30,
-                      color: Color(0xff42A4A0),
-                    ),
-                  ),
                 ],
               );
             }, mealsList),
             //navigation button to create ingredient/ recipe
+            SizedBox(
+              height: 9,
+            ),
             Row(
               children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 15.toWidth),
+                Container(
+                  height: 46,
+                  clipBehavior: Clip.none,
                   child: SmallActionButton(
                     text: 'Ajouter un nouvel élément ',
-                    backgroundColor: Color(0xff42A4A0),
+                    backgroundColor: ColorConstants.secondaryTabBarTextColor,
                     textColor: Colors.white,
-                    fontSize: 24.toFont,
-                    height: 35.toHeight,
+                    fontSize: 16,
+
                     icon: Icon(
                       Icons.arrow_forward,
                       color: Colors.white,
@@ -102,44 +73,54 @@ class MealTabView extends HookWidget {
                     ),
                     onPressed: () {},
                   ),
-                ),
-                Expanded(
-                  child: Container(),
                 )
               ],
             ),
+            SizedBox(height: 15,),
             Expanded(
               child: Container(
                 color: ColorConstants.grayBackgroundColor,
-                padding: EdgeInsets.symmetric(
-                    horizontal: 15.toWidth, vertical: 10.toHeight),
+                padding: EdgeInsets.only(right: 16),
                 child: TabBarView(
-                  controller: mealsTabController,
                   physics: NeverScrollableScrollPhysics(),
 
                   children: [
+
                     ...mealsList
                         .mapIndexed(
-                          (index, element) => Container(
-                            child: Column(
-                              children: [
-                                ...mealsList.mapIndexed(
-                                  (index, element) => Container(
-                                    padding: EdgeInsets.symmetric(
-                                      vertical: 10.toHeight,
+                          (index, element) {
+
+                            return ListView.separated(
+                                itemCount: mealsList.length*2,
+                                separatorBuilder: (context, index) {
+                                  return SizedBox(height: 4,);
+                                },
+                                padding: EdgeInsets.only(right: 20),
+                                itemBuilder: (context, index) {
+                                  return DailyListItem(
+                                    name: 'Steak tartare',
+                                    calories: RichText(
+                                      text: TextSpan(
+                                        style: theme.textTheme.titleMedium,
+                                        children: const [
+                                          TextSpan(text: '150'),
+                                          TextSpan(text: ' kCal', style: TextStyle(fontWeight: FontWeight.bold)),
+                                        ],
+                                      ),
                                     ),
-                                    child: DailyListItem(
-                                        text: 'Steak tartare',
-                                        calories: 190,
-                                        type: 'recipe'),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
+                                    action: InkWell(
+                                      onTap: ()=>{},
+                                      enableFeedback: true,
+                                      child: Icon(
+                                        Icons.delete,
+                                        color: ColorConstants.accentColor.withOpacity(0.3),
+                                      ),
+                                    ),
+                                  );
+                                });
+                          },
                         )
                         .toList(),
-                    Container(),
                   ],
                 ),
               ),

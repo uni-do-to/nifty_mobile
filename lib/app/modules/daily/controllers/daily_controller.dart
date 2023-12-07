@@ -5,7 +5,7 @@ class DailyController extends GetxController {
   final RxInt selectedMealTabIndex = 0.obs;
 
   RxString day = 'Today'.obs;
-  RxList<String> mealsList = ['test1', 'test2', 'test3'].obs;
+  RxList<String> mealsList = ['test1', 'test2', 'test3', 'test1', 'test2', 'test3'].obs;
   RxList<String> sportsList = ['sport1', 'sport2', 'sport3'].obs;
 
   @override

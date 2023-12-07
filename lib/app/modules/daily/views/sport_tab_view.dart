@@ -5,11 +5,12 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/modules/daily/controllers/daily_controller.dart';
-import 'package:nifty_mobile/app/modules/daily/views/custom_tab_view.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:nifty_mobile/app/widgets/daily_list_item.dart';
 
 import 'package:nifty_mobile/app/widgets/small_action_button.dart';
+
+import '../../../widgets/secondary_tab_bar.dart';
 
 class SportTabView extends HookWidget {
   final NeumorphicThemeData theme;
@@ -57,7 +58,7 @@ class SportTabView extends HookWidget {
                   ...sportsList
                       .mapIndexed(
                         (index, element) => ObxValue((state) {
-                          return CustomTab(
+                          return SecondaryTab(
                             title: 'Sport n°$index',
                             isSelected: state.value == index,
                           );
@@ -127,10 +128,10 @@ class SportTabView extends HookWidget {
                                     padding: EdgeInsets.symmetric(
                                       vertical: 10.toHeight,
                                     ),
-                                    child: DailyListItem(
-                                        text: 'Activité physique intensive',
-                                        calories: 190,
-                                        type: 'sport'),
+                                    // child: DailyListItem(
+                                    //     text: 'Activité physique intensive',
+                                    //     calories: 190,
+                                    //     type: 'sport'),
                                   ),
                                 )
                               ],
