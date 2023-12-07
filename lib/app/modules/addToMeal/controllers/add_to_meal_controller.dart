@@ -8,7 +8,7 @@ import 'package:nifty_mobile/app/data/providers/ingredient_provider.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
 class AddToMealController extends GetxController {
-  String selectedMeal = Get.arguments??"";
+  String selectedMeal = Get.arguments ?? "";
 
   final searchIngredientsController = TextEditingController();
   final userIngredientsController = TextEditingController();
@@ -16,17 +16,16 @@ class AddToMealController extends GetxController {
   final subcategoriesController = TextEditingController();
   final ingredientsSubCategoriesController = TextEditingController();
 
-  List<IngredientsData> ingredientsList = [];
-  List<IngredientsData> ingredientsSubcategoryList = [];
-  List<SubCategoryData> subCategoriesList = [];
-  List<CategoryData> categoriesList = [];
+  List<Ingredient> ingredientsList = [];
+  List<Ingredient> ingredientsSubcategoryList = [];
+  List<SubCategory> subCategoriesList = [];
+  List<Category> categoriesList = [];
   RxBool loading = false.obs;
   RxInt selectedCategoryId = 0.obs;
   RxInt selectedSubCategoryId = 0.obs;
-  Rx<IngredientsData?> selectedIngredient = Rx(null);
+  Rx<Ingredient?> selectedIngredient = Rx(null);
   Rx<QuantityDropdownItem?> selectedMeasurementUnit = Rx(null);
-  List<QuantityDropdownItem> measurementUnitsItems=[];
-
+  List<QuantityDropdownItem> measurementUnitsItems = [];
 
   final IngredientProvider provider;
 
@@ -45,10 +44,10 @@ class AddToMealController extends GetxController {
       loading.value = true;
 
       var responseIngredientList = await provider.getIngredientList();
-      this.ingredientsList = responseIngredientList.data ?? [];
+      ingredientsList = responseIngredientList?.data ?? [];
 
       var responseCategories = await provider.getCategoriesList();
-      this.categoriesList = responseCategories.data ?? [];
+      categoriesList = responseCategories?.data ?? [];
     } catch (err, _) {
       print(err);
     } finally {
@@ -60,7 +59,7 @@ class AddToMealController extends GetxController {
     try {
       var responseSubCategories =
           await provider.getSubCategoriesList(categoryId);
-      this.subCategoriesList = responseSubCategories.data ?? [];
+      subCategoriesList = responseSubCategories?.data ?? [];
     } catch (err, _) {
       print(err);
     } finally {}
@@ -70,14 +69,13 @@ class AddToMealController extends GetxController {
     try {
       var responseIngredientsSubCategories =
           await provider.getIngredientList(subCategoryId: subCategoryId);
-      this.ingredientsSubcategoryList =
-          responseIngredientsSubCategories.data ?? [];
+      ingredientsSubcategoryList = responseIngredientsSubCategories?.data ?? [];
     } catch (err, stacktrace) {
       print(err);
     } finally {}
   }
 
-  Future<List<IngredientsData>> searchIngredients(String searchKeyword) async {
+  Future<List<Ingredient>> searchIngredients(String searchKeyword) async {
     return ingredientsList.where((ingredient) {
       return ingredient.attributes!.nameEn!
               .toLowerCase()
@@ -88,7 +86,7 @@ class AddToMealController extends GetxController {
     }).toList();
   }
 
-  Future<List<CategoryData>> searchCategory(String searchKeyword) async {
+  Future<List<Category>> searchCategory(String searchKeyword) async {
     return categoriesList.where((category) {
       return category.attributes!.nameEn!
               .toLowerCase()
@@ -99,7 +97,7 @@ class AddToMealController extends GetxController {
     }).toList();
   }
 
-  Future<List<SubCategoryData>> searchSubCategory(String searchKeyword) async {
+  Future<List<SubCategory>> searchSubCategory(String searchKeyword) async {
     return subCategoriesList.where((subCategory) {
       bool matchesKeyword = subCategory.attributes!.nameEn!
               .toLowerCase()
@@ -112,7 +110,7 @@ class AddToMealController extends GetxController {
     }).toList();
   }
 
-  Future<List<IngredientsData>> searchIngredientsSubCategory(
+  Future<List<Ingredient>> searchIngredientsSubCategory(
       String searchKeyword) async {
     return ingredientsSubcategoryList.where((ingredientSubCategory) {
       bool matchesKeyword = ingredientSubCategory.attributes!.nameEn!
@@ -127,8 +125,8 @@ class AddToMealController extends GetxController {
   }
 
   initMeasurementUnits() {
-    selectedMeasurementUnit.value=null;
-    quantity.value='0';
+    selectedMeasurementUnit.value = null;
+    quantity.value = '0';
     List<QuantityDropdownItem> items = [
       QuantityDropdownItem(name: LocaleKeys.grams_unit_label.tr, grams: 1),
     ];
@@ -136,17 +134,20 @@ class AddToMealController extends GetxController {
     // Add gramsPerCircle if conditions are met
     if (selectedIngredient.value?.attributes?.gramsPerCircle != null &&
         selectedIngredient.value!.attributes!.gramsPerCircle! > 0) {
-      items.add(QuantityDropdownItem(name: LocaleKeys.circle_unit_label.tr, grams: selectedIngredient.value?.attributes!.gramsPerCircle!));
+      items.add(QuantityDropdownItem(
+          name: LocaleKeys.circle_unit_label.tr,
+          grams: selectedIngredient.value?.attributes!.gramsPerCircle!));
     }
 
     // Add units if conditions are met
     selectedIngredient.value?.attributes?.units?.forEach((unit) {
       if (unit.grams != null && unit.grams! > 0) {
-        items.add(QuantityDropdownItem(name: unit.name ?? '', grams: unit.grams!));
+        items.add(
+            QuantityDropdownItem(name: unit.name ?? '', grams: unit.grams!));
       }
     });
 
-    measurementUnitsItems= items;
-    selectedMeasurementUnit.value = items[0] ;
+    measurementUnitsItems = items;
+    selectedMeasurementUnit.value = items[0];
   }
 }

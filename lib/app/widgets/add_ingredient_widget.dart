@@ -30,7 +30,7 @@ class AddIngredientFormWidget extends StatelessWidget {
         SizedBox(
           height: 20.toHeight,
         ),
-        TypeAheadField<IngredientsData>(
+        TypeAheadField<Ingredient>(
           controller: controller.searchIngredientsController,
           suggestionsCallback: (search) => controller.searchIngredients(search),
           builder: (context, controller, focusNode) {
@@ -78,7 +78,7 @@ class AddIngredientFormWidget extends StatelessWidget {
         SizedBox(
           height: 20.toHeight,
         ),
-        TypeAheadField<IngredientsData>(
+        TypeAheadField<Ingredient>(
           controller: controller.userIngredientsController,
           suggestionsCallback: (search) => controller.searchIngredients(search),
           builder: (context, controller, focusNode) {
@@ -127,7 +127,7 @@ class AddIngredientFormWidget extends StatelessWidget {
         SizedBox(
           height: 10.toHeight,
         ),
-        TypeAheadField<CategoryData>(
+        TypeAheadField<Category>(
           controller: controller.categoriesController,
           suggestionsCallback: (search) => controller.searchCategory(search),
           builder: (context, controller, focusNode) {
@@ -180,7 +180,7 @@ class AddIngredientFormWidget extends StatelessWidget {
                 SizedBox(
                   height: 10.toHeight,
                 ),
-                TypeAheadField<SubCategoryData>(
+                TypeAheadField<SubCategory>(
                   controller: controller.subcategoriesController,
                   suggestionsCallback: (search) =>
                       controller.searchSubCategory(search),
@@ -239,7 +239,7 @@ class AddIngredientFormWidget extends StatelessWidget {
                 SizedBox(
                   height: 10.toHeight,
                 ),
-                TypeAheadField<IngredientsData>(
+                TypeAheadField<Ingredient>(
                   controller: controller.ingredientsSubCategoriesController,
                   suggestionsCallback: (search) =>
                       controller.searchIngredientsSubCategory(search),
