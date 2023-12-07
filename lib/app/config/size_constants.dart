@@ -15,7 +15,7 @@ class SizeConstants {
   // Constants for sizing and padding
   static double secondaryTabBarRightPadding = 20.0;
   static double secondaryTabBarAddIconSize = 30.0;
-  static double secondaryTabBarAddContainerWidth = 55.0;
+  static const double secondaryTabBarAddContainerWidth = 55.0;
   static double secondaryTabBarAddContainerHeight = 39.0;
   static BorderRadius secondaryTabBarAddContainerBorderRadius = BorderRadius.circular(5.0);
 

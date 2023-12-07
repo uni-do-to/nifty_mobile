@@ -1,14 +1,17 @@
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/config/size_constants.dart';
 import 'package:nifty_mobile/app/config/theme_data.dart';
 
 class SecondaryTabBar extends StatelessWidget {
   final List<Widget> tabs;
-  final VoidCallback onAddPressed; // Callback function for add icon press
+  final VoidCallback? onAddPressed;
+  final EdgeInsets padding ;
+  final void Function(int)? onTap;
 
-  const SecondaryTabBar(
-      {Key? key, required this.tabs, required this.onAddPressed})
+  SecondaryTabBar(
+      {Key? key, required this.tabs, this.onAddPressed, this.onTap , this.padding = const EdgeInsets.only(left: 18, bottom: 6 , right: SizeConstants.secondaryTabBarAddContainerWidth)})
       : super(key: key);
 
   @override
@@ -17,12 +20,13 @@ class SecondaryTabBar extends StatelessWidget {
       clipBehavior: Clip.none,
       children: [
         TabBar(
+          onTap: onTap,
           isScrollable: true,
           tabAlignment: TabAlignment.start,
           indicatorColor: Colors.transparent,
           indicatorSize: TabBarIndicatorSize.label,
           labelPadding: const EdgeInsets.only(right: 6.6),
-          padding: EdgeInsets.only(bottom: 6 , right: SizeConstants.secondaryTabBarAddContainerWidth),
+          padding: padding,
           tabs: [
             ...tabs,
           ],
@@ -63,7 +67,6 @@ class SecondaryTab extends StatelessWidget {
   final String title;
   final bool isSelected;
   final Widget? icon; // Make the icon parameter nullable
-
   const SecondaryTab({
     Key? key,
     required this.title,
@@ -73,6 +76,8 @@ class SecondaryTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("rebuild secondary tabs") ;
+
     var theme = NeumorphicTheme.of(context)?.current;
 
     // Style adjustments based on the isSelected flag
