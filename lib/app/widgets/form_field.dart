@@ -5,7 +5,7 @@ import 'package:nifty_mobile/app/utils/size_utils.dart';
 
 class NeuFormField extends StatelessWidget {
   final String hintText;
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final TextInputType? keyboardType;
   final String? Function(String?)? validator;
   final EdgeInsets padding;
@@ -17,10 +17,15 @@ class NeuFormField extends StatelessWidget {
   final Widget? suffixIcon;
   final String? errorText; // Add an errorText property
   final FocusNode? focusNode; // Add an errorText property
+  final bool maintainErrorSize  ;
+  final String? initialValue ;
+  final void Function(String)? onChanged ;
 
   const NeuFormField({
     required this.hintText,
-    required this.controller,
+    this.controller,
+    this.initialValue,
+    this.onChanged,
     this.keyboardType,
     this.validator,
     this.prefixIcon,
@@ -28,9 +33,11 @@ class NeuFormField extends StatelessWidget {
     this.focusNode,
     this.onTap,
     this.errorText, // Initialize in constructor
+    this.maintainErrorSize = true,
     this.readOnly = false,
     this.autocorrect = false,
     this.obscureText = false,
+
     this.padding = const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
     Key? key,
   }) : super(key: key);
@@ -52,6 +59,8 @@ class NeuFormField extends StatelessWidget {
           ),
           padding: padding,
           child: TextFormField(
+            initialValue: initialValue,
+            onChanged: onChanged,
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: hintText,
@@ -86,9 +95,9 @@ class NeuFormField extends StatelessWidget {
         ),
         Visibility(
           visible: errorText != null && errorText!.isNotEmpty,
-          maintainSize: true,
-          maintainAnimation: true,
-          maintainState: true,
+          maintainSize: maintainErrorSize,
+          maintainAnimation: maintainErrorSize,
+          maintainState: maintainErrorSize,
           child: Padding(
             padding: const EdgeInsets.only(top: 5, left: 14),
             // Adjust the padding as needed
