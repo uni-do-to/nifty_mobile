@@ -1,10 +1,9 @@
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:get/get.dart';
 import 'package:nifty_mobile/app/widgets/secondary_tab_bar.dart';
 import 'package:nifty_mobile/app/widgets/small_action_button.dart';
 
-import '../../../config/color_constants.dart';
+import '../config/color_constants.dart';
 
 class CustomTabListView extends HookWidget {
   final int selectedTabIndex;
@@ -14,7 +13,7 @@ class CustomTabListView extends HookWidget {
   final Widget Function(int index) tabBuilder;
   final Widget Function(BuildContext context, int index) listItemBuilder;
 
-  CustomTabListView({
+  const CustomTabListView({
     Key? key,
     required this.selectedTabIndex,
     required this.tabCount,
@@ -32,38 +31,23 @@ class CustomTabListView extends HookWidget {
       length: tabCount,
       initialIndex: selectedTabIndex,
       child: Container(
-        padding: EdgeInsets.only(top: 12),
+        padding: const EdgeInsets.only(top: 12),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-/*            Builder(
-              builder: (context) {
-                print("rebuild builder");
-                RxInt selectedIndex = selectedTabIndex.obs;
-                var tabController = DefaultTabController.of(context);
-                tabController.addListener(() {
-                  if (tabController.indexIsChanging)
-                    selectedIndex.value = tabController.index;
-                });
-                return*/
-                  SecondaryTabBar(
-                  onAddPressed: onAddTabPressed,
-                  onTap: onTapChanged,
-                  tabs: List.generate(
-                    tabCount,
-                    (index) => tabBuilder(index),
-                  ),
-                )
-    // ;
-    //           },
-    //         )
-                    ,
-            //navigation button to create ingredient/ recipe
-            SizedBox(
+            SecondaryTabBar(
+              onAddPressed: onAddTabPressed,
+              onTap: onTapChanged,
+              tabs: List.generate(
+                tabCount,
+                (index) => tabBuilder(index),
+              ),
+            ),
+            const SizedBox(
               height: 9,
             ),
             Container(
-              padding: EdgeInsets.only(left: 18),
+              padding: const EdgeInsets.only(left: 18),
               child: Row(
                 children: [
                   Container(
@@ -74,7 +58,7 @@ class CustomTabListView extends HookWidget {
                       backgroundColor: ColorConstants.secondaryTabBarTextColor,
                       textColor: Colors.white,
                       fontSize: 16,
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.arrow_forward,
                         color: Colors.white,
                         size: 20,
@@ -85,21 +69,21 @@ class CustomTabListView extends HookWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Expanded(
               child: Container(
                 color: ColorConstants.grayBackgroundColor,
-                padding: EdgeInsets.only(right: 16, left: 18),
+                padding: const EdgeInsets.only(right: 16, left: 18),
                 child: TabBarView(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   children: List.generate(
                     tabCount,
                     (index) => ListView.separated(
                       itemCount: tabCount * 2, // Adjust this as needed
-                      separatorBuilder: (context, index) => SizedBox(height: 4),
-                      padding: EdgeInsets.only(right: 20),
+                      separatorBuilder: (context, index) => const SizedBox(height: 4),
+                      padding: const EdgeInsets.only(right: 20),
                       itemBuilder: (context, itemIndex) =>
                           listItemBuilder(context, itemIndex),
                     ),

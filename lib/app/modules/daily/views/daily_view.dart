@@ -5,7 +5,7 @@ import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/config/size_constants.dart';
 import 'package:nifty_mobile/app/config/theme_data.dart';
 import 'package:nifty_mobile/app/modules/daily/views/chart_view.dart';
-import 'package:nifty_mobile/app/modules/daily/views/meal_tab_view.dart';
+import 'package:nifty_mobile/app/widgets/custom_tab_list_view.dart';
 import 'package:nifty_mobile/app/modules/daily/views/sport_tab_view.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:nifty_mobile/app/widgets/main_tab_bar.dart';
