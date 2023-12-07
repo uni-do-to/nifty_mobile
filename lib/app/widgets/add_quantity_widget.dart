@@ -35,8 +35,7 @@ class AddQuantityWidget extends StatelessWidget {
         children: <Widget>[
           Neumorphic(
             style: NeumorphicStyle(depth: 1.3, intensity: 1),
-            padding: EdgeInsets.symmetric(
-                horizontal: 17, vertical: 17),
+            padding: EdgeInsets.symmetric(horizontal: 17, vertical: 17),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -48,6 +47,7 @@ class AddQuantityWidget extends StatelessWidget {
                   height: 5,
                 ),
                 Neumorphic(
+                  padding: EdgeInsets.only(left: 20),
                   style: NeumorphicStyle(
                     depth: NeumorphicTheme.embossDepth(context),
                     boxShape:
@@ -58,7 +58,6 @@ class AddQuantityWidget extends StatelessWidget {
                     ),
                   ),
                   child: DropdownButtonFormField<QuantityDropdownItem>(
-
                     value: selectedMeasurementUnit,
                     onChanged: (newValue) {
                       onMeasurementUnitChange(newValue);
@@ -73,20 +72,20 @@ class AddQuantityWidget extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height:8,
+                  height: 8,
                 ),
                 Text(
                   selectedMeasurementUnit?.name ==
                           LocaleKeys.circle_unit_label.tr
                       ? LocaleKeys.circle_unit_label.tr
                       : LocaleKeys.quantity_text_field_label.tr,
-                  style: theme.textTheme.bodySmall,
+                  style: theme.textTheme.bodySmall?.copyWith(fontSize: 14),
                 ),
                 SizedBox(
                   height: 5,
                 ),
                 NeuFormField(
-                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 18),
+                  padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                   hintText: LocaleKeys.quantity_text_field_label.tr,
                   initialValue: quantityValue,
                   keyboardType: TextInputType.number,

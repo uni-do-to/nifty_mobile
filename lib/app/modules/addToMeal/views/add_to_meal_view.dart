@@ -4,6 +4,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/modules/addToMeal/views/ingredient_teb_view.dart';
+import 'package:nifty_mobile/app/modules/addToMeal/views/recipe_tab_view.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:nifty_mobile/app/widgets/main_tab_bar.dart';
 
@@ -85,7 +86,7 @@ class AddToMealView extends GetView<AddToMealController> {
                           selectedMeal: controller.selectedMeal,
                           theme: theme!,
                         ),
-                        IngredientTabView(
+                        RecipeTabView(
                           selectedMeal: controller.selectedMeal,
                           theme: theme,
                         ),

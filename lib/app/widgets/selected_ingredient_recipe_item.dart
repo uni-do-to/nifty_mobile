@@ -25,7 +25,7 @@ class SelectedIngredientRecipeItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 61,
+      height: 65,
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 21),
       color: ColorConstants.mainThemeColor.withOpacity(0.25),
       child: Row(
@@ -54,6 +54,9 @@ class SelectedIngredientRecipeItem extends StatelessWidget {
                   ? ColorConstants.accentColor
                   : ColorConstants.accentColor.withOpacity(0.22),
             ),
+          ),
+          const SizedBox(
+            width: 10,
           ),
           Text(
             quantityName,

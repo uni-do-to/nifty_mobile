@@ -55,7 +55,7 @@ class IngredientTabView extends StatelessWidget {
               },
             ),
           ),
-          SingleChildScrollView(
+          Expanded(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 20.toWidth),
               child: ObxValue((state) {
@@ -82,16 +82,16 @@ class IngredientTabView extends StatelessWidget {
             return Container(
               child: AddQuantityWidget(
                 theme: theme,
-                measurementUnitsItems: controller.measurementUnitsItems,
+                measurementUnitsItems: controller.measurementUnitsIngredientItems,
                 selectedMeasurementUnit:
-                    controller.selectedMeasurementUnit.value,
-                quantityValue: controller.quantity.value,
+                    controller.selectedIngredientMeasurementUnit.value,
+                quantityValue: controller.ingredientQuantity.value,
                 onMeasurementUnitChange: (unit) =>
-                    controller.selectedMeasurementUnit.value = unit,
-                onQuantityChange: (value) => controller.quantity.value = value,
+                    controller.selectedIngredientMeasurementUnit.value = unit,
+                onQuantityChange: (value) => controller.ingredientQuantity.value = value,
               ),
             );
-          }, controller.selectedMeasurementUnit),
+          }, controller.selectedIngredientMeasurementUnit),
           SizedBox(
             height: 21,
           ),
@@ -110,13 +110,13 @@ class IngredientTabView extends StatelessWidget {
                                   ?.nameEn ??
                               "Choisissez un élément dans la liste",
                       quantityName:
-                          controller.selectedMeasurementUnit.value?.name ??
+                          controller.selectedIngredientMeasurementUnit.value?.name ??
                               "QTé",
-                      quantityValue: controller.quantity.value,
+                      quantityValue: controller.ingredientQuantity.value,
                       isChecked:
                           controller.selectedIngredient.value?.attributes !=
                                   null &&
-                              controller.selectedMeasurementUnit.value != null,
+                              controller.selectedIngredientMeasurementUnit.value != null,
                     ),
                   ),
                   const SizedBox(
@@ -136,16 +136,16 @@ class IngredientTabView extends StatelessWidget {
                           backgroundColor: controller.selectedIngredient.value
                                           ?.attributes !=
                                       null &&
-                                  controller.selectedMeasurementUnit.value !=
+                                  controller.selectedIngredientMeasurementUnit.value !=
                                       null
                               ? ColorConstants.accentColor
                               : ColorConstants.accentColor.withOpacity(0.4),
                           textColor: Colors.white,
                           onPressed: () {
                             if (controller.selectedIngredient.value != null &&
-                                controller.selectedMeasurementUnit.value !=
+                                controller.selectedIngredientMeasurementUnit.value !=
                                     null &&
-                                controller.quantity.value != "0") {
+                                controller.ingredientQuantity.value != "0") {
                               Get.back();
                             }
                             //TODO add your ingredient to ingredient list inside selected meal object
