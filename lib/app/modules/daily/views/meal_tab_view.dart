@@ -5,6 +5,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/modules/daily/controllers/daily_controller.dart';
 import 'package:nifty_mobile/app/modules/daily/views/custom_tab_view.dart';
+import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:nifty_mobile/app/widgets/daily_list_item.dart';
 import 'dart:collection';
@@ -83,29 +84,6 @@ class MealTabView extends HookWidget {
               );
             }, mealsList),
             //navigation button to create ingredient/ recipe
-            Row(
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(left: 15.toWidth),
-                  child: SmallActionButton(
-                    text: 'Ajouter un nouvel élément ',
-                    backgroundColor: Color(0xff42A4A0),
-                    textColor: Colors.white,
-                    fontSize: 24.toFont,
-                    height: 35.toHeight,
-                    icon: Icon(
-                      Icons.arrow_forward,
-                      color: Colors.white,
-                      size: 20,
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
-                Expanded(
-                  child: Container(),
-                )
-              ],
-            ),
             Expanded(
               child: Container(
                 color: Color(0xffF9F8F8),
@@ -114,13 +92,40 @@ class MealTabView extends HookWidget {
                 child: TabBarView(
                   controller: mealsTabController,
                   physics: NeverScrollableScrollPhysics(),
-
                   children: [
                     ...mealsList
                         .mapIndexed(
                           (index, element) => Container(
                             child: Column(
                               children: [
+                                Row(
+                                  children: [
+                                    SmallActionButton(
+                                      text: 'Ajouter un nouvel élément ',
+                                      backgroundColor: Color(0xff42A4A0),
+                                      textColor: Colors.white,
+                                      fontSize: 24.toFont,
+                                      height: 35.toHeight,
+                                      icon: Icon(
+                                        Icons.arrow_forward,
+                                        color: Colors.white,
+                                        size: 20,
+                                      ),
+                                      onPressed: () {
+                                        Get.toNamed(
+                                          Routes.ADD_TO_MEAL,
+                                          arguments: element,
+                                        );
+                                      },
+                                    ),
+                                    Expanded(
+                                      child: Container(),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 30.toHeight,
+                                ),
                                 ...mealsList.mapIndexed(
                                   (index, element) => Container(
                                     padding: EdgeInsets.symmetric(

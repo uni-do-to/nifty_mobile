@@ -1,12 +1,4 @@
 import 'package:get/get.dart';
-import 'package:nifty_mobile/app/modules/daily/bindings/daily_binding.dart';
-import 'package:nifty_mobile/app/modules/daily/views/daily_view.dart';
-import 'package:nifty_mobile/app/modules/ingredient/bindings/ingredient_binding.dart';
-import 'package:nifty_mobile/app/modules/ingredient/views/ingredient_view.dart';
-import 'package:nifty_mobile/app/modules/profile/bindings/profile_binding.dart';
-import 'package:nifty_mobile/app/modules/profile/views/profile_view.dart';
-import 'package:nifty_mobile/app/modules/recipe/bindings/recipe_binding.dart';
-import 'package:nifty_mobile/app/modules/recipe/views/recipe_view.dart';
 
 import '../middleware/auth_middleware.dart';
 import '../modules/addIngredientMeal/bindings/add_ingredient_meal_binding.dart';
@@ -18,10 +10,20 @@ import '../modules/addRecipeMeal/bindings/add_recipe_meal_binding.dart';
 import '../modules/addRecipeMeal/views/add_recipe_meal_view.dart';
 import '../modules/addSport/bindings/add_sport_binding.dart';
 import '../modules/addSport/views/add_sport_view.dart';
+import '../modules/addToMeal/bindings/add_to_meal_binding.dart';
+import '../modules/addToMeal/views/add_to_meal_view.dart';
+import '../modules/daily/bindings/daily_binding.dart';
+import '../modules/daily/views/daily_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/ingredient/bindings/ingredient_binding.dart';
+import '../modules/ingredient/views/ingredient_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/profile/bindings/profile_binding.dart';
+import '../modules/profile/views/profile_view.dart';
+import '../modules/recipe/bindings/recipe_binding.dart';
+import '../modules/recipe/views/recipe_view.dart';
 import '../modules/register/bindings/register_binding.dart';
 import '../modules/register/views/register_view.dart';
 import '../modules/subscription/bindings/subscription_binding.dart';
@@ -51,10 +53,17 @@ class AppPages {
         binding: SubscriptionBinding(),
         middlewares: [NotAuthMiddleware()]),
     GetPage(
-        name: _Paths.HOME,
-        page: () => const HomeView(),
-        binding: HomeBinding(),
-        middlewares: [AuthMiddleware()]),
+      name: _Paths.HOME,
+      page: () => const HomeView(),
+      binding: HomeBinding(),
+      middlewares: [AuthMiddleware()],
+    ),
+    GetPage(
+      name: _Paths.ADD_TO_MEAL,
+      page: () => const AddToMealView(),
+      binding: AddToMealBinding(),
+      middlewares: [AuthMiddleware()],
+    ),
     GetPage(
       name: _Paths.ADD_NEW_INGREDIENT,
       page: () => const AddNewIngredientView(),
@@ -86,6 +95,6 @@ class AppPages {
       page: () => const AddSportView(),
       binding: AddSportBinding(),
       middlewares: [AuthMiddleware()],
-    )
+    ),
   ];
 }

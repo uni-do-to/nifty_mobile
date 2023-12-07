@@ -27,9 +27,9 @@ class SportTabView extends HookWidget {
       if (sportsTabController.index == sportsList.length) {
         //do add
         sportsList.add("sport tab");
-        sportsTabController.index = controller.selectedMealTabIndex.value;
+        sportsTabController.index = controller.selectedSportTabIndex.value;
       } else {
-        controller.selectedMealTabIndex.value = sportsTabController.index;
+        controller.selectedSportTabIndex.value = sportsTabController.index;
       }
     });
 
@@ -60,7 +60,7 @@ class SportTabView extends HookWidget {
                             title: 'Sport n°$index',
                             isSelected: state.value == index,
                           );
-                        }, controller.selectedMealTabIndex),
+                        }, controller.selectedSportTabIndex),
                       )
                       .toList(),
                   Container(
