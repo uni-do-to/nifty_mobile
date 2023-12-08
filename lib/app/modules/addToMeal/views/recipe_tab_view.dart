@@ -39,7 +39,7 @@ class RecipeTabView extends StatelessWidget {
         children: [
           Container(
             height: 37.35,
-            width: 250,
+            width: 225,
             margin: const EdgeInsets.only(
               left: 21,
               top: 21,

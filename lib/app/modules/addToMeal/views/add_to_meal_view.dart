@@ -16,7 +16,6 @@ class AddToMealView extends GetView<AddToMealController> {
   @override
   Widget build(BuildContext context) {
     var theme = NeumorphicTheme.of(context)?.current;
-    SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 7.4,

@@ -35,7 +35,7 @@ class IngredientTabView extends StatelessWidget {
         children: [
           Container(
             height: 37.35,
-            width: 250,
+            width: 230,
             margin: const EdgeInsets.only(
               left: 21,
               top: 21,

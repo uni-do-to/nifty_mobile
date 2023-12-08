@@ -41,7 +41,7 @@ class HomeController extends AuthController {
     if (settings.name == Routes.RECIPE) {
       return GetPageRoute(
         routeName: Routes.RECIPE,
-        page: () => const RecipeView(),
+        page: () =>  RecipeView(),
         binding: RecipeBinding(),
       );
     }
