@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 
-class RecipeListItem extends StatelessWidget {
+class RecipeIngredientListItem extends StatelessWidget {
   final String text;
+  final IconData icon;
   final void Function()? onTap;
 
-  const RecipeListItem({Key? key, required this.text, required this.onTap}) : super(key: key);
+  const RecipeIngredientListItem(
+      {Key? key, required this.text, required this.icon, required this.onTap})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +19,7 @@ class RecipeListItem extends StatelessWidget {
       child: Row(
         children: [
           Icon(
-            Icons.restaurant_menu_rounded,
+            icon,
             color: NeumorphicTheme.of(context)?.current?.iconTheme.color,
             size: 20,
           ),

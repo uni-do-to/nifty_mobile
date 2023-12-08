@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/widgets/form_field.dart';
-import 'package:nifty_mobile/app/widgets/recipe_list_item.dart';
+import 'package:nifty_mobile/app/widgets/recipe_ingredient_list_item.dart';
 import 'package:nifty_mobile/app/widgets/small_action_button.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
@@ -99,10 +99,11 @@ class RecipeView extends GetView<RecipeController> {
                                 itemBuilder: (context, index) {
                                   return Column(
                                     children: [
-                                      RecipeListItem(
+                                      RecipeIngredientListItem(
                                         onTap: () =>
                                             showDeleteConfirmationDialogc(
                                                 context, index),
+                                        icon: Icons.restaurant_menu_rounded,
                                         text: controller.filteredItems[index]
                                                 .attributes?.name ??
                                             "no search result",
