@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/modules/addToMeal/controllers/add_to_meal_controller.dart';
 import 'package:nifty_mobile/app/modules/daily/controllers/daily_controller.dart';
-import 'package:nifty_mobile/app/modules/daily/views/custom_tab_view.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:nifty_mobile/app/widgets/add_ingredient_widget.dart';

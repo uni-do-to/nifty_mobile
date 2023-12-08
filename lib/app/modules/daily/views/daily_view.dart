@@ -5,6 +5,7 @@ import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/config/size_constants.dart';
 import 'package:nifty_mobile/app/config/theme_data.dart';
 import 'package:nifty_mobile/app/modules/daily/views/chart_view.dart';
+import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/widgets/custom_tab_list_view.dart';
 import 'package:nifty_mobile/app/modules/daily/views/sport_tab_view.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
@@ -131,6 +132,12 @@ class DailyView extends GetView<DailyController> {
                                   },
                                   onTapChanged: (index) {
                                     controller.selectedMealTabIndex.value = index;
+                                  },
+                                  onAddToMeal: ()async {
+                                    var currentMeal = controller.getSelectedMeal();
+                                    if(currentMeal != null) {
+                                     var results = await Get.toNamed(Routes.ADD_TO_MEAL ,arguments: currentMeal);
+                                    }
                                   },
                                   tabBuilder: (index) {
                                     return ObxValue( (state) {

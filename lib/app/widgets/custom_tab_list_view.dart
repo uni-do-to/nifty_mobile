@@ -1,5 +1,7 @@
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:get/get.dart';
+import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/widgets/secondary_tab_bar.dart';
 import 'package:nifty_mobile/app/widgets/small_action_button.dart';
 
@@ -11,8 +13,10 @@ class CustomTabListView extends StatelessWidget {
   final void Function()? onAddTabPressed;
   final int tabCount;
   final Widget Function(int index) tabBuilder;
+  final void Function()? onAddToMeal;
   final int Function(int index) getTapItemCount;
-  final Widget Function(BuildContext context, int tabIndex, int listIndex) listItemBuilder;
+  final Widget Function(BuildContext context, int tabIndex, int listIndex)
+      listItemBuilder;
 
   const CustomTabListView({
     Key? key,
@@ -23,6 +27,7 @@ class CustomTabListView extends StatelessWidget {
     required this.getTapItemCount,
     this.onTapChanged,
     this.onAddTabPressed,
+    this.onAddToMeal,
   }) : super(key: key);
 
   @override
@@ -65,7 +70,7 @@ class CustomTabListView extends StatelessWidget {
                         color: Colors.white,
                         size: 20,
                       ),
-                      onPressed: () {},
+                      onPressed: onAddToMeal,
                     ),
                   )
                 ],
@@ -83,11 +88,13 @@ class CustomTabListView extends StatelessWidget {
                   children: List.generate(
                     tabCount,
                     (index) => ListView.separated(
-                      itemCount: getTapItemCount(index), // Adjust this as needed
-                      separatorBuilder: (context, index) => const SizedBox(height: 4),
+                      itemCount: getTapItemCount(index),
+                      // Adjust this as needed
+                      separatorBuilder: (context, index) =>
+                          const SizedBox(height: 4),
                       padding: const EdgeInsets.only(right: 20),
                       itemBuilder: (context, itemIndex) =>
-                          listItemBuilder(context, index , itemIndex),
+                          listItemBuilder(context, index, itemIndex),
                     ),
                   ),
                 ),

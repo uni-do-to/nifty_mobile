@@ -79,4 +79,11 @@ class DailyController extends GetxController {
     updateValues(newDaily?.data) ;
   }
 
+  Meals? getSelectedMeal() {
+    if(meals.length > selectedMealTabIndex.value){
+      return meals[selectedMealTabIndex.value] ;
+    }
+    return null ;
+  }
+
 }

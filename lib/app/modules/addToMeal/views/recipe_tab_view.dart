@@ -1,23 +1,15 @@
-import 'package:collection/collection.dart';
-import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/data/models/recipe_model.dart';
 import 'package:nifty_mobile/app/modules/addToMeal/controllers/add_to_meal_controller.dart';
-import 'package:nifty_mobile/app/modules/daily/controllers/daily_controller.dart';
-import 'package:nifty_mobile/app/modules/daily/views/custom_tab_view.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
-import 'package:nifty_mobile/app/widgets/add_ingredient_widget.dart';
 import 'package:nifty_mobile/app/widgets/add_quantity_widget.dart';
-import 'package:nifty_mobile/app/widgets/daily_list_item.dart';
 import 'package:nifty_mobile/app/widgets/form_field.dart';
 import 'package:nifty_mobile/app/widgets/selected_ingredient_recipe_item.dart';
-import 'dart:collection';
 
 import 'package:nifty_mobile/app/widgets/small_action_button.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
