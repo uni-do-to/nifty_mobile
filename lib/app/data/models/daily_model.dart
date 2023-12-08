@@ -79,6 +79,24 @@ class Attributes {
     }
     return data;
   }
+
+  void updateDailyDetails() {
+    double totalConsumedCalories = 0.0;
+    double totalCalorieBurned = 0.0;
+
+    meals?.forEach((meal) {
+      meal.updateMealDetails();
+      totalConsumedCalories += meal.calories ?? 0;
+    });
+
+    sports?.forEach((sport) {
+      sport.updateSportCalories();
+      totalCalorieBurned += sport.calories ?? 0;
+    });
+
+    consumedCalories = totalConsumedCalories;
+    calorieBurned = totalCalorieBurned;
+  }
 }
 
 class Meals {
@@ -122,6 +140,19 @@ class Meals {
       data['items'] = items?.map((v) => v.toJson()).toList();
     }
     return data;
+  }
+
+  void updateMealDetails() {
+    double totalCalories = 0.0;
+    double totalWeight = 0.0;
+
+    items?.forEach((item) {
+      totalCalories += item.calories ?? 0;
+      totalWeight += item.weight ?? 0;
+    });
+
+    calories = totalCalories;
+    weight = totalWeight;
   }
 }
 
@@ -207,6 +238,16 @@ class Sports {
       data['items'] = items?.map((v) => v.toJson()).toList();
     }
     return data;
+  }
+
+  void updateSportCalories() {
+    double totalCalories = 0.0;
+
+    items?.forEach((item) {
+      totalCalories += item.calories ?? 0;
+    });
+
+    calories = totalCalories;
   }
 }
 

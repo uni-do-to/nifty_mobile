@@ -123,6 +123,9 @@ class DailyView extends GetView<DailyController> {
                                   tabCount: state.length,
                                   selectedTabIndex:
                                       controller.selectedMealTabIndex.value,
+                                  getTapItemCount: (tabIndex) {
+                                    return controller.meals[tabIndex].items?.length??0;
+                                  },
                                   onAddTabPressed: () {
                                     controller.addMeal() ;
                                   },
@@ -147,8 +150,8 @@ class DailyView extends GetView<DailyController> {
                                     } , controller.selectedMealTabIndex
                                     );
                                   },
-                                  listItemBuilder: (BuildContext context, int tabIndex , int listIndex){
-                                    var item = state[tabIndex].items?[listIndex] ;
+                                  listItemBuilder: (BuildContext context, int tabIndex , int itemIndex){
+                                    var item = state[tabIndex].items?[itemIndex] ;
                                     return DailyListItem(
                                       name: item?.getName()??"No name",
                                       calories: RichText(
@@ -164,7 +167,9 @@ class DailyView extends GetView<DailyController> {
                                         ),
                                       ),
                                       action: InkWell(
-                                        onTap: () => {},
+                                        onTap: () => {
+                                          controller.deleteItemFromMeal(tabIndex, itemIndex)
+                                        },
                                         enableFeedback: true,
                                         child: Icon(
                                           Icons.delete,

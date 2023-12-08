@@ -5,12 +5,13 @@ import 'package:nifty_mobile/app/widgets/small_action_button.dart';
 
 import '../config/color_constants.dart';
 
-class CustomTabListView extends HookWidget {
+class CustomTabListView extends StatelessWidget {
   final int selectedTabIndex;
   final void Function(int)? onTapChanged;
   final void Function()? onAddTabPressed;
   final int tabCount;
   final Widget Function(int index) tabBuilder;
+  final int Function(int index) getTapItemCount;
   final Widget Function(BuildContext context, int tabIndex, int listIndex) listItemBuilder;
 
   const CustomTabListView({
@@ -19,6 +20,7 @@ class CustomTabListView extends HookWidget {
     required this.tabCount,
     required this.tabBuilder,
     required this.listItemBuilder,
+    required this.getTapItemCount,
     this.onTapChanged,
     this.onAddTabPressed,
   }) : super(key: key);
@@ -81,7 +83,7 @@ class CustomTabListView extends HookWidget {
                   children: List.generate(
                     tabCount,
                     (index) => ListView.separated(
-                      itemCount: tabCount * 2, // Adjust this as needed
+                      itemCount: getTapItemCount(index), // Adjust this as needed
                       separatorBuilder: (context, index) => const SizedBox(height: 4),
                       padding: const EdgeInsets.only(right: 20),
                       itemBuilder: (context, itemIndex) =>

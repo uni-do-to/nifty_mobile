@@ -31,20 +31,32 @@ class DailyController extends GetxController {
 
   void getDaily(String date) async {
     var results = await provider.getDaily(date) ;
-    daily = results!.data?[0] ;
-    meals.value = daily?.attributes?.meals??[];
+    updateValues(results?.data?[0]) ;
+  }
+
+  void updateValues (Daily? newDaily) {
+    if(newDaily != null){
+      daily = newDaily ;
+      meals.value = daily?.attributes?.meals??[];
+    }
   }
 
 
   void addMeal() async {
-    if(daily == null)
+    if(daily == null) {
       return ;
+    }
+
+    var newIndex = meals.length;
     daily?.attributes?.meals?.add(Meals(
-      index: selectedMealTabIndex.value + 1
+      index: newIndex,
+      title: "Meal $newIndex"
     ));
 
-    await provider.editDaily(daily!) ;
+    var newDaily = await provider.editDaily(daily!) ;
+    updateValues(newDaily?.data) ;
   }
+
   @override
   void onReady() {
     super.onReady();
@@ -53,6 +65,17 @@ class DailyController extends GetxController {
   @override
   void onClose() {
     super.onClose();
+  }
+
+  deleteItemFromMeal(int mealIndex, int itemIndex) async{
+    if(daily == null) {
+      return ;
+    }
+
+    meals[mealIndex].items?.removeAt(itemIndex) ;
+    daily?.attributes?.updateDailyDetails() ;
+    var newDaily = await provider.editDaily(daily!) ;
+    updateValues(newDaily?.data) ;
   }
 
 }
