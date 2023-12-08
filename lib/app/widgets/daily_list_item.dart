@@ -1,86 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 
 class DailyListItem extends StatelessWidget {
-  final String text;
-  final int calories;
-  final String type;
+  final String name;
+  final Widget calories;
+  final Widget? action ;
 
   const DailyListItem(
-      {Key? key,
-      required this.text,
-      required this.calories,
-      required this.type})
+      {Key? key, required this.name, required this.calories, this.action})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var theme = NeumorphicTheme.of(context)?.current;
     return Container(
-        height: 70.toHeight,
+        height: 47,
         padding:
-            EdgeInsets.symmetric(vertical: 10.toHeight, horizontal: 10.toWidth),
+            const EdgeInsets.only(top: 13, bottom: 13 , left: 27 , right: 13),
         decoration: BoxDecoration(
-          color: Color(0xff274C5B).withOpacity(0.1),
-          borderRadius: BorderRadius.circular(3),
+          color: ColorConstants.accentColor.withOpacity(0.1),
+          borderRadius: BorderRadius.circular(5),
         ),
         child: Row(
           children: [
-            type == 'ingredient'
-                ? Icon(
-                    Icons.egg,
-                    color: theme?.iconTheme.color,
-                    size: 18,
-                  )
-                : type == 'recipe'
-                    ? Icon(
-                        Icons.menu_book_rounded,
-                        color: theme?.iconTheme.color,
-                        size: 18,
-                      )
-                    : Icon(
-                        Icons.fitness_center_sharp,
-                        color: theme?.iconTheme.color,
-                        size: 18,
-                      ),
-            SizedBox(
-              width: 15.toWidth,
-            ),
             Expanded(
               child: Text(
-                text,
-                style: theme?.textTheme.bodySmall,
+                name,
+                style: theme?.textTheme.titleMedium,
               ),
             ),
-            Text(
-              calories.toString(),
-              style: theme?.textTheme.bodySmall,
-            ),
-            SizedBox(
-              width: 5.toWidth,
-            ),
-            type == 'sport'
-                ? Text(
-                    "NP",
-                    style: theme?.textTheme.bodySmall?.copyWith(
-                      fontWeight: FontWeight.w800,
-                    ),
-                  )
-                : Text(
-                    "Kcal",
-                    style: theme?.textTheme.bodySmall?.copyWith(
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-            SizedBox(
-              width: 10.toWidth,
-            ),
-            Icon(
-              Icons.delete,
-              color: theme?.iconTheme.color,
-              size: 18,
-            ),
+            calories,
+            SizedBox(width: 21,),
+            if(action != null) action!,
           ],
         ));
   }

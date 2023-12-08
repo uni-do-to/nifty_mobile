@@ -28,4 +28,7 @@ class ColorConstants {
   static Color shadowColor = const Color(0xff000000).withOpacity(0.09) ;
   static Color grayBackgroundColor = const Color(0xffF9F8F8) ;
   static Color mainThemeColor = const Color(0xff42A4A0) ;
+
+  static Color secondaryTabBarContainerColor = Color(0xffDEEBEB);
+  static Color secondaryTabBarTextColor = Color(0xff42A4A0);
 }

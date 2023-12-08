@@ -41,8 +41,8 @@ class SmallActionButton extends StatelessWidget {
                 style: NeumorphicTheme.of(context)
                     ?.current
                     ?.textTheme
-                    .bodyMedium
-                    ?.copyWith(color: textColor, fontSize: fontSize)),
+                    .titleMedium
+                    ?.copyWith(color: textColor, fontSize: fontSize , fontWeight: FontWeight.w900)),
             if (icon != null) icon!
           ],
         ),

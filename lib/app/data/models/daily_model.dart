@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:nifty_mobile/app/data/models/recipe_model.dart';
 import 'package:nifty_mobile/app/data/models/sports_model.dart';
 
@@ -78,6 +79,24 @@ class Attributes {
     }
     return data;
   }
+
+  void updateDailyDetails() {
+    double totalConsumedCalories = 0.0;
+    double totalCalorieBurned = 0.0;
+
+    meals?.forEach((meal) {
+      meal.updateMealDetails();
+      totalConsumedCalories += meal.calories ?? 0;
+    });
+
+    sports?.forEach((sport) {
+      sport.updateSportCalories();
+      totalCalorieBurned += sport.calories ?? 0;
+    });
+
+    consumedCalories = totalConsumedCalories;
+    calorieBurned = totalCalorieBurned;
+  }
 }
 
 class Meals {
@@ -122,6 +141,19 @@ class Meals {
     }
     return data;
   }
+
+  void updateMealDetails() {
+    double totalCalories = 0.0;
+    double totalWeight = 0.0;
+
+    items?.forEach((item) {
+      totalCalories += item.calories ?? 0;
+      totalWeight += item.weight ?? 0;
+    });
+
+    calories = totalCalories;
+    weight = totalWeight;
+  }
 }
 
 class MealItem {
@@ -158,6 +190,19 @@ class MealItem {
     }
     return data;
   }
+
+  bool isIngredient () {
+    return ingredient?.data != null ;
+  }
+  String? getName () {
+    if(isIngredient()){
+      var attributes = ingredient?.data?.attributes ;
+      return Get.locale?.languageCode == 'fr' ? attributes?.nameFr : attributes?.nameEn ;
+    }else {
+      var attributes = recipe?.data?.attributes ;
+      return attributes?.name ;
+    }
+  }
 }
 
 
@@ -193,6 +238,16 @@ class Sports {
       data['items'] = items?.map((v) => v.toJson()).toList();
     }
     return data;
+  }
+
+  void updateSportCalories() {
+    double totalCalories = 0.0;
+
+    items?.forEach((item) {
+      totalCalories += item.calories ?? 0;
+    });
+
+    calories = totalCalories;
   }
 }
 
