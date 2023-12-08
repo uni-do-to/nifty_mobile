@@ -118,59 +118,64 @@ class DailyView extends GetView<DailyController> {
                         child: TabBarView(
                           physics: NeverScrollableScrollPhysics(),
                           children: [
-                            CustomTabListView(
-                              tabCount: controller.mealsList.length,
-                              selectedTabIndex:
-                                  controller.selectedMealTabIndex.value,
-                              onAddTabPressed: () =>
-                                  {controller.mealsList.add("New #")},
-                              onTapChanged: (index) {
-                                controller.selectedMealTabIndex.value = index;
-                              },
-                              tabBuilder: (index) {
-                                return ObxValue( (state) {
-                                  return SecondaryTab(
-                                    title: 'Repas n°$index',
-                                    isSelected: state.value == index,
-                                    icon: state.value == index
-                                        ? SvgPicture.asset(
-                                      'assets/images/meal_icon.svg',
-                                      width: 23,
-                                      height: 20,
-                                      color:
-                                      ColorConstants.secondaryTabBarTextColor,
-                                    )
-                                        : null,
-                                  );
-                                } , controller.selectedMealTabIndex
+                            ObxValue((state) {
+                                return CustomTabListView(
+                                  tabCount: state.length,
+                                  selectedTabIndex:
+                                      controller.selectedMealTabIndex.value,
+                                  onAddTabPressed: () {
+                                    controller.addMeal() ;
+                                  },
+                                  onTapChanged: (index) {
+                                    controller.selectedMealTabIndex.value = index;
+                                  },
+                                  tabBuilder: (index) {
+                                    return ObxValue( (state) {
+                                      return SecondaryTab(
+                                        title: 'Repas n°${index+1}',
+                                        isSelected: state.value == index,
+                                        icon: state.value == index
+                                            ? SvgPicture.asset(
+                                          'assets/images/meal_icon.svg',
+                                          width: 23,
+                                          height: 20,
+                                          color:
+                                          ColorConstants.secondaryTabBarTextColor,
+                                        )
+                                            : null,
+                                      );
+                                    } , controller.selectedMealTabIndex
+                                    );
+                                  },
+                                  listItemBuilder: (BuildContext context, int tabIndex , int listIndex){
+                                    var item = state[tabIndex].items?[listIndex] ;
+                                    return DailyListItem(
+                                      name: item?.getName()??"No name",
+                                      calories: RichText(
+                                        text: TextSpan(
+                                          style: theme?.textTheme.titleMedium,
+                                          children: [
+                                            TextSpan(text: (item?.calories?.toString()??"") ),
+                                            TextSpan(
+                                                text: ' kCal',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold)),
+                                          ],
+                                        ),
+                                      ),
+                                      action: InkWell(
+                                        onTap: () => {},
+                                        enableFeedback: true,
+                                        child: Icon(
+                                          Icons.delete,
+                                          color: ColorConstants.accentColor
+                                              .withOpacity(0.3),
+                                        ),
+                                      ),
+                                    );
+                                  },
                                 );
-                              },
-                              listItemBuilder: (BuildContext context, int index){
-                                return DailyListItem(
-                                  name: 'Steak tartare',
-                                  calories: RichText(
-                                    text: TextSpan(
-                                      style: theme?.textTheme.titleMedium,
-                                      children: const [
-                                        TextSpan(text: '150'),
-                                        TextSpan(
-                                            text: ' kCal',
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.bold)),
-                                      ],
-                                    ),
-                                  ),
-                                  action: InkWell(
-                                    onTap: () => {},
-                                    enableFeedback: true,
-                                    child: Icon(
-                                      Icons.delete,
-                                      color: ColorConstants.accentColor
-                                          .withOpacity(0.3),
-                                    ),
-                                  ),
-                                );
-                              },
+                              },controller.meals
                             ),
                             SportTabView(
                               sportsList: controller.sportsList,

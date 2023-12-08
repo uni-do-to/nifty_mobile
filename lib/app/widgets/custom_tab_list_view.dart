@@ -11,7 +11,7 @@ class CustomTabListView extends HookWidget {
   final void Function()? onAddTabPressed;
   final int tabCount;
   final Widget Function(int index) tabBuilder;
-  final Widget Function(BuildContext context, int index) listItemBuilder;
+  final Widget Function(BuildContext context, int tabIndex, int listIndex) listItemBuilder;
 
   const CustomTabListView({
     Key? key,
@@ -85,7 +85,7 @@ class CustomTabListView extends HookWidget {
                       separatorBuilder: (context, index) => const SizedBox(height: 4),
                       padding: const EdgeInsets.only(right: 20),
                       itemBuilder: (context, itemIndex) =>
-                          listItemBuilder(context, itemIndex),
+                          listItemBuilder(context, index , itemIndex),
                     ),
                   ),
                 ),

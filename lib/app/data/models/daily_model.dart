@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:nifty_mobile/app/data/models/recipe_model.dart';
 import 'package:nifty_mobile/app/data/models/sports_model.dart';
 
@@ -157,6 +158,19 @@ class MealItem {
       data['recipe'] = recipe?.toJson();
     }
     return data;
+  }
+
+  bool isIngredient () {
+    return ingredient?.data != null ;
+  }
+  String? getName () {
+    if(isIngredient()){
+      var attributes = ingredient?.data?.attributes ;
+      return Get.locale?.languageCode == 'fr' ? attributes?.nameFr : attributes?.nameEn ;
+    }else {
+      var attributes = recipe?.data?.attributes ;
+      return attributes?.name ;
+    }
   }
 }
 
