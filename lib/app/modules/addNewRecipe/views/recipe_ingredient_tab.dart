@@ -1,34 +1,24 @@
-import 'package:collection/collection.dart';
-import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
-import 'package:nifty_mobile/app/data/models/daily_model.dart';
-import 'package:nifty_mobile/app/modules/addToMeal/controllers/add_to_meal_controller.dart';
-import 'package:nifty_mobile/app/modules/daily/controllers/daily_controller.dart';
-import 'package:nifty_mobile/app/routes/app_pages.dart';
-import 'package:nifty_mobile/app/utils/size_utils.dart';
+import 'package:nifty_mobile/app/modules/addNewRecipe/controllers/add_new_recipe_controller.dart';
 import 'package:nifty_mobile/app/widgets/add_ingredient_widget.dart';
 import 'package:nifty_mobile/app/widgets/add_quantity_widget.dart';
-import 'package:nifty_mobile/app/widgets/daily_list_item.dart';
 import 'package:nifty_mobile/app/widgets/selected_ingredient_recipe_item.dart';
-import 'dart:collection';
-
 import 'package:nifty_mobile/app/widgets/small_action_button.dart';
 
-class IngredientTabView extends StatelessWidget {
-  final NeumorphicThemeData theme;
-  final Meals selectedMeal;
+import '../../../data/models/ingredient_model.dart';
 
-  AddToMealController controller = Get.find();
+class RecipeIngredientTab extends StatelessWidget {
+  RecipeIngredientTab({Key? key}) : super(key: key);
 
-  IngredientTabView({Key? key, required this.theme, required this.selectedMeal})
-      : super(key: key);
+  AddNewRecipeController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
+    var theme = NeumorphicTheme.of(context)?.current;
+
     return Container(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,18 +41,18 @@ class IngredientTabView extends StatelessWidget {
                 size: 17.75,
               ),
               onPressed: () {
-                Get.toNamed(Routes.INGREDIENT);
+                // Getet.toNamed(Routes.INGREDIENT);
               },
             ),
           ),
           Expanded(
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20.toWidth),
+              padding: EdgeInsets.symmetric(horizontal: 21),
               child: ObxValue((state) {
                 return state.value
                     ? Center(
                         child: CircularProgressIndicator(
-                          backgroundColor: theme.textTheme.labelLarge?.color,
+                          backgroundColor: theme?.textTheme.labelLarge?.color,
                         ),
                       )
                     : Container(
@@ -72,30 +62,32 @@ class IngredientTabView extends StatelessWidget {
                           top: 10.6,
                         ),
                         child: AddIngredientFormWidget(
-                          theme: theme,
-                          onIngredientSelected: (ingredient) {
-
+                          theme: theme!,
+                          onIngredientSelected: (Ingredient ingredient) {
+                            controller.onIngredientSelected(ingredient);
                           },
                         ),
                       );
               }, controller.loading),
             ),
           ),
-          ObxValue((state) {
+          Obx(() {
             return Container(
               height: 177,
               child: AddQuantityWidget(
-                theme: theme,
-                measurementUnitsItems: controller.measurementUnitsIngredientItems,
+                theme: theme!,
+                measurementUnitsItems:
+                    controller.measurementUnitsIngredientItems,
                 selectedMeasurementUnit:
                     controller.selectedIngredientMeasurementUnit.value,
                 quantityValue: controller.ingredientQuantity.value,
                 onMeasurementUnitChange: (unit) =>
                     controller.selectedIngredientMeasurementUnit.value = unit,
-                onQuantityChange: (value) => controller.ingredientQuantity.value = value,
+                onQuantityChange: (value) =>
+                    controller.ingredientQuantity.value = value,
               ),
             );
-          }, controller.selectedIngredientMeasurementUnit),
+          }),
           const SizedBox(
             height: 11,
           ),
@@ -106,7 +98,9 @@ class IngredientTabView extends StatelessWidget {
                   Container(
                     height: 61,
                     child: SelectedIngredientRecipeItem(
-                      theme: theme,
+                      theme: theme!,
+                      selectedIngredientsRecipeLength:
+                          controller.recipeIngredientsList.length,
                       selectedItemName: Get.locale?.languageCode == 'fr'
                           ? controller.selectedIngredient.value?.attributes
                                   ?.nameFr ??
@@ -114,14 +108,15 @@ class IngredientTabView extends StatelessWidget {
                           : controller.selectedIngredient.value?.attributes
                                   ?.nameEn ??
                               "Choisissez un élément dans la liste",
-                      quantityName:
-                          controller.selectedIngredientMeasurementUnit.value?.name ??
-                              "QTé",
+                      quantityName: controller
+                              .selectedIngredientMeasurementUnit.value?.name ??
+                          "QTé",
                       quantityValue: controller.ingredientQuantity.value,
-                      isChecked:
-                          controller.selectedIngredient.value?.attributes !=
-                                  null &&
-                              controller.selectedIngredientMeasurementUnit.value != null,
+                      isChecked: controller
+                                  .selectedIngredient.value?.attributes !=
+                              null &&
+                          controller.selectedIngredientMeasurementUnit.value !=
+                              null,
                     ),
                   ),
                   const SizedBox(
@@ -129,6 +124,21 @@ class IngredientTabView extends StatelessWidget {
                   ),
                   Row(
                     children: [
+                      Container(
+                        height: 54,
+                        padding: const EdgeInsets.only(left: 27),
+                        child: SmallActionButton(
+                          width: 105,
+                          text: 'Close',
+                          backgroundColor: ColorConstants.accentColor,
+                          textColor: Colors.white,
+                          onPressed: () {
+                            controller.clearRecipeIngredientForm();
+                            Get.back();
+                          },
+                          // Optionally, specify width and height
+                        ),
+                      ),
                       Expanded(
                         child: Container(),
                       ),
@@ -138,22 +148,25 @@ class IngredientTabView extends StatelessWidget {
                         child: SmallActionButton(
                           width: 181,
                           text: 'Ajouter au repas',
-                          backgroundColor: controller.selectedIngredient.value
-                                          ?.attributes !=
-                                      null &&
-                                  controller.selectedIngredientMeasurementUnit.value !=
-                                      null
-                              ? ColorConstants.accentColor
-                              : ColorConstants.accentColor.withOpacity(0.4),
+                          backgroundColor:
+                              controller.selectedIngredient.value?.attributes !=
+                                          null &&
+                                      controller
+                                              .selectedIngredientMeasurementUnit
+                                              .value !=
+                                          null
+                                  ? ColorConstants.accentColor
+                                  : ColorConstants.accentColor.withOpacity(0.4),
                           textColor: Colors.white,
                           onPressed: () {
                             if (controller.selectedIngredient.value != null &&
-                                controller.selectedIngredientMeasurementUnit.value !=
+                                controller.selectedIngredientMeasurementUnit
+                                        .value !=
                                     null &&
                                 controller.ingredientQuantity.value != "0") {
-                              Get.back();
+                              controller.addIngredientsToRecipe();
+                              controller.clearRecipeIngredientForm();
                             }
-                            //TODO add your ingredient to ingredient list inside selected meal object
                           },
                           // Optionally, specify width and height
                         ),

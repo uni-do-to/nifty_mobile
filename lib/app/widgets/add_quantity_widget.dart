@@ -5,15 +5,14 @@ import 'package:nifty_mobile/app/modules/addToMeal/controllers/add_to_meal_contr
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:nifty_mobile/app/widgets/form_field.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
-
-import '../data/models/quantity_dropdown_item.dart';
+import '../data/models/unit_model.dart';
 
 class AddQuantityWidget extends StatelessWidget {
   final NeumorphicThemeData theme;
-  final List<QuantityDropdownItem> measurementUnitsItems;
-  QuantityDropdownItem? selectedMeasurementUnit;
+  final List<Units> measurementUnitsItems;
+  Units? selectedMeasurementUnit;
   final String quantityValue;
-  final Function(QuantityDropdownItem?) onMeasurementUnitChange;
+  final Function(Units?) onMeasurementUnitChange;
   final Function(String) onQuantityChange;
 
   AddQuantityWidget({
@@ -57,16 +56,16 @@ class AddQuantityWidget extends StatelessWidget {
                       width: 0.5,
                     ),
                   ),
-                  child: DropdownButtonFormField<QuantityDropdownItem>(
+                  child: DropdownButtonFormField<Units>(
                     value: selectedMeasurementUnit,
                     onChanged: (newValue) {
                       onMeasurementUnitChange(newValue);
                     },
                     items:
-                        measurementUnitsItems.map((QuantityDropdownItem item) {
-                      return DropdownMenuItem<QuantityDropdownItem>(
+                        measurementUnitsItems.map((Units item) {
+                      return DropdownMenuItem<Units>(
                         value: item,
-                        child: Text(item.name),
+                        child: Text(item.name!),
                       );
                     }).toList(),
                   ),

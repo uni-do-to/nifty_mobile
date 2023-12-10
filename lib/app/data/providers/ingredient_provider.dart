@@ -21,7 +21,7 @@ class IngredientProvider extends BaseProvider {
 
     return decode<ApiSingleResponse<Ingredient>?>(
         response,
-            (data) => ApiSingleResponse.fromJson(
+        (data) => ApiSingleResponse.fromJson(
             data, (data) => Ingredient.fromJson(data)));
   }
 
@@ -31,7 +31,20 @@ class IngredientProvider extends BaseProvider {
   Future<ApiListResponse<Ingredient>?> getIngredientList(
       {int? subCategoryId}) async {
     final response = await get(ConfigAPI.ingredientsUrl,
-        query: {'filters[sub_category]': subCategoryId?.toString()}
+        query: {
+          'filters[sub_category]': subCategoryId?.toString(),
+          'filters[isAdmin]': "true",
+        }..removeWhere((key, value) => value == null));
+
+    return decode<ApiListResponse<Ingredient>?>(
+        response,
+        (data) => ApiListResponse.fromJson(
+            data, (data) => Ingredient.fromJson(data)));
+  }
+
+  Future<ApiListResponse<Ingredient>?> getMyIngredientsList() async {
+    final response = await get(ConfigAPI.ingredientsUrl,
+        query: {'filters[isAdmin]': "false"}
           ..removeWhere((key, value) => value == null));
 
     return decode<ApiListResponse<Ingredient>?>(
@@ -40,14 +53,15 @@ class IngredientProvider extends BaseProvider {
             data, (data) => Ingredient.fromJson(data)));
   }
 
-  Future<ApiListResponse<SubCategory>?> getSubCategoriesList(int categoryId) async {
+  Future<ApiListResponse<SubCategory>?> getSubCategoriesList(
+      int categoryId) async {
     final response = await get(ConfigAPI.subCategoriesUrl,
         query: {'filters[category]': categoryId.toString()}
           ..removeWhere((key, value) => value == null));
 
     return decode<ApiListResponse<SubCategory>?>(
         response,
-            (data) => ApiListResponse.fromJson(
+        (data) => ApiListResponse.fromJson(
             data, (data) => SubCategory.fromJson(data)));
   }
 
@@ -56,7 +70,7 @@ class IngredientProvider extends BaseProvider {
 
     return decode<ApiListResponse<Category>?>(
         response,
-            (data) => ApiListResponse.fromJson(
-            data, (data) => Category.fromJson(data)));
+        (data) =>
+            ApiListResponse.fromJson(data, (data) => Category.fromJson(data)));
   }
 }

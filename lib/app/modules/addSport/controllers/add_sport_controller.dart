@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nifty_mobile/app/data/models/quantity_dropdown_item.dart';
 import 'package:nifty_mobile/app/data/models/sports_model.dart';
+import 'package:nifty_mobile/app/data/models/unit_model.dart';
 import 'package:nifty_mobile/app/data/providers/sport_provider.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
@@ -13,8 +13,8 @@ class AddSportController extends GetxController {
   RxBool sportListItemIsSelected = false.obs;
   RxBool loading = false.obs;
   Rx<Sport?> selectedSport = Rx(null);
-  Rx<QuantityDropdownItem?> selectedMeasurementUnit = Rx(null);
-  List<QuantityDropdownItem> measurementUnitsItems = [];
+  Rx<Units?> selectedMeasurementUnit = Rx(null);
+  List<Units> measurementUnitsItems = [];
 
   final SportProvider provider;
 
@@ -40,14 +40,14 @@ class AddSportController extends GetxController {
   }
 
   initMeasurementUnits() {
-    List<QuantityDropdownItem> items = [
-      QuantityDropdownItem(name: LocaleKeys.minutes_unit_label.tr, minutes: 1),
+    List<Units> items = [
+      Units(name: LocaleKeys.minutes_unit_label.tr, grams: 1),
     ];
 
     // Add calories burned per minutes if conditions are met
     if (selectedSport.value?.attributes?.caloriesPerMinute != null &&
         selectedSport.value!.attributes!.caloriesPerMinute! > 0) {
-      items.add(QuantityDropdownItem(
+      items.add(Units(
           name: LocaleKeys.calories_unit_label.tr,
           grams: selectedSport.value?.attributes!.caloriesPerMinute!));
     }

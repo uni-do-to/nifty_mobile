@@ -29,6 +29,7 @@ class SmallActionButton extends StatelessWidget {
       onPressed: onPressed,
       style: NeumorphicStyle(
         color: backgroundColor,
+        boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(4))
       ),
       child: Container(
         width: width,
@@ -42,7 +43,10 @@ class SmallActionButton extends StatelessWidget {
                     ?.current
                     ?.textTheme
                     .titleMedium
-                    ?.copyWith(color: textColor, fontSize: fontSize , fontWeight: FontWeight.w900)),
+                    ?.copyWith(
+                        color: textColor,
+                        fontSize: fontSize,
+                        fontWeight: FontWeight.w900)),
             if (icon != null) icon!
           ],
         ),

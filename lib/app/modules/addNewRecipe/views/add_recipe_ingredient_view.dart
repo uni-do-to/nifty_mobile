@@ -1,22 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
-import 'package:nifty_mobile/app/modules/addToMeal/views/ingredient_teb_view.dart';
-import 'package:nifty_mobile/app/modules/addToMeal/views/recipe_tab_view.dart';
-import 'package:nifty_mobile/app/routes/app_pages.dart';
-import 'package:nifty_mobile/app/utils/size_utils.dart';
+import 'package:nifty_mobile/app/modules/addNewRecipe/controllers/add_new_recipe_controller.dart';
+import 'package:nifty_mobile/app/modules/addNewRecipe/views/recipe_ingredient_tab.dart';
 import 'package:nifty_mobile/app/widgets/main_tab_bar.dart';
 
-import '../controllers/add_to_meal_controller.dart';
-
-class AddToMealView extends GetView<AddToMealController> {
-  const AddToMealView({Key? key}) : super(key: key);
+class AddRecipeIngredientView extends GetView<AddNewRecipeController> {
+  const AddRecipeIngredientView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var theme = NeumorphicTheme.of(context)?.current;
+
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 7.4,
@@ -37,7 +33,7 @@ class AddToMealView extends GetView<AddToMealController> {
             top: 47,
             bottom: 13,
           ),
-          child: Text('Ajouter Au Repas'.tr.toUpperCase()),
+          child: Text('Ajouter Au Recette'.tr.toUpperCase()),
         ),
         centerTitle: false,
         backgroundColor: Colors.white,
@@ -49,9 +45,9 @@ class AddToMealView extends GetView<AddToMealController> {
       ),
       body: Container(
         color: ColorConstants.grayBackgroundColor,
-        padding: EdgeInsets.symmetric(vertical: 30.toHeight),
+        padding: EdgeInsets.symmetric(vertical: 18),
         child: DefaultTabController(
-          length: 2,
+          length: 1,
           child: Container(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -65,12 +61,6 @@ class AddToMealView extends GetView<AddToMealController> {
                         textAlign: TextAlign.center,
                       ),
                     ),
-                    MainTab(
-                      child: Text(
-                        "Recette",
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
                   ],
                 ),
                 Expanded(
@@ -81,29 +71,7 @@ class AddToMealView extends GetView<AddToMealController> {
                     child: TabBarView(
                       physics: NeverScrollableScrollPhysics(),
                       children: [
-                        IngredientTabView(
-                          selectedMeal: controller.selectedMeal,
-                          theme: theme!,
-                        ),
-                        RecipeTabView(
-                          selectedMeal: controller.selectedMeal,
-                          onAddNewRecipe: () async {
-                            var result =
-                                await Get.toNamed(Routes.ADD_NEW_RECIPE);
-                            if (result == true) controller.loadRecipeList();
-                          },
-                          onAddRecipeToMeal: () {
-                            if (controller.selectedRecipe.value != null &&
-                                controller
-                                        .selectedRecipeMeasurementUnit.value !=
-                                    null &&
-                                controller.recipeQuantity.value != "0") {
-                              Get.back();
-                            }
-                            //TODO add your recipe to ingredient list inside selected meal object
-                          },
-                          theme: theme,
-                        ),
+                        RecipeIngredientTab(),
                       ],
                     ),
                   ),

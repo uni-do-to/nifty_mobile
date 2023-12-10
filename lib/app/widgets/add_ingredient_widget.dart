@@ -9,16 +9,17 @@ import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:nifty_mobile/app/widgets/form_field.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
+import '../controllers/ingredient_controller.dart';
 import '../modules/addToMeal/controllers/add_to_meal_controller.dart';
 
 class AddIngredientFormWidget extends StatelessWidget {
   final NeumorphicThemeData theme;
-
-  AddIngredientFormWidget({Key? key, required this.theme}) : super(key: key);
-  AddToMealController controller = Get.find();
+  final void Function(Ingredient) onIngredientSelected  ;
+  const AddIngredientFormWidget({Key? key,required this.onIngredientSelected, required this.theme}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    IngredientController controller = Get.find();
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -66,7 +67,9 @@ class AddIngredientFormWidget extends StatelessWidget {
                   Get.locale?.languageCode == 'fr'
                       ? ingredient.attributes!.nameFr!
                       : ingredient.attributes!.nameEn!;
-              controller.initIngredientMeasurementUnits();
+              FocusScope.of(context).unfocus();
+              onIngredientSelected(ingredient);
+              // controller.initIngredientMeasurementUnits();
             },
           ),
 
@@ -116,7 +119,9 @@ class AddIngredientFormWidget extends StatelessWidget {
                   Get.locale?.languageCode == 'fr'
                       ? ingredient.attributes!.nameFr!
                       : ingredient.attributes!.nameEn!;
-              controller.initIngredientMeasurementUnits();
+              // controller.initIngredientMeasurementUnits();
+              FocusScope.of(context).unfocus();
+              onIngredientSelected(ingredient) ;
             },
           ),
 
@@ -163,6 +168,7 @@ class AddIngredientFormWidget extends StatelessWidget {
                   Get.locale?.languageCode == 'fr'
                       ? categoryData.attributes!.nameFr!
                       : categoryData.attributes!.nameEn!;
+              FocusScope.of(context).unfocus();
             },
           ),
 
@@ -218,6 +224,7 @@ class AddIngredientFormWidget extends StatelessWidget {
                           Get.locale?.languageCode == 'fr'
                               ? subcategory.attributes!.nameFr!
                               : subcategory.attributes!.nameEn!;
+                      FocusScope.of(context).unfocus();
                     },
                   ),
                 ],
@@ -277,7 +284,8 @@ class AddIngredientFormWidget extends StatelessWidget {
                           Get.locale?.languageCode == 'fr'
                               ? ingredient.attributes!.nameFr!
                               : ingredient.attributes!.nameEn!;
-                      controller.initIngredientMeasurementUnits();
+                      FocusScope.of(context).unfocus();
+                      onIngredientSelected(ingredient);
                     },
                   ),
                 ],

@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:nifty_mobile/app/data/providers/ingredient_provider.dart';
 import 'package:nifty_mobile/app/data/providers/recipe_provider.dart';
 
+import '../../../controllers/ingredient_controller.dart';
 import '../controllers/add_to_meal_controller.dart';
 
 class AddToMealBinding extends Bindings {
@@ -13,8 +14,13 @@ class AddToMealBinding extends Bindings {
     Get.lazyPut<RecipeProvider>(
           () => RecipeProvider(),
     );
+
+    Get.lazyPut<IngredientController>(
+            ()=>IngredientController(Get.find())
+    );
+
     Get.lazyPut<AddToMealController>(
-      () => AddToMealController(Get.find(),Get.find()),
+      () => AddToMealController(Get.find()),
     );
   }
 }

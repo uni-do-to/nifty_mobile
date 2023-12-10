@@ -1,8 +1,12 @@
 import 'package:get/get.dart';
+import 'package:nifty_mobile/app/modules/addNewRecipe/views/add_recipe_ingredient_view.dart';
+import 'package:nifty_mobile/app/modules/addNewRecipe/views/recipe_ingredient_tab.dart';
 
 import '../middleware/auth_middleware.dart';
 import '../modules/addNewIngredient/bindings/add_new_ingredient_binding.dart';
 import '../modules/addNewIngredient/views/add_new_ingredient_view.dart';
+import '../modules/addNewRecipe/bindings/add_new_recipe_binding.dart';
+import '../modules/addNewRecipe/views/add_new_recipe_view.dart';
 import '../modules/addSport/bindings/add_sport_binding.dart';
 import '../modules/addSport/views/add_sport_view.dart';
 import '../modules/addToMeal/bindings/add_to_meal_binding.dart';
@@ -57,12 +61,25 @@ class AppPages {
       binding: AddNewIngredientBinding(),
       middlewares: [AuthMiddleware()],
     ),
-
     GetPage(
       name: _Paths.ADD_SPORT,
       page: () => const AddSportView(),
       binding: AddSportBinding(),
       middlewares: [AuthMiddleware()],
     ),
+    GetPage(
+        name: _Paths.ADD_NEW_RECIPE,
+        page: () => const AddNewRecipeView(),
+        binding: AddNewRecipeBinding(),
+        middlewares: [
+          AuthMiddleware()
+        ],
+        children: [
+          GetPage(
+            name: _Paths.RECIPE_INGREDIENT_TAB,
+            page: () =>const AddRecipeIngredientView(),
+            middlewares: [AuthMiddleware()],
+          ),
+        ]),
   ];
 }

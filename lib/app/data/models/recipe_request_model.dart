@@ -1,53 +1,35 @@
-class RecipeRequest {
-  Data? data;
+import 'package:nifty_mobile/app/data/models/api_response.dart';
+import 'package:nifty_mobile/app/data/models/ingredient_model.dart';
 
-  RecipeRequest({this.data});
-
-  RecipeRequest.fromJson(Map<String, dynamic> json) {
-    data = json['data'] != null ? Data?.fromJson(json['data']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final json = <String, dynamic>{};
-    if (data != null) {
-      json['data'] = data?.toJson();
-    }
-    return json;
-  }
-}
-
-class Data {
+class RecipeRequest extends ApiDataModel{
   String? name;
   double? caloriesPer100grams;
   double? niftyPoints;
   double? totalWeight;
   double? totalCalories;
   double? gramsPerCircle;
-  String? owner;
-  List<Ingredients>? ingredients;
+  List<RecipeItem>? ingredients;
 
-  Data(
+  RecipeRequest(
       {this.name,
       this.caloriesPer100grams,
       this.niftyPoints,
       this.totalWeight,
       this.totalCalories,
       this.gramsPerCircle,
-      this.owner,
       this.ingredients});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  RecipeRequest.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     caloriesPer100grams = json['caloriesPer100grams'];
     niftyPoints = json['niftyPoints'];
     totalWeight = json['totalWeight'];
     totalCalories = json['totalCalories'];
     gramsPerCircle = json['gramsPerCircle'];
-    owner = json['owner'];
     if (json['ingredients'] != null) {
-      ingredients = <Ingredients>[];
+      ingredients = <RecipeItem>[];
       json['ingredients'].forEach((v) {
-        ingredients?.add(Ingredients.fromJson(v));
+        ingredients?.add(RecipeItem.fromJson(v));
       });
     }
   }
@@ -60,7 +42,6 @@ class Data {
     data['totalWeight'] = totalWeight;
     data['totalCalories'] = totalCalories;
     data['gramsPerCircle'] = gramsPerCircle;
-    data['owner'] = owner;
     if (ingredients != null) {
       data['ingredients'] = ingredients?.map((v) => v.toJson()).toList();
     }
@@ -68,17 +49,20 @@ class Data {
   }
 }
 
-class Ingredients {
+class RecipeItem {
   int? id;
-  int? ingredient;
+  ApiSingleResponse<Ingredient>? ingredient;
   double? grams;
   double? calories;
 
-  Ingredients({this.id, this.ingredient, this.grams, this.calories});
+  RecipeItem({this.id, this.ingredient, this.grams, this.calories});
 
-  Ingredients.fromJson(Map<String, dynamic> json) {
+  RecipeItem.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    ingredient = json['ingredient'];
+    ingredient = json['ingredient'] != null
+        ? ApiSingleResponse.fromJson(
+            json['ingredient'], (json) => Ingredient.fromJson(json))
+        : null;
     grams = json['grams'];
     calories = json['calories'];
   }
@@ -86,7 +70,9 @@ class Ingredients {
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
     data['id'] = id;
-    data['ingredient'] = ingredient;
+    if (ingredient != null) {
+      data['ingredient'] = ingredient?.toJson();
+    }
     data['grams'] = grams;
     data['calories'] = calories;
     return data;

@@ -3,14 +3,25 @@ import 'package:nifty_mobile/app/base/base_provider.dart';
 import 'package:nifty_mobile/app/config/api_constants.dart';
 import 'package:nifty_mobile/app/data/models/recipe_request_model.dart';
 import 'package:nifty_mobile/app/data/models/recipe_model.dart';
+import 'package:nifty_mobile/app/utils/extentions.dart';
 
 import '../models/api_response.dart';
 
 class RecipeProvider extends BaseProvider {
-  Future<Recipe?> createRecipe(RecipeRequest recipeRequest) async {
-    var response = await post(ConfigAPI.recipesUrl, recipeRequest.toJson());
+  Future<ApiSingleResponse<Recipe>?> createRecipe(
+      RecipeRequest recipeRequest) async {
+    var response = await post(
+      ConfigAPI.recipesUrl,
+      removeNull(
+        ApiSingleResponse<RecipeRequest>(data: recipeRequest).toJson(),
+      ),
+    );
 
-    return decode<Recipe?>(response, Recipe.fromJson);
+    print("request done");
+    return decode<ApiSingleResponse<Recipe>?>(
+        response,
+        (data) =>
+            ApiSingleResponse.fromJson(data, (data) => Recipe.fromJson(data)));
   }
 
   Future<Response> deleteRecipe(int id) async =>
@@ -21,7 +32,7 @@ class RecipeProvider extends BaseProvider {
 
     return decode<ApiListResponse<Recipe>?>(
         response,
-            (data) => ApiListResponse.fromJson(
-            data, (data) => Recipe.fromJson(data)));
+        (data) =>
+            ApiListResponse.fromJson(data, (data) => Recipe.fromJson(data)));
   }
 }

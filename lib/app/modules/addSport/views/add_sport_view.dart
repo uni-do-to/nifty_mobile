@@ -3,7 +3,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
-import 'package:nifty_mobile/app/data/models/quantity_dropdown_item.dart';
+import 'package:nifty_mobile/app/data/models/unit_model.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:nifty_mobile/app/widgets/form_field.dart';
@@ -247,7 +247,7 @@ class AddSportView extends GetView<AddSportController> {
                                             padding: EdgeInsets.symmetric(
                                                 horizontal: 30.toWidth),
                                             child: DropdownButtonFormField<
-                                                QuantityDropdownItem>(
+                                                Units>(
                                               value: controller
                                                   .selectedMeasurementUnit
                                                   .value,
@@ -258,12 +258,11 @@ class AddSportView extends GetView<AddSportController> {
                                               },
                                               items: controller
                                                   .measurementUnitsItems
-                                                  .map((QuantityDropdownItem
-                                                      item) {
+                                                  .map((item) {
                                                 return DropdownMenuItem<
-                                                    QuantityDropdownItem>(
+                                                    Units>(
                                                   value: item,
-                                                  child: Text(item.name),
+                                                  child: Text(item.name!),
                                                 );
                                               }).toList(),
                                             ),
@@ -338,9 +337,9 @@ class AddSportView extends GetView<AddSportController> {
                       ),
                       onPressed: () async {
                         if (controller.selectedSport.value != null &&
-                            controller.selectedMeasurementUnit.value?.minutes !=
+                            controller.selectedMeasurementUnit.value?.grams !=
                                 null &&
-                            controller.selectedMeasurementUnit.value!.minutes! >
+                            controller.selectedMeasurementUnit.value!.grams! >
                                 0) {
                           Get.offNamed(Routes.HOME, arguments: [
                             controller.selectedSport,

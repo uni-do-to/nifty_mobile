@@ -3,6 +3,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
+import 'package:nifty_mobile/app/data/models/daily_model.dart';
 import 'package:nifty_mobile/app/data/models/recipe_model.dart';
 import 'package:nifty_mobile/app/modules/addToMeal/controllers/add_to_meal_controller.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
@@ -16,11 +17,13 @@ import 'package:nifty_mobile/generated/locales.g.dart';
 
 class RecipeTabView extends StatelessWidget {
   final NeumorphicThemeData theme;
-  final String selectedMeal;
+  final Meals selectedMeal;
+  final void Function() onAddNewRecipe;
+  final void Function() onAddRecipeToMeal;
 
   AddToMealController controller = Get.find();
 
-  RecipeTabView({Key? key, required this.theme, required this.selectedMeal})
+  RecipeTabView({Key? key, required this.theme, required this.selectedMeal, required this.onAddNewRecipe, required this.onAddRecipeToMeal})
       : super(key: key);
 
   @override
@@ -46,9 +49,7 @@ class RecipeTabView extends StatelessWidget {
                 color: Colors.white,
                 size: 17.75,
               ),
-              onPressed: () {
-                Get.toNamed(Routes.INGREDIENT);
-              },
+              onPressed:onAddNewRecipe,
             ),
           ),
           Expanded(
@@ -62,7 +63,7 @@ class RecipeTabView extends StatelessWidget {
                         ),
                       )
                     : Container(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                           right: 17,
                           left: 17,
                           top: 15.6,
@@ -79,7 +80,7 @@ class RecipeTabView extends StatelessWidget {
                               height: 6,
                             ),
                             TypeAheadField<Recipe>(
-                              controller: controller.searchIngredientsController,
+                              controller: controller.searchRecipesController,
                               suggestionsCallback: (search) =>
                                   controller.searchRecipes(search),
                               builder: (context, controller, focusNode) {
@@ -176,16 +177,7 @@ class RecipeTabView extends StatelessWidget {
                                   ? ColorConstants.accentColor
                                   : ColorConstants.accentColor.withOpacity(0.4),
                           textColor: Colors.white,
-                          onPressed: () {
-                            if (controller.selectedRecipe.value != null &&
-                                controller
-                                        .selectedRecipeMeasurementUnit.value !=
-                                    null &&
-                                controller.recipeQuantity.value != "0") {
-                              Get.back();
-                            }
-                            //TODO add your recipe to ingredient list inside selected meal object
-                          },
+                          onPressed: onAddRecipeToMeal
                           // Optionally, specify width and height
                         ),
                       ),
