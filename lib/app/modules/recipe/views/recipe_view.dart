@@ -58,8 +58,9 @@ class RecipeView extends GetView<RecipeController> {
                   color: Colors.white,
                   size: 17.75,
                 ),
-                onPressed: () {
-                  Get.toNamed(Routes.INGREDIENT);
+                onPressed: () async {
+                  var result = await Get.toNamed(Routes.ADD_NEW_RECIPE);
+                  if (result == true) controller.initData();
                 },
               ),
             ),
