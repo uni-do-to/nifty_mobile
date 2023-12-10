@@ -9,7 +9,9 @@ import 'package:nifty_mobile/app/modules/addToMeal/controllers/add_to_meal_contr
 import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:nifty_mobile/app/widgets/add_quantity_widget.dart';
+import 'package:nifty_mobile/app/widgets/delete_alert_dialog.dart';
 import 'package:nifty_mobile/app/widgets/form_field.dart';
+import 'package:nifty_mobile/app/widgets/recipe_ingredient_list_item.dart';
 import 'package:nifty_mobile/app/widgets/selected_ingredient_recipe_item.dart';
 
 import 'package:nifty_mobile/app/widgets/small_action_button.dart';
@@ -23,7 +25,12 @@ class RecipeTabView extends StatelessWidget {
 
   AddToMealController controller = Get.find();
 
-  RecipeTabView({Key? key, required this.theme, required this.selectedMeal, required this.onAddNewRecipe, required this.onAddRecipeToMeal})
+  RecipeTabView(
+      {Key? key,
+      required this.theme,
+      required this.selectedMeal,
+      required this.onAddNewRecipe,
+      required this.onAddRecipeToMeal})
       : super(key: key);
 
   @override
@@ -49,72 +56,103 @@ class RecipeTabView extends StatelessWidget {
                 color: Colors.white,
                 size: 17.75,
               ),
-              onPressed:onAddNewRecipe,
+              onPressed: onAddNewRecipe,
             ),
           ),
-          Expanded(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20.toWidth),
-              child: ObxValue((state) {
-                return state.value
-                    ? Center(
-                        child: CircularProgressIndicator(
-                          backgroundColor: theme.textTheme.labelLarge?.color,
-                        ),
-                      )
-                    : Container(
-                        padding: const EdgeInsets.only(
-                          right: 17,
-                          left: 17,
-                          top: 15.6,
-                        ),
-                        child: Column(
-                          children: [
-                            //search in user recipes
-                            Text(
-                              LocaleKeys.research_dropdown_label.tr,
-                              style: theme.textTheme.bodySmall
-                                  ?.copyWith(fontSize: 14),
-                            ),
-                            const SizedBox(
-                              height: 6,
-                            ),
-                            TypeAheadField<Recipe>(
-                              controller: controller.searchRecipesController,
-                              suggestionsCallback: (search) =>
-                                  controller.searchRecipes(search),
-                              builder: (context, controller, focusNode) {
-                                return NeuFormField(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 5, horizontal: 18),
-                                  hintText:
-                                      LocaleKeys.search_recipes_dropdown_label.tr,
-                                  controller: controller,
-                                  focusNode: focusNode,
-                                  suffixIcon: Icon(Icons.search),
-                                  maintainErrorSize: false,
-                                );
-                              },
-                              itemBuilder: (context, recipe) {
-                                return ListTile(
-                                  title: Text(
-                                    recipe.attributes!.name!,
-                                  ),
-                                );
-                              },
-                              onSelected: (recipe) {
-                                controller.selectedRecipe.value = recipe;
-                                controller.searchRecipesController.text =
-                                    recipe.attributes!.name!;
-                                controller.initRecipeMeasurementUnits();
-                              },
-                            ),
-                          ],
-                        ),
-                      );
-              }, controller.loading),
-            ),
-          ),
+          ObxValue((state) {
+            return state.value
+                ? Center(
+                    child: CircularProgressIndicator(
+                      backgroundColor: theme.textTheme.labelLarge?.color,
+                    ),
+                  )
+                : Expanded(
+                    child: Container(
+                      padding: const EdgeInsets.only(
+                        right: 17,
+                        left: 17,
+                        top: 15.6,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // onSelected: (recipe) {
+                          //   controller.selectedRecipe.value = recipe;
+                          //   controller.searchRecipesController.text =
+                          //   recipe.attributes!.name!;
+                          //   controller.initRecipeMeasurementUnits();
+                          // },
+                          Text(
+                            LocaleKeys.research_dropdown_label.tr,
+                            style: theme.textTheme.bodySmall
+                                ?.copyWith(fontSize: 14),
+                          ),
+                          const SizedBox(
+                            height: 6,
+                          ),
+                          NeuFormField(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 18),
+                            hintText:
+                                LocaleKeys.search_recipes_dropdown_label.tr,
+                            controller: controller.searchRecipesController,
+                            suffixIcon: Icon(Icons.search),
+                            maintainErrorSize: false,
+                            keyboardType: TextInputType.text,
+                            autocorrect: false,
+                            onChanged: (value) {
+                              controller.filterSearchResults(value);
+                            },
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          Expanded(
+                            child: ObxValue((state) {
+                              return ListView.builder(
+                                scrollDirection: Axis.vertical,
+                                itemCount: controller.filteredItems.length,
+                                itemBuilder: (context, index) {
+                                  return Column(
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          controller.selectedRecipe.value =
+                                              controller.filteredItems[index];
+                                          controller
+                                              .initRecipeMeasurementUnits();
+                                        },
+                                        child: ObxValue((state) {
+                                          return RecipeIngredientListItem(
+                                            onDeletePressed: () =>
+                                                showDeleteConfirmationDialog(
+                                                    context, index),
+                                            isSelected: controller
+                                                    .selectedRecipe.value ==
+                                                controller.filteredItems[index],
+                                            icon: Icons.restaurant_menu_rounded,
+                                            text: controller
+                                                    .filteredItems[index]
+                                                    .attributes
+                                                    ?.name ??
+                                                "no search result",
+                                          );
+                                        }, controller.selectedRecipe),
+                                      ),
+                                      SizedBox(
+                                        height: 10,
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            }, controller.filteredItems),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+          }, controller.loading),
           ObxValue((state) {
             return Container(
               height: 177,
@@ -166,20 +204,20 @@ class RecipeTabView extends StatelessWidget {
                         height: 54,
                         padding: const EdgeInsets.only(right: 24),
                         child: SmallActionButton(
-                          width: 181,
-                          text: 'Ajouter au repas',
-                          backgroundColor:
-                              controller.selectedRecipe.value?.attributes !=
-                                          null &&
-                                      controller.selectedRecipeMeasurementUnit
-                                              .value !=
-                                          null
-                                  ? ColorConstants.accentColor
-                                  : ColorConstants.accentColor.withOpacity(0.4),
-                          textColor: Colors.white,
-                          onPressed: onAddRecipeToMeal
-                          // Optionally, specify width and height
-                        ),
+                            width: 181,
+                            text: 'Ajouter au repas',
+                            backgroundColor: controller
+                                            .selectedRecipe.value?.attributes !=
+                                        null &&
+                                    controller.selectedRecipeMeasurementUnit
+                                            .value !=
+                                        null
+                                ? ColorConstants.accentColor
+                                : ColorConstants.accentColor.withOpacity(0.4),
+                            textColor: Colors.white,
+                            onPressed: onAddRecipeToMeal
+                            // Optionally, specify width and height
+                            ),
                       ),
                     ],
                   )
@@ -189,6 +227,23 @@ class RecipeTabView extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  void showDeleteConfirmationDialog(BuildContext context, int index) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return DeleteAlertDialogWidget(
+          itemName: controller.filteredItems[index].attributes!.name!,
+          onCancelPressed: () => Get.back(),
+          onDeletePressed: () {
+            controller.filteredItems.removeAt(index);
+            controller.removeRecipe(controller.filteredItems[index]);
+            Get.back();
+          },
+        );
+      },
     );
   }
 }

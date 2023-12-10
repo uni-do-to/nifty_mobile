@@ -5,10 +5,15 @@ import 'package:nifty_mobile/app/utils/size_utils.dart';
 class RecipeIngredientListItem extends StatelessWidget {
   final String text;
   final IconData icon;
-  final void Function()? onTap;
+  final bool? isSelected;
+  final void Function()? onDeletePressed;
 
   const RecipeIngredientListItem(
-      {Key? key, required this.text, required this.icon, required this.onTap})
+      {Key? key,
+      required this.text,
+      required this.icon,
+      required this.onDeletePressed,
+      this.isSelected = false})
       : super(key: key);
 
   @override
@@ -37,8 +42,16 @@ class RecipeIngredientListItem extends StatelessWidget {
                 ),
           ),
           Expanded(child: Container()),
+          Visibility(
+            visible: isSelected!,
+            child: Icon(
+              Icons.check_circle,
+              size: 19,
+              color: NeumorphicTheme.of(context)?.current?.iconTheme.color,
+            ),
+          ),
           GestureDetector(
-            onTap: onTap,
+            onTap: onDeletePressed,
             child: Icon(
               Icons.delete,
               color: NeumorphicTheme.of(context)?.current?.iconTheme.color,

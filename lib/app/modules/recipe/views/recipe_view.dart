@@ -4,6 +4,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
+import 'package:nifty_mobile/app/widgets/delete_alert_dialog.dart';
 import 'package:nifty_mobile/app/widgets/form_field.dart';
 import 'package:nifty_mobile/app/widgets/recipe_ingredient_list_item.dart';
 import 'package:nifty_mobile/app/widgets/small_action_button.dart';
@@ -100,8 +101,8 @@ class RecipeView extends GetView<RecipeController> {
                                   return Column(
                                     children: [
                                       RecipeIngredientListItem(
-                                        onTap: () =>
-                                            showDeleteConfirmationDialogc(
+                                        onDeletePressed: () =>
+                                            showDeleteConfirmationDialog(
                                                 context, index),
                                         icon: Icons.restaurant_menu_rounded,
                                         text: controller.filteredItems[index]
@@ -127,43 +128,18 @@ class RecipeView extends GetView<RecipeController> {
     );
   }
 
-  void showDeleteConfirmationDialogc(BuildContext context, int index) {
+  void showDeleteConfirmationDialog(BuildContext context, int index) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text('Confirm Delete Recipe'),
-          content: Text(
-              'Are you sure you want to delete ${controller.filteredItems[index].attributes?.name}?'),
-          actions: <Widget>[
-
-            SmallActionButton(
-              text: 'Delete',
-              backgroundColor: ColorConstants.mainThemeColor,
-              textColor: Colors.white,
-              fontSize: 20,
-              height: 30,
-              onPressed: () {
-                controller.filteredItems.removeAt(index);
-                controller.removeRecipe(controller.filteredItems[index]);
-                Get.back();
-              },
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            SmallActionButton(
-              text: 'Cancel',
-              backgroundColor: ColorConstants.grayBackgroundColor,
-              textColor: ColorConstants.mainThemeColor,
-              fontSize: 20,
-              height: 30,
-              onPressed: () {
-                Get.back();
-              },
-            ),
-
-          ],
+        return DeleteAlertDialogWidget(
+          itemName: controller.filteredItems[index].attributes!.name!,
+          onCancelPressed: () => Get.back(),
+          onDeletePressed: () {
+            controller.filteredItems.removeAt(index);
+            controller.removeRecipe(controller.filteredItems[index]);
+            Get.back();
+          },
         );
       },
     );

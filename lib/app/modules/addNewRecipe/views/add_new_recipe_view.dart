@@ -126,7 +126,7 @@ class AddNewRecipeView extends GetView<AddNewRecipeController> {
                       return Column(
                         children: [
                           RecipeIngredientListItem(
-                              onTap: () =>
+                              onDeletePressed: () =>
                                   showDeleteConfirmationDialogc(context, index),
                               icon: Icons.egg,
                               text: Get.locale?.languageCode == 'fr'

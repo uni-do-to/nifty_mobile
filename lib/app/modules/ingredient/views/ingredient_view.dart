@@ -100,7 +100,7 @@ class IngredientView extends GetView<IngredientController> {
                                   return Column(
                                     children: [
                                       RecipeIngredientListItem(
-                                          onTap: () =>
+                                          onDeletePressed: () =>
                                               showDeleteConfirmationDialogc(
                                                   context, index),
                                           icon: Icons.egg,

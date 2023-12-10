@@ -19,7 +19,7 @@ class AddToMealView extends GetView<AddToMealController> {
     var theme = NeumorphicTheme.of(context)?.current;
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 7.4,
+        leadingWidth: 10,
         leading: Container(
           padding: EdgeInsets.only(
             top: 35,
@@ -28,8 +28,9 @@ class AddToMealView extends GetView<AddToMealController> {
             icon: Icon(
               Icons.arrow_back_ios,
               color: theme?.iconTheme.color,
+              size: 20,
             ),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () => Get.back(),
           ),
         ),
         title: Container(

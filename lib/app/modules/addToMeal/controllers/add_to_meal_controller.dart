@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:nifty_mobile/app/data/models/category_model.dart';
 import 'package:nifty_mobile/app/data/models/daily_model.dart';
 import 'package:nifty_mobile/app/data/models/ingredient_model.dart';
 import 'package:nifty_mobile/app/data/models/recipe_model.dart';
-import 'package:nifty_mobile/app/data/models/sub_category_model.dart';
 import 'package:nifty_mobile/app/data/models/unit_model.dart';
-import 'package:nifty_mobile/app/data/providers/ingredient_provider.dart';
 import 'package:nifty_mobile/app/data/providers/recipe_provider.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
@@ -16,6 +13,7 @@ class AddToMealController extends GetxController {
   final searchRecipesController = TextEditingController();
 
   List<Recipe> recipesList = [];
+  RxList<Recipe> filteredItems = RxList();
 
   RxBool loading = false.obs;
   RxBool isRecipeSelected = false.obs;
@@ -55,13 +53,13 @@ class AddToMealController extends GetxController {
 
       var responseRecipeList = await recipeProvider.getRecipeList();
       recipesList = responseRecipeList?.data ?? [];
+      filteredItems.value = recipesList; // Initially, all items are visible
     } catch (err, _) {
       print(err);
     } finally {
       loading.value = false;
     }
   }
-
 
   Future<List<Recipe>> searchRecipes(String searchKeyword) async {
     return recipesList.where((recipe) {
@@ -90,7 +88,6 @@ class AddToMealController extends GetxController {
     // Add units if conditions are met
     items.addAll(ingredient.attributes?.units ?? []);
 
-
     measurementUnitsIngredientItems = items;
     selectedIngredientMeasurementUnit.value = items[0];
   }
@@ -117,5 +114,37 @@ class AddToMealController extends GetxController {
   void onIngredientSelected(Ingredient ingredient) {
     selectedIngredient.value = ingredient;
     initIngredientMeasurementUnits(ingredient);
+  }
+
+  void filterSearchResults(String query) {
+    List<Recipe> dummySearchList = [];
+    dummySearchList.addAll(recipesList);
+
+    if (query.isNotEmpty) {
+      List<Recipe> dummyListData = [];
+      dummySearchList.forEach((recipe) {
+        if (recipe.attributes!.name!
+            .toLowerCase()
+            .contains(query.toLowerCase())) {
+          dummyListData.add(recipe);
+        }
+      });
+      filteredItems.value = dummyListData;
+      return;
+    } else {
+      filteredItems.value = recipesList;
+    }
+  }
+
+  Future removeRecipe(Recipe recipeItem) async {
+    try {
+      loading.value = true;
+      var response = await recipeProvider.deleteRecipe(recipeItem.id!);
+      print(response);
+    } catch (err, _) {
+      print(err);
+    } finally {
+      loading.value = false;
+    }
   }
 }
