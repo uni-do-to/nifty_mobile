@@ -1,0 +1,110 @@
+{
+  "data": {
+    "date": "2023-12-11",
+    "dailyCalories": 0,
+    "consumedCalories": 0,
+    "calorieBurned": 0,
+    "meals": [
+      {
+        "id": 0,
+        "index": 0,
+        "title": "string",
+        "calories": 0,
+        "weight": 0,
+        "items": [
+          {
+            "id": 0,
+            "calories": 0,
+            "weight": 0,
+            "ingredient": {
+                "id": 15
+
+            },
+            "recipe": {
+                "id": 1
+
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{
+  "data": {
+    "date": "2023-12-06",
+    "dailyCalories": 0,
+    "consumedCalories": 0,
+    "calorieBurned": 0,
+    "meals": [
+      {
+        "index": 0,
+        "title": "string",
+        "calories": 0,
+        "weight": 0,
+        "items": [
+          {
+            "calories": 0,
+            "weight": 0,
+            "ingredient": {
+              "data": {
+                "id": 25
+              }
+            },
+            "recipe": {
+              "data": {
+                "id": 1
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}
+
+
+{
+  "data": {
+    "date": "2023-12-06",
+    "dailyCalories": 0,
+    "consumedCalories": 0,
+    "calorieBurned": 0,
+    "meals": [
+      {
+        "index": 0,
+        "title": "string",
+        "calories": 0,
+        "weight": 0,
+        "items": [
+          {
+            "calories": 500,
+            "weight": 400,
+            "ingredient": 25,
+            "recipe": 1
+          }
+        ]
+      }
+    ]
+  }
+}
+
+

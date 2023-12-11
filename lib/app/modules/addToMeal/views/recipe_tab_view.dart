@@ -165,7 +165,7 @@ class RecipeTabView extends StatelessWidget {
                 onMeasurementUnitChange: (unit) =>
                     controller.selectedRecipeMeasurementUnit.value = unit,
                 onQuantityChange: (value) =>
-                    controller.ingredientQuantity.value = value,
+                    controller.recipeQuantity.value = value,
               ),
             );
           }, controller.selectedRecipeMeasurementUnit),

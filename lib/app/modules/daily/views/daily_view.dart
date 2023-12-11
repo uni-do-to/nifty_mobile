@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/config/size_constants.dart';
 import 'package:nifty_mobile/app/config/theme_data.dart';
+import 'package:nifty_mobile/app/data/models/daily_model.dart';
 import 'package:nifty_mobile/app/modules/daily/views/chart_view.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/widgets/custom_tab_list_view.dart';
@@ -134,11 +135,17 @@ class DailyView extends GetView<DailyController> {
                                     controller.selectedMealTabIndex.value = index;
                                   },
                                   onAddToMeal: ()async {
-                                    var currentMeal = controller.getSelectedMeal();
-                                    if(currentMeal != null) {
-                                     var results = await Get.toNamed(Routes.ADD_TO_MEAL ,arguments: currentMeal);
+                                    var currentMeal =
+                                      controller.getSelectedMeal();
+                                  if (currentMeal != null) {
+                                    var results = await Get.toNamed(
+                                        Routes.ADD_TO_MEAL,
+                                        arguments: currentMeal);
+                                    if (results != null && results is MealItem) {
+                                      controller.addToMeal(results);
                                     }
-                                  },
+                                  }
+                                },
                                   tabBuilder: (index) {
                                     return ObxValue( (state) {
                                       return SecondaryTab(
