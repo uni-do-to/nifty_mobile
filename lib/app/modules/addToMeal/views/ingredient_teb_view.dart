@@ -51,7 +51,7 @@ class IngredientTabView extends StatelessWidget {
                 size: 17.75,
               ),
               onPressed: () {
-                Get.toNamed(Routes.INGREDIENT);
+                Get.toNamed(Routes.ADD_NEW_INGREDIENT);
               },
             ),
           ),
