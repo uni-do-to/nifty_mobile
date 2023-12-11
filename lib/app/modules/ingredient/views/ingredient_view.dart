@@ -58,7 +58,7 @@ class IngredientView extends GetView<IngredientController> {
                   size: 17.75,
                 ),
                 onPressed: () {
-                  Get.toNamed(Routes.INGREDIENT);
+                  Get.toNamed(Routes.ADD_NEW_INGREDIENT);
                 },
               ),
             ),
@@ -101,7 +101,7 @@ class IngredientView extends GetView<IngredientController> {
                                     children: [
                                       RecipeIngredientListItem(
                                           onDeletePressed: () =>
-                                              showDeleteConfirmationDialogc(
+                                              showDeleteConfirmationDialog(
                                                   context, index),
                                           icon: Icons.egg,
                                           text: Get.locale?.languageCode == 'fr'
@@ -128,7 +128,7 @@ class IngredientView extends GetView<IngredientController> {
     );
   }
 
-  void showDeleteConfirmationDialogc(BuildContext context, int index) {
+  void showDeleteConfirmationDialog(BuildContext context, int index) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -146,10 +146,11 @@ class IngredientView extends GetView<IngredientController> {
               textColor: Colors.white,
               fontSize: 20,
               height: 30,
-              onPressed: () {
+              onPressed: () async{
+                await controller.removeIngredient(controller.filteredItems[index]);
                 controller.filteredItems.removeAt(index);
-                controller.removeIngredient(controller.filteredItems[index]);
                 Get.back();
+                controller.initData();
               },
             ),
             const SizedBox(

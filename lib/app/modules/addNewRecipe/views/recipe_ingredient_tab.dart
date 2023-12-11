@@ -3,6 +3,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/modules/addNewRecipe/controllers/add_new_recipe_controller.dart';
+import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/widgets/add_ingredient_widget.dart';
 import 'package:nifty_mobile/app/widgets/add_quantity_widget.dart';
 import 'package:nifty_mobile/app/widgets/selected_ingredient_recipe_item.dart';
@@ -41,7 +42,7 @@ class RecipeIngredientTab extends StatelessWidget {
                 size: 17.75,
               ),
               onPressed: () {
-                // Getet.toNamed(Routes.INGREDIENT);
+                Get.toNamed(Routes.ADD_NEW_INGREDIENT);
               },
             ),
           ),
