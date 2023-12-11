@@ -23,7 +23,7 @@ class AddSportView extends GetView<AddSportController> {
     var theme = NeumorphicTheme.of(context)?.current;
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 10,
+        leadingWidth: 25,
         leading: Container(
           padding: EdgeInsets.only(
             top: 35,
@@ -81,12 +81,7 @@ class AddSportView extends GetView<AddSportController> {
                           selectedSport: controller.selectedSportDaily,
                           theme: theme!,
                           onAddSportToDaily: () {
-                            if (controller.selectedSport.value != null &&
-                                controller.selectedMeasurementUnit.value !=
-                                    null &&
-                                controller.sportQuantity.value != "0") {
-                              Get.back();
-                            }
+                            controller.onAddSportToSports() ;
                             //TODO add your sport to sports list inside selected sport object
                           },
                         )

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nifty_mobile/app/data/models/api_response.dart';
 import 'package:nifty_mobile/app/data/models/daily_model.dart';
 import 'package:nifty_mobile/app/data/models/sports_model.dart';
 import 'package:nifty_mobile/app/data/models/unit_model.dart';
@@ -23,6 +24,7 @@ class AddSportController extends GetxController {
   RxBool loading = false.obs;
   RxString sportQuantity = "0".obs;
 
+  RxBool isValidSportForm = false.obs ;
   final SportProvider provider;
 
   AddSportController(this.provider);
@@ -51,16 +53,17 @@ class AddSportController extends GetxController {
     selectedMeasurementUnit.value = null;
     sportQuantity.value = '0';
     List<Units> items = [
-      Units(name: LocaleKeys.minutes_unit_label.tr, grams: 1),
+      Units(name: LocaleKeys.minutes_unit_label.tr, id: 1),
+      Units(name: LocaleKeys.calories_unit_label.tr, id: 2),
     ];
 
     // Add calories if conditions are met
-    if (selectedSport.value?.attributes?.caloriesPerMinute != null &&
-        selectedSport.value!.attributes!.caloriesPerMinute! > 0) {
-      items.add(Units(
-          name: LocaleKeys.calories_unit_label.tr,
-          grams: selectedSport.value?.attributes!.caloriesPerMinute!));
-    }
+    // if (selectedSport.value?.attributes?.caloriesPerMinute != null &&
+    //     selectedSport.value!.attributes!.caloriesPerMinute! > 0) {
+    //   items.add(Units(
+    //       name: LocaleKeys.calories_unit_label.tr,
+    //       grams: selectedSport.value?.attributes!.caloriesPerMinute!));
+    // }
 
     measurementUnitsItems = items;
     selectedMeasurementUnit.value = items[0];
@@ -85,5 +88,54 @@ class AddSportController extends GetxController {
     } else {
       filteredItems.value = sportsList;
     }
+  }
+
+  bool isValidSportsForm() {
+    var result = true;
+    if (selectedSport.value == null) {
+      print("No sport selected");
+      result = false;
+    }
+
+    if (selectedMeasurementUnit.value == null) {
+      print("No sport measurement unit selected");
+      result = false;
+    }
+
+    if (sportQuantity.value == null || sportQuantity.value.isEmpty) {
+      print("sport quantity not entered");
+      result = false;
+    }
+
+    double quantity;
+    try {
+      quantity = double.parse(sportQuantity.value);
+    } catch (e) {
+      print("Invalid number for ingredient quantity");
+      result = false;
+    }
+    // Here you can set a RxBool similar to isValidAddRecipe if needed
+    isValidSportForm.value = result;
+    return result;
+  }
+
+  void onAddSportToSports() {
+    if (!isValidSportsForm())
+      return;
+
+    var quantity = double.parse(sportQuantity.value);
+
+    // Assuming you have a way to calculate calories for the ingredient
+    var calories = selectedMeasurementUnit.value?.id == 1 ? selectedSport.value!.attributes?.caloriesPerMinute??0 * quantity : quantity;
+
+    // Assuming MealItem or a similar class is applicable for ingredients as well
+    SportItem sportItem = SportItem(
+      sport: ApiSingleResponse<Sport>(
+          data: selectedSport.value
+      ),
+      calories: calories,
+    );
+
+    Get.back(result: sportItem);
   }
 }

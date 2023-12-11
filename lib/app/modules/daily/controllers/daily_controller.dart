@@ -127,7 +127,7 @@ class DailyController extends GetxController {
     return null;
   }
 
-  getSelectedSport() {
+  Sports? getSelectedSport() {
     if(sports.length > selectedSportTabIndex.value){
       return sports[selectedSportTabIndex.value] ;
     }
@@ -154,6 +154,16 @@ class DailyController extends GetxController {
     // } else {
       // Ingredient does not exist, add it to the list
       selectedMeal?.items?.add(results);
+    // }
+    daily?.attributes?.updateDailyDetails() ;
+    var newDaily = await provider.editDaily(daily!) ;
+    updateValues(newDaily?.data) ;
+  }
+
+  void addToSport(SportItem results) async{
+    var selectedSport = getSelectedSport() ;
+
+    selectedSport?.items?.add(results);
     // }
     daily?.attributes?.updateDailyDetails() ;
     var newDaily = await provider.editDaily(daily!) ;

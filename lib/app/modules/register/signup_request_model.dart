@@ -10,6 +10,7 @@ class SignupRequest {
   String? bmi;
   String? targetBmi;
   String? targetWeight;
+  double? dailyCalories ;
 
   SignupRequest(
       {this.username,
@@ -22,7 +23,8 @@ class SignupRequest {
       this.weight,
       this.bmi,
       this.targetBmi,
-      this.targetWeight});
+      this.targetWeight,
+      this.dailyCalories});
 
   SignupRequest.fromJson(Map<String, dynamic> json) {
     username = json['username'];
@@ -36,6 +38,7 @@ class SignupRequest {
     bmi = json['bmi'];
     targetBmi = json['targetBmi'];
     targetWeight = json['targetWeight'];
+    dailyCalories = json['dailyCalories'];
   }
 
   Map<String, dynamic> toJson() {
@@ -51,6 +54,7 @@ class SignupRequest {
     data['bmi'] = bmi;
     data['targetBmi'] = targetBmi;
     data['targetWeight'] = targetWeight;
+    data['dailyCalories'] = dailyCalories;
     return data;
   }
 }

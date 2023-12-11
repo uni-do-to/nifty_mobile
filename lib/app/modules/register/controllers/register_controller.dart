@@ -152,7 +152,7 @@ class RegisterController extends AuthController {
     currentBMI.value = (weight / (height * height)) * 10000;
     maxBMIValue.value = currentBMI.value + 15;
     minBMIValue.value = currentBMI.value - 15;
-    targetBMI.value = (selectedGender.value == 'Male') ? 25.0 : 20.0;
+    targetBMI.value = (selectedGender.value == 'male') ? 25.0 : 20.0;
 
     calculateTargetWeight(targetBMI.value, (height / 100));
 
@@ -193,14 +193,14 @@ class RegisterController extends AuthController {
   // calculate daily calories above 19 years old according to gender, age , height and target BMI
   void calculateDailyCaloriesAbove19YearsOld(
       double targetWeight, double height, int age, String gender) {
-    if (gender == 'Male') {
+    if (gender == 'male') {
       targetCaloriesPerDay.value = (height != 0)
           ? (83.362 +
               (13.397 * targetWeight) +
               (479.9 * height) -
               (5.677 * age))
           : 0;
-    } else if (gender == 'Female') {
+    } else if (gender == 'female') {
       targetCaloriesPerDay.value = (height != 0)
           ? (447.593 + (9.247 * targetWeight) + (309.8 * height) - (4.33 * age))
           : 0;
@@ -209,29 +209,29 @@ class RegisterController extends AuthController {
 
   // calculate daily calories below 19 years old according to gender
   void calculateDailyCaloriesBelow19YearsOld(int age, String gender) {
-    if (age == 13 && gender == 'Male') {
+    if (age == 13 && gender == 'male') {
       targetCaloriesPerDay.value = 2414;
-    } else if (age == 13 && gender == 'Female') {
+    } else if (age == 13 && gender == 'female') {
       targetCaloriesPerDay.value = 2223;
-    } else if (age == 14 && gender == 'Male') {
+    } else if (age == 14 && gender == 'male') {
       targetCaloriesPerDay.value = 2629;
-    } else if (age == 14 && gender == 'Female') {
+    } else if (age == 14 && gender == 'female') {
       targetCaloriesPerDay.value = 2342;
-    } else if (age == 15 && gender == 'Male') {
+    } else if (age == 15 && gender == 'male') {
       targetCaloriesPerDay.value = 2820;
-    } else if (age == 15 && gender == 'Female') {
+    } else if (age == 15 && gender == 'female') {
       targetCaloriesPerDay.value = 2390;
-    } else if (age == 16 && gender == 'Male') {
+    } else if (age == 16 && gender == 'male') {
       targetCaloriesPerDay.value = 2964;
-    } else if (age == 16 && gender == 'Female') {
+    } else if (age == 16 && gender == 'female') {
       targetCaloriesPerDay.value = 2414;
-    } else if (age == 17 && gender == 'Male') {
+    } else if (age == 17 && gender == 'male') {
       targetCaloriesPerDay.value = 3083;
-    } else if (age == 17 && gender == 'Female') {
+    } else if (age == 17 && gender == 'female') {
       targetCaloriesPerDay.value = 2426;
-    } else if (age == 18 && gender == 'Male') {
+    } else if (age == 18 && gender == 'male') {
       targetCaloriesPerDay.value = 3155;
-    } else if (age == 18 && gender == 'Female') {
+    } else if (age == 18 && gender == 'female') {
       targetCaloriesPerDay.value = 2462;
     }
   }
@@ -271,7 +271,9 @@ class RegisterController extends AuthController {
             weight: weightController.text,
             bmi: currentBMI.value.toString(),
             targetBmi: targetBMI.value.toString(),
-            targetWeight: targetWeight.value.toString());
+            targetWeight: targetWeight.value.toString(),
+            dailyCalories: targetCaloriesPerDay.value
+        );
 
         await signUp(data);
       } catch (err, _) {

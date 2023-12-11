@@ -22,7 +22,7 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
     var theme = NeumorphicTheme.of(context)?.current;
     return Scaffold(
       appBar: AppBar(
-        leadingWidth: 18,
+        leadingWidth: 25,
         leading: Container(
           padding: EdgeInsets.only(
             top: 35,

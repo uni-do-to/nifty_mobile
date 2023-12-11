@@ -257,8 +257,8 @@ class Sports {
 
 class SportItem {
   int? id;
-  int? calories;
-  int? minutes;
+  double? calories;
+  double? minutes;
   ApiSingleResponse<Sport>? sport;
 
   SportItem({this.id, this.calories, this.minutes, this.sport});

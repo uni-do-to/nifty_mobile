@@ -218,9 +218,17 @@ class DailyView extends GetView<DailyController> {
                                   var currentSport =
                                       controller.getSelectedSport();
                                   if (currentSport != null) {
-                                          var results = await Get.toNamed(
-                                          Routes.ADD_SPORT,
-                                          arguments: currentSport);
+                                    var results = await Get.toNamed(
+                                        Routes.ADD_SPORT,
+                                        arguments: currentSport);
+
+                                    if (results != null &&
+                                        results is SportItem) {
+                                      controller.addToSport(results);
+                                  }
+
+
+
                                   }
                                 },
                                 tabBuilder: (index) {
