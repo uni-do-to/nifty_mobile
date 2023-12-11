@@ -149,7 +149,7 @@ class LoginView extends GetView<LoginController> {
                                 .bodyText1,
                           ),
                           onPressed: () {
-
+                            Get.toNamed(Routes.REGISTER);
                           })
                     ],
                   ),
