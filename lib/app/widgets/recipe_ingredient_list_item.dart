@@ -12,7 +12,7 @@ class RecipeIngredientListItem extends StatelessWidget {
       {Key? key,
       required this.text,
       required this.icon,
-      required this.onDeletePressed,
+      this.onDeletePressed,
       this.isSelected = false})
       : super(key: key);
 

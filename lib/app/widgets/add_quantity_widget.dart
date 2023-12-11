@@ -61,8 +61,7 @@ class AddQuantityWidget extends StatelessWidget {
                     onChanged: (newValue) {
                       onMeasurementUnitChange(newValue);
                     },
-                    items:
-                        measurementUnitsItems.map((Units item) {
+                    items: measurementUnitsItems.map((Units item) {
                       return DropdownMenuItem<Units>(
                         value: item,
                         child: Text(item.name!),
@@ -77,7 +76,13 @@ class AddQuantityWidget extends StatelessWidget {
                   selectedMeasurementUnit?.name ==
                           LocaleKeys.circle_unit_label.tr
                       ? LocaleKeys.circle_unit_label.tr
-                      : LocaleKeys.quantity_text_field_label.tr,
+                      : selectedMeasurementUnit?.name ==
+                              LocaleKeys.quantity_text_field_label.tr
+                          ? LocaleKeys.quantity_text_field_label.tr
+                          : selectedMeasurementUnit?.name ==
+                                  LocaleKeys.minutes_unit_label.tr
+                              ? LocaleKeys.duration_label.tr
+                              : LocaleKeys.calories_burned_unit_label.tr,
                   style: theme.textTheme.bodySmall?.copyWith(fontSize: 14),
                 ),
                 SizedBox(

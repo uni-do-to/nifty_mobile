@@ -106,6 +106,7 @@ class LocaleKeys {
   static const search_ingredients_dropdown_label =
       'search_ingredients_dropdown_label';
   static const search_recipes_dropdown_label = 'search_recipes_dropdown_label';
+  static const search_sports_dropdown_label = 'search_sports_dropdown_label';
   static const quantity_screen_title = 'quantity_screen_title';
   static const quantity_screen_sub_title = 'quantity_screen_sub_title';
   static const unit_drop_down_label = 'unit_drop_down_label';
@@ -235,6 +236,7 @@ class Locales {
     'search_ingredients_dropdown_label':
         'Look for a fruit, a vegetable, an ingredient',
     'search_recipes_dropdown_label': 'Look for a recipe',
+    'search_sports_dropdown_label': 'Look for a sport',
     'quantity_screen_title': 'Quantify',
     'quantity_screen_sub_title': 'The quantity of food',
     'unit_drop_down_label': 'Unit',
@@ -364,6 +366,7 @@ class Locales {
     'search_ingredients_dropdown_label':
         'Recherchez le un fruit, un légume, un ingrédient',
     'search_recipes_dropdown_label': 'Cherchez une recette',
+    'search_sports_dropdown_label': 'Cherchez une sport',
     'your_recipe_label': 'Votre recette',
     'quantity_screen_title': 'Quantifier',
     'quantity_screen_sub_title': 'La quantité des aliments',

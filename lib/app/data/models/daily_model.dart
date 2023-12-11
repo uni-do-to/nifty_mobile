@@ -5,7 +5,6 @@ import 'package:nifty_mobile/app/data/models/sports_model.dart';
 import 'api_response.dart';
 import 'ingredient_model.dart';
 
-
 class Daily extends ApiDataModel {
   int? id;
   Attributes? attributes;
@@ -170,10 +169,12 @@ class MealItem {
     calories = json['calories'];
     weight = json['weight'];
     ingredient = json['ingredient'] != null
-        ? ApiSingleResponse.fromJson(json['ingredient'], (json) => Ingredient.fromJson(json))
+        ? ApiSingleResponse.fromJson(
+            json['ingredient'], (json) => Ingredient.fromJson(json))
         : null;
     recipe = json['recipe'] != null
-        ? ApiSingleResponse.fromJson(json['recipe'], (json) => Recipe?.fromJson(json))
+        ? ApiSingleResponse.fromJson(
+            json['recipe'], (json) => Recipe?.fromJson(json))
         : null;
   }
 
@@ -191,20 +192,22 @@ class MealItem {
     return data;
   }
 
-  bool isIngredient () {
-    return ingredient?.data != null ;
+  bool isIngredient() {
+    return ingredient?.data != null;
   }
-  String? getName () {
-    if(isIngredient()){
-      var attributes = ingredient?.data?.attributes ;
-      return Get.locale?.languageCode == 'fr' ? attributes?.nameFr : attributes?.nameEn ;
-    }else {
-      var attributes = recipe?.data?.attributes ;
-      return attributes?.name ;
+
+  String? getName() {
+    if (isIngredient()) {
+      var attributes = ingredient?.data?.attributes;
+      return Get.locale?.languageCode == 'fr'
+          ? attributes?.nameFr
+          : attributes?.nameEn;
+    } else {
+      var attributes = recipe?.data?.attributes;
+      return attributes?.name;
     }
   }
 }
-
 
 class Sports {
   int? id;
@@ -253,7 +256,7 @@ class Sports {
 
 class SportItem {
   int? id;
-  double? calories;
+  int? calories;
   int? minutes;
   ApiSingleResponse<Sport>? sport;
 
@@ -264,7 +267,8 @@ class SportItem {
     calories = json['calories'];
     minutes = json['minutes'];
     sport = json['sport'] != null
-        ? ApiSingleResponse.fromJson(json['sport'], (json) => Sport?.fromJson(json))
+        ? ApiSingleResponse.fromJson(
+            json['sport'], (json) => Sport?.fromJson(json))
         : null;
   }
 
@@ -277,5 +281,19 @@ class SportItem {
       data['sport'] = sport?.toJson();
     }
     return data;
+  }
+
+  bool isSport() {
+    return sport?.data != null;
+  }
+
+  String? getName() {
+    if (isSport()) {
+      var attributes = sport?.data?.attributes;
+      return Get.locale?.languageCode == 'fr'
+          ? attributes?.nameFr
+          : attributes?.nameEn;
+    }
+    return null;
   }
 }

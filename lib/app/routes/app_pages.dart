@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/modules/addNewRecipe/views/add_recipe_ingredient_view.dart';
 import 'package:nifty_mobile/app/modules/addNewRecipe/views/recipe_ingredient_tab.dart';
+import 'package:nifty_mobile/app/modules/addSport/views/add_sport_view.dart';
 
 import '../middleware/auth_middleware.dart';
 import '../modules/addNewIngredient/bindings/add_new_ingredient_binding.dart';
@@ -8,7 +9,6 @@ import '../modules/addNewIngredient/views/add_new_ingredient_view.dart';
 import '../modules/addNewRecipe/bindings/add_new_recipe_binding.dart';
 import '../modules/addNewRecipe/views/add_new_recipe_view.dart';
 import '../modules/addSport/bindings/add_sport_binding.dart';
-import '../modules/addSport/views/add_sport_view.dart';
 import '../modules/addToMeal/bindings/add_to_meal_binding.dart';
 import '../modules/addToMeal/views/add_to_meal_view.dart';
 import '../modules/home/bindings/home_binding.dart';

@@ -11,9 +11,6 @@ abstract class Routes {
   static const NIFTY_POINTS = _Paths.NIFTY_POINTS;
   static const SUBSCRIPTION = _Paths.SUBSCRIPTION;
   static const ADD_NEW_INGREDIENT = _Paths.ADD_NEW_INGREDIENT;
-  static const ADD_INGREDIENT_MEAL = _Paths.ADD_INGREDIENT_MEAL;
-  static const ADD_QUANTITY_MEAL = _Paths.ADD_QUANTITY_MEAL;
-  static const ADD_RECIPE_MEAL = _Paths.ADD_RECIPE_MEAL;
   static const ADD_SPORT = _Paths.ADD_SPORT;
   static const DAILY = _Paths.DAILY;
   static const RECIPE = _Paths.RECIPE;
@@ -42,10 +39,5 @@ abstract class _Paths {
   static const ADD_NEW_RECIPE = '/add-new-recipe';
   static const RECIPE_INGREDIENT_TAB = '/recipe-ingredient-tab';
   static const ADD_NEW_INGREDIENT = '/add-new-ingredient';
-
-
-  static const ADD_INGREDIENT_MEAL = '/add-ingredient-meal';
-  static const ADD_QUANTITY_MEAL = '/add-quantity-meal';
-  static const ADD_RECIPE_MEAL = '/add-recipe-meal';
   static const ADD_SPORT = '/add-sport';
 }

@@ -5,57 +5,69 @@ import 'package:nifty_mobile/app/data/models/daily_model.dart';
 import 'package:nifty_mobile/app/data/providers/daily_provider.dart';
 
 class DailyController extends GetxController {
-  final DailyProvider provider ;
+  final DailyProvider provider;
 
-  Daily? daily ;
+  Daily? daily;
 
   RxList<Meals> meals = RxList(
-    // [Meals()]
-  ) ;
+      // [Meals()]
+      );
+
+  RxList<Sports> sports = RxList(
+      // [Meals()]
+      );
 
   final RxInt selectedMealTabIndex = 0.obs;
   final RxInt selectedSportTabIndex = 0.obs;
 
   RxString day = 'Today'.obs;
 
-  RxList<String> sportsList = ['sport1', 'sport2', 'sport3'].obs;
-
-  DailyController(this.provider) ;
+  DailyController(this.provider);
 
   @override
   void onInit() {
     super.onInit();
     var today = formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd]);
     getDaily(today);
-
   }
 
   void getDaily(String date) async {
-    var results = await provider.getDaily(date) ;
-    updateValues(results?.data?[0]) ;
+    var results = await provider.getDaily(date);
+    updateValues(results?.data?[0]);
   }
 
-  void updateValues (Daily? newDaily) {
-    if(newDaily != null){
-      daily = newDaily ;
-      meals.value = daily?.attributes?.meals??[];
+  void updateValues(Daily? newDaily) {
+    if (newDaily != null) {
+      daily = newDaily;
+      meals.value = daily?.attributes?.meals ?? [];
+      sports.value = daily?.attributes?.sports ?? [];
     }
   }
 
-
   void addMeal() async {
-    if(daily == null) {
-      return ;
+    if (daily == null) {
+      return;
     }
 
     var newIndex = meals.length;
-    daily?.attributes?.meals?.add(Meals(
-      index: newIndex,
-      title: "Meal $newIndex"
-    ));
+    daily?.attributes?.meals
+        ?.add(Meals(index: newIndex, title: "Meal $newIndex"));
 
-    var newDaily = await provider.editDaily(daily!) ;
-    updateValues(newDaily?.data) ;
+    var newDaily = await provider.editDaily(daily!);
+    updateValues(newDaily?.data);
+  }
+
+  void addSport() async {
+    if (daily == null) {
+      return;
+    }
+
+    var newIndex = sports.length;
+    daily?.attributes?.sports
+        ?.add(Sports(index: newIndex, title: "Sport $newIndex"));
+
+    var newDaily = await provider.editDaily(daily!);
+    updateValues(newDaily?.data);
   }
 
   @override
@@ -68,22 +80,39 @@ class DailyController extends GetxController {
     super.onClose();
   }
 
-  deleteItemFromMeal(int mealIndex, int itemIndex) async{
-    if(daily == null) {
-      return ;
+  deleteItemFromMeal(int mealIndex, int itemIndex) async {
+    if (daily == null) {
+      return;
     }
 
-    meals[mealIndex].items?.removeAt(itemIndex) ;
-    daily?.attributes?.updateDailyDetails() ;
-    var newDaily = await provider.editDaily(daily!) ;
-    updateValues(newDaily?.data) ;
+    meals[mealIndex].items?.removeAt(itemIndex);
+    daily?.attributes?.updateDailyDetails();
+    var newDaily = await provider.editDaily(daily!);
+    updateValues(newDaily?.data);
+  }
+
+  deleteItemFromSport(int sportIndex, int itemIndex) async {
+    if (daily == null) {
+      return;
+    }
+
+    sports[sportIndex].items?.removeAt(itemIndex);
+    daily?.attributes?.updateDailyDetails();
+    var newDaily = await provider.editDaily(daily!);
+    updateValues(newDaily?.data);
   }
 
   Meals? getSelectedMeal() {
-    if(meals.length > selectedMealTabIndex.value){
-      return meals[selectedMealTabIndex.value] ;
+    if (meals.length > selectedMealTabIndex.value) {
+      return meals[selectedMealTabIndex.value];
     }
-    return null ;
+    return null;
   }
 
+  Sports? getSelectedSport() {
+    if (meals.length > selectedSportTabIndex.value) {
+      return sports[selectedSportTabIndex.value];
+    }
+    return null;
+  }
 }
