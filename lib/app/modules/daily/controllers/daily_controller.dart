@@ -13,12 +13,13 @@ class DailyController extends GetxController {
     // [Meals()]
   ) ;
 
+  RxList<Sports> sports = RxList() ;
+
   final RxInt selectedMealTabIndex = 0.obs;
   final RxInt selectedSportTabIndex = 0.obs;
 
   RxString day = 'Today'.obs;
 
-  RxList<String> sportsList = ['sport1', 'sport2', 'sport3'].obs;
 
   DailyController(this.provider) ;
 
@@ -53,6 +54,7 @@ class DailyController extends GetxController {
     if(newDaily != null){
       daily = newDaily ;
       meals.value = daily?.attributes?.meals??[];
+      sports.value = daily?.attributes?.sports??[] ;
     }
   }
 
@@ -71,6 +73,22 @@ class DailyController extends GetxController {
     var newDaily = await provider.editDaily(daily!) ;
     updateValues(newDaily?.data) ;
   }
+
+  void addSport() async{
+    if(daily == null) {
+      return ;
+    }
+
+    var newIndex = sports.length;
+    daily?.attributes?.sports?.add(Sports(
+        index: newIndex,
+        title: "Sport $newIndex"
+    ));
+
+    var newDaily = await provider.editDaily(daily!) ;
+    updateValues(newDaily?.data) ;
+  }
+
 
   @override
   void onReady() {
@@ -93,12 +111,32 @@ class DailyController extends GetxController {
     updateValues(newDaily?.data) ;
   }
 
+  deleteItemFromSport(int tabIndex, int itemIndex) async{
+    if(daily == null) {
+      return ;
+    }
+
+    sports[tabIndex].items?.removeAt(itemIndex) ;
+    daily?.attributes?.updateDailyDetails() ;
+    var newDaily = await provider.editDaily(daily!) ;
+    updateValues(newDaily?.data) ;
+  }
+
+
   Meals? getSelectedMeal() {
     if(meals.length > selectedMealTabIndex.value){
       return meals[selectedMealTabIndex.value] ;
     }
     return null ;
   }
+
+  getSelectedSport() {
+    if(sports.length > selectedSportTabIndex.value){
+      return sports[selectedSportTabIndex.value] ;
+    }
+    return null ;
+  }
+
 
   void addToMeal(MealItem results) async{
     var selectedMeal = getSelectedMeal() ;
@@ -120,8 +158,12 @@ class DailyController extends GetxController {
       // Ingredient does not exist, add it to the list
       selectedMeal?.items?.add(results);
     // }
+    daily?.attributes?.updateDailyDetails() ;
     var newDaily = await provider.editDaily(daily!) ;
     updateValues(newDaily?.data) ;
   }
+
+
+
 
 }

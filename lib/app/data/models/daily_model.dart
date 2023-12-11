@@ -278,4 +278,9 @@ class SportItem {
     }
     return data;
   }
+
+  String? getName () {
+      var attributes = sport?.data?.attributes ;
+      return Get.locale?.languageCode == 'fr' ? attributes?.nameFr : attributes?.nameEn ;
+  }
 }
