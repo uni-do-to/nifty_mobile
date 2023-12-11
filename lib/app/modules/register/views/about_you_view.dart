@@ -80,7 +80,7 @@ class AboutYouView extends GetView<RegisterController> {
                     GenderRadio(
                       label: LocaleKeys.male_radio_label.tr,
                       icon: Icons.male,
-                      value: "Male",
+                      value: "male",
                       groupValue: controller.selectedGender.value,
                       onChanged: (value) =>
                           controller.selectedGender.value = value.toString(),
@@ -88,7 +88,7 @@ class AboutYouView extends GetView<RegisterController> {
                     GenderRadio(
                       label: LocaleKeys.female_radio_label.tr,
                       icon: Icons.female,
-                      value: "Female",
+                      value: "female",
                       groupValue: controller.selectedGender.value,
                       onChanged: (value) =>
                           controller.selectedGender.value = value.toString(),

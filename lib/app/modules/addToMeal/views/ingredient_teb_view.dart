@@ -1,20 +1,14 @@
-import 'package:collection/collection.dart';
-import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/data/models/daily_model.dart';
 import 'package:nifty_mobile/app/modules/addToMeal/controllers/add_to_meal_controller.dart';
-import 'package:nifty_mobile/app/modules/daily/controllers/daily_controller.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:nifty_mobile/app/widgets/add_ingredient_widget.dart';
 import 'package:nifty_mobile/app/widgets/add_quantity_widget.dart';
-import 'package:nifty_mobile/app/widgets/daily_list_item.dart';
 import 'package:nifty_mobile/app/widgets/selected_ingredient_recipe_item.dart';
-import 'dart:collection';
 
 import 'package:nifty_mobile/app/widgets/small_action_button.dart';
 
@@ -22,9 +16,11 @@ class IngredientTabView extends StatelessWidget {
   final NeumorphicThemeData theme;
   final Meals selectedMeal;
 
-  AddToMealController controller = Get.find();
+  final AddToMealController controller = Get.find();
 
-  IngredientTabView({Key? key, required this.theme, required this.selectedMeal})
+  final void Function()  onAddIngredientToMealPressed;
+
+  IngredientTabView({Key? key, required this.theme, required this.selectedMeal , required this.onAddIngredientToMealPressed})
       : super(key: key);
 
   @override
@@ -74,7 +70,7 @@ class IngredientTabView extends StatelessWidget {
                         child: AddIngredientFormWidget(
                           theme: theme,
                           onIngredientSelected: (ingredient) {
-
+                            controller.onIngredientSelected(ingredient) ;
                           },
                         ),
                       );
@@ -146,15 +142,7 @@ class IngredientTabView extends StatelessWidget {
                               ? ColorConstants.accentColor
                               : ColorConstants.accentColor.withOpacity(0.4),
                           textColor: Colors.white,
-                          onPressed: () {
-                            if (controller.selectedIngredient.value != null &&
-                                controller.selectedIngredientMeasurementUnit.value !=
-                                    null &&
-                                controller.ingredientQuantity.value != "0") {
-                              Get.back();
-                            }
-                            //TODO add your ingredient to ingredient list inside selected meal object
-                          },
+                          onPressed: onAddIngredientToMealPressed,
                           // Optionally, specify width and height
                         ),
                       ),

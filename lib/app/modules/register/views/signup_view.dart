@@ -53,11 +53,11 @@ class SignupView extends GetView<RegisterController> {
             return NeuFormField(
               hintText: LocaleKeys.confirm_password_label.tr,
               obscureText: true,
-              controller: controller.passwordController,
+              controller: controller.confirmPasswordController,
               prefixIcon: const Icon(Icons.lock),
-              errorText: controller.passwordError.value,
+              errorText: controller.confirmPasswordError.value,
             );
-          }, controller.passwordError),
+          }, controller.confirmPasswordError),
           SizedBox(
             height: 40.toHeight,
           ),

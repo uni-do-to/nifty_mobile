@@ -129,7 +129,7 @@ class RegisterController extends AuthController {
       confirmPasswordError.value = '';
     }
 
-    if (confirmPasswordController.text == passwordController.text) {
+    if (confirmPasswordController.text != passwordController.text) {
       confirmPasswordError.value =
           LocaleKeys.password_not_match_error_message.tr;
     } else {

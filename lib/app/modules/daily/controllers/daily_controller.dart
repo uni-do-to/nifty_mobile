@@ -13,9 +13,7 @@ class DailyController extends GetxController {
       // [Meals()]
       );
 
-  RxList<Sports> sports = RxList(
-      // [Meals()]
-      );
+  RxList<Sports> sports = RxList() ;
 
   final RxInt selectedMealTabIndex = 0.obs;
   final RxInt selectedSportTabIndex = 0.obs;
@@ -29,20 +27,36 @@ class DailyController extends GetxController {
     super.onInit();
     var today = formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd]);
     getDaily(today);
+
   }
 
   void getDaily(String date) async {
-    var results = await provider.getDaily(date);
-    updateValues(results?.data?[0]);
-  }
+    Daily? daily ;
+    try {
+      var results = await provider.getDaily(date);
+      if((results?.data?.length??0) > 0 ){
+        daily = results?.data?[0] ;
+      }else {
+        var results = await provider.createDaily(date);
+        if(results?.data != null){
+          daily = results?.data ;
+        }
+      }
+      updateValues(daily) ;
 
-  void updateValues(Daily? newDaily) {
-    if (newDaily != null) {
-      daily = newDaily;
-      meals.value = daily?.attributes?.meals ?? [];
-      sports.value = daily?.attributes?.sports ?? [];
+    }catch (e) {
+      print(e);
     }
   }
+
+  void updateValues (Daily? newDaily) {
+    if(newDaily != null){
+      daily = newDaily ;
+      meals.value = daily?.attributes?.meals??[];
+      sports.value = daily?.attributes?.sports??[] ;
+    }
+  }
+
 
   void addMeal() async {
     if (daily == null) {
@@ -57,18 +71,21 @@ class DailyController extends GetxController {
     updateValues(newDaily?.data);
   }
 
-  void addSport() async {
-    if (daily == null) {
-      return;
+  void addSport() async{
+    if(daily == null) {
+      return ;
     }
 
     var newIndex = sports.length;
-    daily?.attributes?.sports
-        ?.add(Sports(index: newIndex, title: "Sport $newIndex"));
+    daily?.attributes?.sports?.add(Sports(
+        index: newIndex,
+        title: "Sport $newIndex"
+    ));
 
-    var newDaily = await provider.editDaily(daily!);
-    updateValues(newDaily?.data);
+    var newDaily = await provider.editDaily(daily!) ;
+    updateValues(newDaily?.data) ;
   }
+
 
   @override
   void onReady() {
@@ -91,16 +108,17 @@ class DailyController extends GetxController {
     updateValues(newDaily?.data);
   }
 
-  deleteItemFromSport(int sportIndex, int itemIndex) async {
-    if (daily == null) {
-      return;
+  deleteItemFromSport(int tabIndex, int itemIndex) async{
+    if(daily == null) {
+      return ;
     }
 
-    sports[sportIndex].items?.removeAt(itemIndex);
-    daily?.attributes?.updateDailyDetails();
-    var newDaily = await provider.editDaily(daily!);
-    updateValues(newDaily?.data);
+    sports[tabIndex].items?.removeAt(itemIndex) ;
+    daily?.attributes?.updateDailyDetails() ;
+    var newDaily = await provider.editDaily(daily!) ;
+    updateValues(newDaily?.data) ;
   }
+
 
   Meals? getSelectedMeal() {
     if (meals.length > selectedMealTabIndex.value) {
@@ -109,10 +127,40 @@ class DailyController extends GetxController {
     return null;
   }
 
-  Sports? getSelectedSport() {
-    if (meals.length > selectedSportTabIndex.value) {
-      return sports[selectedSportTabIndex.value];
+  getSelectedSport() {
+    if(sports.length > selectedSportTabIndex.value){
+      return sports[selectedSportTabIndex.value] ;
     }
-    return null;
+    return null ;
   }
+
+
+  void addToMeal(MealItem results) async{
+    var selectedMeal = getSelectedMeal() ;
+    var index = selectedMeal?.items?.indexWhere(
+            (e) => e.ingredient?.data?.id == results.ingredient?.data?.id || e.recipe?.data?.id == results.recipe?.data?.id);
+
+    // print(selectedMeal?.items?.map((e) => e.ingredient?.data?.id)) ;
+    // print(results?.ingredient?.data?.id);
+    // print(index) ;
+    //
+    // if (selectedMeal != null && selectedMeal.items != null && index != null && index != -1) {
+    //   // Ingredient exists, update quantity and calories
+    //   selectedMeal.items![index].weight =
+    //       selectedMeal.items![index].weight??0 + (results.weight ?? 0);
+    //   selectedMeal.items![index].calories =
+    //       (selectedMeal.items![index].calories ?? 0) +
+    //           (results.calories ?? 0);
+    // } else {
+      // Ingredient does not exist, add it to the list
+      selectedMeal?.items?.add(results);
+    // }
+    daily?.attributes?.updateDailyDetails() ;
+    var newDaily = await provider.editDaily(daily!) ;
+    updateValues(newDaily?.data) ;
+  }
+
+
+
+
 }

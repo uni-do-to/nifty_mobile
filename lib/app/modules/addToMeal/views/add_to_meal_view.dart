@@ -85,6 +85,7 @@ class AddToMealView extends GetView<AddToMealController> {
                         IngredientTabView(
                           selectedMeal: controller.selectedMeal,
                           theme: theme!,
+                          onAddIngredientToMealPressed: ()=> controller.onAddIngredientToMeal(),
                         ),
                         RecipeTabView(
                           selectedMeal: controller.selectedMeal,
@@ -94,13 +95,7 @@ class AddToMealView extends GetView<AddToMealController> {
                             if (result == true) controller.loadRecipeList();
                           },
                           onAddRecipeToMeal: () {
-                            if (controller.selectedRecipe.value != null &&
-                                controller
-                                        .selectedRecipeMeasurementUnit.value !=
-                                    null &&
-                                controller.recipeQuantity.value != "0") {
-                              Get.back();
-                            }
+                            controller.onAddRecipeToMeal() ;
                             //TODO add your recipe to ingredient list inside selected meal object
                           },
                           theme: theme,

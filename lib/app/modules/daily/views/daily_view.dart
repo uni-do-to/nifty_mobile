@@ -4,10 +4,10 @@ import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/config/size_constants.dart';
 import 'package:nifty_mobile/app/config/theme_data.dart';
+import 'package:nifty_mobile/app/data/models/daily_model.dart';
 import 'package:nifty_mobile/app/modules/daily/views/chart_view.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/widgets/custom_tab_list_view.dart';
-import 'package:nifty_mobile/app/modules/daily/views/sport_tab_view.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:nifty_mobile/app/widgets/main_tab_bar.dart';
 
@@ -120,87 +120,86 @@ class DailyView extends GetView<DailyController> {
                           physics: NeverScrollableScrollPhysics(),
                           children: [
                             ObxValue((state) {
-                              return CustomTabListView(
-                                tabCount: state.length,
-                                selectedTabIndex:
-                                    controller.selectedMealTabIndex.value,
-                                getTapItemCount: (tabIndex) {
-                                  return controller
-                                          .meals[tabIndex].items?.length ??
-                                      0;
-                                },
-                                onAddTabPressed: () {
-                                  controller.addMeal();
-                                },
-                                onTapChanged: (index) {
-                                  controller.selectedMealTabIndex.value = index;
-                                },
-                                onAddToMeal: () async {
-                                  var currentMeal =
+                                return CustomTabListView(
+                                  tabCount: state.length,
+                                  addNewTitle: 'Ajouter un nouvel élément ',
+                                  selectedTabIndex:
+                                      controller.selectedMealTabIndex.value,
+                                  getTapItemCount: (tabIndex) {
+                                    return controller.meals[tabIndex].items?.length??0;
+                                  },
+                                  onAddTabPressed: () {
+                                    controller.addMeal() ;
+                                  },
+                                  onTapChanged: (index) {
+                                    controller.selectedMealTabIndex.value = index;
+                                  },
+                                  onAddNewItem: ()async {
+                                    var currentMeal =
                                       controller.getSelectedMeal();
                                   if (currentMeal != null) {
                                     var results = await Get.toNamed(
                                         Routes.ADD_TO_MEAL,
                                         arguments: currentMeal);
+                                    if (results != null && results is MealItem) {
+                                      controller.addToMeal(results);
+                                    }
                                   }
                                 },
-                                tabBuilder: (index) {
-                                  return ObxValue((state) {
-                                    return SecondaryTab(
-                                      title: 'Repas n°${index + 1}',
-                                      isSelected: state.value == index,
-                                      icon: state.value == index
-                                          ? SvgPicture.asset(
-                                              'assets/images/meal_icon.svg',
-                                              width: 23,
-                                              height: 20,
-                                              color: ColorConstants
-                                                  .secondaryTabBarTextColor,
-                                            )
-                                          : null,
+                                  tabBuilder: (index) {
+                                    return ObxValue( (state) {
+                                      return SecondaryTab(
+                                        title: 'Repas n°${index+1}',
+                                        isSelected: state.value == index,
+                                        icon: state.value == index
+                                            ? SvgPicture.asset(
+                                          'assets/images/meal_icon.svg',
+                                          width: 23,
+                                          height: 20,
+                                          color:
+                                          ColorConstants.secondaryTabBarTextColor,
+                                        )
+                                            : null,
+                                      );
+                                    } , controller.selectedMealTabIndex
                                     );
-                                  }, controller.selectedMealTabIndex);
-                                },
-                                listItemBuilder: (BuildContext context,
-                                    int tabIndex, int itemIndex) {
-                                  var item = state[tabIndex].items?[itemIndex];
-                                  return DailyListItem(
-                                    name: item?.getName() ?? "No name",
-                                    calories: RichText(
-                                      text: TextSpan(
-                                        style: theme?.textTheme.titleMedium,
-                                        children: [
-                                          TextSpan(
-                                              text:
-                                                  (item?.calories?.toString() ??
-                                                      "")),
-                                          TextSpan(
-                                              text: ' kCal',
-                                              style: TextStyle(
-                                                  fontWeight: FontWeight.bold)),
-                                        ],
+                                  },
+                                  listItemBuilder: (BuildContext context, int tabIndex , int itemIndex){
+                                    var item = state[tabIndex].items?[itemIndex] ;
+                                    return DailyListItem(
+                                      name: item?.getName()??"No name",
+                                      calories: RichText(
+                                        text: TextSpan(
+                                          style: theme?.textTheme.titleMedium,
+                                          children: [
+                                            TextSpan(text: (item?.calories?.toString()??"") ),
+                                            TextSpan(
+                                                text: ' kCal',
+                                                style: TextStyle(
+                                                    fontWeight: FontWeight.bold)),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    action: InkWell(
-                                      onTap: () => {
-                                        controller.deleteItemFromMeal(
-                                            tabIndex, itemIndex)
-                                      },
-                                      enableFeedback: true,
-                                      child: Icon(
-                                        Icons.delete,
-                                        color: ColorConstants.accentColor
-                                            .withOpacity(0.3),
+                                      action: InkWell(
+                                        onTap: () => {
+                                          controller.deleteItemFromMeal(tabIndex, itemIndex)
+                                        },
+                                        enableFeedback: true,
+                                        child: Icon(
+                                          Icons.delete,
+                                          color: ColorConstants.accentColor
+                                              .withOpacity(0.3),
+                                        ),
                                       ),
-                                    ),
-                                  );
-                                },
-                              );
-                            }, controller.meals),
-
+                                    );
+                                  },
+                                );
+                              },controller.meals
+                            ),
                             ObxValue((state) {
                               return CustomTabListView(
                                 tabCount: state.length,
+                                addNewTitle: 'Ajouter un nouvel élément ',
                                 selectedTabIndex:
                                     controller.selectedSportTabIndex.value,
                                 getTapItemCount: (tabIndex) {
@@ -215,13 +214,13 @@ class DailyView extends GetView<DailyController> {
                                   controller.selectedSportTabIndex.value =
                                       index;
                                 },
-                                onAddToMeal: () async {
+                                onAddNewItem: () async {
                                   var currentSport =
                                       controller.getSelectedSport();
                                   if (currentSport != null) {
-                                    var results = await Get.toNamed(
-                                        Routes.ADD_SPORT,
-                                        arguments: currentSport);
+                                          var results = await Get.toNamed(
+                                          Routes.ADD_SPORT,
+                                          arguments: currentSport);
                                   }
                                 },
                                 tabBuilder: (index) {
@@ -231,9 +230,9 @@ class DailyView extends GetView<DailyController> {
                                       isSelected: state.value == index,
                                       icon: state.value == index
                                           ? Icon(Icons.fitness_center_sharp,
-                                              size: 23,
-                                              color: ColorConstants
-                                                  .secondaryTabBarTextColor)
+                                          size: 23,
+                                          color: ColorConstants
+                                              .secondaryTabBarTextColor)
                                           : null,
                                     );
                                   }, controller.selectedSportTabIndex);
@@ -274,11 +273,6 @@ class DailyView extends GetView<DailyController> {
                                 },
                               );
                             }, controller.sports),
-
-                            // SportTabView(
-                            //   sportsList: controller.sportsList,
-                            //   theme: theme!,
-                            // ),
                           ],
                         ),
                       ),

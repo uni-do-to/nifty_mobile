@@ -9,11 +9,12 @@ import '../config/color_constants.dart';
 
 class CustomTabListView extends StatelessWidget {
   final int selectedTabIndex;
+  final String addNewTitle ;
   final void Function(int)? onTapChanged;
   final void Function()? onAddTabPressed;
   final int tabCount;
   final Widget Function(int index) tabBuilder;
-  final void Function()? onAddToMeal;
+  final void Function()? onAddNewItem;
   final int Function(int index) getTapItemCount;
   final Widget Function(BuildContext context, int tabIndex, int listIndex)
       listItemBuilder;
@@ -21,13 +22,14 @@ class CustomTabListView extends StatelessWidget {
   const CustomTabListView({
     Key? key,
     required this.selectedTabIndex,
+    required this.addNewTitle ,
     required this.tabCount,
     required this.tabBuilder,
     required this.listItemBuilder,
     required this.getTapItemCount,
     this.onTapChanged,
     this.onAddTabPressed,
-    this.onAddToMeal,
+    this.onAddNewItem,
   }) : super(key: key);
 
   @override
@@ -61,7 +63,7 @@ class CustomTabListView extends StatelessWidget {
                     height: 46,
                     clipBehavior: Clip.none,
                     child: SmallActionButton(
-                      text: 'Ajouter un nouvel élément ',
+                      text: addNewTitle,
                       backgroundColor: ColorConstants.secondaryTabBarTextColor,
                       textColor: Colors.white,
                       fontSize: 16,
@@ -70,7 +72,7 @@ class CustomTabListView extends StatelessWidget {
                         color: Colors.white,
                         size: 20,
                       ),
-                      onPressed: onAddToMeal,
+                      onPressed: onAddNewItem,
                     ),
                   )
                 ],

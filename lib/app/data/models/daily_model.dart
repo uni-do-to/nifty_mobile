@@ -7,14 +7,14 @@ import 'ingredient_model.dart';
 
 class Daily extends ApiDataModel {
   int? id;
-  Attributes? attributes;
+  DailyAttributes? attributes;
 
   Daily({this.id, this.attributes});
 
   Daily.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     attributes = json['attributes'] != null
-        ? Attributes?.fromJson(json['attributes'])
+        ? DailyAttributes?.fromJson(json['attributes'])
         : null;
   }
 
@@ -29,7 +29,7 @@ class Daily extends ApiDataModel {
   }
 }
 
-class Attributes {
+class DailyAttributes extends ApiDataModel {
   String? date;
   double? dailyCalories;
   double? consumedCalories;
@@ -37,7 +37,7 @@ class Attributes {
   List<Meals>? meals;
   List<Sports>? sports;
 
-  Attributes(
+  DailyAttributes(
       {this.date,
       this.dailyCalories,
       this.consumedCalories,
@@ -45,7 +45,7 @@ class Attributes {
       this.meals,
       this.sports});
 
-  Attributes.fromJson(Map<String, dynamic> json) {
+  DailyAttributes.fromJson(Map<String, dynamic> json) {
     date = json['date'];
     dailyCalories = json['dailyCalories'];
     consumedCalories = json['consumedCalories'];
@@ -157,7 +157,7 @@ class Meals {
 
 class MealItem {
   int? id;
-  int? calories;
+  double? calories;
   double? weight;
   ApiSingleResponse<Ingredient>? ingredient;
   ApiSingleResponse<Recipe>? recipe;
@@ -184,10 +184,10 @@ class MealItem {
     data['calories'] = calories;
     data['weight'] = weight;
     if (ingredient != null) {
-      data['ingredient'] = ingredient?.toJson();
+      data['ingredient'] = ingredient?.data?.id;
     }
     if (recipe != null) {
-      data['recipe'] = recipe?.toJson();
+      data['recipe'] = recipe?.data?.id;
     }
     return data;
   }
@@ -208,6 +208,7 @@ class MealItem {
     }
   }
 }
+
 
 class Sports {
   int? id;
@@ -278,22 +279,13 @@ class SportItem {
     data['calories'] = calories;
     data['minutes'] = minutes;
     if (sport != null) {
-      data['sport'] = sport?.toJson();
+      data['sport'] = sport?.data?.id;
     }
     return data;
   }
 
-  bool isSport() {
-    return sport?.data != null;
-  }
-
-  String? getName() {
-    if (isSport()) {
-      var attributes = sport?.data?.attributes;
-      return Get.locale?.languageCode == 'fr'
-          ? attributes?.nameFr
-          : attributes?.nameEn;
-    }
-    return null;
+  String? getName () {
+      var attributes = sport?.data?.attributes ;
+      return Get.locale?.languageCode == 'fr' ? attributes?.nameFr : attributes?.nameEn ;
   }
 }

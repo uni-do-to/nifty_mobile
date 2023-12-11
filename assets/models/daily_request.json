@@ -12,16 +12,16 @@
         "weight": 0,
         "items": [
           {
-            "calories": ,
+            "calories": 0,
             "weight": 0,
             "ingredient": {
               "data": {
-                "id": 0
+                "id": 25
               }
             },
             "recipe": {
               "data": {
-                "id": 0
+                "id": 1
               }
             }
           }
@@ -41,7 +41,7 @@
             "minutes": 0,
             "sport": {
               "data": {
-                "id": 0,
+                "id": 1,
                 "attributes": {}
               }
             }
