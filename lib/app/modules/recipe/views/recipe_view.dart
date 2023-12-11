@@ -136,10 +136,11 @@ class RecipeView extends GetView<RecipeController> {
         return DeleteAlertDialogWidget(
           itemName: controller.filteredItems[index].attributes!.name!,
           onCancelPressed: () => Get.back(),
-          onDeletePressed: () {
+          onDeletePressed: () async {
+            await controller.removeRecipe(controller.filteredItems[index]);
             controller.filteredItems.removeAt(index);
-            controller.removeRecipe(controller.filteredItems[index]);
             Get.back();
+            controller.initData();
           },
         );
       },

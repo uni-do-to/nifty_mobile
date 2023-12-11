@@ -26,7 +26,7 @@ class IngredientProvider extends BaseProvider {
   }
 
   Future<Response> deleteIngredientRequest(int id) async =>
-      await delete('ingredients/$id');
+      await delete('${ConfigAPI.ingredientsUrl}/$id');
 
   Future<ApiListResponse<Ingredient>?> getIngredientList(
       {int? subCategoryId}) async {

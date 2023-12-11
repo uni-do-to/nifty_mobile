@@ -4,8 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 import 'package:get/get.dart';
+import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/widgets/form_field.dart';
+import 'package:nifty_mobile/app/widgets/small_action_button.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
 import '../../../utils/size_utils.dart';
@@ -20,17 +22,31 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
     var theme = NeumorphicTheme.of(context)?.current;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        shadowColor: Colors.transparent,
-        titleTextStyle: theme?.textTheme.bodyMedium?.copyWith(
-          fontWeight: FontWeight.bold,
+        leadingWidth: 18,
+        leading: Container(
+          padding: EdgeInsets.only(
+            top: 35,
+          ),
+          child: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: theme?.iconTheme.color,
+            ),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
+        ),
+        title: Container(
+          padding: const EdgeInsets.only(
+            top: 47,
+            bottom: 13,
+          ),
+          child:
+              Text(LocaleKeys.add_new_ingredient_screen_title.tr.toUpperCase()),
         ),
         centerTitle: false,
-        titleSpacing: 30,
-        title: Text(
-          LocaleKeys.add_new_ingredient_screen_title.tr,
-        ),
-        iconTheme: theme?.iconTheme,
+        backgroundColor: Colors.white,
+        titleTextStyle: theme?.textTheme.titleLarge,
+        toolbarHeight: 86,
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 35, vertical: 30),
@@ -39,26 +55,26 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
           children: [
             Text(
               LocaleKeys.add_new_ingredient_screen_sub_title.tr,
-              style: theme?.textTheme.bodyMedium?.copyWith(
+              style: theme?.textTheme.titleLarge?.copyWith(
                 fontWeight: FontWeight.bold,
               ),
             ),
-            SizedBox(
-              height: 5.toHeight,
+            const SizedBox(
+              height: 10,
             ),
             Text(
               LocaleKeys.add_new_ingredient_screen_hint.tr,
-              style: theme?.textTheme.bodySmall?.copyWith(height: 1.8),
+              style: theme?.textTheme.titleMedium?.copyWith(height: 1.8),
             ),
-            SizedBox(
-              height: 40.toHeight,
+            const SizedBox(
+              height: 30,
             ),
             Text(
               LocaleKeys.mandatory_fields_mark.tr,
-              style: theme?.textTheme.bodySmall,
+              style: theme?.textTheme.titleSmall,
             ),
-            SizedBox(
-              height: 40.toHeight,
+            const SizedBox(
+              height: 30,
             ),
             Form(
               key: controller.addIngredientFormKey,
@@ -71,13 +87,13 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                       controller: controller.ingredientNameFranceController,
                       keyboardType: TextInputType.text,
                       autocorrect: false,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 3),
                       errorText: controller.ingredientNameFranceError.value,
                     );
                   }, controller.ingredientNameFranceError),
-                  SizedBox(
-                    height: 20.toHeight,
+                  const SizedBox(
+                    height: 10,
                   ),
                   ObxValue((state) {
                     return NeuFormField(
@@ -85,13 +101,13 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                       controller: controller.ingredientNameEnglishController,
                       keyboardType: TextInputType.text,
                       autocorrect: false,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 3),
                       errorText: controller.ingredientNameEnglishError.value,
                     );
                   }, controller.ingredientNameEnglishError),
-                  SizedBox(
-                    height: 20.toHeight,
+                  const SizedBox(
+                    height: 10,
                   ),
                   ObxValue((state) {
                     return NeuFormField(
@@ -99,33 +115,33 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                       controller: controller.gramsPerCircleController,
                       keyboardType: TextInputType.number,
                       autocorrect: false,
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 10, vertical: 3),
                       errorText: controller.gramsPerCircleError.value,
                     );
                   }, controller.gramsPerCircleError),
-                  SizedBox(
-                    height: 20.toHeight,
+                  const SizedBox(
+                    height: 10,
                   ),
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Container(
-                        width: 300.toWidth,
+                        width: 230,
                         child: ObxValue((state) {
                           return NeuFormField(
                             hintText: LocaleKeys.calories_per_gram_label.tr,
                             controller: controller.caloriesPerGramController,
                             keyboardType: TextInputType.number,
                             autocorrect: false,
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 3),
                             errorText: controller.caloriesPerGramError.value,
                           );
                         }, controller.caloriesPerGramError),
                       ),
-                      SizedBox(
-                        width: 20.toWidth,
+                      const SizedBox(
+                        width: 10,
                       ),
                       Expanded(
                         child: ObxValue((state) {
@@ -135,31 +151,29 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                             keyboardType: TextInputType.number,
                             autocorrect: false,
                             readOnly: true,
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 10, vertical: 3),
                             errorText: controller.niftyPointsError.value,
                           );
-                        }, controller.niftyPointsError),
+                        },controller.niftyPointsError),
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 10.toHeight,
-                  ),
+
                   Text(
                     LocaleKeys.extra_measurement_section_label.tr,
                     style: theme?.textTheme.bodySmall?.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(
-                    height: 20.toHeight,
+                  const SizedBox(
+                    height: 15,
                   ),
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Container(
-                        width: 300.toWidth,
+                        width: 230,
                         child: ObxValue((state) {
                           return NeuFormField(
                             hintText: LocaleKeys.unit_name_measurement_label.tr,
@@ -176,8 +190,8 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                           );
                         }, controller.unitNameMeasurementError),
                       ),
-                      SizedBox(
-                        width: 20.toWidth,
+                      const SizedBox(
+                        width: 10,
                       ),
                       Expanded(
                         child: ObxValue((state) {
@@ -199,14 +213,14 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 20.toHeight,
+                  const SizedBox(
+                    height: 10,
                   ),
                   Row(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Container(
-                        width: 300.toWidth,
+                        width: 230,
                         child: ObxValue((state) {
                           return NeuFormField(
                             hintText: LocaleKeys
@@ -225,7 +239,7 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                         }, controller.unitNameAnotherMeasurementError),
                       ),
                       SizedBox(
-                        width: 20.toWidth,
+                        width: 10,
                       ),
                       Expanded(
                         child: ObxValue((state) {
@@ -247,79 +261,79 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 20.toHeight,
+                  const SizedBox(
+                    height: 10,
                   ),
 
                   //button
                   Row(
                     mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(child: Container()),
                       Container(
-                        width: 280.toWidth,
+                        height: 54,
+                        width: 191,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.rectangle,
+                          borderRadius: BorderRadius.circular(10),
+                          color: ColorConstants.accentColor,
+                        ),
                         child: NeumorphicButton(
+                            style: NeumorphicStyle(
+                              color: ColorConstants.accentColor,
+                            ),
                             child: Container(
-                              height: 45.toHeight,
+                              color: ColorConstants.accentColor,
                               alignment: Alignment.center,
                               child: ObxValue((ingredientCreated) {
                                 return ingredientCreated.value
                                     ? Container(
-                                        width: 32.toHeight,
-                                        height: 32.toHeight,
+                                        width: 20,
+                                        height: 20,
                                         child: CircularProgressIndicator(
-                                          backgroundColor: theme
-                                              ?.textTheme.labelLarge?.color,
+                                          backgroundColor: ColorConstants.white,
                                         ),
                                       )
                                     : Text(
                                         LocaleKeys
                                             .create_ingredient_button_label.tr,
-                                        style: theme?.textTheme.bodySmall
+                                        style: theme?.textTheme.titleMedium
                                             ?.copyWith(
-                                                fontWeight: FontWeight.bold),
+                                          fontWeight: FontWeight.bold,
+                                          color: ColorConstants.white,
+                                        ),
                                       );
                               }, controller.loading),
                             ),
                             onPressed: () async {
-                                    try {
-                                      await controller.createNewIngredient();
-                                      Get.offAllNamed(Routes.HOME);
-                                    } catch (err, _) {
-                                      printError(info: err.toString());
-                                      final strippedMessage =
-                                          err.toString().replaceFirst(
-                                                LocaleKeys
-                                                    .exception_snackbar_label
-                                                    .tr,
-                                                '',
-                                              );
+                              try {
+                                await controller.createNewIngredient();
+                                Get.offAllNamed(Routes.HOME);
+                              } catch (err, _) {
+                                printError(info: err.toString());
+                                final strippedMessage = err
+                                    .toString()
+                                    .replaceFirst(
+                                      LocaleKeys.exception_snackbar_label.tr,
+                                      '',
+                                    );
 
-                                      Get.snackbar(
-                                        LocaleKeys.error_snackbar_label.tr,
-                                        strippedMessage,
-                                        snackPosition: SnackPosition.TOP,
-                                        backgroundColor:
-                                            Colors.red.withOpacity(.75),
-                                        colorText: Colors.white,
-                                        icon: const Icon(Icons.error,
-                                            color: Colors.white),
-                                        shouldIconPulse: true,
-                                        barBlur: 20,
-                                      );
-                                    } finally {}
-                                  }),
+                                Get.snackbar(
+                                  LocaleKeys.error_snackbar_label.tr,
+                                  strippedMessage,
+                                  snackPosition: SnackPosition.TOP,
+                                  backgroundColor: Colors.red.withOpacity(.75),
+                                  colorText: Colors.white,
+                                  icon: const Icon(Icons.error,
+                                      color: Colors.white),
+                                  shouldIconPulse: true,
+                                  barBlur: 20,
+                                );
+                              } finally {}
+                            }),
                       ),
                     ],
-                  ),
-                  SizedBox(
-                    height: 20.toHeight,
-                  ),
-                  Text(
-                    LocaleKeys.tutorial_link_label.tr,
-                    style: theme?.textTheme.bodySmall?.copyWith(
-                      decoration: TextDecoration.underline,
-                    ),
                   ),
                 ],
               ),

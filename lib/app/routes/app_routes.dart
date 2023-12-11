@@ -41,9 +41,9 @@ abstract class _Paths {
   static const ADD_TO_MEAL = '/add-to-meal';
   static const ADD_NEW_RECIPE = '/add-new-recipe';
   static const RECIPE_INGREDIENT_TAB = '/recipe-ingredient-tab';
-
-
   static const ADD_NEW_INGREDIENT = '/add-new-ingredient';
+
+
   static const ADD_INGREDIENT_MEAL = '/add-ingredient-meal';
   static const ADD_QUANTITY_MEAL = '/add-quantity-meal';
   static const ADD_RECIPE_MEAL = '/add-recipe-meal';
