@@ -51,9 +51,9 @@ class Attributes {
     subCategory = json['sub_category'] != null
         ? ApiSingleResponse.fromJson(json['sub_category'], (json) => SubCategory?.fromJson(json))
         : null;
-    caloriesPer100grams = json['caloriesPer100grams'];
-    niftyPoints = json['niftyPoints'];
-    gramsPerCircle = json['gramsPerCircle'];
+    caloriesPer100grams = double.tryParse(json['caloriesPer100grams'].toString());
+    niftyPoints =  double.tryParse(json['niftyPoints'].toString());
+    gramsPerCircle =  double.tryParse(json['gramsPerCircle'].toString());
     if (json['units'] != null) {
       units = <Units>[];
       json['units'].forEach((v) {

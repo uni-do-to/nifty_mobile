@@ -47,9 +47,9 @@ class DailyAttributes extends ApiDataModel {
 
   DailyAttributes.fromJson(Map<String, dynamic> json) {
     date = json['date'];
-    dailyCalories = json['dailyCalories'];
-    consumedCalories = json['consumedCalories'];
-    calorieBurned = json['calorieBurned'];
+    dailyCalories = double.tryParse(json['dailyCalories'].toString());
+    consumedCalories = double.tryParse(json['consumedCalories'].toString());
+    calorieBurned = double.tryParse(json['calorieBurned'].toString());
     if (json['meals'] != null) {
       meals = <Meals>[];
       json['meals'].forEach((v) {
@@ -118,8 +118,8 @@ class Meals {
     id = json['id'];
     index = json['index'];
     title = json['title'];
-    calories = json['calories'];
-    weight = json['weight'];
+    calories = double.tryParse(json['calories'].toString());
+    weight = double.tryParse(json['weight'].toString());
     if (json['items'] != null) {
       items = <MealItem>[];
       json['items'].forEach((v) {
@@ -223,7 +223,7 @@ class Sports {
     id = json['id'];
     index = json['index'];
     title = json['title'];
-    calories = json['calories'];
+    calories = double.tryParse(json['calories'].toString());
     if (json['items'] != null) {
       items = <SportItem>[];
       json['items'].forEach((v) {
@@ -257,8 +257,8 @@ class Sports {
 
 class SportItem {
   int? id;
-  double? calories;
-  double? minutes;
+  int? calories;
+  int? minutes;
   ApiSingleResponse<Sport>? sport;
 
   SportItem({this.id, this.calories, this.minutes, this.sport});

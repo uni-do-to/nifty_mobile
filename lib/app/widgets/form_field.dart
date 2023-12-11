@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 

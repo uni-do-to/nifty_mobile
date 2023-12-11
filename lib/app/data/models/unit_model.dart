@@ -8,7 +8,7 @@ class Units {
   Units.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
-    grams = json['grams'];
+    grams =  double.tryParse(json['grams'].toString());
   }
 
   Map<String, dynamic> toJson() {

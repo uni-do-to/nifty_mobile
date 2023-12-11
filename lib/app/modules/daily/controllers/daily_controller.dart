@@ -32,7 +32,7 @@ class DailyController extends GetxController {
 
   void getDaily(String date) async {
     Daily? daily ;
-    try {
+    // try {
       var results = await provider.getDaily(date);
       if((results?.data?.length??0) > 0 ){
         daily = results?.data?[0] ;
@@ -44,9 +44,9 @@ class DailyController extends GetxController {
       }
       updateValues(daily) ;
 
-    }catch (e) {
-      print(e);
-    }
+    // }catch (e) {
+    //   print(e);
+    // }
   }
 
   void updateValues (Daily? newDaily) {

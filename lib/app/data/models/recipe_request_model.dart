@@ -63,8 +63,8 @@ class RecipeItem {
         ? ApiSingleResponse.fromJson(
             json['ingredient'], (json) => Ingredient.fromJson(json))
         : null;
-    grams = json['grams'];
-    calories = json['calories'];
+    grams =  double.tryParse(json['grams'].toString());
+    calories =  double.tryParse(json['calories'].toString());
   }
 
   Map<String, dynamic> toJson() {

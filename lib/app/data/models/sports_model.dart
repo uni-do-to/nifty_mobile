@@ -34,7 +34,7 @@ class Attributes {
   Attributes.fromJson(Map<String, dynamic> json) {
     nameEn = json['nameEn'];
     nameFr = json['nameFr'];
-    caloriesPerMinute = json['caloriesPerMinute'];
+    caloriesPerMinute =  double.tryParse(json['caloriesPerMinute'].toString());
   }
 
   Map<String, dynamic> toJson() {

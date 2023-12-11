@@ -42,11 +42,11 @@ class Attributes {
 
   Attributes.fromJson(Map<String, dynamic> json) {
     name = json['name'];
-    caloriesPer100grams = json['caloriesPer100grams'];
-    niftyPoints = json['niftyPoints'];
-    totalWeight = json['totalWeight'];
-    totalCalories = json['totalCalories'];
-    gramsPerCircle = json['gramsPerCircle'];
+    caloriesPer100grams =  double.tryParse(json['caloriesPer100grams'].toString());
+    niftyPoints =  double.tryParse(json['niftyPoints'].toString());
+    totalWeight =  double.tryParse(json['totalWeight'].toString());
+    totalCalories =  double.tryParse(json['totalCalories'].toString());
+    gramsPerCircle =  double.tryParse(json['gramsPerCircle'].toString());
   }
 
   Map<String, dynamic> toJson() {
