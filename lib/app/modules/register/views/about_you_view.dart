@@ -30,87 +30,91 @@ class AboutYouView extends GetView<RegisterController> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     var theme = NeumorphicTheme.of(context)?.current;
-    return Form(
-      key: controller.yourInfoFormKey,
-      child: Column(
-        children: <Widget>[
-          RegisterViewsTitle(text: LocaleKeys.about_you_screen_title.tr),
-          Expanded(child: Container()),
-          ObxValue((state) {
-            return NeuFormField(
-              hintText: LocaleKeys.your_name_label.tr,
-              controller: controller.nameController,
-              keyboardType: TextInputType.text,
-              autocorrect: false,
-              prefixIcon: const Icon(Icons.person),
-              errorText: controller.nameError.value,
-            );
-          }, controller.nameError),
-          const SizedBox(
-            height: 24,
-          ),
-          ObxValue((state) {
-            return NeuFormField(
-              hintText: LocaleKeys.birthdate_label.tr,
-              controller: controller.dateOfBirthController,
-              keyboardType: TextInputType.datetime,
-              autocorrect: false,
-              readOnly: true,
-              onTap: () {
-                // Call the _selectDate function when the text field is tapped.
-                _selectDate(context);
-              },
-              prefixIcon: const Icon(Icons.date_range),
-              errorText: controller.birthDateError.value,
-            );
-          }, controller.birthDateError),
-          const SizedBox(
-            height: 24,
-          ),
-          ObxValue((state) {
-            return Column(
-              children: [
-                RegisterViewsTitle(text: LocaleKeys.choose_gender_label.tr),
-                SizedBox(
-                  height: 24.toHeight,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: <Widget>[
-                    GenderRadio(
-                      label: LocaleKeys.male_radio_label.tr,
-                      icon: Icons.male,
-                      value: "male",
-                      groupValue: controller.selectedGender.value,
-                      onChanged: (value) =>
-                          controller.selectedGender.value = value.toString(),
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: SafeArea(
+        child: Form(
+          key: controller.yourInfoFormKey,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              RegisterViewsTitle(text: LocaleKeys.about_you_screen_title.tr),
+              Expanded(child: Container()),
+              ObxValue((state) {
+                return NeuFormField(
+                  hintText: LocaleKeys.your_name_label.tr,
+                  controller: controller.nameController,
+                  keyboardType: TextInputType.text,
+                  autocorrect: false,
+                  prefixIcon: const Icon(Icons.person),
+                  errorText: controller.nameError.value,
+                );
+              }, controller.nameError),
+
+              ObxValue((state) {
+                return NeuFormField(
+                  hintText: LocaleKeys.birthdate_label.tr,
+                  controller: controller.dateOfBirthController,
+                  keyboardType: TextInputType.datetime,
+                  autocorrect: false,
+                  readOnly: true,
+                  onTap: () {
+                    // Call the _selectDate function when the text field is tapped.
+                    _selectDate(context);
+                  },
+                  prefixIcon: const Icon(Icons.date_range),
+                  errorText: controller.birthDateError.value,
+                );
+              }, controller.birthDateError),
+              const SizedBox(
+                height: 15,
+              ),
+              ObxValue((state) {
+                return Column(
+                  children: [
+                    RegisterViewsTitle(text: LocaleKeys.choose_gender_label.tr),
+                    SizedBox(
+                      height: 20,
                     ),
-                    GenderRadio(
-                      label: LocaleKeys.female_radio_label.tr,
-                      icon: Icons.female,
-                      value: "female",
-                      groupValue: controller.selectedGender.value,
-                      onChanged: (value) =>
-                          controller.selectedGender.value = value.toString(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        GenderRadio(
+                          label: LocaleKeys.male_radio_label.tr,
+                          icon: Icons.male,
+                          value: "male",
+                          groupValue: controller.selectedGender.value,
+                          onChanged: (value) =>
+                              controller.selectedGender.value = value.toString(),
+                        ),
+                        GenderRadio(
+                          label: LocaleKeys.female_radio_label.tr,
+                          icon: Icons.female,
+                          value: "female",
+                          groupValue: controller.selectedGender.value,
+                          onChanged: (value) =>
+                              controller.selectedGender.value = value.toString(),
+                        ),
+                      ],
                     ),
                   ],
-                ),
-              ],
-            );
-          }, controller.selectedGender),
-          SizedBox(
-            height: 24.toHeight,
-          ),
-          ObxValue((state) {
-            return Text(
-              state.value,
-              style: theme?.textTheme.bodySmall?.copyWith(
-                color: Colors.red,
+                );
+              }, controller.selectedGender),
+              SizedBox(
+                height: 15,
               ),
-            );
-          }, controller.birthDateError),
-          Expanded(child: Container()),
-        ],
+              ObxValue((state) {
+                return Text(
+                  state.value,
+                  style: theme?.textTheme.bodySmall?.copyWith(
+                    color: Colors.red,
+                  ),
+                );
+              }, controller.genderError),
+              Expanded(child: Container()),
+            ],
+          ),
+        ),
       ),
     );
   }

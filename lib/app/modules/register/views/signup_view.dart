@@ -106,24 +106,7 @@ class SignupView extends GetView<RegisterController> {
                   );
                 } finally {}
               }),
-          SizedBox(
-            height: 20.toHeight,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                LocaleKeys.already_have_account_label.tr,
-                style: theme?.textTheme.bodySmall,
-              ),
-              Text(
-                LocaleKeys.login_label.tr,
-                style: theme?.textTheme.bodySmall?.copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ],
-          ),
+
           Expanded(child: Container()),
         ],
       ),

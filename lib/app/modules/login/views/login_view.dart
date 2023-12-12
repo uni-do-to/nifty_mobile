@@ -28,6 +28,7 @@ class LoginView extends GetView<LoginController> {
     SizeConfig().init(context);
 
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         body: SafeArea(
           child: Center(
             child: ListView(

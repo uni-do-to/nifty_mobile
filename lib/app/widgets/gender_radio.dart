@@ -37,7 +37,7 @@ class GenderRadio extends StatelessWidget {
       onChanged: onChanged,
       child: SizedBox(
         width: 240.toWidth,
-        height: 150.toHeight,
+        height: 100,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

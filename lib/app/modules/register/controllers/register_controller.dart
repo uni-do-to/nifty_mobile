@@ -272,8 +272,7 @@ class RegisterController extends AuthController {
             bmi: currentBMI.value.toString(),
             targetBmi: targetBMI.value.toString(),
             targetWeight: targetWeight.value.toString(),
-            dailyCalories: targetCaloriesPerDay.value
-        );
+            dailyCalories: targetCaloriesPerDay.value);
 
         await signUp(data);
       } catch (err, _) {
@@ -281,6 +280,7 @@ class RegisterController extends AuthController {
         //         'please contact admin for fixing the issues ' +
 
         passwordController.clear();
+        confirmPasswordController.clear();
         rethrow;
       } finally {
         isSignup.value = false;

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:another_xlider/another_xlider.dart';
 import 'package:another_xlider/models/trackbar.dart';
 import 'package:flutter/material.dart';
@@ -195,11 +197,14 @@ class YourBmiView extends GetView<RegisterController> {
                     children: [
                       FlutterSlider(
                           values: [controller.targetBMI.value],
-                          max: controller.maxBMIValue.value,
-                          min: controller.minBMIValue.value,
+                          max: max(controller.maxBMIValue.value ,controller.targetBMI.value),
+                          min: min(controller.minBMIValue.value , controller.targetBMI.value),
                           centeredOrigin: true,
                           trackBar: FlutterSliderTrackBar(),
                           onDragging: (handlerIndex, lowerValue, upperValue) {
+                            if(lowerValue <= controller.minBMIValue.value)
+                              return ;
+
                             controller.targetBMI.value = lowerValue;
                             controller.calculateUserGoalMeasurements();
 
