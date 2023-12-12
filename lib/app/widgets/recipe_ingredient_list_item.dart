@@ -6,6 +6,7 @@ class RecipeIngredientListItem extends StatelessWidget {
   final String text;
   final IconData icon;
   final bool? isSelected;
+  final bool? isSportItem;
   final void Function()? onDeletePressed;
 
   const RecipeIngredientListItem(
@@ -13,7 +14,8 @@ class RecipeIngredientListItem extends StatelessWidget {
       required this.text,
       required this.icon,
       this.onDeletePressed,
-      this.isSelected = false})
+      this.isSelected = false,
+      this.isSportItem = false})
       : super(key: key);
 
   @override
@@ -50,12 +52,15 @@ class RecipeIngredientListItem extends StatelessWidget {
               color: NeumorphicTheme.of(context)?.current?.iconTheme.color,
             ),
           ),
-          GestureDetector(
-            onTap: onDeletePressed,
-            child: Icon(
-              Icons.delete,
-              color: NeumorphicTheme.of(context)?.current?.iconTheme.color,
-              size: 19,
+          Visibility(
+            visible: !isSportItem!,
+            child: GestureDetector(
+              onTap: onDeletePressed,
+              child: Icon(
+                Icons.delete,
+                color: NeumorphicTheme.of(context)?.current?.iconTheme.color,
+                size: 19,
+              ),
             ),
           ),
         ],

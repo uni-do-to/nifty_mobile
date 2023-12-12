@@ -42,27 +42,30 @@ class RecipeView extends GetView<RecipeController> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              height: 37.35,
-              width: 225,
-              margin: const EdgeInsets.only(
-                top: 20,
-              ),
-              child: SmallActionButton(
-                text: 'Ajouter une nouvelle recite ',
-                backgroundColor: ColorConstants.mainThemeColor,
-                textColor: Colors.white,
-                fontSize: 14,
-                icon: const Icon(
-                  Icons.arrow_forward,
-                  color: Colors.white,
-                  size: 17.75,
+            Row(
+              children: [
+                Container(
+                  height: 37.35,
+                  margin: const EdgeInsets.only(
+                    top: 20,
+                  ),
+                  child: SmallActionButton(
+                    text: 'Ajouter une nouvelle recite ',
+                    backgroundColor: ColorConstants.mainThemeColor,
+                    textColor: Colors.white,
+                    fontSize: 14,
+                    icon: const Icon(
+                      Icons.arrow_forward,
+                      color: Colors.white,
+                      size: 17.75,
+                    ),
+                    onPressed: () async {
+                      var result = await Get.toNamed(Routes.ADD_NEW_RECIPE);
+                      if (result == true) controller.initData();
+                    },
+                  ),
                 ),
-                onPressed: () async {
-                  var result = await Get.toNamed(Routes.ADD_NEW_RECIPE);
-                  if (result == true) controller.initData();
-                },
-              ),
+              ],
             ),
             const SizedBox(
               height: 25,

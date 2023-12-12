@@ -56,7 +56,7 @@ class DailyProvider extends BaseProvider {
           Meals(
             index: 0,
             title: "Meal 0" ,
-            calories: 0,
+            calories: 0.0,
             weight: 0
           )
         ],

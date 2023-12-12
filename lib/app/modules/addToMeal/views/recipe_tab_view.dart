@@ -39,25 +39,28 @@ class RecipeTabView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            height: 37.35,
-            width: 225,
-            margin: const EdgeInsets.only(
-              left: 21,
-              top: 21,
-            ),
-            child: SmallActionButton(
-              text: 'Ajouter une nouvelle recite ',
-              backgroundColor: ColorConstants.mainThemeColor,
-              textColor: Colors.white,
-              fontSize: 14,
-              icon: const Icon(
-                Icons.arrow_forward,
-                color: Colors.white,
-                size: 17.75,
+          Row(
+            children: [
+              Container(
+                height: 37.35,
+                margin: const EdgeInsets.only(
+                  left: 21,
+                  top: 21,
+                ),
+                child: SmallActionButton(
+                  text: 'Ajouter une nouvelle recite ',
+                  backgroundColor: ColorConstants.mainThemeColor,
+                  textColor: Colors.white,
+                  fontSize: 14,
+                  icon: const Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                    size: 17.75,
+                  ),
+                  onPressed: onAddNewRecipe,
+                ),
               ),
-              onPressed: onAddNewRecipe,
-            ),
+            ],
           ),
           ObxValue((state) {
             return state.value
@@ -155,7 +158,7 @@ class RecipeTabView extends StatelessWidget {
           }, controller.loading),
           ObxValue((state) {
             return Container(
-              height: 177,
+              height: 180,
               child: AddQuantityWidget(
                 theme: theme,
                 measurementUnitsItems: controller.measurementUnitsRecipeItems,

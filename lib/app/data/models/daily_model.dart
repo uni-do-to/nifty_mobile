@@ -166,8 +166,8 @@ class MealItem {
 
   MealItem.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    calories = json['calories'];
-    weight = json['weight'];
+    calories = double.tryParse(json['calories'].toString());
+    weight =double.tryParse(json['weight'].toString());
     ingredient = json['ingredient'] != null
         ? ApiSingleResponse.fromJson(
             json['ingredient'], (json) => Ingredient.fromJson(json))

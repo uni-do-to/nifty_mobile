@@ -19,6 +19,7 @@ class AddNewRecipeView extends GetView<AddNewRecipeController> {
     var theme = NeumorphicTheme.of(context)?.current;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leadingWidth: 25,
         leading: Container(
@@ -95,24 +96,27 @@ class AddNewRecipeView extends GetView<AddNewRecipeController> {
               const SizedBox(
                 height: 8,
               ),
-              Container(
-                height: 37.35,
-                width: 230,
-                child: SmallActionButton(
-                  text: 'Ajouter un nouvel Ingrédient',
-                  backgroundColor: ColorConstants.mainThemeColor,
-                  textColor: Colors.white,
-                  fontSize: 14,
-                  icon: const Icon(
-                    Icons.arrow_forward,
-                    color: Colors.white,
-                    size: 17.75,
+              Row(
+                children: [
+                  Container(
+                    height: 37.35,
+                    child: SmallActionButton(
+                      text: 'Ajouter un nouvel Ingrédient',
+                      backgroundColor: ColorConstants.mainThemeColor,
+                      textColor: Colors.white,
+                      fontSize: 14,
+                      icon: const Icon(
+                        Icons.arrow_forward,
+                        color: Colors.white,
+                        size: 17.75,
+                      ),
+                      onPressed: () {
+                        Get.toNamed(
+                            Routes.ADD_NEW_RECIPE + Routes.RECIPE_INGREDIENT_TAB);
+                      },
+                    ),
                   ),
-                  onPressed: () {
-                    Get.toNamed(
-                        Routes.ADD_NEW_RECIPE + Routes.RECIPE_INGREDIENT_TAB);
-                  },
-                ),
+                ],
               ),
               SizedBox(height: 23),
               Expanded(

@@ -91,6 +91,7 @@ class SportTabView extends StatelessWidget {
                                         },
                                         child: ObxValue((state) {
                                           return RecipeIngredientListItem(
+                                            isSportItem:true,
                                             isSelected: controller
                                                     .selectedSport.value ==
                                                 controller.filteredItems[index],
@@ -126,7 +127,7 @@ class SportTabView extends StatelessWidget {
           }, controller.loading),
           ObxValue((state) {
             return Container(
-              height: 177,
+              height: 180,
               child: AddQuantityWidget(
                 theme: theme,
                 measurementUnitsItems: controller.measurementUnitsItems,

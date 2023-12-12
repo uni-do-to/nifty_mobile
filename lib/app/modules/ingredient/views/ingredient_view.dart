@@ -41,26 +41,29 @@ class IngredientView extends GetView<IngredientController> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              height: 37.35,
-              width: 230,
-              margin: const EdgeInsets.only(
-                top: 20,
-              ),
-              child: SmallActionButton(
-                text: 'Ajouter un nouvel Ingrédient',
-                backgroundColor: ColorConstants.mainThemeColor,
-                textColor: Colors.white,
-                fontSize: 14,
-                icon: const Icon(
-                  Icons.arrow_forward,
-                  color: Colors.white,
-                  size: 17.75,
+            Row(
+              children: [
+                Container(
+                  height: 37.35,
+                  margin: const EdgeInsets.only(
+                    top: 20,
+                  ),
+                  child: SmallActionButton(
+                    text: 'Ajouter un nouvel Ingrédient',
+                    backgroundColor: ColorConstants.mainThemeColor,
+                    textColor: Colors.white,
+                    fontSize: 14,
+                    icon: const Icon(
+                      Icons.arrow_forward,
+                      color: Colors.white,
+                      size: 17.75,
+                    ),
+                    onPressed: () {
+                      Get.toNamed(Routes.ADD_NEW_INGREDIENT);
+                    },
+                  ),
                 ),
-                onPressed: () {
-                  Get.toNamed(Routes.ADD_NEW_INGREDIENT);
-                },
-              ),
+              ],
             ),
             const SizedBox(
               height: 25,

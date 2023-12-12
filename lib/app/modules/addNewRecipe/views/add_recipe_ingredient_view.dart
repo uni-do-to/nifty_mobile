@@ -14,6 +14,7 @@ class AddRecipeIngredientView extends GetView<AddNewRecipeController> {
     var theme = NeumorphicTheme.of(context)?.current;
 
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leadingWidth: 25,
         leading: Container(

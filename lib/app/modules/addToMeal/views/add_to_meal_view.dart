@@ -18,6 +18,7 @@ class AddToMealView extends GetView<AddToMealController> {
   Widget build(BuildContext context) {
     var theme = NeumorphicTheme.of(context)?.current;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leadingWidth: 25,
         leading: Container(
@@ -48,63 +49,65 @@ class AddToMealView extends GetView<AddToMealController> {
         ),
         toolbarHeight: 86,
       ),
-      body: Container(
-        color: ColorConstants.grayBackgroundColor,
-        padding: EdgeInsets.symmetric(vertical: 30.toHeight),
-        child: DefaultTabController(
-          length: 2,
-          child: Container(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const MainTabBar(
-                  tabs: [
-                    MainTab(
-                      child: Text(
-                        "Ingrédient",
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    MainTab(
-                      child: Text(
-                        "Recette",
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ],
-                ),
-                Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: ColorConstants.grayBackgroundColor,
-                    ),
-                    child: TabBarView(
-                      physics: NeverScrollableScrollPhysics(),
-                      children: [
-                        IngredientTabView(
-                          selectedMeal: controller.selectedMeal,
-                          theme: theme!,
-                          onAddIngredientToMealPressed: ()=> controller.onAddIngredientToMeal(),
+      body: SafeArea(
+        child: Container(
+          color: ColorConstants.grayBackgroundColor,
+          padding: EdgeInsets.symmetric(vertical: 30.toHeight),
+          child: DefaultTabController(
+            length: 2,
+            child: Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const MainTabBar(
+                    tabs: [
+                      MainTab(
+                        child: Text(
+                          "Ingrédient",
+                          textAlign: TextAlign.center,
                         ),
-                        RecipeTabView(
-                          selectedMeal: controller.selectedMeal,
-                          onAddNewRecipe: () async {
-                            var result =
-                                await Get.toNamed(Routes.ADD_NEW_RECIPE);
-                            if (result == true) controller.loadRecipeList();
-                          },
-                          onAddRecipeToMeal: () {
-                            controller.onAddRecipeToMeal() ;
-                            //TODO add your recipe to ingredient list inside selected meal object
-                          },
-                          theme: theme,
+                      ),
+                      MainTab(
+                        child: Text(
+                          "Recette",
+                          textAlign: TextAlign.center,
                         ),
-                      ],
+                      ),
+                    ],
+                  ),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: ColorConstants.grayBackgroundColor,
+                      ),
+                      child: TabBarView(
+                        physics: NeverScrollableScrollPhysics(),
+                        children: [
+                          IngredientTabView(
+                            selectedMeal: controller.selectedMeal,
+                            theme: theme!,
+                            onAddIngredientToMealPressed: ()=> controller.onAddIngredientToMeal(),
+                          ),
+                          RecipeTabView(
+                            selectedMeal: controller.selectedMeal,
+                            onAddNewRecipe: () async {
+                              var result =
+                                  await Get.toNamed(Routes.ADD_NEW_RECIPE);
+                              if (result == true) controller.loadRecipeList();
+                            },
+                            onAddRecipeToMeal: () {
+                              controller.onAddRecipeToMeal() ;
+                              //TODO add your recipe to ingredient list inside selected meal object
+                            },
+                            theme: theme,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

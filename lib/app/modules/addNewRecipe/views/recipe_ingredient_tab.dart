@@ -24,27 +24,30 @@ class RecipeIngredientTab extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            height: 37.35,
-            width: 230,
-            margin: const EdgeInsets.only(
-              left: 21,
-              top: 21,
-            ),
-            child: SmallActionButton(
-              text: 'Ajouter un nouvel Ingrédient',
-              backgroundColor: ColorConstants.mainThemeColor,
-              textColor: Colors.white,
-              fontSize: 14,
-              icon: const Icon(
-                Icons.arrow_forward,
-                color: Colors.white,
-                size: 17.75,
+          Row(
+            children: [
+              Container(
+                height: 37.35,
+                margin: const EdgeInsets.only(
+                  left: 21,
+                  top: 21,
+                ),
+                child: SmallActionButton(
+                  text: 'Ajouter un nouvel Ingrédient',
+                  backgroundColor: ColorConstants.mainThemeColor,
+                  textColor: Colors.white,
+                  fontSize: 14,
+                  icon: const Icon(
+                    Icons.arrow_forward,
+                    color: Colors.white,
+                    size: 17.75,
+                  ),
+                  onPressed: () {
+                    Get.toNamed(Routes.ADD_NEW_INGREDIENT);
+                  },
+                ),
               ),
-              onPressed: () {
-                Get.toNamed(Routes.ADD_NEW_INGREDIENT);
-              },
-            ),
+            ],
           ),
           Expanded(
             child: Container(
@@ -74,7 +77,7 @@ class RecipeIngredientTab extends StatelessWidget {
           ),
           Obx(() {
             return Container(
-              height: 177,
+              height: 180,
               child: AddQuantityWidget(
                 theme: theme!,
                 measurementUnitsItems:
@@ -90,7 +93,7 @@ class RecipeIngredientTab extends StatelessWidget {
             );
           }),
           const SizedBox(
-            height: 11,
+            height: 9,
           ),
           Obx(
             () {
@@ -129,7 +132,7 @@ class RecipeIngredientTab extends StatelessWidget {
                         height: 54,
                         padding: const EdgeInsets.only(left: 27),
                         child: SmallActionButton(
-                          width: 105,
+                          width: 90,
                           text: 'Close',
                           backgroundColor: ColorConstants.accentColor,
                           textColor: Colors.white,
@@ -147,7 +150,6 @@ class RecipeIngredientTab extends StatelessWidget {
                         height: 54,
                         padding: const EdgeInsets.only(right: 24),
                         child: SmallActionButton(
-                          width: 181,
                           text: 'Ajouter au repas',
                           backgroundColor:
                               controller.selectedIngredient.value?.attributes !=

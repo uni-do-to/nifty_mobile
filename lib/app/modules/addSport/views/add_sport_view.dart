@@ -22,6 +22,7 @@ class AddSportView extends GetView<AddSportController> {
     SizeConfig().init(context);
     var theme = NeumorphicTheme.of(context)?.current;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         leadingWidth: 25,
         leading: Container(
