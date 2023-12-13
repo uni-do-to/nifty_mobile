@@ -91,7 +91,7 @@ class SportTabView extends StatelessWidget {
                                         },
                                         child: ObxValue((state) {
                                           return RecipeIngredientListItem(
-                                            isSportItem:true,
+                                            isSportItem: true,
                                             isSelected: controller
                                                     .selectedSport.value ==
                                                 controller.filteredItems[index],
@@ -106,7 +106,9 @@ class SportTabView extends StatelessWidget {
                                                         .filteredItems[index]
                                                         .attributes!
                                                         .nameEn ??
-                                                    "no search result",
+                                                    LocaleKeys
+                                                        .no_search_result_label
+                                                        .tr,
                                             onDeletePressed: () {},
                                           );
                                         }, controller.selectedSport),
@@ -154,13 +156,15 @@ class SportTabView extends StatelessWidget {
                       selectedItemName: Get.locale?.languageCode == 'fr'
                           ? controller
                                   .selectedSport.value?.attributes?.nameFr ??
-                              "Choisissez un élément dans la liste"
+                              LocaleKeys
+                                  .selected_ingredient_recipe_hint_label.tr
                           : controller
                                   .selectedSport.value?.attributes?.nameEn ??
-                              "Choisissez un élément dans la liste",
+                              LocaleKeys
+                                  .selected_ingredient_recipe_hint_label.tr,
                       quantityName:
                           controller.selectedMeasurementUnit.value?.name ??
-                              "QTé",
+                              LocaleKeys.quantity_of_selected_item_hint.tr,
                       quantityValue: controller.sportQuantity.value,
                       isChecked:
                           controller.selectedSport.value?.attributes != null &&
@@ -180,7 +184,7 @@ class SportTabView extends StatelessWidget {
                         padding: const EdgeInsets.only(right: 24),
                         child: SmallActionButton(
                             width: 181,
-                            text: 'Ajouter au sport',
+                            text: LocaleKeys.add_to_sport_screen_title.tr,
                             backgroundColor: controller
                                             .selectedSport.value?.attributes !=
                                         null &&

@@ -86,6 +86,7 @@ class LocaleKeys {
   static const quantity_of_selected_item_hint =
       'quantity_of_selected_item_hint';
   static const add_to_meal_button_label = 'add_to_meal_button_label';
+  static const add_to_sport_screen_title = 'add_to_sport_screen_title';
   static const new_recipe_tab_label = 'new_recipe_tab_label';
   static const empty_meal_tab_hint = 'empty_meal_tab_hint';
   static const add_new_ingredient_screen_title =
@@ -243,6 +244,7 @@ class Locales {
     'selected_ingredient_recipe_hint_label': 'Choose an item from the list',
     'quantity_of_selected_item_hint': 'QTY',
     'add_to_meal_button_label': 'Add to meal',
+    'add_to_sport_screen_title': 'Add to sport',
     'new_recipe_tab_label': 'New recipe',
     'empty_meal_tab_hint':
         'You haven\'t eaten yet today, add an ingredient or recipe to your meal',
@@ -391,6 +393,7 @@ class Locales {
         'Choisissez un élément dans la liste',
     'quantity_of_selected_item_hint': 'QTé',
     'add_to_meal_button_label': 'Ajouter au repas',
+    'add_to_sport_screen_title': 'Ajouter Au sport',
     'new_recipe_tab_label': 'Nouvelle recette',
     'new_meal_button_label': 'Nouveau repas',
     'empty_meal_tab_hint':
