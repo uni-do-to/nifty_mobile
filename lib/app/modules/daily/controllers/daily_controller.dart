@@ -3,6 +3,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/data/models/daily_model.dart';
 import 'package:nifty_mobile/app/data/providers/daily_provider.dart';
+import 'package:nifty_mobile/generated/locales.g.dart';
 
 class DailyController extends GetxController {
   final DailyProvider provider;
@@ -18,7 +19,7 @@ class DailyController extends GetxController {
   final RxInt selectedMealTabIndex = 0.obs;
   final RxInt selectedSportTabIndex = 0.obs;
 
-  RxString day = 'Today'.obs;
+  RxString day = LocaleKeys.today_label.tr.obs;
 
   DailyController(this.provider);
 

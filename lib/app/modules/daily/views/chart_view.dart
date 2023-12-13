@@ -5,6 +5,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
+import 'package:nifty_mobile/generated/locales.g.dart';
 
 class BudgetChart extends StatelessWidget {
   final double dailyBudget;
@@ -162,7 +163,7 @@ class BudgetChart extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Légumes",
+                        LocaleKeys.vegetables_chart_label.tr,
                         style: theme?.textTheme.bodySmall?.copyWith(fontSize: 13 , color: ColorConstants.accentColor.withOpacity(0.5)),
                       ),
                       Text(
@@ -193,7 +194,7 @@ class BudgetChart extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Depensé",
+                        LocaleKeys.remaining_budget_label.tr,
                         style: theme?.textTheme.bodySmall?.copyWith(fontSize: 13 , color: ColorConstants.accentColor),
                       ),
                       Text(
@@ -222,7 +223,7 @@ class BudgetChart extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Depensé",
+                          LocaleKeys.remaining_budget_label.tr,
                           style: theme?.textTheme.bodySmall?.copyWith(fontSize: 13 , color: Color(0xff9D0600)),
                         ),
                         Text(
@@ -251,7 +252,7 @@ class BudgetChart extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Mon Budget",
+                        LocaleKeys.nifty_points_budget_label.tr,
                         style: theme?.textTheme.bodySmall?.copyWith(fontSize: 14 , color: ColorConstants.mainThemeColor),
                       ),
                       Text(

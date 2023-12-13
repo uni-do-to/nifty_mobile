@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
+import 'package:nifty_mobile/generated/locales.g.dart';
 
 import '../../../utils/size_utils.dart';
 import '../controllers/home_controller.dart';
@@ -52,7 +53,7 @@ class HomeView extends GetView<HomeController> {
                 height: 26.4,
                 width: 24.9,
               ),
-              label: 'Daily',
+              label: LocaleKeys.daily_bottom_navigation_label.tr,
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
@@ -65,7 +66,7 @@ class HomeView extends GetView<HomeController> {
                 height: 28.18,
                 width: 21.72,
               ),
-              label: 'Recipe',
+              label: LocaleKeys.recipe_tab_label.tr,
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
@@ -78,7 +79,7 @@ class HomeView extends GetView<HomeController> {
                 height: 28.3,
                 width: 28.5,
               ),
-              label: 'Ingredient',
+              label: LocaleKeys.ingredient_bottom_navigation_label.tr,
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(

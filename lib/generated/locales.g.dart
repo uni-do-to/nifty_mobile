@@ -52,6 +52,13 @@ class LocaleKeys {
   static const already_have_account_label = 'already_have_account_label';
   static const not_have_account_label = 'not_have_account_label';
   static const login_label = 'login_label';
+  static const daily_bottom_navigation_label = 'daily_bottom_navigation_label';
+  static const ingredient_bottom_navigation_label =
+      'ingredient_bottom_navigation_label';
+  static const profile_bottom_navigation_label =
+      'profile_bottom_navigation_label';
+  static const vegetables_chart_label = 'vegetables_chart_label';
+  static const today_label = 'today_label';
   static const subscription_button_label = 'subscription_button_label';
   static const subscription_view_title = 'subscription_view_title';
   static const daily_calories_home_title = 'daily_calories_home_title';
@@ -61,7 +68,9 @@ class LocaleKeys {
   static const nifty_points_budget_label = 'nifty_points_budget_label';
   static const remaining_budget_label = 'remaining_budget_label';
   static const sport_budget_label = 'sport_budget_label';
+  static const add_meal_item_button_label = 'add_meal_item_button_label';
   static const meal_tab_number_label = 'meal_tab_number_label';
+  static const sport_tab_number_label = 'sport_tab_number_label';
   static const ingredient_tab_label = 'ingredient_tab_label';
   static const recipe_tab_label = 'recipe_tab_label';
   static const new_recipe_tab_label = 'new_recipe_tab_label';
@@ -192,6 +201,11 @@ class Locales {
     'already_have_account_label': 'Already have an account ?',
     'not_have_account_label': 'Don`t have an account ?',
     'login_label': 'login',
+    'daily_bottom_navigation_label': 'Daily',
+    'ingredient_bottom_navigation_label': 'Ingredient',
+    'profile_bottom_navigation_label': 'Profile',
+    'vegetables_chart_label': 'Vegetables',
+    'today_label': 'Today',
     'subscription_button_label': 'Choose this formula',
     'subscription_view_title': 'Choose your formula',
     'daily_calories_home_title': 'Your daily calories',
@@ -201,7 +215,9 @@ class Locales {
     'nifty_points_budget_label': 'My budget',
     'remaining_budget_label': 'Spent',
     'sport_budget_label': 'Sport',
-    'meal_tab_number_label': 'Meal n°1',
+    'add_meal_item_button_label': 'Add a new item',
+    'meal_tab_number_label': 'Meal n°',
+    'sport_tab_number_label': 'Sport n°',
     'ingredient_tab_label': 'Ingredients',
     'recipe_tab_label': 'Recipe',
     'new_recipe_tab_label': 'New recipe',
@@ -320,6 +336,11 @@ class Locales {
     'already_have_account_label': 'Vous avez déjà un compte ?',
     'not_have_account_label': 'Vous n\'avez pas de compte ?',
     'login_label': 'Connectez-vous',
+    'daily_bottom_navigation_label': 'Quotidien',
+    'ingredient_bottom_navigation_label': 'Ingrédient',
+    'profile_bottom_navigation_label': 'Profil',
+    'vegetables_chart_label': 'Légumes',
+    'today_label': 'Aujourd\'hui',
     'subscription_button_label': 'Choisir cette formule',
     'subscription_view_title': 'Choisissez votre formule',
     'calories_measurement': 'KCal',
@@ -330,7 +351,9 @@ class Locales {
     'nifty_points_budget_label': 'Mon Budget',
     'remaining_budget_label': 'Depensé',
     'sport_budget_label': 'Sport',
-    'meal_tab_number_label': 'Repas n°1',
+    'add_meal_item_button_label': 'Ajouter un nouvel élément',
+    'meal_tab_number_label': 'Repas n°',
+    'sport_tab_number_label': 'Sport n°',
     'ingredient_tab_label': 'Ingrédients',
     'recipe_tab_label': 'Recette',
     'new_recipe_tab_label': 'Nouvelle recette',

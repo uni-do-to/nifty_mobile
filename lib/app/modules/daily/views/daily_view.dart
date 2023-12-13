@@ -10,6 +10,7 @@ import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/widgets/custom_tab_list_view.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:nifty_mobile/app/widgets/main_tab_bar.dart';
+import 'package:nifty_mobile/generated/locales.g.dart';
 
 import '../../../widgets/daily_list_item.dart';
 import '../../../widgets/secondary_tab_bar.dart';
@@ -27,7 +28,8 @@ class DailyView extends GetView<DailyController> {
       appBar: AppBar(
         title: Container(
           padding: SizeConstants.toolBarPadding,
-          child: Text('Daily'.tr.toUpperCase()),
+          child:
+              Text(LocaleKeys.daily_bottom_navigation_label.tr.toUpperCase()),
         ),
         centerTitle: false,
         backgroundColor: Colors.white,
@@ -43,17 +45,18 @@ class DailyView extends GetView<DailyController> {
               height: 228,
               clipBehavior: Clip.none,
               color: ColorConstants.grayBackgroundColor,
-              padding: EdgeInsets.only(top:7.5 ,bottom: 7.5 , left: 20, right: 20),
-              child: ObxValue(
-                (state) {
-                  var daily = state.value?.attributes ;
-                  return BudgetChart(
-                    dailyBudget: daily?.dailyCalories??1, // Your total budget here
-                    sportBudget: daily?.calorieBurned??1, // The amount spent here
-                    consumedBudget: daily?.consumedCalories??1,
-                  );
-                },controller.daily
-              ),
+              padding:
+                  EdgeInsets.only(top: 7.5, bottom: 7.5, left: 20, right: 20),
+              child: ObxValue((state) {
+                var daily = state.value?.attributes;
+                return BudgetChart(
+                  dailyBudget: daily?.dailyCalories ?? 1,
+                  // Your total budget here
+                  sportBudget: daily?.calorieBurned ?? 1,
+                  // The amount spent here
+                  consumedBudget: daily?.consumedCalories ?? 1,
+                );
+              }, controller.daily),
             ),
             Container(
               height: 51,
@@ -105,17 +108,17 @@ class DailyView extends GetView<DailyController> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const MainTabBar(
+                    MainTabBar(
                       tabs: [
                         MainTab(
                           child: Text(
-                            "Vos repas",
+                            LocaleKeys.your_meals_label.tr,
                             textAlign: TextAlign.center,
                           ),
                         ),
                         MainTab(
                           child: Text(
-                            "Sport",
+                            LocaleKeys.sport_budget_label.tr,
                             textAlign: TextAlign.center,
                           ),
                         ),
@@ -130,86 +133,96 @@ class DailyView extends GetView<DailyController> {
                           physics: NeverScrollableScrollPhysics(),
                           children: [
                             ObxValue((state) {
-                                return CustomTabListView(
-                                  tabCount: state.length,
-                                  addNewTitle: 'Ajouter un nouvel élément ',
-                                  selectedTabIndex:
-                                      controller.selectedMealTabIndex.value,
-                                  getTapItemCount: (tabIndex) {
-                                    return controller.meals[tabIndex].items?.length??0;
-                                  },
-                                  onAddTabPressed: () {
-                                    controller.addMeal() ;
-                                  },
-                                  onTapChanged: (index) {
-                                    controller.selectedMealTabIndex.value = index;
-                                  },
-                                  onAddNewItem: ()async {
-                                    var currentMeal =
+                              return CustomTabListView(
+                                tabCount: state.length,
+                                addNewTitle:
+                                    LocaleKeys.add_meal_item_button_label.tr,
+                                selectedTabIndex:
+                                    controller.selectedMealTabIndex.value,
+                                getTapItemCount: (tabIndex) {
+                                  return controller
+                                          .meals[tabIndex].items?.length ??
+                                      0;
+                                },
+                                onAddTabPressed: () {
+                                  controller.addMeal();
+                                },
+                                onTapChanged: (index) {
+                                  controller.selectedMealTabIndex.value = index;
+                                },
+                                onAddNewItem: () async {
+                                  var currentMeal =
                                       controller.getSelectedMeal();
                                   if (currentMeal != null) {
                                     var results = await Get.toNamed(
                                         Routes.ADD_TO_MEAL,
                                         arguments: currentMeal);
-                                    if (results != null && results is MealItem) {
+                                    if (results != null &&
+                                        results is MealItem) {
                                       controller.addToMeal(results);
                                     }
                                   }
                                 },
-                                  tabBuilder: (index) {
-                                    return ObxValue( (state) {
-                                      return SecondaryTab(
-                                        title: 'Repas n°${index+1}',
-                                        isSelected: state.value == index,
-                                        icon: state.value == index
-                                            ? SvgPicture.asset(
-                                          'assets/images/meal_icon.svg',
-                                          width: 23,
-                                          height: 20,
-                                          color:
-                                          ColorConstants.secondaryTabBarTextColor,
-                                        )
-                                            : null,
-                                      );
-                                    } , controller.selectedMealTabIndex
+                                tabBuilder: (index) {
+                                  return ObxValue((state) {
+                                    return SecondaryTab(
+                                      title:
+                                          '${LocaleKeys.meal_tab_number_label.tr}${index + 1}',
+                                      isSelected: state.value == index,
+                                      icon: state.value == index
+                                          ? SvgPicture.asset(
+                                              'assets/images/meal_icon.svg',
+                                              width: 23,
+                                              height: 20,
+                                              color: ColorConstants
+                                                  .secondaryTabBarTextColor,
+                                            )
+                                          : null,
                                     );
-                                  },
-                                  listItemBuilder: (BuildContext context, int tabIndex , int itemIndex){
-                                    var item = state[tabIndex].items?[itemIndex] ;
-                                    return DailyListItem(
-                                      name: item?.getName()??"No name",
-                                      calories: RichText(
-                                        text: TextSpan(
-                                          style: theme?.textTheme.titleMedium,
-                                          children: [
-                                            TextSpan(text: (item?.calories?.toString()??"") ),
-                                            TextSpan(
-                                                text: ' kCal',
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.bold)),
-                                          ],
-                                        ),
+                                  }, controller.selectedMealTabIndex);
+                                },
+                                listItemBuilder: (BuildContext context,
+                                    int tabIndex, int itemIndex) {
+                                  var item = state[tabIndex].items?[itemIndex];
+                                  return DailyListItem(
+                                    name: item?.getName() ?? "No name",
+                                    calories: RichText(
+                                      text: TextSpan(
+                                        style: theme?.textTheme.titleMedium,
+                                        children: [
+                                          TextSpan(
+                                              text:
+                                                  (item?.calories?.toString() ??
+                                                      "")),
+                                          TextSpan(
+                                              text:
+                                                  ' ${LocaleKeys.calories_measurement.tr}',
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold)),
+                                        ],
                                       ),
-                                      action: InkWell(
-                                        onTap: () => {
-                                          controller.deleteItemFromMeal(tabIndex, itemIndex)
-                                        },
-                                        enableFeedback: true,
-                                        child: Icon(
-                                          Icons.delete,
-                                          color: ColorConstants.accentColor
-                                              .withOpacity(0.3),
-                                        ),
+                                    ),
+                                    action: InkWell(
+                                      onTap: () => {
+                                        controller.deleteItemFromMeal(
+                                            tabIndex, itemIndex)
+                                      },
+                                      enableFeedback: true,
+                                      child: Icon(
+                                        Icons.delete,
+                                        color: ColorConstants.accentColor
+                                            .withOpacity(0.3),
                                       ),
-                                    );
-                                  },
-                                );
-                              },controller.meals
-                            ),
+                                    ),
+                                  );
+                                },
+                              );
+                            }, controller.meals),
                             ObxValue((state) {
                               return CustomTabListView(
                                 tabCount: state.length,
-                                addNewTitle: 'Ajouter un nouvel élément ',
+                                addNewTitle:
+                                    LocaleKeys.add_meal_item_button_label.tr,
                                 selectedTabIndex:
                                     controller.selectedSportTabIndex.value,
                                 getTapItemCount: (tabIndex) {
@@ -235,22 +248,20 @@ class DailyView extends GetView<DailyController> {
                                     if (results != null &&
                                         results is SportItem) {
                                       controller.addToSport(results);
-                                  }
-
-
-
+                                    }
                                   }
                                 },
                                 tabBuilder: (index) {
                                   return ObxValue((state) {
                                     return SecondaryTab(
-                                      title: 'Sport n°${index + 1}',
+                                      title:
+                                          '${LocaleKeys.sport_tab_number_label.tr}${index + 1}',
                                       isSelected: state.value == index,
                                       icon: state.value == index
                                           ? Icon(Icons.fitness_center_sharp,
-                                          size: 23,
-                                          color: ColorConstants
-                                              .secondaryTabBarTextColor)
+                                              size: 23,
+                                              color: ColorConstants
+                                                  .secondaryTabBarTextColor)
                                           : null,
                                     );
                                   }, controller.selectedSportTabIndex);
@@ -269,7 +280,8 @@ class DailyView extends GetView<DailyController> {
                                                   (item?.calories?.toString() ??
                                                       "")),
                                           TextSpan(
-                                              text: ' kCal',
+                                              text:
+                                                  ' ${LocaleKeys.calories_measurement.tr}',
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold)),
                                         ],
