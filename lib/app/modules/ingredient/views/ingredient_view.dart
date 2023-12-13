@@ -99,6 +99,7 @@ class IngredientView extends GetView<IngredientController> {
                             child: ObxValue((state) {
                               return ListView.builder(
                                 itemCount: controller.filteredItems.length,
+                                clipBehavior: Clip.none,
                                 itemBuilder: (context, index) {
                                   return Column(
                                     children: [

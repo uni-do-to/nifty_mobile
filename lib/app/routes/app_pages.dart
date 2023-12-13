@@ -1,7 +1,11 @@
+import 'dart:js';
+
+import 'package:flutter/material.dart';
+import 'package:animations/animations.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/modules/addNewRecipe/views/add_recipe_ingredient_view.dart';
-import 'package:nifty_mobile/app/modules/addNewRecipe/views/recipe_ingredient_tab.dart';
 import 'package:nifty_mobile/app/modules/addSport/views/add_sport_view.dart';
+import 'package:nifty_mobile/app/routes/scale_widget.dart';
 
 import '../middleware/auth_middleware.dart';
 import '../modules/addNewIngredient/bindings/add_new_ingredient_binding.dart';
@@ -27,10 +31,24 @@ class AppPages {
 
   static const INITIAL = Routes.LOGIN;
 
+  static Route<T> fadeThrough<T>(RouteSettings settings, WidgetBuilder page,
+      {int duration = 300}) {
+    return PageRouteBuilder<T>(
+      settings: settings,
+      transitionDuration: Duration(milliseconds: duration),
+      pageBuilder: (context, animation, secondaryAnimation) => page(context),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeScaleTransition(animation: animation, child: child);
+      },
+    );
+  }
   static final routes = [
     GetPage(
         name: _Paths.LOGIN,
-        page: () => LoginView(),
+        page: () => ScaleWidget(
+          builder: (context ,child) => scaleWidgetBuilder(context, child!),
+            child: LoginView()
+        ),
         binding: LoginBinding(),
         middlewares: [NotAuthMiddleware()]),
     GetPage(
@@ -45,31 +63,46 @@ class AppPages {
         middlewares: [NotAuthMiddleware()]),
     GetPage(
       name: _Paths.HOME,
-      page: () => const HomeView(),
+      page: () => ScaleWidget(
+          builder: (context ,child) => scaleWidgetBuilder(context, child!),
+          child: const HomeView()
+      ),
       binding: HomeBinding(),
       middlewares: [AuthMiddleware()],
     ),
     GetPage(
       name: _Paths.ADD_TO_MEAL,
-      page: () => const AddToMealView(),
+      page: () => ScaleWidget(
+          builder: (context ,child) => scaleWidgetBuilder(context, child!),
+          child: const AddToMealView()
+      ),
       binding: AddToMealBinding(),
       middlewares: [AuthMiddleware()],
     ),
     GetPage(
       name: _Paths.ADD_NEW_INGREDIENT,
-      page: () => const AddNewIngredientView(),
+      page: () => ScaleWidget(
+          builder: (context ,child) => scaleWidgetBuilder(context, child!),
+          child: const AddNewIngredientView()
+      ),
       binding: AddNewIngredientBinding(),
       middlewares: [AuthMiddleware()],
     ),
     GetPage(
       name: _Paths.ADD_SPORT,
-      page: () => const AddSportView(),
+      page: () => ScaleWidget(
+          builder: (context ,child) => scaleWidgetBuilder(context, child!),
+          child: const AddSportView()
+      ),
       binding: AddSportBinding(),
       middlewares: [AuthMiddleware()],
     ),
     GetPage(
         name: _Paths.ADD_NEW_RECIPE,
-        page: () => const AddNewRecipeView(),
+        page: () => ScaleWidget(
+            builder: (context ,child) => scaleWidgetBuilder(context, child!),
+            child: const AddNewRecipeView()
+        ),
         binding: AddNewRecipeBinding(),
         middlewares: [
           AuthMiddleware()
@@ -77,9 +110,14 @@ class AppPages {
         children: [
           GetPage(
             name: _Paths.RECIPE_INGREDIENT_TAB,
-            page: () =>const AddRecipeIngredientView(),
+            page: () => ScaleWidget(
+                builder: (context ,child) => scaleWidgetBuilder(context, child!),
+                child: const AddRecipeIngredientView()
+            ),
             middlewares: [AuthMiddleware()],
           ),
         ]),
   ];
+
 }
+
