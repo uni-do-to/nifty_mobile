@@ -51,7 +51,7 @@ class DailyProvider extends BaseProvider {
         date: date,
         calorieBurned: 0,
         consumedCalories: 0,
-        dailyCalories: 0,
+        dailyCalories: authService.credentials?.user?.dailyCalories,
         meals: [
           Meals(
             index: 0,

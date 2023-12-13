@@ -7,7 +7,7 @@ import 'package:nifty_mobile/app/data/providers/daily_provider.dart';
 class DailyController extends GetxController {
   final DailyProvider provider;
 
-  Daily? daily;
+  final Rx<Daily?> daily = Rx(null);
 
   RxList<Meals> meals = RxList(
       // [Meals()]
@@ -25,19 +25,20 @@ class DailyController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    var today = formatDate(DateTime.now(), [yyyy, '-', mm, '-', dd]);
-    getDaily(today);
+    getDaily(DateTime.now());
 
   }
 
-  void getDaily(String date) async {
+  void getDaily(DateTime date) async {
+    var dateFormatted = formatDate(date, [yyyy, '-', mm, '-', dd]);
+
     Daily? daily ;
     // try {
-      var results = await provider.getDaily(date);
+      var results = await provider.getDaily(dateFormatted);
       if((results?.data?.length??0) > 0 ){
         daily = results?.data?[0] ;
       }else {
-        var results = await provider.createDaily(date);
+        var results = await provider.createDaily(dateFormatted);
         if(results?.data != null){
           daily = results?.data ;
         }
@@ -51,38 +52,38 @@ class DailyController extends GetxController {
 
   void updateValues (Daily? newDaily) {
     if(newDaily != null){
-      daily = newDaily ;
-      meals.value = daily?.attributes?.meals??[];
-      sports.value = daily?.attributes?.sports??[] ;
+      daily.value = newDaily ;
+      meals.value = daily.value?.attributes?.meals??[];
+      sports.value = daily.value?.attributes?.sports??[] ;
     }
   }
 
 
   void addMeal() async {
-    if (daily == null) {
+    if (daily.value == null) {
       return;
     }
 
     var newIndex = meals.length;
-    daily?.attributes?.meals
+    daily.value?.attributes?.meals
         ?.add(Meals(index: newIndex, title: "Meal $newIndex"));
 
-    var newDaily = await provider.editDaily(daily!);
+    var newDaily = await provider.editDaily(daily.value!);
     updateValues(newDaily?.data);
   }
 
   void addSport() async{
-    if(daily == null) {
+    if(daily.value == null) {
       return ;
     }
 
     var newIndex = sports.length;
-    daily?.attributes?.sports?.add(Sports(
+    daily.value?.attributes?.sports?.add(Sports(
         index: newIndex,
         title: "Sport $newIndex"
     ));
 
-    var newDaily = await provider.editDaily(daily!) ;
+    var newDaily = await provider.editDaily(daily.value!) ;
     updateValues(newDaily?.data) ;
   }
 
@@ -98,13 +99,13 @@ class DailyController extends GetxController {
   }
 
   deleteItemFromMeal(int mealIndex, int itemIndex) async {
-    if (daily == null) {
+    if (daily.value == null) {
       return;
     }
 
     meals[mealIndex].items?.removeAt(itemIndex);
-    daily?.attributes?.updateDailyDetails();
-    var newDaily = await provider.editDaily(daily!);
+    daily.value?.attributes?.updateDailyDetails();
+    var newDaily = await provider.editDaily(daily.value!);
     updateValues(newDaily?.data);
   }
 
@@ -114,8 +115,8 @@ class DailyController extends GetxController {
     }
 
     sports[tabIndex].items?.removeAt(itemIndex) ;
-    daily?.attributes?.updateDailyDetails() ;
-    var newDaily = await provider.editDaily(daily!) ;
+    daily.value?.attributes?.updateDailyDetails() ;
+    var newDaily = await provider.editDaily(daily.value!) ;
     updateValues(newDaily?.data) ;
   }
 
@@ -155,8 +156,8 @@ class DailyController extends GetxController {
       // Ingredient does not exist, add it to the list
       selectedMeal?.items?.add(results);
     // }
-    daily?.attributes?.updateDailyDetails() ;
-    var newDaily = await provider.editDaily(daily!) ;
+    daily.value?.attributes?.updateDailyDetails() ;
+    var newDaily = await provider.editDaily(daily.value!) ;
     updateValues(newDaily?.data) ;
   }
 
@@ -165,8 +166,8 @@ class DailyController extends GetxController {
 
     selectedSport?.items?.add(results);
     // }
-    daily?.attributes?.updateDailyDetails() ;
-    var newDaily = await provider.editDaily(daily!) ;
+    daily.value?.attributes?.updateDailyDetails() ;
+    var newDaily = await provider.editDaily(daily.value!) ;
     updateValues(newDaily?.data) ;
   }
 

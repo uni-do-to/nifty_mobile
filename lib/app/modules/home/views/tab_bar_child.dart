@@ -35,7 +35,7 @@ class TabBarChild extends StatelessWidget {
             label,
             style: theme.textTheme.bodySmall?.copyWith(
               color: isSelected
-                  ? ColorConstants.selectedTabColor
+                  ? ColorConstants.lightGreen
                   : theme.accentColor,
             ),
           ),
