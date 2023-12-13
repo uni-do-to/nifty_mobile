@@ -156,7 +156,7 @@ class YourBmiView extends GetView<RegisterController> {
                                     "${state.value.round()} ${LocaleKeys.bmi_measurement.tr}",
                                     style: theme?.textTheme.bodySmall?.copyWith(
                                         fontWeight: FontWeight.w600,
-                                        color: ColorConstants.targetBMiColor),
+                                        color: ColorConstants.lightGreen),
                                   ),
                                   SizedBox(
                                     height: 10.toHeight,
@@ -165,7 +165,7 @@ class YourBmiView extends GetView<RegisterController> {
                                     "${controller.targetWeight.round()} ${LocaleKeys.weight_measurement.tr}",
                                     style: theme?.textTheme.bodySmall?.copyWith(
                                         fontWeight: FontWeight.w600,
-                                        color: ColorConstants.targetBMiColor),
+                                        color: ColorConstants.lightGreen),
                                   ),
                                   SizedBox(
                                     height: 10.toHeight,
@@ -174,7 +174,7 @@ class YourBmiView extends GetView<RegisterController> {
                                     "${controller.targetCaloriesPerDay.round()} ${LocaleKeys.calories_per_gram_measurement.tr}",
                                     style: theme?.textTheme.bodySmall?.copyWith(
                                         fontWeight: FontWeight.w600,
-                                        color: ColorConstants.targetBMiColor),
+                                        color: ColorConstants.lightGreen),
                                   ),
                                 ],
                               ),

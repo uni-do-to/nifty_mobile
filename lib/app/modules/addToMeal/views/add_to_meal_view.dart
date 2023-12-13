@@ -51,7 +51,7 @@ class AddToMealView extends GetView<AddToMealController> {
       ),
       body: SafeArea(
         child: Container(
-          color: ColorConstants.grayBackgroundColor,
+          color: ColorConstants.white,
           padding: EdgeInsets.symmetric(vertical: 30.toHeight),
           child: DefaultTabController(
             length: 2,

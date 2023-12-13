@@ -41,9 +41,19 @@ class DailyView extends GetView<DailyController> {
           children: [
             Container(
               height: 228,
+              clipBehavior: Clip.none,
               color: ColorConstants.grayBackgroundColor,
-              padding: EdgeInsets.all(20),
-              child: ChartView(),
+              padding: EdgeInsets.only(top:7.5 ,bottom: 7.5 , left: 20, right: 20),
+              child: ObxValue(
+                (state) {
+                  var daily = state.value?.attributes ;
+                  return BudgetChart(
+                    dailyBudget: daily?.dailyCalories??1, // Your total budget here
+                    sportBudget: daily?.calorieBurned??1, // The amount spent here
+                    consumedBudget: daily?.consumedCalories??1,
+                  );
+                },controller.daily
+              ),
             ),
             Container(
               height: 51,

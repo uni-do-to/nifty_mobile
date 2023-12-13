@@ -22,7 +22,7 @@ class AddSportController extends GetxController {
   RxBool isSportSelected = false.obs;
   RxBool sportListItemIsSelected = false.obs;
   RxBool loading = false.obs;
-  RxString sportQuantity = "0".obs;
+  RxString sportQuantity = "".obs;
 
   RxBool isValidSportForm = false.obs ;
   final SportProvider provider;
@@ -51,7 +51,7 @@ class AddSportController extends GetxController {
 
   initMeasurementUnits() {
     selectedMeasurementUnit.value = null;
-    sportQuantity.value = '0';
+    sportQuantity.value = '';
     List<Units> items = [
       Units(name: LocaleKeys.minutes_unit_label.tr, id: 1),
       Units(name: LocaleKeys.calories_unit_label.tr, id: 2),
@@ -124,9 +124,13 @@ class AddSportController extends GetxController {
       return;
 
     var quantity = double.parse(sportQuantity.value);
-
+    print("adding $quantity   ${selectedMeasurementUnit.value?.id}" , ) ;
     // Assuming you have a way to calculate calories for the ingredient
-    var calories = selectedMeasurementUnit.value?.id == 1 ? selectedSport.value!.attributes?.caloriesPerMinute??0 * quantity : quantity;
+    var calories = selectedMeasurementUnit.value?.id == 1 ? ((selectedSport.value!.attributes?.caloriesPerMinute??0) * quantity) : quantity;
+
+    print("adding $calories" , ) ;
+    print("adding ${selectedSport.value!.attributes?.caloriesPerMinute}") ;
+
 
     // Assuming MealItem or a similar class is applicable for ingredients as well
     SportItem sportItem = SportItem(

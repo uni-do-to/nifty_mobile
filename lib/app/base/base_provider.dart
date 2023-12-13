@@ -9,7 +9,7 @@ import '../routes/app_pages.dart';
 
 class BaseProvider extends GetConnect {
 
-  late AuthService _authService ;
+  late AuthService authService ;
 
   bool isLoginRequest(request) {
     return (ConfigAPI.baseUrl + ConfigAPI.signInUrl ==
@@ -42,7 +42,7 @@ class BaseProvider extends GetConnect {
 
   @override
   void onInit() {
-    _authService = Get.find() ;
+    authService = Get.find() ;
 
     httpClient.baseUrl = ConfigAPI.baseUrl;
     httpClient.timeout = const Duration(seconds: 30);
@@ -62,7 +62,7 @@ class BaseProvider extends GetConnect {
 
       // retry = httpClient.maxAuthRetries;
       if (!isLoginRequest(request)) {
-        await _authService.removeCredentials() ;
+        await authService.removeCredentials() ;
         Get.offAllNamed(Routes.LOGIN, arguments: {
           'message': {
             'status': 'warning',
@@ -86,10 +86,10 @@ class BaseProvider extends GetConnect {
 
     httpClient.addRequestModifier<dynamic>((request) async {
 
-      if (!isLoginRequest(request) && !_authService.sessionIsEmpty()) {
+      if (!isLoginRequest(request) && !authService.sessionIsEmpty()) {
         // log('Add Request Modifier is authenticated');
         request.headers['Authorization'] =
-        'Bearer ${_authService.credentials?.jwt}';
+        'Bearer ${authService.credentials?.jwt}';
       }
       return request;
     });

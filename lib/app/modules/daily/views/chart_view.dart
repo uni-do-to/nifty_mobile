@@ -1,14 +1,271 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+import 'package:nifty_mobile/app/config/color_constants.dart';
 
-import '../../../config/color_constants.dart';
+class BudgetChart extends StatelessWidget {
+  final double dailyBudget;
+  final double sportBudget;
+  final double consumedBudget;
+  final double viewHeight ;
 
-class ChartView extends StatelessWidget {
-  const ChartView({Key? key}) : super(key: key);
+  final boxDecoration =  BoxDecoration(
+  borderRadius: BorderRadius.circular(7.0)
+  ) ;
+
+  BudgetChart({
+    Key? key,
+    required this.dailyBudget,
+    required this.sportBudget,
+    required this.consumedBudget,
+    this.viewHeight = 151.0
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: ColorConstants.grayBackgroundColor,
+    var theme = NeumorphicTheme.of(context)?.current;
+
+    // Calculate percentages
+    final fullBudget = dailyBudget + sportBudget ;
+    final double sportPercent = (sportBudget / fullBudget) * 100;
+    final double consumedPercent = (consumedBudget / fullBudget) * 100;
+    final double overBudgetPercent = consumedPercent - 100 ;
+    final double vegetablesPercent = 5 ;
+
+    // Calculate box heights
+    final double consumedHeight = viewHeight * consumedPercent / 100;
+    final double sportHeight = viewHeight * sportPercent / 100;
+    final double? overBudgetHeight = overBudgetPercent > 0 ? viewHeight * overBudgetPercent / 100 : null ;
+
+    final double vegetablesHeight = viewHeight * vegetablesPercent /100;
+
+    return LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints constraints) {
+        return Stack(
+          children: [
+            // Daily budget box
+            Align(
+              alignment: Alignment.bottomLeft,
+              child: Container(
+                height: viewHeight,
+                width: 171,
+                clipBehavior: Clip.hardEdge,
+
+                decoration: boxDecoration.copyWith(
+                    border: Border.all(
+                        color: ColorConstants.lightGreen,
+                        width: 1
+                    )
+                ),
+                child: Stack(
+                  children: [
+                    Positioned(
+                      bottom: 0,
+                      left: 0,
+                      child: Container(
+                        height: viewHeight,
+                        width: 171,
+                        decoration: boxDecoration.copyWith(
+                          color: ColorConstants.lightGreen.withOpacity(0.1),
+                        ),
+                      ),
+                    ),
+                    //consumed calaroies
+                    Positioned(
+                      bottom: 0,
+                      left: 0,
+                      child: Container(
+                        width: 171,
+                        height: consumedHeight,
+                        decoration: boxDecoration.copyWith(
+                          color: ColorConstants.mainThemeColor.withOpacity(0.32),
+                        ),
+                      ),
+                    ),
+                    //vigatables 5%
+                    Positioned(
+                      bottom: 0,
+                      left: 0,
+                      child: Container(
+                        width: 171,
+                        height: vegetablesHeight,
+                        decoration: boxDecoration.copyWith(
+                          color: ColorConstants.mainThemeColor.withOpacity(0.50),
+                        ),
+                      ),
+                    ),
+
+                    //sport
+                    Positioned(
+                      top: 0,
+                      left: 0,
+                      child: Container(
+                        width: 171,
+                        height: sportHeight,
+                        decoration: boxDecoration.copyWith(
+                          color: Color(0xffEDCD67).withOpacity(0.20),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+
+            if(overBudgetHeight != null)
+              Positioned(
+                bottom: viewHeight + 2.5,
+                width: 171,
+                left: 0,
+                child: Container(
+                  height: 3,
+                  color: ColorConstants.accentColor,
+                ),
+              ),
+
+            // Over budget box
+            if(overBudgetHeight != null)
+            Positioned(
+              bottom: viewHeight + 8,
+              left: 0,
+              child: Container(
+                width: 171,
+                decoration: boxDecoration.copyWith(
+                  color: Color(0xffEBC5C4),
+                  border: Border.all(
+                    color: Color(0xff9D0600),
+                    width: 1,
+                  )
+                ),
+                height: overBudgetHeight,
+              ),
+            ),
+
+
+            //vegetables indicator
+            Positioned(
+              bottom: vegetablesHeight,
+              left: 171,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Container(
+                    width: 141,
+                    height: 1,
+                    color: Colors.grey,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Légumes",
+                        style: theme?.textTheme.bodySmall?.copyWith(fontSize: 13 , color: ColorConstants.accentColor.withOpacity(0.5)),
+                      ),
+                      Text(
+                        "5%",
+                        style: theme?.textTheme.bodySmall?.copyWith(fontSize: 20 ,fontWeight: FontWeight.w900, color: ColorConstants.accentColor.withOpacity(0.5)),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+
+            //Consumed calories
+            if(overBudgetHeight == null)
+              Positioned(
+              bottom: max( 0 , consumedHeight -10),
+              left: 170,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Icon(
+                    Icons.arrow_left,
+                    size: 26,
+                    color: ColorConstants.accentColor,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Depensé",
+                        style: theme?.textTheme.bodySmall?.copyWith(fontSize: 13 , color: ColorConstants.accentColor),
+                      ),
+                      Text(
+                        "${consumedPercent.toInt()}%",
+                        style: theme?.textTheme.bodySmall?.copyWith(fontSize: 24 ,fontWeight: FontWeight.w900, color: ColorConstants.accentColor),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            )
+            else
+              Positioned(
+                bottom: viewHeight+4,
+                left: 170,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Icon(
+                      Icons.arrow_left,
+                      size: 26,
+                      color: Color(0xff9D0600),
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Depensé",
+                          style: theme?.textTheme.bodySmall?.copyWith(fontSize: 13 , color: Color(0xff9D0600)),
+                        ),
+                        Text(
+                          "${consumedPercent.toInt()}%",
+                          style: theme?.textTheme.bodySmall?.copyWith(fontSize: 24 ,fontWeight: FontWeight.w900, color: Color(0xff9D0600)),
+                        )
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            //limit indicator
+            Positioned(
+              bottom: viewHeight + 4,
+              left: 181,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Container(
+                    width: 131,
+                    height: 1,
+                    color: Colors.grey,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Mon Budget",
+                        style: theme?.textTheme.bodySmall?.copyWith(fontSize: 14 , color: ColorConstants.mainThemeColor),
+                      ),
+                      Text(
+                        "100%",
+                        style: theme?.textTheme.bodySmall?.copyWith(fontSize: 24 ,fontWeight: FontWeight.w900, color: ColorConstants.mainThemeColor),
+                      )
+                    ],
+                  )
+                ],
+              ),
+            ),
+          ],
+        );
+      }
     );
   }
 }
