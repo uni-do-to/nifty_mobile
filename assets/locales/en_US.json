@@ -1,6 +1,6 @@
 {
   "login": "Login",
-  "sign_in": "Sign-in",
+  "sign_up_label": "Sign up",
   "logout": "Logout",
   "about_you_screen_title": "About you ?",
   "your_bmi_screen_title": "Your BMI ?",
@@ -38,6 +38,7 @@
   "password_label": "Your password",
   "confirm_password_label": "Confirm your password",
   "already_have_account_label": "Already have an account ?",
+  "not_have_account_label": "Don`t have an account ?",
   "login_label": "login",
   "subscription_button_label": "Choose this formula",
   "subscription_view_title": "Choose your formula",

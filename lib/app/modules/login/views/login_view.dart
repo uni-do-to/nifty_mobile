@@ -2,14 +2,13 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/modules/login/controllers/login_controller.dart';
+import 'package:nifty_mobile/generated/locales.g.dart';
 
 import '../../../routes/app_pages.dart';
 import '../../../utils/size_utils.dart';
 import '../../../widgets/form_field.dart';
 
 class LoginView extends GetView<LoginController> {
-
-
   LoginView({Key? key}) : super(key: key);
 
   void _showError(String error) async {
@@ -35,7 +34,7 @@ class LoginView extends GetView<LoginController> {
               shrinkWrap: true,
               children: [
                 Center(
-                    child: NeumorphicText('LOGIN',
+                    child: NeumorphicText(LocaleKeys.login.tr,
                         textStyle: NeumorphicTextStyle(
                           fontSize: 48,
                           fontWeight: FontWeight.w800,
@@ -55,20 +54,20 @@ class LoginView extends GetView<LoginController> {
                       children: <Widget>[
                         ObxValue((state) {
                           return NeuFormField(
-                            hintText: 'Email address',
+                            hintText: LocaleKeys.email_label.tr,
                             controller: controller.emailController,
                             keyboardType: TextInputType.emailAddress,
                             autocorrect: false,
                             prefixIcon: const Icon(Icons.email),
                             errorText: controller.emailError.value,
-                          ) ;
+                          );
                         }, controller.emailError),
                         const SizedBox(
                           height: 12,
                         ),
                         ObxValue((state) {
                           return NeuFormField(
-                            hintText: 'Password',
+                            hintText: LocaleKeys.password_label.tr,
                             obscureText: true,
                             controller: controller.passwordController,
                             prefixIcon: const Icon(Icons.password),
@@ -79,55 +78,56 @@ class LoginView extends GetView<LoginController> {
                           height: 16,
                         ),
                         NeumorphicButton(
-                          // style: NeumorphicTheme.of(context)
-                          //     ?.current
-                          //     ?.buttonStyle,
+                            // style: NeumorphicTheme.of(context)
+                            //     ?.current
+                            //     ?.buttonStyle,
                             child: Container(
-                              height: 48.toHeight,
-                              alignment: Alignment.center,
-                              child: ObxValue((isLogin) {
-                              return isLogin.value
-                                  ? Container(
-                                      width: 32.toHeight,
-                                      height: 32.toHeight,
-                                      child: CircularProgressIndicator(
-                                        backgroundColor:
-                                            NeumorphicTheme.currentTheme(
-                                                    context)
-                                                .textTheme
-                                                .labelLarge
-                                                ?.color,
-                                      ),
-                                    )
-                                  : Text('Login',
-                                      style:
-                                          NeumorphicTheme.currentTheme(context)
+                                height: 48.toHeight,
+                                alignment: Alignment.center,
+                                child: ObxValue((isLogin) {
+                                  return isLogin.value
+                                      ? Container(
+                                          width: 32.toHeight,
+                                          height: 32.toHeight,
+                                          child: CircularProgressIndicator(
+                                            backgroundColor:
+                                                NeumorphicTheme.currentTheme(
+                                                        context)
+                                                    .textTheme
+                                                    .labelLarge
+                                                    ?.color,
+                                          ),
+                                        )
+                                      : Text(LocaleKeys.login.tr,
+                                          style: NeumorphicTheme.currentTheme(
+                                                  context)
                                               .textTheme
                                               .labelLarge);
-                            }, controller.isLogin)),
-                            onPressed: () async{
-                                try {
-                                  await controller.login();
-                                  print("go home") ;
-                                  Get.offAllNamed(Routes.HOME);
-                                } catch (err, _) {
-                                  printError(info: err.toString());
-                                  final strippedMessage = err.toString().replaceFirst('Exception: ', '');
+                                }, controller.isLogin)),
+                            onPressed: () async {
+                              try {
+                                await controller.login();
+                                Get.offAllNamed(Routes.HOME);
+                              } catch (err, _) {
+                                printError(info: err.toString());
+                                final strippedMessage = err
+                                    .toString()
+                                    .replaceFirst(
+                                        LocaleKeys.exception_snackbar_label.tr,
+                                        '');
 
-                                  Get.snackbar(
-                                    "Error",
-                                    strippedMessage,
-                                    snackPosition: SnackPosition.TOP,
-                                    backgroundColor:
-                                    Colors.red.withOpacity(.75),
-                                    colorText: Colors.white,
-                                    icon: const Icon(Icons.error,
-                                        color: Colors.white),
-                                    shouldIconPulse: true,
-                                    barBlur: 20,
-                                  );
-                                } finally {}
-
+                                Get.snackbar(
+                                  LocaleKeys.error_snackbar_label.tr,
+                                  strippedMessage,
+                                  snackPosition: SnackPosition.TOP,
+                                  backgroundColor: Colors.red.withOpacity(.75),
+                                  colorText: Colors.white,
+                                  icon: const Icon(Icons.error,
+                                      color: Colors.white),
+                                  shouldIconPulse: true,
+                                  barBlur: 20,
+                                );
+                              } finally {}
                             })
                       ],
                     ),
@@ -138,13 +138,13 @@ class LoginView extends GetView<LoginController> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text('Don`t have an account?'),
+                      Text(LocaleKeys.not_have_account_label.tr),
                       SizedBox(
                         height: 8,
                       ),
                       NeumorphicButton(
                           child: Text(
-                            'Sing up',
+                            LocaleKeys.sign_up_label.tr,
                             style: NeumorphicTheme.currentTheme(context)
                                 .textTheme
                                 .bodyText1,

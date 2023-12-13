@@ -12,7 +12,7 @@ class AppTranslation {
 class LocaleKeys {
   LocaleKeys._();
   static const login = 'login';
-  static const sign_in = 'sign_in';
+  static const sign_up_label = 'sign_up_label';
   static const logout = 'logout';
   static const about_you_screen_title = 'about_you_screen_title';
   static const your_bmi_screen_title = 'your_bmi_screen_title';
@@ -50,6 +50,7 @@ class LocaleKeys {
   static const password_label = 'password_label';
   static const confirm_password_label = 'confirm_password_label';
   static const already_have_account_label = 'already_have_account_label';
+  static const not_have_account_label = 'not_have_account_label';
   static const login_label = 'login_label';
   static const subscription_button_label = 'subscription_button_label';
   static const subscription_view_title = 'subscription_view_title';
@@ -150,7 +151,7 @@ class LocaleKeys {
 class Locales {
   static const en_US = {
     'login': 'Login',
-    'sign_in': 'Sign-in',
+    'sign_up_label': 'Sign up',
     'logout': 'Logout',
     'about_you_screen_title': 'About you ?',
     'your_bmi_screen_title': 'Your BMI ?',
@@ -189,6 +190,7 @@ class Locales {
     'password_label': 'Your password',
     'confirm_password_label': 'Confirm your password',
     'already_have_account_label': 'Already have an account ?',
+    'not_have_account_label': 'Don`t have an account ?',
     'login_label': 'login',
     'subscription_button_label': 'Choose this formula',
     'subscription_view_title': 'Choose your formula',
@@ -276,8 +278,8 @@ class Locales {
     'global_error_message': 'An error occurred, invalid inputs value',
   };
   static const fr_FR = {
-    'login': 'Entrar',
-    'sign_in': 'Cadastrar-se',
+    'login': 'Connectez-vous',
+    'sign_up_label': 'Inscrivez-vous',
     'logout': 'Sair',
     'about_you_screen_title': 'à propos de vous ?',
     'your_bmi_screen_title': 'Votre IMC ?',
@@ -316,6 +318,7 @@ class Locales {
     'password_label': 'Votre mot de passe',
     'confirm_password_label': 'Confirmez votre mot de passe',
     'already_have_account_label': 'Vous avez déjà un compte ?',
+    'not_have_account_label': 'Vous n\'avez pas de compte ?',
     'login_label': 'Connectez-vous',
     'subscription_button_label': 'Choisir cette formule',
     'subscription_view_title': 'Choisissez votre formule',
