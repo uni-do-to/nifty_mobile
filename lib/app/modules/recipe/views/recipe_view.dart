@@ -26,7 +26,7 @@ class RecipeView extends GetView<RecipeController> {
             left: 19,
             bottom: 13,
           ),
-          child: Text('Recipes'.tr.toUpperCase()),
+          child: Text(LocaleKeys.recipes_screen_title.tr.toUpperCase()),
         ),
         backgroundColor: Colors.white,
         titleTextStyle: theme?.textTheme.bodySmall?.copyWith(
@@ -50,7 +50,7 @@ class RecipeView extends GetView<RecipeController> {
                     top: 20,
                   ),
                   child: SmallActionButton(
-                    text: 'Ajouter une nouvelle recite ',
+                    text: LocaleKeys.add_new_recipe_button_label.tr,
                     backgroundColor: ColorConstants.mainThemeColor,
                     textColor: Colors.white,
                     fontSize: 14,
@@ -111,7 +111,7 @@ class RecipeView extends GetView<RecipeController> {
                                         icon: Icons.restaurant_menu_rounded,
                                         text: controller.filteredItems[index]
                                                 .attributes?.name ??
-                                            "no search result",
+                                            LocaleKeys.no_search_result_label.tr,
                                       ),
                                       SizedBox(
                                         height: 10,

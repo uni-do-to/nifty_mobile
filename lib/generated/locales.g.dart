@@ -68,7 +68,15 @@ class LocaleKeys {
   static const nifty_points_budget_label = 'nifty_points_budget_label';
   static const remaining_budget_label = 'remaining_budget_label';
   static const sport_budget_label = 'sport_budget_label';
+  static const delete_dialog_recipe_title = 'delete_dialog_recipe_title';
+  static const delete_dialog_ingredient_title =
+      'delete_dialog_ingredient_title';
+  static const delete_dialog_confirm_label = 'delete_dialog_confirm_label';
+  static const delete_label = 'delete_label';
+  static const cancel_label = 'cancel_label';
   static const add_meal_item_button_label = 'add_meal_item_button_label';
+  static const add_new_recipe_button_label = 'add_new_recipe_button_label';
+  static const no_search_result_label = 'no_search_result_label';
   static const meal_tab_number_label = 'meal_tab_number_label';
   static const sport_tab_number_label = 'sport_tab_number_label';
   static const ingredient_tab_label = 'ingredient_tab_label';
@@ -215,7 +223,14 @@ class Locales {
     'nifty_points_budget_label': 'My budget',
     'remaining_budget_label': 'Spent',
     'sport_budget_label': 'Sport',
+    'delete_dialog_recipe_title': 'Confirm Delete Recipe',
+    'delete_dialog_ingredient_title': 'Confirm Delete Ingredient',
+    'delete_dialog_confirm_label': 'Are you sure you want to delete ',
+    'delete_label': 'Delete',
+    'cancel_label': 'Cancel',
     'add_meal_item_button_label': 'Add a new item',
+    'add_new_recipe_button_label': 'Add a new recipe',
+    'no_search_result_label': 'No search result',
     'meal_tab_number_label': 'Meal n°',
     'sport_tab_number_label': 'Sport n°',
     'ingredient_tab_label': 'Ingredients',
@@ -351,7 +366,15 @@ class Locales {
     'nifty_points_budget_label': 'Mon Budget',
     'remaining_budget_label': 'Depensé',
     'sport_budget_label': 'Sport',
+    'delete_dialog_recipe_title': 'Confirmer la suppression de la recette',
+    'delete_dialog_ingredient_title':
+        'Confirmer la suppression de l\'ingrédient',
+    'delete_dialog_confirm_label': 'Etes-vous sûr que vous voulez supprimer ',
+    'delete_label': 'Supprimer',
+    'cancel_label': 'Annuler',
     'add_meal_item_button_label': 'Ajouter un nouvel élément',
+    'add_new_recipe_button_label': 'Ajouter une nouvelle recette',
+    'no_search_result_label': 'Aucun résultat de recherche',
     'meal_tab_number_label': 'Repas n°',
     'sport_tab_number_label': 'Sport n°',
     'ingredient_tab_label': 'Ingrédients',

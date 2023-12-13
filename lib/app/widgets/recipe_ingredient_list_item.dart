@@ -33,17 +33,19 @@ class RecipeIngredientListItem extends StatelessWidget {
           SizedBox(
             width: 15,
           ),
-          Text(
-            text,
-            style: NeumorphicTheme.of(context)
-                ?.current
-                ?.textTheme
-                .bodySmall
-                ?.copyWith(
-                  fontSize: 16,
-                ),
+          Expanded(
+            child: Text(
+              text,
+              style: NeumorphicTheme.of(context)
+                  ?.current
+                  ?.textTheme
+                  .bodySmall
+                  ?.copyWith(fontSize: 16),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              softWrap: false,
+            ),
           ),
-          Expanded(child: Container()),
           Visibility(
             visible: isSelected!,
             child: Icon(
