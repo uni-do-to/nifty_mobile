@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/data/models/daily_model.dart';
-import 'package:nifty_mobile/app/data/models/recipe_model.dart';
 import 'package:nifty_mobile/app/modules/addToMeal/controllers/add_to_meal_controller.dart';
-import 'package:nifty_mobile/app/routes/app_pages.dart';
-import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:nifty_mobile/app/widgets/add_quantity_widget.dart';
 import 'package:nifty_mobile/app/widgets/delete_alert_dialog.dart';
 import 'package:nifty_mobile/app/widgets/form_field.dart';
@@ -48,7 +44,7 @@ class RecipeTabView extends StatelessWidget {
                   top: 21,
                 ),
                 child: SmallActionButton(
-                  text: 'Ajouter une nouvelle recite ',
+                  text: LocaleKeys.add_new_recipe_button_label.tr,
                   backgroundColor: ColorConstants.mainThemeColor,
                   textColor: Colors.white,
                   fontSize: 14,
@@ -79,12 +75,6 @@ class RecipeTabView extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          // onSelected: (recipe) {
-                          //   controller.selectedRecipe.value = recipe;
-                          //   controller.searchRecipesController.text =
-                          //   recipe.attributes!.name!;
-                          //   controller.initRecipeMeasurementUnits();
-                          // },
                           Text(
                             LocaleKeys.research_dropdown_label.tr,
                             style: theme.textTheme.bodySmall
@@ -138,7 +128,8 @@ class RecipeTabView extends StatelessWidget {
                                                     .filteredItems[index]
                                                     .attributes
                                                     ?.name ??
-                                                "no search result",
+                                                LocaleKeys
+                                                    .no_search_result_label.tr,
                                           );
                                         }, controller.selectedRecipe),
                                       ),
@@ -182,12 +173,12 @@ class RecipeTabView extends StatelessWidget {
                   Container(
                     child: SelectedIngredientRecipeItem(
                       theme: theme,
-                      selectedItemName:
-                          controller.selectedRecipe.value?.attributes?.name ??
-                              "Choisissez un élément dans la liste",
+                      selectedItemName: controller
+                              .selectedRecipe.value?.attributes?.name ??
+                          LocaleKeys.selected_ingredient_recipe_hint_label.tr,
                       quantityName: controller
                               .selectedRecipeMeasurementUnit.value?.name ??
-                          "QTé",
+                          LocaleKeys.quantity_of_selected_item_hint.tr,
                       quantityValue: controller.recipeQuantity.value,
                       isChecked:
                           controller.selectedRecipe.value?.attributes != null &&
@@ -208,7 +199,7 @@ class RecipeTabView extends StatelessWidget {
                         padding: const EdgeInsets.only(right: 24),
                         child: SmallActionButton(
                             width: 181,
-                            text: 'Ajouter au repas',
+                            text: LocaleKeys.add_to_meal_button_label.tr,
                             backgroundColor: controller
                                             .selectedRecipe.value?.attributes !=
                                         null &&

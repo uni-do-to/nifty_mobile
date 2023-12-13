@@ -11,6 +11,7 @@ import 'package:nifty_mobile/app/widgets/add_quantity_widget.dart';
 import 'package:nifty_mobile/app/widgets/selected_ingredient_recipe_item.dart';
 
 import 'package:nifty_mobile/app/widgets/small_action_button.dart';
+import 'package:nifty_mobile/generated/locales.g.dart';
 
 class IngredientTabView extends StatelessWidget {
   final NeumorphicThemeData theme;
@@ -18,9 +19,13 @@ class IngredientTabView extends StatelessWidget {
 
   final AddToMealController controller = Get.find();
 
-  final void Function()  onAddIngredientToMealPressed;
+  final void Function() onAddIngredientToMealPressed;
 
-  IngredientTabView({Key? key, required this.theme, required this.selectedMeal , required this.onAddIngredientToMealPressed})
+  IngredientTabView(
+      {Key? key,
+      required this.theme,
+      required this.selectedMeal,
+      required this.onAddIngredientToMealPressed})
       : super(key: key);
 
   @override
@@ -38,7 +43,7 @@ class IngredientTabView extends StatelessWidget {
                   top: 21,
                 ),
                 child: SmallActionButton(
-                  text: 'Ajouter un nouvel Ingrédient',
+                  text: LocaleKeys.add_new_ingredient_screen_sub_title.tr,
                   backgroundColor: ColorConstants.mainThemeColor,
                   textColor: Colors.white,
                   fontSize: 14,
@@ -73,7 +78,7 @@ class IngredientTabView extends StatelessWidget {
                         child: AddIngredientFormWidget(
                           theme: theme,
                           onIngredientSelected: (ingredient) {
-                            controller.onIngredientSelected(ingredient) ;
+                            controller.onIngredientSelected(ingredient);
                           },
                         ),
                       );
@@ -85,13 +90,15 @@ class IngredientTabView extends StatelessWidget {
               height: 180,
               child: AddQuantityWidget(
                 theme: theme,
-                measurementUnitsItems: controller.measurementUnitsIngredientItems,
+                measurementUnitsItems:
+                    controller.measurementUnitsIngredientItems,
                 selectedMeasurementUnit:
                     controller.selectedIngredientMeasurementUnit.value,
                 quantityValue: controller.ingredientQuantity.value,
                 onMeasurementUnitChange: (unit) =>
                     controller.selectedIngredientMeasurementUnit.value = unit,
-                onQuantityChange: (value) => controller.ingredientQuantity.value = value,
+                onQuantityChange: (value) =>
+                    controller.ingredientQuantity.value = value,
               ),
             );
           }, controller.selectedIngredientMeasurementUnit),
@@ -109,18 +116,21 @@ class IngredientTabView extends StatelessWidget {
                       selectedItemName: Get.locale?.languageCode == 'fr'
                           ? controller.selectedIngredient.value?.attributes
                                   ?.nameFr ??
-                              "Choisissez un élément dans la liste"
+                              LocaleKeys
+                                  .selected_ingredient_recipe_hint_label.tr
                           : controller.selectedIngredient.value?.attributes
                                   ?.nameEn ??
-                              "Choisissez un élément dans la liste",
-                      quantityName:
-                          controller.selectedIngredientMeasurementUnit.value?.name ??
-                              "QTé",
+                              LocaleKeys
+                                  .selected_ingredient_recipe_hint_label.tr,
+                      quantityName: controller
+                              .selectedIngredientMeasurementUnit.value?.name ??
+                          LocaleKeys.quantity_of_selected_item_hint.tr,
                       quantityValue: controller.ingredientQuantity.value,
-                      isChecked:
-                          controller.selectedIngredient.value?.attributes !=
-                                  null &&
-                              controller.selectedIngredientMeasurementUnit.value != null,
+                      isChecked: controller
+                                  .selectedIngredient.value?.attributes !=
+                              null &&
+                          controller.selectedIngredientMeasurementUnit.value !=
+                              null,
                     ),
                   ),
                   const SizedBox(
@@ -136,14 +146,16 @@ class IngredientTabView extends StatelessWidget {
                         padding: const EdgeInsets.only(right: 24),
                         child: SmallActionButton(
                           width: 181,
-                          text: 'Ajouter au repas',
-                          backgroundColor: controller.selectedIngredient.value
-                                          ?.attributes !=
-                                      null &&
-                                  controller.selectedIngredientMeasurementUnit.value !=
-                                      null
-                              ? ColorConstants.accentColor
-                              : ColorConstants.accentColor.withOpacity(0.4),
+                          text: LocaleKeys.add_to_meal_button_label.tr,
+                          backgroundColor:
+                              controller.selectedIngredient.value?.attributes !=
+                                          null &&
+                                      controller
+                                              .selectedIngredientMeasurementUnit
+                                              .value !=
+                                          null
+                                  ? ColorConstants.accentColor
+                                  : ColorConstants.accentColor.withOpacity(0.4),
                           textColor: Colors.white,
                           onPressed: onAddIngredientToMealPressed,
                           // Optionally, specify width and height
