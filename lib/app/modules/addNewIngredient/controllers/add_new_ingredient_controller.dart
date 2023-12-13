@@ -38,13 +38,13 @@ class AddNewIngredientController extends GetxController {
     super.onInit();
     caloriesPerGramController.addListener(() {
       if (double.tryParse(caloriesPerGramController.text)! > 0) {
-        isNiftyPointValueChanged.value=true;
+        isNiftyPointValueChanged.value = true;
         double caloriesPer =
             double.tryParse(caloriesPerGramController.text) ?? 0;
 
         niftyPointsController.text = (caloriesPer / 33).round().toString();
       } else {
-        isNiftyPointValueChanged.value=true;
+        isNiftyPointValueChanged.value = true;
 
         niftyPointsController.text = "";
       }
@@ -83,22 +83,41 @@ class AddNewIngredientController extends GetxController {
     if (validateNewIngredientForm() && !loading.value) {
       try {
         loading.value = true;
+
+        List<Units> units = [];
+
+// Check for the first set of unit name and equivalent unit in grams
+        if (unitNameMeasurementController.text.isNotEmpty &&
+            double.tryParse(equivalentUnitInGramsController.text)
+                    ?.compareTo(0) !=
+                0) {
+          units.add(Units(
+            name: unitNameMeasurementController.text,
+            grams: double.tryParse(equivalentUnitInGramsController.text),
+          ));
+        }
+
+// Check for the second set of unit name and equivalent unit in grams
+        if (unitNameAnotherMeasurementController.text.isNotEmpty &&
+            double.tryParse(equivalentUnitInGramsController2.text)
+                    ?.compareTo(0) !=
+                0) {
+          units.add(Units(
+            name: unitNameAnotherMeasurementController.text,
+            grams: double.tryParse(equivalentUnitInGramsController2.text),
+          ));
+        }
+
         IngredientRequest request = IngredientRequest(
-            data: Data(
-                nameEn: ingredientNameEnglishController.text,
-                nameFr: ingredientNameFranceController.text,
-                caloriesPer100grams:
-                    double.tryParse(caloriesPerGramController.text),
-                niftyPoints: double.tryParse(niftyPointsController.text),
-                gramsPerCircle: double.tryParse(gramsPerCircleController.text),
-                units: [
-              Units(
-                  name: unitNameMeasurementController.text,
-                  grams: double.tryParse(equivalentUnitInGramsController.text)),
-              Units(
-                  name: unitNameAnotherMeasurementController.text,
-                  grams: double.tryParse(equivalentUnitInGramsController2.text))
-            ]));
+          data: Data(
+              nameEn: ingredientNameEnglishController.text,
+              nameFr: ingredientNameFranceController.text,
+              caloriesPer100grams:
+                  double.tryParse(caloriesPerGramController.text),
+              niftyPoints: double.tryParse(niftyPointsController.text),
+              gramsPerCircle: double.tryParse(gramsPerCircleController.text),
+              units: units),
+        );
 
         await ingredientProvider.createIngredient(request);
       } catch (err, _) {
