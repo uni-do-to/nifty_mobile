@@ -87,7 +87,7 @@ class AddIngredientFormWidget extends StatelessWidget {
           TypeAheadField<Ingredient>(
             controller: controller.userIngredientsController,
             suggestionsCallback: (search) =>
-                controller.searchIngredients(search),
+                controller.searchMyIngredients(search),
             builder: (context, controller, focusNode) {
               return NeuFormField(
                 padding: EdgeInsets.symmetric(vertical: 5, horizontal: 18),

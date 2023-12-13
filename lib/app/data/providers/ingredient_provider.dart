@@ -34,6 +34,7 @@ class IngredientProvider extends BaseProvider {
         query: {
           'filters[sub_category]': subCategoryId?.toString(),
           'filters[isAdmin]': "true",
+          'pagination[pageSize]': "1000"
         }..removeWhere((key, value) => value == null));
 
     return decode<ApiListResponse<Ingredient>?>(
@@ -56,8 +57,10 @@ class IngredientProvider extends BaseProvider {
   Future<ApiListResponse<SubCategory>?> getSubCategoriesList(
       int categoryId) async {
     final response = await get(ConfigAPI.subCategoriesUrl,
-        query: {'filters[category]': categoryId.toString()}
-          ..removeWhere((key, value) => value == null));
+        query: {
+          'filters[category]': categoryId.toString(),
+          'pagination[pageSize]': "1000"
+        }..removeWhere((key, value) => value == null));
 
     return decode<ApiListResponse<SubCategory>?>(
         response,
