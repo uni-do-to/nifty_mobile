@@ -23,7 +23,7 @@ class AddNewRecipeController extends GetxController {
   var recipeNameError = ''.obs;
   var recipeGramsPerCircleError = ''.obs;
   var recipeIngredientsListError = ''.obs;
-  RxString ingredientQuantity = "0".obs;
+  RxString ingredientQuantity = "".obs;
 
   Rx<Ingredient?> selectedIngredient = Rx(null);
   RxBool isFormValid = false.obs;
@@ -48,7 +48,7 @@ class AddNewRecipeController extends GetxController {
 
   initIngredientMeasurementUnits(Ingredient ingredient) {
     selectedIngredientMeasurementUnit.value = null;
-    ingredientQuantity.value = '0';
+    ingredientQuantity.value = '';
     List<Units> items = [
       Units(name: LocaleKeys.grams_unit_label.tr, grams: 1),
     ];
@@ -129,7 +129,7 @@ class AddNewRecipeController extends GetxController {
     IngredientController ingredientController = Get.find();
     ingredientController.clearIngredientForm();
     selectedIngredientMeasurementUnit.value = null;
-    ingredientQuantity.value = '0';
+    ingredientQuantity.value = '';
   }
 
   Future<void> createNewRecipe() async {

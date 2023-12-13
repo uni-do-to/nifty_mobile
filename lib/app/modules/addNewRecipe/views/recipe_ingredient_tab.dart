@@ -166,7 +166,7 @@ class RecipeIngredientTab extends StatelessWidget {
                                 controller.selectedIngredientMeasurementUnit
                                         .value !=
                                     null &&
-                                controller.ingredientQuantity.value != "0") {
+                                controller.ingredientQuantity.value != "") {
                               controller.addIngredientsToRecipe();
                               controller.clearRecipeIngredientForm();
                             }

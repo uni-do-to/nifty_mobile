@@ -27,8 +27,8 @@ class AddToMealController extends GetxController {
 
   final RecipeProvider recipeProvider;
 
-  RxString ingredientQuantity = "0".obs;
-  RxString recipeQuantity = "0".obs;
+  RxString ingredientQuantity = "".obs;
+  RxString recipeQuantity = "".obs;
 
   RxBool isValidAddRecipe = false.obs;
   RxBool isValidAddIngredient = false.obs;
@@ -86,7 +86,7 @@ class AddToMealController extends GetxController {
 
   initIngredientMeasurementUnits(Ingredient ingredient) {
     selectedIngredientMeasurementUnit.value = null;
-    ingredientQuantity.value = '0';
+    ingredientQuantity.value = '';
     List<Units> items = [
       Units(name: LocaleKeys.grams_unit_label.tr, grams: 1),
     ];
@@ -109,7 +109,7 @@ class AddToMealController extends GetxController {
 
   initRecipeMeasurementUnits() {
     selectedRecipeMeasurementUnit.value = null;
-    recipeQuantity.value = '0';
+    recipeQuantity.value = '';
     List<Units> items = [
       Units(name: LocaleKeys.grams_unit_label.tr, grams: 1),
     ];
