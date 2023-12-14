@@ -1,24 +1,184 @@
-import 'package:flutter/material.dart';
-
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
+import 'package:nifty_mobile/app/routes/app_pages.dart';
 
+import '../../../config/color_constants.dart';
+import '../../../config/size_constants.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
   const ProfileView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    var theme = NeumorphicTheme.of(context)?.current;
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ProfileView'),
-        centerTitle: true,
+        title: Container(
+          padding: SizeConstants.toolBarPadding,
+          child: ObxValue((state) {
+            return Row(
+              children: [
+                Container(
+                  height: 42,
+                  width: 42,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: ColorConstants.accentColor),
+                  child: Center(
+                    child: Text(
+                      state.value?.name?.substring(0, 1).toUpperCase() ?? "",
+                      style: theme?.textTheme.titleLarge
+                          ?.copyWith(color: ColorConstants.white),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 12,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(state.value?.name?.toUpperCase() ?? ""),
+                    Text(state.value?.email ?? "".toUpperCase(),
+                        style: theme?.textTheme.titleSmall
+                            ?.copyWith(color: ColorConstants.toolbarTextColor)),
+                  ],
+                ),
+              ],
+            );
+          }, controller.user),
+        ),
+        centerTitle: false,
+        backgroundColor: Colors.white,
+        titleTextStyle: theme?.textTheme.titleLarge
+            ?.copyWith(color: ColorConstants.toolbarTextColor),
+        toolbarHeight: 86,
       ),
-      body: const Center(
-        child: Text(
-          'ProfileView is working',
-          style: TextStyle(fontSize: 20),
+      body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        color: ColorConstants.white,
+        child: Column(
+          children: [
+            Neumorphic(
+              child: Column(
+                children: [
+                  SettingsTile(title: 'Personal Info' , onTap: ()=>{},),
+                  SettingsTile(title: 'Health Profile', onTap: ()=>{},),
+                  SettingsTile(title: 'Change password', onTap: ()=>{},),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Neumorphic(
+              child: Column(
+                children: [
+                  SettingsTile(
+                    title: 'Language',
+                    trailing:
+                        Text(
+                          Get.locale?.languageCode.toUpperCase()??"",
+                          style: theme?.textTheme.titleLarge,
+                        ),
+                    onTap: () async{
+                      // Handle the tap action
+                     var result = await showOptionDialog(theme: theme ,title : "Language" , options : {
+                       "fr" : "English" ,
+                       "en" : "French"
+                     }) ;
+                     if(result != null){
+                       Get.locale = Locale(result);
+                       Get.offAllNamed(Routes.LOGIN);
+                     }
+                    },
+                  ),
+                  SettingsTile(
+                    title: 'Display Unit',
+                    trailing: Text(
+                      "Nifty point",
+                      style: theme?.textTheme.titleLarge,
+                    ),
+                    onTap: ()=>{},
+                  ),
+                ],
+              ),
+            ),
+
+            Expanded(child: Container()),
+            Neumorphic(
+              child: Column(
+                children: [
+                  SettingsTile(
+                    title: 'Logout',
+                    icon: Icon(
+                      Icons.logout
+                    ),
+                    onTap: ()=>{},
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
+    );
+  }
+
+  Future showOptionDialog ({required String title, required Map<String, String> options, NeumorphicThemeData? theme}) {
+    return Get.dialog(SimpleDialog(
+      title: Text(title , style: theme?.textTheme.titleLarge,),
+      children: <Widget>[
+        ...options.keys.map((key) {
+          return SimpleDialogOption(
+            onPressed: () {
+              Get.back(result: key) ;
+            },
+            child: Text(options[key]! , style: theme?.textTheme.titleMedium,),
+          );
+        })
+      ],
+    ));
+  }
+}
+
+class SettingsTile extends StatelessWidget {
+  final String title;
+  final Widget? trailing;
+  final Widget? icon ;
+  final GestureTapCallback? onTap ;
+
+  const SettingsTile({Key? key, required this.title,required this.onTap,this.icon, this.trailing})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    var theme = NeumorphicTheme.of(context)?.current;
+
+    return ListTile(
+      title: Text(
+        title,
+        style:
+            theme?.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w100),
+      ),
+      trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              trailing ?? Container(
+              ),
+              SizedBox(
+                width: 8,
+              ),
+              icon ?? Icon(
+                Icons.arrow_forward_ios,
+                color: ColorConstants.accentColor.withOpacity(0.5),
+              ),
+            ],
+          ),
+      onTap: onTap,
     );
   }
 }
