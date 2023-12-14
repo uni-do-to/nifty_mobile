@@ -87,8 +87,12 @@ class App extends StatelessWidget {
       child: GetMaterialApp(
         title: "Application",
         translationsKeys: AppTranslation.translations,
-        locale: const Locale('fr', 'FR'),
-        fallbackLocale: const Locale('fr', 'FR'),
+        locale: const Locale('fr'),
+        // supportedLocales: [
+        //   Locale('fr'),
+        //   Locale('en')
+        // ],
+        fallbackLocale: const Locale('fr'),
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes,
         builder: (context, child) => ResponsiveBreakpoints.builder(
