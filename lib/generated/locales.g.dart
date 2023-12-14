@@ -88,6 +88,10 @@ class LocaleKeys {
   static const add_to_meal_button_label = 'add_to_meal_button_label';
   static const add_to_sport_screen_title = 'add_to_sport_screen_title';
   static const new_recipe_tab_label = 'new_recipe_tab_label';
+  static const add_recipe_screen_title = 'add_recipe_screen_title';
+  static const recipe_name_label = 'recipe_name_label';
+  static const recipe_name_hint = 'recipe_name_hint';
+  static const close_label = 'close_label';
   static const empty_meal_tab_hint = 'empty_meal_tab_hint';
   static const add_new_ingredient_screen_title =
       'add_new_ingredient_screen_title';
@@ -168,6 +172,11 @@ class LocaleKeys {
   static const target_bmi_error_message = 'target_bmi_error_message';
   static const terms_and_conditions_error_message =
       'terms_and_conditions_error_message';
+  static const recipe_name_error_message = 'recipe_name_error_message';
+  static const recipe_grams_per_circle_error_message =
+      'recipe_grams_per_circle_error_message';
+  static const recipe_ingredients_length_error_message =
+      'recipe_ingredients_length_error_message';
   static const global_error_message = 'global_error_message';
 }
 
@@ -246,6 +255,10 @@ class Locales {
     'add_to_meal_button_label': 'Add to meal',
     'add_to_sport_screen_title': 'Add to sport',
     'new_recipe_tab_label': 'New recipe',
+    'add_recipe_screen_title': 'Add Recipe',
+    'recipe_name_label': 'Recipe Name',
+    'recipe_name_hint': 'My new recipe',
+    'close_label': 'Close',
     'empty_meal_tab_hint':
         'You haven\'t eaten yet today, add an ingredient or recipe to your meal',
     'add_new_ingredient_screen_title': 'New ingredient',
@@ -316,6 +329,11 @@ class Locales {
     'target_bmi_error_message': 'Choose target BMI.',
     'terms_and_conditions_error_message':
         'You must agree to the terms and conditions to complete the registration process.',
+    'recipe_name_error_message': 'The recipe name is required',
+    'recipe_grams_per_circle_error_message':
+        'Recipe Grams per circle is required',
+    'recipe_ingredients_length_error_message':
+        'You must add at least one ingredient',
     'global_error_message': 'An error occurred, invalid inputs value',
   };
   static const fr_FR = {
@@ -395,7 +413,11 @@ class Locales {
     'add_to_meal_button_label': 'Ajouter au repas',
     'add_to_sport_screen_title': 'Ajouter Au sport',
     'new_recipe_tab_label': 'Nouvelle recette',
+    'add_recipe_screen_title': 'Ajouter une recette',
+    'recipe_name_label': 'Nom de la recette',
+    'recipe_name_hint': 'Ma nouvelle recette',
     'new_meal_button_label': 'Nouveau repas',
+    'close_label': 'Fermer',
     'empty_meal_tab_hint':
         'Vous n\'avez pas encore mangé aujourd\'hui, ajoutez un ingrédient ou une recette à votre repas',
     'add_new_ingredient_screen_title': 'Nouvel ingrédient',
@@ -468,6 +490,11 @@ class Locales {
     'target_bmi_error_message': 'Choisissez l’IMC cible.',
     'terms_and_conditions_error_message':
         'Vous devez accepter les termes et conditions pour terminer le processus d\'inscription.',
+    'recipe_name_error_message': 'Le, nom de la recette est obligatoire',
+    'recipe_grams_per_circle_error_message':
+        'Recette Des grammes par cercle sont requis',
+    'recipe_ingredients_length_error_message':
+        'Vous devez ajouter au moins un ingrédient',
     'global_error_message':
         'Une erreur s\'est produite, valeur d\'entrée non valide',
   };

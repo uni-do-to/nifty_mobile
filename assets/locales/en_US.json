@@ -71,6 +71,10 @@
   "add_to_meal_button_label": "Add to meal",
   "add_to_sport_screen_title": "Add to sport",
   "new_recipe_tab_label": "New recipe",
+  "add_recipe_screen_title": "Add Recipe",
+  "recipe_name_label": "Recipe Name",
+  "recipe_name_hint": "My new recipe",
+  "close_label": "Close",
   "empty_meal_tab_hint": "You haven't eaten yet today, add an ingredient or recipe to your meal",
   "add_new_ingredient_screen_title": "New ingredient",
   "add_new_ingredient_screen_sub_title": "Add a new ingredient",
@@ -133,5 +137,8 @@
   "weight_error_message": "Weight is required.",
   "target_bmi_error_message": "Choose target BMI.",
   "terms_and_conditions_error_message": "You must agree to the terms and conditions to complete the registration process.",
+  "recipe_name_error_message":"The recipe name is required",
+  "recipe_grams_per_circle_error_message":"Recipe Grams per circle is required",
+  "recipe_ingredients_length_error_message":"You must add at least one ingredient",
   "global_error_message": "An error occurred, invalid inputs value"
 }

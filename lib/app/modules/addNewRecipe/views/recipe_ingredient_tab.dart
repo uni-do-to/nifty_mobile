@@ -8,6 +8,7 @@ import 'package:nifty_mobile/app/widgets/add_ingredient_widget.dart';
 import 'package:nifty_mobile/app/widgets/add_quantity_widget.dart';
 import 'package:nifty_mobile/app/widgets/selected_ingredient_recipe_item.dart';
 import 'package:nifty_mobile/app/widgets/small_action_button.dart';
+import 'package:nifty_mobile/generated/locales.g.dart';
 
 import '../../../data/models/ingredient_model.dart';
 
@@ -33,7 +34,7 @@ class RecipeIngredientTab extends StatelessWidget {
                   top: 21,
                 ),
                 child: SmallActionButton(
-                  text: 'Ajouter un nouvel Ingrédient',
+                  text: LocaleKeys.add_new_ingredient_screen_sub_title.tr,
                   backgroundColor: ColorConstants.mainThemeColor,
                   textColor: Colors.white,
                   fontSize: 14,
@@ -108,13 +109,15 @@ class RecipeIngredientTab extends StatelessWidget {
                       selectedItemName: Get.locale?.languageCode == 'fr'
                           ? controller.selectedIngredient.value?.attributes
                                   ?.nameFr ??
-                              "Choisissez un élément dans la liste"
+                              LocaleKeys
+                                  .selected_ingredient_recipe_hint_label.tr
                           : controller.selectedIngredient.value?.attributes
                                   ?.nameEn ??
-                              "Choisissez un élément dans la liste",
+                              LocaleKeys
+                                  .selected_ingredient_recipe_hint_label.tr,
                       quantityName: controller
                               .selectedIngredientMeasurementUnit.value?.name ??
-                          "QTé",
+                          LocaleKeys.quantity_of_selected_item_hint.tr,
                       quantityValue: controller.ingredientQuantity.value,
                       isChecked: controller
                                   .selectedIngredient.value?.attributes !=
@@ -133,7 +136,7 @@ class RecipeIngredientTab extends StatelessWidget {
                         padding: const EdgeInsets.only(left: 27),
                         child: SmallActionButton(
                           width: 90,
-                          text: 'Close',
+                          text: LocaleKeys.close_label.tr,
                           backgroundColor: ColorConstants.accentColor,
                           textColor: Colors.white,
                           onPressed: () {
@@ -150,7 +153,7 @@ class RecipeIngredientTab extends StatelessWidget {
                         height: 54,
                         padding: const EdgeInsets.only(right: 24),
                         child: SmallActionButton(
-                          text: 'Ajouter au repas',
+                          text: LocaleKeys.add_to_meal_button_label.tr,
                           backgroundColor:
                               controller.selectedIngredient.value?.attributes !=
                                           null &&

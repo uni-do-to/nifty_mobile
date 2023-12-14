@@ -70,7 +70,11 @@
   "add_to_meal_button_label": "Ajouter au repas",
   "add_to_sport_screen_title": "Ajouter Au sport",
   "new_recipe_tab_label": "Nouvelle recette",
+  "add_recipe_screen_title": "Ajouter une recette",
+  "recipe_name_label": "Nom de la recette",
+  "recipe_name_hint": "Ma nouvelle recette",
   "new_meal_button_label": "Nouveau repas",
+  "close_label": "Fermer",
   "empty_meal_tab_hint": "Vous n'avez pas encore mangé aujourd'hui, ajoutez un ingrédient ou une recette à votre repas",
   "add_new_ingredient_screen_title": "Nouvel ingrédient",
   "add_new_ingredient_screen_sub_title": "Ajouter un nouvel ingrédient",
@@ -133,5 +137,8 @@
   "weight_error_message": "Le poids est requis.",
   "target_bmi_error_message": "Choisissez l’IMC cible.",
   "terms_and_conditions_error_message": "Vous devez accepter les termes et conditions pour terminer le processus d'inscription.",
+  "recipe_name_error_message":"Le, nom de la recette est obligatoire",
+  "recipe_grams_per_circle_error_message":"Recette Des grammes par cercle sont requis",
+  "recipe_ingredients_length_error_message":"Vous devez ajouter au moins un ingrédient",
   "global_error_message": "Une erreur s'est produite, valeur d'entrée non valide"
 }

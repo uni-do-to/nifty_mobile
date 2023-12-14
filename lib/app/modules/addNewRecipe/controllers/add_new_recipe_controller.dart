@@ -101,18 +101,20 @@ class AddNewRecipeController extends GetxController {
 
   bool validateAddNewRecipeForm() {
     if (recipeNameController.text.isEmpty) {
-      recipeNameError.value = 'Recipe name is required';
+      recipeNameError.value = LocaleKeys.recipe_name_error_message.tr;
     } else {
       recipeNameError.value = '';
     }
     if (recipeGramsPerCircleController.text.isEmpty) {
-      recipeGramsPerCircleError.value = 'Recipe Grams per circle is required';
+      recipeGramsPerCircleError.value =
+          LocaleKeys.recipe_grams_per_circle_error_message.tr;
     } else {
       recipeGramsPerCircleError.value = '';
     }
 
     if (recipeIngredientsList.isEmpty) {
-      recipeIngredientsListError.value = 'You must add at least one ingredient';
+      recipeIngredientsListError.value =
+          LocaleKeys.recipe_ingredients_length_error_message.tr;
     } else {
       recipeIngredientsListError.value = '';
     }
