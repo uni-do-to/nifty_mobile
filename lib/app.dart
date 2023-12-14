@@ -1,3 +1,4 @@
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -95,6 +96,11 @@ class App extends StatelessWidget {
             AppConstants.languages[e]!.languageCode,
             AppConstants.languages[e]!.countryCode)),
         fallbackLocale: Locale(languageModel.languageCode, languageModel.countryCode),
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes,
         builder: (context, child) => ResponsiveBreakpoints.builder(

@@ -30,6 +30,9 @@ dependencies:
   responsive_framework: ^1.1.1
   animations: ^2.0.8
   country_flags: ^2.2.0
+  flutter_localizations:
+    sdk: flutter
+  intl: ^0.18.1
 
 dev_dependencies: 
   flutter_lints: ^2.0.0
