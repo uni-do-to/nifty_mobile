@@ -20,7 +20,7 @@ class SplashView extends GetView<AuthController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: SvgPicture.asset("assets/images/ingredient_icon_active.svg"),
+        child: Image.asset("assets/images/logo.png"),
       ),
     );
   }
