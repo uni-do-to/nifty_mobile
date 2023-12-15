@@ -166,7 +166,31 @@ class ProfileView extends GetView<ProfileController> {
                     icon: Icon(
                       Icons.logout
                     ),
-                    onTap: ()=>{},
+                    onTap: () async{
+                      var result = await Get.dialog(AlertDialog(
+                        title: Text('Logout', style: theme?.textTheme.titleLarge,),
+                        content: Text('Are you sure you want to logout?'),
+                        actions: <Widget>[
+                          TextButton(
+                            child: Text('Cancel' , style: theme?.textTheme.titleMedium?.copyWith(
+                                fontWeight: FontWeight.bold
+                            ),),
+                            onPressed: () {
+                              Get.back(result: false);
+                            },
+                          ),
+                          TextButton(
+                            child: Text('Logout' , style: theme?.textTheme.titleMedium),
+                            onPressed: () {
+                              Get.back(result: true);
+                            },
+                          ),
+                        ],
+                      ));
+                      if(result == true) {
+                        controller.logout() ;
+                      }
+                    },
                   ),
                 ],
               ),
@@ -211,7 +235,7 @@ class SettingsTile extends StatelessWidget {
       title: Text(
         title,
         style:
-            theme?.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w100),
+            theme?.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.normal),
       ),
       trailing: Row(
             mainAxisSize: MainAxisSize.min,

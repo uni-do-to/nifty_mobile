@@ -13,12 +13,13 @@ class ProfileController extends GetxController {
   //TODO: Implement ProfileController
   final Rx<User?> user = Rx(null);
   final ConfigService configService = Get.find() ;
+  final AuthService authService = Get.find() ;
   late Rx<LanguageModel?> language  ;
 
   @override
   void onInit() {
     super.onInit();
-    user.value = Get.find<AuthService>().credentials?.user  ;
+    user.value = authService.credentials?.user  ;
     language = Rx(configService.languageModel) ;
   }
 
@@ -45,6 +46,11 @@ class ProfileController extends GetxController {
     if(result){
       Get.offAllNamed(Routes.SPLASH) ;
     }
+  }
+
+  void logout() async{
+    await authService.removeCredentials();
+    Get.offAllNamed(Routes.SPLASH) ;
   }
 
 }

@@ -503,7 +503,7 @@ class Locales {
         'Vous devez ajouter au moins un ingrédient',
     'global_error_message':
         'Une erreur s\'est produite, valeur d\'entrée non valide',
-    'personal_info': 'bla bla bla',
+    'personal_info': 'Personal Info',
     'cal': 'KCAL',
     'np': 'NP',
   };
