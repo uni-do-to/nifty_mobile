@@ -1,5 +1,7 @@
+import 'package:country_flags/country_flags.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
+import 'package:nifty_mobile/app/config/app_constants.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
 
 import '../../../config/color_constants.dart';
@@ -78,20 +80,43 @@ class ProfileView extends GetView<ProfileController> {
                 children: [
                   SettingsTile(
                     title: 'Language',
-                    trailing:
-                        Text(
-                          Get.locale?.languageCode.toUpperCase()??"",
-                          style: theme?.textTheme.titleLarge,
+                    trailing: Row(
+                      children: [
+                        CountryFlag.fromLanguageCode(Get.locale?.languageCode??AppConstants.DEFAULT_LANGUAGE,
+                            width: 24, height: 24, borderRadius: 8),
+                        SizedBox(
+                          width: 8,
                         ),
+                        Text(
+                          Get.locale?.languageCode.toUpperCase() ?? "",
+                          style: theme?.textTheme.titleLarge,
+                        )
+                      ],
+                    ),
                     onTap: () async{
                       // Handle the tap action
-                     var result = await showOptionDialog(theme: theme ,title : "Language" , options : {
-                       "fr" : "English" ,
-                       "en" : "French"
-                     }) ;
+                     var result = await Get.dialog(SimpleDialog(
+                       title: Text("Language" , style: theme?.textTheme.titleLarge,),
+                       children: <Widget>[
+                         ...AppConstants.languages.keys.map((key) {
+                           return SimpleDialogOption(
+                             onPressed: () {
+                               Get.back(result: key) ;
+                             },
+                             child: Row(
+                               children: [
+                                 CountryFlag.fromLanguageCode(key , width: 24, height: 24 , borderRadius: 8),
+                                 SizedBox(width: 8,) ,
+                                 Text(AppConstants.languages[key]!.languageName , style: theme?.textTheme.titleMedium,),
+                               ],
+                             ),
+                           );
+                         })
+                       ],
+                     ));
                      if(result != null){
-                       Get.locale = Locale(result);
-                       Get.offAllNamed(Routes.LOGIN);
+                       controller.changeLanguage(result) ;
+
                      }
                     },
                   ),

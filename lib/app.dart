@@ -1,13 +1,16 @@
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:nifty_mobile/app/config/app_constants.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
+import 'package:nifty_mobile/app/services/config_service.dart';
+import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:responsive_framework/breakpoint.dart';
 import 'package:responsive_framework/responsive_breakpoints.dart';
 
 import 'app/routes/app_pages.dart';
 import 'generated/locales.g.dart';
-import 'package:nifty_mobile/app/utils/size_utils.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -15,6 +18,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    var languageModel = Get.find<ConfigService>().languageModel;
     return NeumorphicTheme(
       themeMode: ThemeMode.light,
       theme: NeumorphicThemeData(
@@ -87,12 +91,16 @@ class App extends StatelessWidget {
       child: GetMaterialApp(
         title: "Application",
         translationsKeys: AppTranslation.translations,
-        locale: const Locale('fr'),
-        // supportedLocales: [
-        //   Locale('fr'),
-        //   Locale('en')
-        // ],
-        fallbackLocale: const Locale('fr'),
+        locale: Locale(languageModel.languageCode, languageModel.countryCode),
+        supportedLocales: AppConstants.languages.keys.map((e) => Locale(
+            AppConstants.languages[e]!.languageCode,
+            AppConstants.languages[e]!.countryCode)),
+        fallbackLocale: Locale(languageModel.languageCode, languageModel.countryCode),
+        localizationsDelegates: [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
         initialRoute: AppPages.INITIAL,
         getPages: AppPages.routes,
         builder: (context, child) => ResponsiveBreakpoints.builder(
