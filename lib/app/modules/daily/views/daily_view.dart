@@ -7,6 +7,7 @@ import 'package:nifty_mobile/app/config/theme_data.dart';
 import 'package:nifty_mobile/app/data/models/daily_model.dart';
 import 'package:nifty_mobile/app/modules/daily/views/chart_view.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
+import 'package:nifty_mobile/app/utils/extentions.dart';
 import 'package:nifty_mobile/app/widgets/custom_tab_list_view.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:nifty_mobile/app/widgets/main_tab_bar.dart';
@@ -192,11 +193,10 @@ class DailyView extends GetView<DailyController> {
                                         children: [
                                           TextSpan(
                                               text:
-                                                  (item?.calories?.toString() ??
+                                                  (item?.calories?.displayUnit.toString() ??
                                                       "")),
                                           TextSpan(
-                                              text:
-                                                  ' ${LocaleKeys.calories_measurement.tr}',
+                                              text: " ${displayUnit}",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold)),
                                         ],
@@ -277,11 +277,10 @@ class DailyView extends GetView<DailyController> {
                                         children: [
                                           TextSpan(
                                               text:
-                                                  (item?.calories?.toString() ??
+                                                  (item?.calories?.displayUnit ??
                                                       "")),
                                           TextSpan(
-                                              text:
-                                                  ' ${LocaleKeys.calories_measurement.tr}',
+                                              text: " ${displayUnit}",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold)),
                                         ],

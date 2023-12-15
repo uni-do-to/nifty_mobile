@@ -257,7 +257,7 @@ class Sports {
 
 class SportItem {
   int? id;
-  int? calories;
+  double? calories;
   int? minutes;
   ApiSingleResponse<Sport>? sport;
 
@@ -265,7 +265,7 @@ class SportItem {
 
   SportItem.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    calories = json['calories'];
+    calories = double.tryParse(json['calories'].toString());
     minutes = json['minutes'];
     sport = json['sport'] != null
         ? ApiSingleResponse.fromJson(

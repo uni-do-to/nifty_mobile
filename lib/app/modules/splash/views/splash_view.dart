@@ -9,7 +9,7 @@ class SplashView extends GetView<AuthController> {
 
   SplashView({Key? key}) : super(key: key) {
 
-    Future.wait([Future.delayed(const Duration(seconds: 7)) , controller.getMe()]).then((value) {
+    Future.wait([Future.delayed(const Duration(seconds: 4)) , controller.getMe()]).then((value) {
       Get.offAllNamed(Routes.HOME) ;
     }).catchError((e){
       Get.offAllNamed(Routes.LOGIN) ;

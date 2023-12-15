@@ -141,5 +141,7 @@
   "recipe_grams_per_circle_error_message":"Recette Des grammes par cercle sont requis",
   "recipe_ingredients_length_error_message":"Vous devez ajouter au moins un ingrédient",
   "global_error_message": "Une erreur s'est produite, valeur d'entrée non valide" ,
-  "personal_info" : "bla bla bla"
+  "personal_info" : "bla bla bla",
+  "cal" : "KCAL",
+  "np" : "NP"
 }

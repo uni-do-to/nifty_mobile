@@ -16,6 +16,7 @@ class ConfigService extends GetxService {
     super.onInit();
     initConfig() ;
     print("Current language is ${languageModel.languageCode}") ;
+    print("Current display unit ${displayUnit}") ;
   }
 
   initConfig() async {
@@ -27,27 +28,20 @@ class ConfigService extends GetxService {
   LanguageModel loadLanguage()  {
     var lang = configBox.read<String>(AppConstants.LANG_KEY);
 
-    print("${lang != null} ${AppConstants.languages.keys.contains(lang)}") ;
     if(lang != null && AppConstants.languages.keys.contains(lang)) {
-      print("loaded lang $lang") ;
       return AppConstants.languages[lang]! ;
     }
-    print("load default") ;
     saveLang(AppConstants.DEFAULT_LANGUAGE) ;
 
     return AppConstants.languages[AppConstants.DEFAULT_LANGUAGE]! ;
   }
 
   Future<bool> saveLang(String lang) async {
-    print("save lang $lang") ;
     if(!AppConstants.languages.keys.contains(lang)) {
       return false;
     }
-
     await configBox.write(AppConstants.LANG_KEY , lang);
     languageModel = AppConstants.languages[lang]!;
-
-    print("saved lang ${configBox.read<String>(AppConstants.LANG_KEY)}") ;
 
     return true;
   }
@@ -70,7 +64,8 @@ class ConfigService extends GetxService {
       return false;
     }
 
-    await configBox.write(AppConstants.DEFAULT_DISPLAY_UNIT , unit);
+    print("saving unit $unit") ;
+    await configBox.write(AppConstants.UNIT_KEY , unit);
     displayUnit = unit;
     return true;
   }

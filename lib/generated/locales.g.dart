@@ -179,6 +179,8 @@ class LocaleKeys {
       'recipe_ingredients_length_error_message';
   static const global_error_message = 'global_error_message';
   static const personal_info = 'personal_info';
+  static const cal = 'cal';
+  static const np = 'np';
 }
 
 class Locales {
@@ -337,6 +339,8 @@ class Locales {
         'You must add at least one ingredient',
     'global_error_message': 'An error occurred, invalid inputs value',
     'personal_info': 'Personal Info',
+    'cal': 'KCAL',
+    'np': 'NP',
   };
   static const fr_FR = {
     'login': 'Connectez-vous',
@@ -500,5 +504,7 @@ class Locales {
     'global_error_message':
         'Une erreur s\'est produite, valeur d\'entrée non valide',
     'personal_info': 'bla bla bla',
+    'cal': 'KCAL',
+    'np': 'NP',
   };
 }

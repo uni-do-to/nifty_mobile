@@ -40,4 +40,11 @@ class ProfileController extends GetxController {
     }
   }
 
+  void changeDisplayUnit(String key) async{
+    var result = await configService.saveDisplayUnit(key);
+    if(result){
+      Get.offAllNamed(Routes.SPLASH) ;
+    }
+  }
+
 }

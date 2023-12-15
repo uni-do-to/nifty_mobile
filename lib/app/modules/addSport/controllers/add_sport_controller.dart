@@ -137,7 +137,7 @@ class AddSportController extends GetxController {
       sport: ApiSingleResponse<Sport>(
           data: selectedSport.value
       ),
-      calories: calories.toInt(),
+      calories: calories,
     );
 
     Get.back(result: sportItem);

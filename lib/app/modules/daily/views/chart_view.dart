@@ -5,6 +5,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
+import 'package:nifty_mobile/app/utils/extentions.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
 class BudgetChart extends StatelessWidget {
@@ -198,7 +199,7 @@ class BudgetChart extends StatelessWidget {
                         style: theme?.textTheme.bodySmall?.copyWith(fontSize: 13 , color: ColorConstants.accentColor),
                       ),
                       Text(
-                        "${consumedPercent.toInt()}%",
+                        consumedBudget.displayUnit,
                         style: theme?.textTheme.bodySmall?.copyWith(fontSize: 24 ,fontWeight: FontWeight.w900, color: ColorConstants.accentColor),
                       )
                     ],
@@ -227,7 +228,7 @@ class BudgetChart extends StatelessWidget {
                           style: theme?.textTheme.bodySmall?.copyWith(fontSize: 13 , color: Color(0xff9D0600)),
                         ),
                         Text(
-                          "${consumedPercent.toInt()}%",
+                          consumedBudget.displayUnit,
                           style: theme?.textTheme.bodySmall?.copyWith(fontSize: 24 ,fontWeight: FontWeight.w900, color: Color(0xff9D0600)),
                         )
                       ],
@@ -256,7 +257,7 @@ class BudgetChart extends StatelessWidget {
                         style: theme?.textTheme.bodySmall?.copyWith(fontSize: 14 , color: ColorConstants.mainThemeColor),
                       ),
                       Text(
-                        "100%",
+                        fullBudget.displayUnit,
                         style: theme?.textTheme.bodySmall?.copyWith(fontSize: 24 ,fontWeight: FontWeight.w900, color: ColorConstants.mainThemeColor),
                       )
                     ],

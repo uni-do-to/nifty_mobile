@@ -127,7 +127,31 @@ class ProfileView extends GetView<ProfileController> {
                       "Nifty point",
                       style: theme?.textTheme.titleLarge,
                     ),
-                    onTap: ()=>{},
+                    onTap: () async {
+                      var result = await Get.dialog(SimpleDialog(
+                        title: Text(
+                          "Display unit", style: theme?.textTheme.titleLarge,),
+                        children: <Widget>[
+                          ...AppConstants.displayUnits.map((key) {
+                            return SimpleDialogOption(
+                              onPressed: () {
+                                Get.back(result: key);
+                              },
+                              child: Row(
+                                children: [
+                                  Text(
+                                    key,
+                                    style: theme?.textTheme.titleMedium,),
+                                ],
+                              ),
+                            );
+                          })
+                        ],
+                      ));
+                      if (result != null) {
+                        controller.changeDisplayUnit(result);
+                      }
+                    }
                   ),
                 ],
               ),

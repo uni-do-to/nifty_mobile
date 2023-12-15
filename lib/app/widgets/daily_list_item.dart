@@ -18,12 +18,13 @@ class DailyListItem extends StatelessWidget {
     return Container(
         height: 47,
         padding:
-            const EdgeInsets.only(top: 13, bottom: 13 , left: 27 , right: 13),
+            const EdgeInsets.only(left: 27 , right: 13),
         decoration: BoxDecoration(
           color: ColorConstants.accentColor.withOpacity(0.1),
           borderRadius: BorderRadius.circular(5),
         ),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
               child: Text(
