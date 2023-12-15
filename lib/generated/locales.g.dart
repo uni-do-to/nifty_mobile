@@ -12,7 +12,7 @@ class AppTranslation {
 class LocaleKeys {
   LocaleKeys._();
   static const login = 'login';
-  static const sign_in = 'sign_in';
+  static const sign_up_label = 'sign_up_label';
   static const logout = 'logout';
   static const about_you_screen_title = 'about_you_screen_title';
   static const your_bmi_screen_title = 'your_bmi_screen_title';
@@ -50,7 +50,15 @@ class LocaleKeys {
   static const password_label = 'password_label';
   static const confirm_password_label = 'confirm_password_label';
   static const already_have_account_label = 'already_have_account_label';
+  static const not_have_account_label = 'not_have_account_label';
   static const login_label = 'login_label';
+  static const daily_bottom_navigation_label = 'daily_bottom_navigation_label';
+  static const ingredient_bottom_navigation_label =
+      'ingredient_bottom_navigation_label';
+  static const profile_bottom_navigation_label =
+      'profile_bottom_navigation_label';
+  static const vegetables_chart_label = 'vegetables_chart_label';
+  static const today_label = 'today_label';
   static const subscription_button_label = 'subscription_button_label';
   static const subscription_view_title = 'subscription_view_title';
   static const daily_calories_home_title = 'daily_calories_home_title';
@@ -60,10 +68,30 @@ class LocaleKeys {
   static const nifty_points_budget_label = 'nifty_points_budget_label';
   static const remaining_budget_label = 'remaining_budget_label';
   static const sport_budget_label = 'sport_budget_label';
+  static const delete_dialog_recipe_title = 'delete_dialog_recipe_title';
+  static const delete_dialog_ingredient_title =
+      'delete_dialog_ingredient_title';
+  static const delete_dialog_confirm_label = 'delete_dialog_confirm_label';
+  static const delete_label = 'delete_label';
+  static const cancel_label = 'cancel_label';
+  static const add_meal_item_button_label = 'add_meal_item_button_label';
+  static const add_new_recipe_button_label = 'add_new_recipe_button_label';
+  static const no_search_result_label = 'no_search_result_label';
   static const meal_tab_number_label = 'meal_tab_number_label';
+  static const sport_tab_number_label = 'sport_tab_number_label';
   static const ingredient_tab_label = 'ingredient_tab_label';
   static const recipe_tab_label = 'recipe_tab_label';
+  static const selected_ingredient_recipe_hint_label =
+      'selected_ingredient_recipe_hint_label';
+  static const quantity_of_selected_item_hint =
+      'quantity_of_selected_item_hint';
+  static const add_to_meal_button_label = 'add_to_meal_button_label';
+  static const add_to_sport_screen_title = 'add_to_sport_screen_title';
   static const new_recipe_tab_label = 'new_recipe_tab_label';
+  static const add_recipe_screen_title = 'add_recipe_screen_title';
+  static const recipe_name_label = 'recipe_name_label';
+  static const recipe_name_hint = 'recipe_name_hint';
+  static const close_label = 'close_label';
   static const empty_meal_tab_hint = 'empty_meal_tab_hint';
   static const add_new_ingredient_screen_title =
       'add_new_ingredient_screen_title';
@@ -144,6 +172,11 @@ class LocaleKeys {
   static const target_bmi_error_message = 'target_bmi_error_message';
   static const terms_and_conditions_error_message =
       'terms_and_conditions_error_message';
+  static const recipe_name_error_message = 'recipe_name_error_message';
+  static const recipe_grams_per_circle_error_message =
+      'recipe_grams_per_circle_error_message';
+  static const recipe_ingredients_length_error_message =
+      'recipe_ingredients_length_error_message';
   static const global_error_message = 'global_error_message';
   static const personal_info = 'personal_info';
 }
@@ -151,7 +184,7 @@ class LocaleKeys {
 class Locales {
   static const en_US = {
     'login': 'Login',
-    'sign_in': 'Sign-in',
+    'sign_up_label': 'Sign up',
     'logout': 'Logout',
     'about_you_screen_title': 'About you ?',
     'your_bmi_screen_title': 'Your BMI ?',
@@ -190,7 +223,13 @@ class Locales {
     'password_label': 'Your password',
     'confirm_password_label': 'Confirm your password',
     'already_have_account_label': 'Already have an account ?',
+    'not_have_account_label': 'Don`t have an account ?',
     'login_label': 'login',
+    'daily_bottom_navigation_label': 'Daily',
+    'ingredient_bottom_navigation_label': 'Ingredient',
+    'profile_bottom_navigation_label': 'Profile',
+    'vegetables_chart_label': 'Vegetables',
+    'today_label': 'Today',
     'subscription_button_label': 'Choose this formula',
     'subscription_view_title': 'Choose your formula',
     'daily_calories_home_title': 'Your daily calories',
@@ -200,10 +239,27 @@ class Locales {
     'nifty_points_budget_label': 'My budget',
     'remaining_budget_label': 'Spent',
     'sport_budget_label': 'Sport',
-    'meal_tab_number_label': 'Meal n°1',
+    'delete_dialog_recipe_title': 'Confirm Delete Recipe',
+    'delete_dialog_ingredient_title': 'Confirm Delete Ingredient',
+    'delete_dialog_confirm_label': 'Are you sure you want to delete ',
+    'delete_label': 'Delete',
+    'cancel_label': 'Cancel',
+    'add_meal_item_button_label': 'Add a new item',
+    'add_new_recipe_button_label': 'Add a new recipe',
+    'no_search_result_label': 'No search result',
+    'meal_tab_number_label': 'Meal n°',
+    'sport_tab_number_label': 'Sport n°',
     'ingredient_tab_label': 'Ingredients',
     'recipe_tab_label': 'Recipe',
+    'selected_ingredient_recipe_hint_label': 'Choose an item from the list',
+    'quantity_of_selected_item_hint': 'QTY',
+    'add_to_meal_button_label': 'Add to meal',
+    'add_to_sport_screen_title': 'Add to sport',
     'new_recipe_tab_label': 'New recipe',
+    'add_recipe_screen_title': 'Add Recipe',
+    'recipe_name_label': 'Recipe Name',
+    'recipe_name_hint': 'My new recipe',
+    'close_label': 'Close',
     'empty_meal_tab_hint':
         'You haven\'t eaten yet today, add an ingredient or recipe to your meal',
     'add_new_ingredient_screen_title': 'New ingredient',
@@ -274,12 +330,17 @@ class Locales {
     'target_bmi_error_message': 'Choose target BMI.',
     'terms_and_conditions_error_message':
         'You must agree to the terms and conditions to complete the registration process.',
+    'recipe_name_error_message': 'The recipe name is required',
+    'recipe_grams_per_circle_error_message':
+        'Recipe Grams per circle is required',
+    'recipe_ingredients_length_error_message':
+        'You must add at least one ingredient',
     'global_error_message': 'An error occurred, invalid inputs value',
     'personal_info': 'Personal Info',
   };
   static const fr_FR = {
-    'login': 'Entrar',
-    'sign_in': 'Cadastrar-se',
+    'login': 'Connectez-vous',
+    'sign_up_label': 'Inscrivez-vous',
     'logout': 'Sair',
     'about_you_screen_title': 'à propos de vous ?',
     'your_bmi_screen_title': 'Votre IMC ?',
@@ -318,7 +379,13 @@ class Locales {
     'password_label': 'Votre mot de passe',
     'confirm_password_label': 'Confirmez votre mot de passe',
     'already_have_account_label': 'Vous avez déjà un compte ?',
+    'not_have_account_label': 'Vous n\'avez pas de compte ?',
     'login_label': 'Connectez-vous',
+    'daily_bottom_navigation_label': 'Quotidien',
+    'ingredient_bottom_navigation_label': 'Ingrédient',
+    'profile_bottom_navigation_label': 'Profil',
+    'vegetables_chart_label': 'Légumes',
+    'today_label': 'Aujourd\'hui',
     'subscription_button_label': 'Choisir cette formule',
     'subscription_view_title': 'Choisissez votre formule',
     'calories_measurement': 'KCal',
@@ -329,11 +396,30 @@ class Locales {
     'nifty_points_budget_label': 'Mon Budget',
     'remaining_budget_label': 'Depensé',
     'sport_budget_label': 'Sport',
-    'meal_tab_number_label': 'Repas n°1',
+    'delete_dialog_recipe_title': 'Confirmer la suppression de la recette',
+    'delete_dialog_ingredient_title':
+        'Confirmer la suppression de l\'ingrédient',
+    'delete_dialog_confirm_label': 'Etes-vous sûr que vous voulez supprimer ',
+    'delete_label': 'Supprimer',
+    'cancel_label': 'Annuler',
+    'add_meal_item_button_label': 'Ajouter un nouvel élément',
+    'add_new_recipe_button_label': 'Ajouter une nouvelle recette',
+    'no_search_result_label': 'Aucun résultat de recherche',
+    'meal_tab_number_label': 'Repas n°',
+    'sport_tab_number_label': 'Sport n°',
     'ingredient_tab_label': 'Ingrédients',
     'recipe_tab_label': 'Recette',
+    'selected_ingredient_recipe_hint_label':
+        'Choisissez un élément dans la liste',
+    'quantity_of_selected_item_hint': 'QTé',
+    'add_to_meal_button_label': 'Ajouter au repas',
+    'add_to_sport_screen_title': 'Ajouter Au sport',
     'new_recipe_tab_label': 'Nouvelle recette',
+    'add_recipe_screen_title': 'Ajouter une recette',
+    'recipe_name_label': 'Nom de la recette',
+    'recipe_name_hint': 'Ma nouvelle recette',
     'new_meal_button_label': 'Nouveau repas',
+    'close_label': 'Fermer',
     'empty_meal_tab_hint':
         'Vous n\'avez pas encore mangé aujourd\'hui, ajoutez un ingrédient ou une recette à votre repas',
     'add_new_ingredient_screen_title': 'Nouvel ingrédient',
@@ -406,6 +492,11 @@ class Locales {
     'target_bmi_error_message': 'Choisissez l’IMC cible.',
     'terms_and_conditions_error_message':
         'Vous devez accepter les termes et conditions pour terminer le processus d\'inscription.',
+    'recipe_name_error_message': 'Le, nom de la recette est obligatoire',
+    'recipe_grams_per_circle_error_message':
+        'Recette Des grammes par cercle sont requis',
+    'recipe_ingredients_length_error_message':
+        'Vous devez ajouter au moins un ingrédient',
     'global_error_message':
         'Une erreur s\'est produite, valeur d\'entrée non valide',
     'personal_info': 'bla bla bla',

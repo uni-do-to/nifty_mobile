@@ -5,6 +5,7 @@ import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/modules/addNewRecipe/controllers/add_new_recipe_controller.dart';
 import 'package:nifty_mobile/app/modules/addNewRecipe/views/recipe_ingredient_tab.dart';
 import 'package:nifty_mobile/app/widgets/main_tab_bar.dart';
+import 'package:nifty_mobile/generated/locales.g.dart';
 
 class AddRecipeIngredientView extends GetView<AddNewRecipeController> {
   const AddRecipeIngredientView({Key? key}) : super(key: key);
@@ -34,7 +35,7 @@ class AddRecipeIngredientView extends GetView<AddNewRecipeController> {
             top: 47,
             bottom: 13,
           ),
-          child: Text('Ajouter Au Recette'.tr.toUpperCase()),
+          child: Text(LocaleKeys.add_to_meal_button_label.tr.toUpperCase()),
         ),
         centerTitle: false,
         backgroundColor: Colors.white,
@@ -54,11 +55,11 @@ class AddRecipeIngredientView extends GetView<AddNewRecipeController> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const MainTabBar(
+                 MainTabBar(
                   tabs: [
                     MainTab(
                       child: Text(
-                        "Ingrédient",
+                        LocaleKeys.ingredient_bottom_navigation_label.tr,
                         textAlign: TextAlign.center,
                       ),
                     ),

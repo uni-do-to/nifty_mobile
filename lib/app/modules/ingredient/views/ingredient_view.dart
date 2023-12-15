@@ -49,7 +49,7 @@ class IngredientView extends GetView<IngredientController> {
                     top: 20,
                   ),
                   child: SmallActionButton(
-                    text: 'Ajouter un nouvel Ingrédient',
+                    text: LocaleKeys.add_new_ingredient_screen_sub_title.tr,
                     backgroundColor: ColorConstants.mainThemeColor,
                     textColor: Colors.white,
                     fontSize: 14,
@@ -137,21 +137,22 @@ class IngredientView extends GetView<IngredientController> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Confirm Delete Ingredient'),
+          title: Text(LocaleKeys.delete_dialog_ingredient_title.tr),
           content: Get.locale?.languageCode == 'fr'
               ? Text(
-                  'Are you sure you want to delete ${controller.filteredItems[index].attributes?.nameFr}?')
+                  '${LocaleKeys.delete_dialog_confirm_label.tr}${controller.filteredItems[index].attributes?.nameFr}?')
               : Text(
-                  'Are you sure you want to delete ${controller.filteredItems[index].attributes?.nameEn}?'),
+                  '${LocaleKeys.delete_dialog_confirm_label.tr}${controller.filteredItems[index].attributes?.nameEn}?'),
           actions: <Widget>[
             SmallActionButton(
-              text: 'Delete',
+              text: LocaleKeys.delete_label.tr,
               backgroundColor: ColorConstants.mainThemeColor,
               textColor: Colors.white,
               fontSize: 20,
               height: 30,
-              onPressed: () async{
-                await controller.removeIngredient(controller.filteredItems[index]);
+              onPressed: () async {
+                await controller
+                    .removeIngredient(controller.filteredItems[index]);
                 controller.filteredItems.removeAt(index);
                 Get.back();
                 controller.initData();
@@ -161,7 +162,7 @@ class IngredientView extends GetView<IngredientController> {
               height: 15,
             ),
             SmallActionButton(
-              text: 'Cancel',
+              text: LocaleKeys.cancel_label.tr,
               backgroundColor: ColorConstants.grayBackgroundColor,
               textColor: ColorConstants.mainThemeColor,
               fontSize: 20,

@@ -8,6 +8,7 @@ import 'package:nifty_mobile/app/widgets/empty_list_item.dart';
 import 'package:nifty_mobile/app/widgets/form_field.dart';
 import 'package:nifty_mobile/app/widgets/recipe_ingredient_list_item.dart';
 import 'package:nifty_mobile/app/widgets/small_action_button.dart';
+import 'package:nifty_mobile/generated/locales.g.dart';
 
 import '../controllers/add_new_recipe_controller.dart';
 
@@ -39,7 +40,7 @@ class AddNewRecipeView extends GetView<AddNewRecipeController> {
             top: 47,
             bottom: 13,
           ),
-          child: Text('Add Recipe'.tr.toUpperCase()),
+          child: Text(LocaleKeys.add_recipe_screen_title.tr.toUpperCase()),
         ),
         centerTitle: false,
         backgroundColor: Colors.white,
@@ -61,7 +62,7 @@ class AddNewRecipeView extends GetView<AddNewRecipeController> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Name',
+                      LocaleKeys.recipe_name_label.tr,
                       style: theme?.textTheme.titleSmall,
                     ),
                     const SizedBox(
@@ -69,14 +70,14 @@ class AddNewRecipeView extends GetView<AddNewRecipeController> {
                     ),
                     NeuFormField(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
-                      hintText: 'My new recipe',
+                      hintText: LocaleKeys.recipe_name_hint.tr,
                       keyboardType: TextInputType.text,
                       controller: controller.recipeNameController,
                       autocorrect: false,
                       errorText: controller.recipeNameError.value,
                     ),
                     Text(
-                      'Grams per circle',
+                      LocaleKeys.grams_per_circle_label.tr,
                       style: theme?.textTheme.titleSmall,
                     ),
                     const SizedBox(
@@ -101,7 +102,7 @@ class AddNewRecipeView extends GetView<AddNewRecipeController> {
                   Container(
                     height: 37.35,
                     child: SmallActionButton(
-                      text: 'Ajouter un nouvel Ingrédient',
+                      text: LocaleKeys.add_new_ingredient_screen_sub_title.tr,
                       backgroundColor: ColorConstants.mainThemeColor,
                       textColor: Colors.white,
                       fontSize: 14,
@@ -111,8 +112,8 @@ class AddNewRecipeView extends GetView<AddNewRecipeController> {
                         size: 17.75,
                       ),
                       onPressed: () {
-                        Get.toNamed(
-                            Routes.ADD_NEW_RECIPE + Routes.RECIPE_INGREDIENT_TAB);
+                        Get.toNamed(Routes.ADD_NEW_RECIPE +
+                            Routes.RECIPE_INGREDIENT_TAB);
                       },
                     ),
                   ),
@@ -131,7 +132,7 @@ class AddNewRecipeView extends GetView<AddNewRecipeController> {
                         children: [
                           RecipeIngredientListItem(
                               onDeletePressed: () =>
-                                  showDeleteConfirmationDialogc(context, index),
+                                  showDeleteConfirmationDialog(context, index),
                               icon: Icons.egg,
                               text: Get.locale?.languageCode == 'fr'
                                   ? controller
@@ -168,13 +169,13 @@ class AddNewRecipeView extends GetView<AddNewRecipeController> {
                         height: 54,
                         width: 191,
                         child: SmallActionButton(
-                          text: 'Ajouter au repas',
-                          backgroundColor:state.value
+                          text: LocaleKeys.add_to_meal_button_label.tr,
+                          backgroundColor: state.value
                               ? ColorConstants.accentColor
                               : ColorConstants.accentColor.withOpacity(0.4),
                           textColor: Colors.white,
-                          onPressed: ()async {
-                            if (state.value){
+                          onPressed: () async {
+                            if (state.value) {
                               await controller.createNewRecipe();
                               Get.back(result: true);
                             }
@@ -193,25 +194,26 @@ class AddNewRecipeView extends GetView<AddNewRecipeController> {
     );
   }
 
-  void showDeleteConfirmationDialogc(BuildContext context, int index) {
+
+  void showDeleteConfirmationDialog(BuildContext context, int index) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Confirm Delete Ingredient'),
+          title: Text(LocaleKeys.delete_dialog_ingredient_title.tr),
           content: Get.locale?.languageCode == 'fr'
               ? Text(
-                  'Are you sure you want to delete ${controller.recipeIngredientsList[index].ingredient?.data?.attributes?.nameFr}?')
+              '${LocaleKeys.delete_dialog_confirm_label.tr}${controller.recipeIngredientsList[index]..ingredient?.data?.attributes?.nameFr}?')
               : Text(
-                  'Are you sure you want to delete ${controller.recipeIngredientsList[index].ingredient?.data?.attributes?.nameEn}?'),
+              '${LocaleKeys.delete_dialog_confirm_label.tr}${controller.recipeIngredientsList[index]..ingredient?.data?.attributes?.nameEn}?'),
           actions: <Widget>[
             SmallActionButton(
-              text: 'Delete',
+              text: LocaleKeys.delete_label.tr,
               backgroundColor: ColorConstants.mainThemeColor,
               textColor: Colors.white,
               fontSize: 20,
               height: 30,
-              onPressed: () {
+              onPressed: () async {
                 controller.recipeIngredientsList.removeAt(index);
               },
             ),
@@ -219,7 +221,7 @@ class AddNewRecipeView extends GetView<AddNewRecipeController> {
               height: 15,
             ),
             SmallActionButton(
-              text: 'Cancel',
+              text: LocaleKeys.cancel_label.tr,
               backgroundColor: ColorConstants.grayBackgroundColor,
               textColor: ColorConstants.mainThemeColor,
               fontSize: 20,

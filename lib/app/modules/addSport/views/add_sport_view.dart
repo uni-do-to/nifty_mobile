@@ -43,7 +43,7 @@ class AddSportView extends GetView<AddSportController> {
             top: 47,
             bottom: 13,
           ),
-          child: Text('Ajouter Au sport'.tr.toUpperCase()),
+          child: Text(LocaleKeys.add_to_sport_screen_title.tr.toUpperCase()),
         ),
         centerTitle: false,
         backgroundColor: Colors.white,
@@ -83,7 +83,6 @@ class AddSportView extends GetView<AddSportController> {
                           theme: theme!,
                           onAddSportToDaily: () {
                             controller.onAddSportToSports() ;
-                            //TODO add your sport to sports list inside selected sport object
                           },
                         )
                       ],
