@@ -114,5 +114,6 @@
   "weight_error_message": "Le poids est requis.",
   "target_bmi_error_message": "Choisissez l’IMC cible.",
   "terms_and_conditions_error_message": "Vous devez accepter les termes et conditions pour terminer le processus d'inscription.",
-  "global_error_message": "Une erreur s'est produite, valeur d'entrée non valide"
+  "global_error_message": "Une erreur s'est produite, valeur d'entrée non valide" ,
+  "personal_info" : "bla bla bla"
 }

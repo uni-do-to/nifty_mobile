@@ -3,6 +3,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/app_constants.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
+import 'package:nifty_mobile/generated/locales.g.dart';
 
 import '../../../config/color_constants.dart';
 import '../../../config/size_constants.dart';
@@ -66,7 +67,7 @@ class ProfileView extends GetView<ProfileController> {
             Neumorphic(
               child: Column(
                 children: [
-                  SettingsTile(title: 'Personal Info' , onTap: ()=>{},),
+                  SettingsTile(title: LocaleKeys.personal_info.tr , onTap: ()=>{},),
                   SettingsTile(title: 'Health Profile', onTap: ()=>{},),
                   SettingsTile(title: 'Change password', onTap: ()=>{},),
                 ],

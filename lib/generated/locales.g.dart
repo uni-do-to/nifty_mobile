@@ -145,6 +145,7 @@ class LocaleKeys {
   static const terms_and_conditions_error_message =
       'terms_and_conditions_error_message';
   static const global_error_message = 'global_error_message';
+  static const personal_info = 'personal_info';
 }
 
 class Locales {
@@ -274,6 +275,7 @@ class Locales {
     'terms_and_conditions_error_message':
         'You must agree to the terms and conditions to complete the registration process.',
     'global_error_message': 'An error occurred, invalid inputs value',
+    'personal_info': 'Personal Info',
   };
   static const fr_FR = {
     'login': 'Entrar',
@@ -406,5 +408,6 @@ class Locales {
         'Vous devez accepter les termes et conditions pour terminer le processus d\'inscription.',
     'global_error_message':
         'Une erreur s\'est produite, valeur d\'entrée non valide',
+    'personal_info': 'bla bla bla',
   };
 }

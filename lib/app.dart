@@ -96,7 +96,7 @@ class App extends StatelessWidget {
             AppConstants.languages[e]!.languageCode,
             AppConstants.languages[e]!.countryCode)),
         fallbackLocale: Locale(languageModel.languageCode, languageModel.countryCode),
-        localizationsDelegates: [
+        localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,

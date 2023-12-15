@@ -14,6 +14,10 @@ class BaseProvider extends GetConnect {
   bool isLoginRequest(request) {
     return (ConfigAPI.baseUrl + ConfigAPI.signInUrl ==
         request.url.toString());
+  }  
+  
+  bool isMeRequest(request) {
+    return (ConfigAPI.baseUrl + ConfigAPI.meUrl == request.url.toString());
   }
 
 
@@ -61,7 +65,7 @@ class BaseProvider extends GetConnect {
       // }
 
       // retry = httpClient.maxAuthRetries;
-      if (!isLoginRequest(request)) {
+      if (!isLoginRequest(request) && !isMeRequest(request)) {
         await authService.removeCredentials() ;
         Get.offAllNamed(Routes.LOGIN, arguments: {
           'message': {

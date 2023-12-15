@@ -19,4 +19,10 @@ class AuthProvider extends BaseProvider {
 
     return decode<UserPermission?>(response, UserPermission.fromJson);
   }
+
+  Future<UserPermission?> getMe() async {
+    final response = await get(ConfigAPI.meUrl);
+
+    return decode<UserPermission?>(response, UserPermission.fromJson);
+  }
 }

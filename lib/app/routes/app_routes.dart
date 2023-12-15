@@ -19,6 +19,7 @@ abstract class Routes {
   static const ADD_TO_MEAL = _Paths.ADD_TO_MEAL;
   static const ADD_NEW_RECIPE = _Paths.ADD_NEW_RECIPE;
   static const RECIPE_INGREDIENT_TAB = _Paths.RECIPE_INGREDIENT_TAB;
+  static const SPLASH = _Paths.SPLASH;
 }
 
 abstract class _Paths {
@@ -40,4 +41,5 @@ abstract class _Paths {
   static const RECIPE_INGREDIENT_TAB = '/recipe-ingredient-tab';
   static const ADD_NEW_INGREDIENT = '/add-new-ingredient';
   static const ADD_SPORT = '/add-sport';
+  static const SPLASH = '/splash';
 }

@@ -36,7 +36,7 @@ class ProfileController extends GetxController {
     var result = await configService.saveLang(key);
     if(result){
       Get.locale = Locale(configService.languageModel.languageCode , configService.languageModel.countryCode) ;
-      Get.offAllNamed(Routes.LOGIN) ;
+      Get.offAllNamed(Routes.SPLASH) ;
     }
   }
 

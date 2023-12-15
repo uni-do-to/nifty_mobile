@@ -114,5 +114,6 @@
   "weight_error_message": "Weight is required.",
   "target_bmi_error_message": "Choose target BMI.",
   "terms_and_conditions_error_message": "You must agree to the terms and conditions to complete the registration process.",
-  "global_error_message": "An error occurred, invalid inputs value"
+  "global_error_message": "An error occurred, invalid inputs value",
+  "personal_info" : "Personal Info"
 }
