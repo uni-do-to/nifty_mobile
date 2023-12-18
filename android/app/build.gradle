@@ -23,6 +23,14 @@ if (flutterVersionName == null) {
 }
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('../nifty.jks')
+            storePassword 'Ab@123456'
+            keyAlias 'nifty'
+            keyPassword 'Ab@123456'
+        }
+    }
     namespace "com.unido.nifty_mobile"
     compileSdkVersion flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
