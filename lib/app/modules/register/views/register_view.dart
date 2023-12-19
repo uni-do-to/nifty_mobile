@@ -1,6 +1,7 @@
 import 'package:date_format/date_format.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
+import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/modules/register/views/about_you_view.dart';
 import 'package:nifty_mobile/app/modules/register/views/nifty_points_view.dart';
 import 'package:nifty_mobile/app/modules/register/views/signup_view.dart';
@@ -89,9 +90,10 @@ class RegisterView extends GetView<RegisterController> {
                       visible: controller.currentStep.value > 0,
                       child: SmallActionButton(
                         text: LocaleKeys.back_button_label.tr,
-                        icon: Icon(
-                          Icons.cancel,
-                          color: Color(0xff274C5B),
+                        prefixIcon: Icon(
+                          Icons.arrow_back_ios,
+                          color: ColorConstants.accentColor,
+                          size: 17,
                         ),
                         onPressed: () => controller.currentStep.value--,
                         // Optionally, specify width and height
@@ -103,9 +105,10 @@ class RegisterView extends GetView<RegisterController> {
                         text: LocaleKeys.continue_button_label.tr,
                         backgroundColor: Color(0xff274C5B),
                         textColor: Colors.white,
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.arrow_forward_ios_sharp,
                           color: Colors.white,
+                          size: 17,
                         ),
                         onPressed: () {
                           if (controller.currentStep.value == 0 &&

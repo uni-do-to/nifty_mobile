@@ -216,7 +216,7 @@ class Locales {
     'below_bmi_slider_label': 'Anorexia',
     'back_button_label': 'Back',
     'continue_button_label': 'Continue',
-    'daily_quantity_label': 'Your daily quantity :',
+    'daily_quantity_label': ',your daily budget is :',
     'username_daily_calories_label': ', your daily amount of calories is :',
     'terms_and_conditions_label':
         'By clicking here, you agree that your data will be stored and used for operational purposes only.*',
@@ -226,7 +226,7 @@ class Locales {
     'password_label': 'Your password',
     'confirm_password_label': 'Confirm your password',
     'already_have_account_label': 'Already have an account ?',
-    'not_have_account_label': 'Don`t have an account ?',
+    'not_have_account_label': 'Don\'t have an account ?',
     'have_account_label': 'Already have an account ?',
     'login_label': 'login',
     'daily_bottom_navigation_label': 'Daily',
@@ -374,7 +374,7 @@ class Locales {
     'back_button_label': 'Retour',
     'continue_button_label': 'Continuer',
     'nifty_points_screen_title': 'Il est temps de commencer !',
-    'daily_quantity_label': 'Votre quantité jounalière :',
+    'daily_quantity_label': ',votre budget quotidien est de :',
     'username_daily_calories_label':
         ', votre quantité quotidienne de calories est de :',
     'terms_and_conditions_label':
