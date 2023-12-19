@@ -222,18 +222,19 @@ class YourBmiView extends GetView<RegisterController> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
-                            LocaleKeys.above_bmi_slider_label.tr,
+                            LocaleKeys.below_bmi_slider_label.tr,
                             style: theme?.textTheme.bodySmall?.copyWith(
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                           Expanded(child: Container()),
                           Text(
-                            LocaleKeys.below_bmi_slider_label.tr,
+                            LocaleKeys.above_bmi_slider_label.tr,
                             style: theme?.textTheme.bodySmall?.copyWith(
                               fontWeight: FontWeight.w600,
                             ),
                           ),
+
                         ],
                       )
                     ],
