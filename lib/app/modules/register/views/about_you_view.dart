@@ -2,6 +2,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 import 'package:get/get.dart';
 import 'package:date_format/date_format.dart';
+import 'package:intl/intl.dart';
 import 'package:nifty_mobile/app/modules/register/views/register_views_title.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 import '../../../utils/size_utils.dart';
@@ -22,7 +23,7 @@ class AboutYouView extends GetView<RegisterController> {
         lastDate: DateTime(2021));
     if (picked != null) {
       controller.dateOfBirthController.text =
-          formatDate(picked, [yyyy, '-', mm, '-', dd]);
+          DateFormat("dd-MM-yyyy").format(picked);
     }
   }
 
@@ -50,7 +51,6 @@ class AboutYouView extends GetView<RegisterController> {
                   errorText: controller.nameError.value,
                 );
               }, controller.nameError),
-
               ObxValue((state) {
                 return NeuFormField(
                   hintText: LocaleKeys.birthdate_label.tr,
@@ -84,16 +84,16 @@ class AboutYouView extends GetView<RegisterController> {
                           icon: Icons.male,
                           value: "male",
                           groupValue: controller.selectedGender.value,
-                          onChanged: (value) =>
-                              controller.selectedGender.value = value.toString(),
+                          onChanged: (value) => controller
+                              .selectedGender.value = value.toString(),
                         ),
                         GenderRadio(
                           label: LocaleKeys.female_radio_label.tr,
                           icon: Icons.female,
                           value: "female",
                           groupValue: controller.selectedGender.value,
-                          onChanged: (value) =>
-                              controller.selectedGender.value = value.toString(),
+                          onChanged: (value) => controller
+                              .selectedGender.value = value.toString(),
                         ),
                       ],
                     ),

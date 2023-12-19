@@ -51,6 +51,7 @@ class LocaleKeys {
   static const confirm_password_label = 'confirm_password_label';
   static const already_have_account_label = 'already_have_account_label';
   static const not_have_account_label = 'not_have_account_label';
+  static const have_account_label = 'have_account_label';
   static const login_label = 'login_label';
   static const daily_bottom_navigation_label = 'daily_bottom_navigation_label';
   static const ingredient_bottom_navigation_label =
@@ -215,7 +216,7 @@ class Locales {
     'below_bmi_slider_label': 'Anorexia',
     'back_button_label': 'Back',
     'continue_button_label': 'Continue',
-    'daily_quantity_label': 'Your daily quantity :',
+    'daily_quantity_label': ',your daily budget is :',
     'username_daily_calories_label': ', your daily amount of calories is :',
     'terms_and_conditions_label':
         'By clicking here, you agree that your data will be stored and used for operational purposes only.*',
@@ -225,7 +226,8 @@ class Locales {
     'password_label': 'Your password',
     'confirm_password_label': 'Confirm your password',
     'already_have_account_label': 'Already have an account ?',
-    'not_have_account_label': 'Don`t have an account ?',
+    'not_have_account_label': 'Don\'t have an account ?',
+    'have_account_label': 'Already have an account ?',
     'login_label': 'login',
     'daily_bottom_navigation_label': 'Daily',
     'ingredient_bottom_navigation_label': 'Ingredient',
@@ -304,7 +306,7 @@ class Locales {
     'circle_unit_label': 'Circle',
     'minutes_unit_label': 'Minutes',
     'calories_unit_label': 'Calories',
-    'calories_burned_unit_label': 'calories burned',
+    'calories_burned_unit_label': 'calories',
     'your_ingredient_label': 'Your ingredient',
     'recipes_screen_title': 'recipes',
     'find_your_recipes_title': 'Find your recipes',
@@ -372,7 +374,7 @@ class Locales {
     'back_button_label': 'Retour',
     'continue_button_label': 'Continuer',
     'nifty_points_screen_title': 'Il est temps de commencer !',
-    'daily_quantity_label': 'Votre quantité jounalière :',
+    'daily_quantity_label': ',votre budget quotidien est de :',
     'username_daily_calories_label':
         ', votre quantité quotidienne de calories est de :',
     'terms_and_conditions_label':
@@ -384,6 +386,7 @@ class Locales {
     'confirm_password_label': 'Confirmez votre mot de passe',
     'already_have_account_label': 'Vous avez déjà un compte ?',
     'not_have_account_label': 'Vous n\'avez pas de compte ?',
+    'have_account_label': 'Vous avez déjà un compte ?',
     'login_label': 'Connectez-vous',
     'daily_bottom_navigation_label': 'Quotidien',
     'ingredient_bottom_navigation_label': 'Ingrédient',
@@ -468,7 +471,7 @@ class Locales {
     'circle_unit_label': 'Cercle',
     'minutes_unit_label': 'Minutes',
     'calories_unit_label': 'Calories',
-    'calories_burned_unit_label': 'calories brûlées',
+    'calories_burned_unit_label': 'calories',
     'your_ingredient_label': 'Votre ingrédient',
     'recipes_screen_title': 'recettes',
     'find_your_recipes_title': 'Trouvez vos recettes',

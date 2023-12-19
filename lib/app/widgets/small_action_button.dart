@@ -7,6 +7,7 @@ class SmallActionButton extends StatelessWidget {
   final double? width;
   final double height;
   final Widget? icon;
+  final Widget? prefixIcon;
   final Color? backgroundColor;
   final Color? textColor;
   final double? fontSize;
@@ -18,6 +19,7 @@ class SmallActionButton extends StatelessWidget {
     this.width, // Defaults to expand to the available width
     this.height = 32.0, // Default height of the button
     this.icon,
+    this.prefixIcon,
     this.backgroundColor,
     this.textColor,
     this.fontSize,
@@ -28,9 +30,8 @@ class SmallActionButton extends StatelessWidget {
     return NeumorphicButton(
       onPressed: onPressed,
       style: NeumorphicStyle(
-        color: backgroundColor,
-        boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(4))
-      ),
+          color: backgroundColor,
+          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(4))),
       child: Container(
         width: width,
         height: height,
@@ -38,15 +39,26 @@ class SmallActionButton extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(text,
-                style: NeumorphicTheme.of(context)
-                    ?.current
-                    ?.textTheme
-                    .titleMedium
-                    ?.copyWith(
-                        color: textColor,
-                        fontSize: fontSize,
-                        fontWeight: FontWeight.w900)),
+            if (prefixIcon != null) prefixIcon!,
+            if (prefixIcon != null)
+              const SizedBox(
+                width: 3,
+              ),
+            Text(
+              text,
+              style: NeumorphicTheme.of(context)
+                  ?.current
+                  ?.textTheme
+                  .titleMedium
+                  ?.copyWith(
+                      color: textColor,
+                      fontSize: fontSize,
+                      fontWeight: FontWeight.w900),
+            ),
+            if (icon != null)
+              const SizedBox(
+                width: 5,
+              ),
             if (icon != null) icon!
           ],
         ),

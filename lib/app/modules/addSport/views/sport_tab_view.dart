@@ -50,28 +50,6 @@ class SportTabView extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            LocaleKeys.research_dropdown_label.tr,
-                            style: theme.textTheme.bodySmall
-                                ?.copyWith(fontSize: 14),
-                          ),
-                          const SizedBox(
-                            height: 6,
-                          ),
-                          NeuFormField(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 5, horizontal: 18),
-                            hintText:
-                                LocaleKeys.search_sports_dropdown_label.tr,
-                            controller: controller.searchSportsController,
-                            suffixIcon: Icon(Icons.search),
-                            maintainErrorSize: false,
-                            keyboardType: TextInputType.text,
-                            autocorrect: false,
-                            onChanged: (value) {
-                              controller.filterSearchResults(value);
-                            },
-                          ),
                           const SizedBox(
                             height: 15,
                           ),

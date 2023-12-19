@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:nifty_mobile/app/modules/register/views/register_views_title.dart';
 
 import '../../../../generated/locales.g.dart';
-import '../../../utils/size_utils.dart';
 import '../controllers/register_controller.dart';
 
 class NiftyPointsView extends GetView<RegisterController> {
@@ -13,7 +12,6 @@ class NiftyPointsView extends GetView<RegisterController> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     var theme = NeumorphicTheme.of(context)?.current;
     return Form(
       key: controller.niftyPointsFormKey,
@@ -23,38 +21,42 @@ class NiftyPointsView extends GetView<RegisterController> {
           RegisterViewsTitle(text: LocaleKeys.nifty_points_screen_title.tr),
           Expanded(child: Container()),
           Text(
-            LocaleKeys.daily_quantity_label.tr,
-            style: theme?.textTheme.bodyMedium?.copyWith(
+            controller.nameController.text + LocaleKeys.daily_quantity_label.tr,
+            style: theme?.textTheme.titleMedium?.copyWith(
               fontWeight: FontWeight.w600,
-              fontSize: 30.toFont,
             ),
-            textAlign: TextAlign.start,
+            textAlign: TextAlign.center,
           ),
-          SizedBox(
-            height: 10.toHeight,
-          ),
-          Text(
-            controller.nameController.text +
-                LocaleKeys.username_daily_calories_label.tr,
-            style: theme?.textTheme.bodySmall,
-            textAlign: TextAlign.start,
-          ),
-          SizedBox(
-            height: 60.toHeight,
+          const SizedBox(
+            height: 40,
           ),
           Container(
-            padding: EdgeInsets.all(70.toHeight),
+            padding: const EdgeInsets.all(20),
             color: theme?.accentColor,
-            child: Text(
-              "${controller.niftyPoints.value.round()} ${LocaleKeys.nifty_points_measurement_unit.tr}",
-              style: theme?.textTheme.labelLarge?.copyWith(
-                color: Colors.white,
-              ),
-              textAlign: TextAlign.center,
+            child: Column(
+              children: [
+                Text(
+                  "${controller.targetCaloriesPerDay.value.round()} ${LocaleKeys.calories_measurement.tr}",
+                  style: theme?.textTheme.titleSmall?.copyWith(
+                    color: Colors.white,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  "${controller.niftyPoints.value.round()} ${LocaleKeys.nifty_points_measurement_unit.tr}",
+                  style: theme?.textTheme.titleLarge?.copyWith(
+                    color: Colors.white,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ],
             ),
           ),
-          SizedBox(
-            height: 40.toHeight,
+          const SizedBox(
+            height: 15,
           ),
           Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
             ObxValue((state) {
@@ -66,23 +68,29 @@ class NiftyPointsView extends GetView<RegisterController> {
                 },
               );
             }, controller.termsAndConditions),
+            const SizedBox(
+              width: 10,
+            ),
             Expanded(
               child: Text(
                 LocaleKeys.terms_and_conditions_label.tr,
-                style: theme?.textTheme.bodySmall?.copyWith(height: 1.8),
+                style: theme?.textTheme.titleSmall?.copyWith(
+                  height: 1.2,
+                  fontWeight: FontWeight.normal,
+                ),
                 softWrap: true,
               ),
             ),
 
             // more widgets ...
           ]),
-          SizedBox(
-            height: 20.toHeight,
+          const SizedBox(
+            height: 15,
           ),
           ObxValue((state) {
             return Text(
               state.value,
-              style: theme?.textTheme.bodySmall?.copyWith(
+              style: theme?.textTheme.titleSmall?.copyWith(
                 color: Colors.red,
               ),
             );

@@ -1,6 +1,7 @@
 import 'package:date_format/date_format.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:nifty_mobile/app/data/models/daily_model.dart';
 import 'package:nifty_mobile/app/data/providers/daily_provider.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
@@ -21,12 +22,52 @@ class DailyController extends GetxController {
 
   RxString day = LocaleKeys.today_label.tr.obs;
 
+  Rx<DateTime> currentDay = DateTime.now().obs;
+
   DailyController(this.provider);
 
   @override
   void onInit() {
     super.onInit();
-    getDaily(DateTime.now());
+    getDaily(currentDay.value);
+  }
+
+  void getNextDay() {
+    // Getting today's date without time for comparison
+    DateTime today = DateTime.now();
+    DateTime todayDateOnly = DateTime(today.year, today.month, today.day);
+
+    // Compare currentDay with today's date (without time)
+    if (currentDay.value.isBefore(todayDateOnly) ||
+        currentDay.value.isAtSameMomentAs(todayDateOnly)) {
+      currentDay.value = currentDay.value.add(Duration(days: 1));
+      // Check if the new currentDay is today
+      DateTime newCurrentDayDateOnly = DateTime(
+          currentDay.value.year, currentDay.value.month, currentDay.value.day);
+      if (newCurrentDayDateOnly.isAtSameMomentAs(todayDateOnly)) {
+        // If currentDay is today, set 'today' as the value
+        day.value = LocaleKeys.today_label.tr;
+      } else {
+        // Otherwise, format DateTime to a String
+        day.value = DateFormat('yyyy-MM-dd').format(currentDay.value);
+      }
+      getDaily(currentDay.value);
+    }
+  }
+
+  void getPreviousDay() {
+    DateTime sevenDaysAgo = DateTime.now().subtract(Duration(days: 7));
+    DateTime newDate = currentDay.value.subtract(Duration(days: 1));
+
+    // Check if newDate is not earlier than seven days ago
+    if (newDate.isAfter(sevenDaysAgo) ||
+        newDate.isAtSameMomentAs(sevenDaysAgo)) {
+      currentDay.value = newDate;
+      day.value = DateFormat('yyyy-MM-dd')
+          .format(currentDay.value); // Format DateTime to String
+      getDaily(currentDay.value);
+    }
+    // If newDate is earlier than seven days ago, do not update
   }
 
   void getDaily(DateTime date) async {
@@ -108,7 +149,7 @@ class DailyController extends GetxController {
   }
 
   deleteItemFromSport(int tabIndex, int itemIndex) async {
-    if (daily == null) {
+    if (daily.value == null) {
       return;
     }
 

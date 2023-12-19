@@ -59,10 +59,9 @@ class SignupView extends GetView<RegisterController> {
             );
           }, controller.confirmPasswordError),
           SizedBox(
-            height: 40.toHeight,
+            height: 20,
           ),
           NeumorphicButton(
-
               child: Container(
                   height: 48.toHeight,
                   alignment: Alignment.center,
@@ -106,7 +105,33 @@ class SignupView extends GetView<RegisterController> {
                   );
                 } finally {}
               }),
-
+          SizedBox(
+            height: 40,
+          ),
+          Row(
+            children: [
+              Expanded(child: Container()),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  Text(LocaleKeys.have_account_label.tr),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  NeumorphicButton(
+                      child: Text(
+                        LocaleKeys.login_label.tr,
+                        style: NeumorphicTheme.currentTheme(context)
+                            .textTheme
+                            .bodyText1,
+                      ),
+                      onPressed: () {
+                        Get.toNamed(Routes.LOGIN);
+                      })
+                ],
+              ),
+            ],
+          ),
           Expanded(child: Container()),
         ],
       ),

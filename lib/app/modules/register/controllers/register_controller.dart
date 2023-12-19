@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:nifty_mobile/app/controllers/auth_controller.dart';
 import 'package:nifty_mobile/app/modules/register/signup_request_model.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
@@ -167,7 +168,8 @@ class RegisterController extends AuthController {
 
   //calculate user age from the birthdate
   int calculateUserAge() {
-    DateTime birthDate = DateTime.parse(dateOfBirthController.text);
+    DateTime birthDate =
+        DateFormat("dd-mm-yyyy").parse(dateOfBirthController.text);
     DateTime now = DateTime.now();
     int age = now.year - birthDate.year;
 
@@ -259,6 +261,10 @@ class RegisterController extends AuthController {
     if (validateSignUpForm() && !isSignup.value) {
       try {
         isSignup.value = true;
+        DateTime birthDate =
+            DateFormat("dd-mm-yyyy").parse(dateOfBirthController.text);
+        String formattedBirthDate = DateFormat("yyyy-MM-dd").format(birthDate);
+
         SignupRequest data = SignupRequest(
             username: emailController.text,
             // or another appropriate field for username
@@ -266,7 +272,7 @@ class RegisterController extends AuthController {
             password: passwordController.text,
             name: nameController.text,
             gender: selectedGender.value,
-            birthDate: dateOfBirthController.text,
+            birthDate: formattedBirthDate,
             height: tallController.text,
             weight: weightController.text,
             bmi: currentBMI.value.toString(),
