@@ -69,7 +69,7 @@ class DailyView extends GetView<DailyController> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   GestureDetector(
-                    onTap: () => {},
+                    onTap: () => {controller.getPreviousDay()},
                     child: Icon(
                       Icons.arrow_back_ios_new,
                       color: theme?.iconTheme.color,
@@ -89,7 +89,7 @@ class DailyView extends GetView<DailyController> {
                     width: 11,
                   ),
                   GestureDetector(
-                    onTap: () => {},
+                    onTap: () => {controller.getNextDay()},
                     child: Icon(
                       Icons.arrow_forward_ios_sharp,
                       color: theme?.iconTheme.color,
@@ -192,9 +192,9 @@ class DailyView extends GetView<DailyController> {
                                         style: theme?.textTheme.titleMedium,
                                         children: [
                                           TextSpan(
-                                              text:
-                                                  (item?.calories?.displayUnit.toString() ??
-                                                      "")),
+                                              text: (item?.calories?.displayUnit
+                                                      .toString() ??
+                                                  "")),
                                           TextSpan(
                                               text: " ${displayUnit}",
                                               style: TextStyle(
@@ -276,9 +276,9 @@ class DailyView extends GetView<DailyController> {
                                         style: theme?.textTheme.titleMedium,
                                         children: [
                                           TextSpan(
-                                              text:
-                                                  (item?.calories?.displayUnit ??
-                                                      "")),
+                                              text: (item
+                                                      ?.calories?.displayUnit ??
+                                                  "")),
                                           TextSpan(
                                               text: " ${displayUnit}",
                                               style: TextStyle(
