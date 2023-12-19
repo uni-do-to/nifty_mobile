@@ -149,7 +149,7 @@ class DailyController extends GetxController {
   }
 
   deleteItemFromSport(int tabIndex, int itemIndex) async {
-    if (daily == null) {
+    if (daily.value == null) {
       return;
     }
 
