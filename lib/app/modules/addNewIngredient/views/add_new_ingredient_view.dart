@@ -99,12 +99,14 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                       ObxValue((state) {
                         return NeuFormField(
                           hintText: LocaleKeys.ingredient_name_english_label.tr,
-                          controller: controller.ingredientNameEnglishController,
+                          controller:
+                              controller.ingredientNameEnglishController,
                           keyboardType: TextInputType.text,
                           autocorrect: false,
                           padding: const EdgeInsets.symmetric(
                               horizontal: 10, vertical: 3),
-                          errorText: controller.ingredientNameEnglishError.value,
+                          errorText:
+                              controller.ingredientNameEnglishError.value,
                         );
                       }, controller.ingredientNameEnglishError),
 
@@ -128,12 +130,14 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                             child: ObxValue((state) {
                               return NeuFormField(
                                 hintText: LocaleKeys.calories_per_gram_label.tr,
-                                controller: controller.caloriesPerGramController,
+                                controller:
+                                    controller.caloriesPerGramController,
                                 keyboardType: TextInputType.number,
                                 autocorrect: false,
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 3),
-                                errorText: controller.caloriesPerGramError.value,
+                                errorText:
+                                    controller.caloriesPerGramError.value,
                               );
                             }, controller.caloriesPerGramError),
                           ),
@@ -143,7 +147,8 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                           Expanded(
                             child: ObxValue((state) {
                               return NeuFormField(
-                                hintText: LocaleKeys.nifty_points_measurement.tr,
+                                hintText:
+                                    LocaleKeys.nifty_points_measurement.tr,
                                 controller: controller.niftyPointsController,
                                 keyboardType: TextInputType.number,
                                 autocorrect: false,
@@ -152,7 +157,7 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                                     horizontal: 10, vertical: 3),
                                 errorText: controller.niftyPointsError.value,
                               );
-                            },controller.niftyPointsError),
+                            }, controller.niftyPointsError),
                           ),
                         ],
                       ),
@@ -173,7 +178,8 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                             width: 210,
                             child: ObxValue((state) {
                               return NeuFormField(
-                                hintText: LocaleKeys.unit_name_measurement_label.tr,
+                                hintText:
+                                    LocaleKeys.unit_name_measurement_label.tr,
                                 controller:
                                     controller.unitNameMeasurementController,
                                 keyboardType: TextInputType.text,
@@ -193,8 +199,8 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                           Expanded(
                             child: ObxValue((state) {
                               return NeuFormField(
-                                hintText:
-                                    LocaleKeys.equivalent_unit_in_grams_label.tr,
+                                hintText: LocaleKeys
+                                    .equivalent_unit_in_grams_label.tr,
                                 controller:
                                     controller.equivalentUnitInGramsController,
                                 keyboardType: TextInputType.number,
@@ -220,8 +226,8 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                               return NeuFormField(
                                 hintText: LocaleKeys
                                     .unit_name_another_measurement_label.tr,
-                                controller:
-                                    controller.unitNameAnotherMeasurementController,
+                                controller: controller
+                                    .unitNameAnotherMeasurementController,
                                 keyboardType: TextInputType.text,
                                 autocorrect: false,
                                 padding: const EdgeInsets.symmetric(
@@ -239,8 +245,8 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                           Expanded(
                             child: ObxValue((state) {
                               return NeuFormField(
-                                hintText:
-                                    LocaleKeys.equivalent_unit_in_grams_label.tr,
+                                hintText: LocaleKeys
+                                    .equivalent_unit_in_grams_label.tr,
                                 controller:
                                     controller.equivalentUnitInGramsController2,
                                 keyboardType: TextInputType.number,
@@ -261,7 +267,6 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                       ),
 
                       //button
-                     
                     ],
                   ),
                 ),
@@ -289,35 +294,33 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                           child: ObxValue((ingredientCreated) {
                             return ingredientCreated.value
                                 ? Container(
-                              width: 20,
-                              height: 20,
-                              child: CircularProgressIndicator(
-                                backgroundColor: ColorConstants.white,
-                              ),
-                            )
+                                    width: 20,
+                                    height: 20,
+                                    child: CircularProgressIndicator(
+                                      backgroundColor: ColorConstants.white,
+                                    ),
+                                  )
                                 : Text(
-                              LocaleKeys
-                                  .create_ingredient_button_label.tr,
-                              style: theme?.textTheme.titleMedium
-                                  ?.copyWith(
-                                fontWeight: FontWeight.bold,
-                                color: ColorConstants.white,
-                              ),
-                            );
+                                    LocaleKeys
+                                        .create_ingredient_button_label.tr,
+                                    style:
+                                        theme?.textTheme.titleMedium?.copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      color: ColorConstants.white,
+                                    ),
+                                  );
                           }, controller.loading),
                         ),
                         onPressed: () async {
                           try {
                             await controller.createNewIngredient();
-                            Get.offAllNamed(Routes.HOME);
+                            Get.back();
                           } catch (err, _) {
                             printError(info: err.toString());
-                            final strippedMessage = err
-                                .toString()
-                                .replaceFirst(
-                              LocaleKeys.exception_snackbar_label.tr,
-                              '',
-                            );
+                            final strippedMessage = err.toString().replaceFirst(
+                                  LocaleKeys.exception_snackbar_label.tr,
+                                  '',
+                                );
 
                             Get.snackbar(
                               LocaleKeys.error_snackbar_label.tr,
@@ -325,8 +328,8 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                               snackPosition: SnackPosition.TOP,
                               backgroundColor: Colors.red.withOpacity(.75),
                               colorText: Colors.white,
-                              icon: const Icon(Icons.error,
-                                  color: Colors.white),
+                              icon:
+                                  const Icon(Icons.error, color: Colors.white),
                               shouldIconPulse: true,
                               barBlur: 20,
                             );
