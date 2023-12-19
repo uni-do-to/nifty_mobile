@@ -169,7 +169,7 @@ class AddNewRecipeView extends GetView<AddNewRecipeController> {
                         height: 54,
                         width: 191,
                         child: SmallActionButton(
-                          text: LocaleKeys.add_to_meal_button_label.tr,
+                          text: LocaleKeys.add_recipe_button_label.tr,
                           backgroundColor: state.value
                               ? ColorConstants.accentColor
                               : ColorConstants.accentColor.withOpacity(0.4),

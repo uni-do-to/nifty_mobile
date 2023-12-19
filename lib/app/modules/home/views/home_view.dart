@@ -92,7 +92,7 @@ class HomeView extends GetView<HomeController> {
                 height: 26.19,
                 width: 26.19,
               ),
-              label: 'Profile',
+              label: LocaleKeys.profile_bottom_navigation_label.tr,
             ),
           ],
           currentIndex: controller.currentIndex.value,

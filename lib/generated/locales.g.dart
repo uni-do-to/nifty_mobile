@@ -92,6 +92,9 @@ class LocaleKeys {
   static const add_recipe_screen_title = 'add_recipe_screen_title';
   static const recipe_name_label = 'recipe_name_label';
   static const recipe_name_hint = 'recipe_name_hint';
+  static const add_recipe_button_label = 'add_recipe_button_label';
+  static const add_ingredient_to_recipe_title_page =
+      'add_ingredient_to_recipe_title_page';
   static const close_label = 'close_label';
   static const empty_meal_tab_hint = 'empty_meal_tab_hint';
   static const add_new_ingredient_screen_title =
@@ -178,6 +181,14 @@ class LocaleKeys {
       'recipe_grams_per_circle_error_message';
   static const recipe_ingredients_length_error_message =
       'recipe_ingredients_length_error_message';
+  static const ingredient_name_france_error_message =
+      'ingredient_name_france_error_message';
+  static const ingredient_name_English_error_message =
+      'ingredient_name_English_error_message';
+  static const ingredient_grams_per_circle_error_message =
+      'ingredient_grams_per_circle_error_message';
+  static const ingredient_calories_per_grams_error_message =
+      'ingredient_calories_per_grams_error_message';
   static const global_error_message = 'global_error_message';
   static const personal_info = 'personal_info';
   static const cal = 'cal';
@@ -263,6 +274,8 @@ class Locales {
     'add_recipe_screen_title': 'Add Recipe',
     'recipe_name_label': 'Recipe Name',
     'recipe_name_hint': 'My new recipe',
+    'add_recipe_button_label': 'Add recipe',
+    'add_ingredient_to_recipe_title_page': 'Add TO recipe',
     'close_label': 'Close',
     'empty_meal_tab_hint':
         'You haven\'t eaten yet today, add an ingredient or recipe to your meal',
@@ -339,6 +352,14 @@ class Locales {
         'Recipe Grams per circle is required',
     'recipe_ingredients_length_error_message':
         'You must add at least one ingredient',
+    'ingredient_name_france_error_message':
+        'Ingredient name France is required',
+    'ingredient_name_English_error_message':
+        'Ingredient name english is required',
+    'ingredient_grams_per_circle_error_message':
+        'Ingredient Grams per circle is required',
+    'ingredient_calories_per_grams_error_message':
+        'Ingredient Calories per grams is required',
     'global_error_message': 'An error occurred, invalid inputs value',
     'personal_info': 'Personal Info',
     'cal': 'KCAL',
@@ -388,7 +409,7 @@ class Locales {
     'not_have_account_label': 'Vous n\'avez pas de compte ?',
     'have_account_label': 'Vous avez déjà un compte ?',
     'login_label': 'Connectez-vous',
-    'daily_bottom_navigation_label': 'Quotidien',
+    'daily_bottom_navigation_label': 'Journal',
     'ingredient_bottom_navigation_label': 'Ingrédient',
     'profile_bottom_navigation_label': 'Profil',
     'vegetables_chart_label': 'Légumes',
@@ -425,6 +446,8 @@ class Locales {
     'add_recipe_screen_title': 'Ajouter une recette',
     'recipe_name_label': 'Nom de la recette',
     'recipe_name_hint': 'Ma nouvelle recette',
+    'add_recipe_button_label': 'Ajouter la recette',
+    'add_ingredient_to_recipe_title_page': 'Ajouter à la recette',
     'new_meal_button_label': 'Nouveau repas',
     'close_label': 'Fermer',
     'empty_meal_tab_hint':
@@ -504,6 +527,14 @@ class Locales {
         'Recette Des grammes par cercle sont requis',
     'recipe_ingredients_length_error_message':
         'Vous devez ajouter au moins un ingrédient',
+    'ingredient_calories_per_grams_error_message':
+        'Ingrédient Calories par gramme requis',
+    'ingredient_grams_per_circle_error_message':
+        'Ingrédient Des grammes par cercle sont requis',
+    'ingredient_name_English_error_message':
+        'le nom de l\'ingrédient est obligatoire en anglais',
+    'ingredient_name_france_error_message':
+        'le nom de l\'ingrédient France est obligatoire',
     'global_error_message':
         'Une erreur s\'est produite, valeur d\'entrée non valide',
     'personal_info': 'Personal Info',

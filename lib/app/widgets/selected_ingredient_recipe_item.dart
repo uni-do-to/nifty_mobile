@@ -43,6 +43,7 @@ class SelectedIngredientRecipeItem extends StatelessWidget {
                     ? ColorConstants.accentColor
                     : ColorConstants.accentColor.withOpacity(0.22),
               ),
+              maxLines: 2,
             ),
           ),
           const SizedBox(

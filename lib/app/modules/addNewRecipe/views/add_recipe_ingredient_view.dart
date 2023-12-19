@@ -35,7 +35,8 @@ class AddRecipeIngredientView extends GetView<AddNewRecipeController> {
             top: 47,
             bottom: 13,
           ),
-          child: Text(LocaleKeys.add_to_meal_button_label.tr.toUpperCase()),
+          child: Text(
+              LocaleKeys.add_ingredient_to_recipe_title_page.tr.toUpperCase()),
         ),
         centerTitle: false,
         backgroundColor: Colors.white,
@@ -55,7 +56,7 @@ class AddRecipeIngredientView extends GetView<AddNewRecipeController> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                 MainTabBar(
+                MainTabBar(
                   tabs: [
                     MainTab(
                       child: Text(

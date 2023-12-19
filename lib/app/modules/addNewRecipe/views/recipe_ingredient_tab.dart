@@ -153,7 +153,7 @@ class RecipeIngredientTab extends StatelessWidget {
                         height: 54,
                         padding: const EdgeInsets.only(right: 24),
                         child: SmallActionButton(
-                          text: LocaleKeys.add_to_meal_button_label.tr,
+                          text: LocaleKeys.add_ingredient_to_recipe_title_page.tr,
                           backgroundColor:
                               controller.selectedIngredient.value?.attributes !=
                                           null &&

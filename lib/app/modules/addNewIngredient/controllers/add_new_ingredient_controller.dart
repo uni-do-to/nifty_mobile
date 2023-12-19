@@ -53,22 +53,22 @@ class AddNewIngredientController extends GetxController {
 
   bool validateNewIngredientForm() {
     if (ingredientNameFranceController.text.isEmpty) {
-      ingredientNameFranceError.value = LocaleKeys.email_error_message.tr;
+      ingredientNameFranceError.value = LocaleKeys.ingredient_name_france_label.tr;
     } else {
       ingredientNameFranceError.value = '';
     }
     if (ingredientNameEnglishController.text.isEmpty) {
-      ingredientNameEnglishError.value = LocaleKeys.email_error_message.tr;
+      ingredientNameEnglishError.value = LocaleKeys.ingredient_name_english_label.tr;
     } else {
       ingredientNameEnglishError.value = '';
     }
     if (gramsPerCircleController.text.isEmpty) {
-      gramsPerCircleError.value = LocaleKeys.email_error_message.tr;
+      gramsPerCircleError.value = LocaleKeys.ingredient_grams_per_circle_error_message.tr;
     } else {
       gramsPerCircleError.value = '';
     }
     if (caloriesPerGramController.text.isEmpty) {
-      caloriesPerGramError.value = LocaleKeys.email_error_message.tr;
+      caloriesPerGramError.value = LocaleKeys.ingredient_calories_per_grams_error_message.tr;
     } else {
       caloriesPerGramError.value = '';
     }
