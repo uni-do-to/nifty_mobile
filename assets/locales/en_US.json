@@ -39,6 +39,7 @@
   "confirm_password_label": "Confirm your password",
   "already_have_account_label": "Already have an account ?",
   "not_have_account_label": "Don`t have an account ?",
+  "have_account_label": "Already have an account ?",
   "login_label": "login",
   "daily_bottom_navigation_label": "Daily",
   "ingredient_bottom_navigation_label": "Ingredient",

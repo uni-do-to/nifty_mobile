@@ -37,6 +37,7 @@
   "confirm_password_label": "Confirmez votre mot de passe",
   "already_have_account_label": "Vous avez déjà un compte ?",
   "not_have_account_label": "Vous n'avez pas de compte ?",
+  "have_account_label": "Vous avez déjà un compte ?",
   "login_label": "Connectez-vous",
   "daily_bottom_navigation_label": "Quotidien",
   "ingredient_bottom_navigation_label": "Ingrédient",

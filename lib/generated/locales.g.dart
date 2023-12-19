@@ -51,6 +51,7 @@ class LocaleKeys {
   static const confirm_password_label = 'confirm_password_label';
   static const already_have_account_label = 'already_have_account_label';
   static const not_have_account_label = 'not_have_account_label';
+  static const have_account_label = 'have_account_label';
   static const login_label = 'login_label';
   static const daily_bottom_navigation_label = 'daily_bottom_navigation_label';
   static const ingredient_bottom_navigation_label =
@@ -226,6 +227,7 @@ class Locales {
     'confirm_password_label': 'Confirm your password',
     'already_have_account_label': 'Already have an account ?',
     'not_have_account_label': 'Don`t have an account ?',
+    'have_account_label': 'Already have an account ?',
     'login_label': 'login',
     'daily_bottom_navigation_label': 'Daily',
     'ingredient_bottom_navigation_label': 'Ingredient',
@@ -384,6 +386,7 @@ class Locales {
     'confirm_password_label': 'Confirmez votre mot de passe',
     'already_have_account_label': 'Vous avez déjà un compte ?',
     'not_have_account_label': 'Vous n\'avez pas de compte ?',
+    'have_account_label': 'Vous avez déjà un compte ?',
     'login_label': 'Connectez-vous',
     'daily_bottom_navigation_label': 'Quotidien',
     'ingredient_bottom_navigation_label': 'Ingrédient',
