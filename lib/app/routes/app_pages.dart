@@ -15,6 +15,8 @@ import '../modules/addToMeal/bindings/add_to_meal_binding.dart';
 import '../modules/addToMeal/views/add_to_meal_view.dart';
 import '../modules/changePassword/bindings/change_password_binding.dart';
 import '../modules/changePassword/views/change_password_view.dart';
+import '../modules/editPersonalInfo/bindings/edit_personal_info_binding.dart';
+import '../modules/editPersonalInfo/views/edit_personal_info_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -124,6 +126,11 @@ class AppPages {
       name: _Paths.CHANGE_PASSWORD,
       page: () => const ChangePasswordView(),
       binding: ChangePasswordBinding(),
+    ),
+    GetPage(
+      name: _Paths.EDIT_PERSONAL_INFO,
+      page: () => const EditPersonalInfoView(),
+      binding: EditPersonalInfoBinding(),
     ),
   ];
 }
