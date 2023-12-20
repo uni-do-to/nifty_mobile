@@ -103,6 +103,9 @@ class LocaleKeys {
       'add_new_ingredient_screen_sub_title';
   static const add_new_ingredient_screen_hint =
       'add_new_ingredient_screen_hint';
+  static const change_password_screen_sub_title =
+      'change_password_screen_sub_title';
+  static const change_password_screen_hint = 'change_password_screen_hint';
   static const mandatory_fields_mark = 'mandatory_fields_mark';
   static const ingredient_name_france_label = 'ingredient_name_france_label';
   static const ingredient_name_english_label = 'ingredient_name_english_label';
@@ -159,10 +162,15 @@ class LocaleKeys {
       'calculate_your_effort_sub_title';
   static const intensity_physical_effort_sub_title =
       'intensity_physical_effort_sub_title';
+  static const change_password_screen_title = 'change_password_screen_title';
+  static const current_password_label = 'current_password_label';
+  static const new_password_label = 'new_password_label';
   static const duration_label = 'duration_label';
   static const error_snackbar_label = 'error_snackbar_label';
   static const exception_snackbar_label = 'exception_snackbar_label';
   static const email_error_message = 'email_error_message';
+  static const current_password_error_message =
+      'current_password_error_message';
   static const password_error_message = 'password_error_message';
   static const confirm_password_error_message =
       'confirm_password_error_message';
@@ -283,6 +291,9 @@ class Locales {
     'add_new_ingredient_screen_sub_title': 'Add a new ingredient',
     'add_new_ingredient_screen_hint':
         'Complete all fields to add a new ingredient',
+    'change_password_screen_sub_title': 'Change your password',
+    'change_password_screen_hint':
+        'Complete all fields to change your password',
     'mandatory_fields_mark': '* mandatory',
     'ingredient_name_france_label': 'Ingredient name* (French)',
     'ingredient_name_english_label': 'Ingredient name (English)',
@@ -331,10 +342,14 @@ class Locales {
     'calculate_your_effort_sub_title':
         'Get the number of calories you burned during your physical exercise',
     'intensity_physical_effort_sub_title': 'Intensity of physical effort',
+    'change_password_screen_title': 'change password',
+    'current_password_label': 'current password',
+    'new_password_label': 'new password',
     'duration_label': 'Duration',
     'error_snackbar_label': 'Error',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Email is required.',
+    'current_password_error_message': 'Current password is required.',
     'password_error_message': 'Password is required.',
     'confirm_password_error_message': 'Confirm password is required.',
     'password_not_match_error_message':
@@ -454,6 +469,9 @@ class Locales {
         'Vous n\'avez pas encore mangé aujourd\'hui, ajoutez un ingrédient ou une recette à votre repas',
     'add_new_ingredient_screen_title': 'Nouvel ingrédient',
     'add_new_ingredient_screen_sub_title': 'Ajouter un nouvel ingrédient',
+    'change_password_screen_sub_title': 'Changez votre mot de passe',
+    'change_password_screen_hint':
+        'Remplissez tous les champs pour changer votre mot de passe',
     'add_new_ingredient_screen_hint':
         'Remplissez tous les champs pour ajouter un nouvel ingrédient',
     'mandatory_fields_mark': '* obligatoire',
@@ -505,10 +523,14 @@ class Locales {
     'calculate_your_effort_sub_title':
         'Obtenez le nombre de calories que vous avez brulées au cours de votre effort physique',
     'intensity_physical_effort_sub_title': 'Intensité de l\'effort physique',
+    'change_password_screen_title': 'changer le mot de passe',
+    'current_password_label': 'Mot de passe actuel',
+    'new_password_label': 'nouveau mot de passe',
     'duration_label': 'Durée',
     'error_snackbar_label': 'Erreur',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Un e-mail est requis.',
+    'current_password_error_message': 'Le mot de passe actuel est requis.',
     'password_error_message': 'Mot de passe requis.',
     'confirm_password_error_message':
         'Confirmer que le mot de passe est requis.',

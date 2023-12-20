@@ -13,6 +13,8 @@ import '../modules/addSport/bindings/add_sport_binding.dart';
 import '../modules/addSport/views/add_sport_view.dart';
 import '../modules/addToMeal/bindings/add_to_meal_binding.dart';
 import '../modules/addToMeal/views/add_to_meal_view.dart';
+import '../modules/changePassword/bindings/change_password_binding.dart';
+import '../modules/changePassword/views/change_password_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -118,5 +120,10 @@ class AppPages {
             middlewares: [AuthMiddleware()],
           ),
         ]),
+    GetPage(
+      name: _Paths.CHANGE_PASSWORD,
+      page: () => const ChangePasswordView(),
+      binding: ChangePasswordBinding(),
+    ),
   ];
 }

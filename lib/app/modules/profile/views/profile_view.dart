@@ -67,9 +67,18 @@ class ProfileView extends GetView<ProfileController> {
             Neumorphic(
               child: Column(
                 children: [
-                  SettingsTile(title: LocaleKeys.personal_info.tr , onTap: ()=>{},),
-                  SettingsTile(title: 'Health Profile', onTap: ()=>{},),
-                  SettingsTile(title: 'Change password', onTap: ()=>{},),
+                  SettingsTile(
+                    title: LocaleKeys.personal_info.tr,
+                    onTap: () => {},
+                  ),
+                  SettingsTile(
+                    title: 'Health Profile',
+                    onTap: () => {},
+                  ),
+                  SettingsTile(
+                    title: LocaleKeys.change_password_screen_title.tr,
+                    onTap: () => {Get.toNamed(Routes.CHANGE_PASSWORD)},
+                  ),
                 ],
               ),
             ),
@@ -83,8 +92,12 @@ class ProfileView extends GetView<ProfileController> {
                     title: 'Language',
                     trailing: Row(
                       children: [
-                        CountryFlag.fromLanguageCode(Get.locale?.languageCode??AppConstants.DEFAULT_LANGUAGE,
-                            width: 24, height: 24, borderRadius: 8),
+                        CountryFlag.fromLanguageCode(
+                            Get.locale?.languageCode ??
+                                AppConstants.DEFAULT_LANGUAGE,
+                            width: 24,
+                            height: 24,
+                            borderRadius: 8),
                         SizedBox(
                           width: 8,
                         ),
@@ -94,54 +107,30 @@ class ProfileView extends GetView<ProfileController> {
                         )
                       ],
                     ),
-                    onTap: () async{
-                      // Handle the tap action
-                     var result = await Get.dialog(SimpleDialog(
-                       title: Text("Language" , style: theme?.textTheme.titleLarge,),
-                       children: <Widget>[
-                         ...AppConstants.languages.keys.map((key) {
-                           return SimpleDialogOption(
-                             onPressed: () {
-                               Get.back(result: key) ;
-                             },
-                             child: Row(
-                               children: [
-                                 CountryFlag.fromLanguageCode(key , width: 24, height: 24 , borderRadius: 8),
-                                 SizedBox(width: 8,) ,
-                                 Text(AppConstants.languages[key]!.languageName , style: theme?.textTheme.titleMedium,),
-                               ],
-                             ),
-                           );
-                         })
-                       ],
-                     ));
-                     if(result != null){
-                       controller.changeLanguage(result) ;
-
-                     }
-                    },
-                  ),
-                  SettingsTile(
-                    title: 'Display Unit',
-                    trailing: Text(
-                      "Nifty point",
-                      style: theme?.textTheme.titleLarge,
-                    ),
                     onTap: () async {
+                      // Handle the tap action
                       var result = await Get.dialog(SimpleDialog(
                         title: Text(
-                          "Display unit", style: theme?.textTheme.titleLarge,),
+                          "Language",
+                          style: theme?.textTheme.titleLarge,
+                        ),
                         children: <Widget>[
-                          ...AppConstants.displayUnits.map((key) {
+                          ...AppConstants.languages.keys.map((key) {
                             return SimpleDialogOption(
                               onPressed: () {
                                 Get.back(result: key);
                               },
                               child: Row(
                                 children: [
+                                  CountryFlag.fromLanguageCode(key,
+                                      width: 24, height: 24, borderRadius: 8),
+                                  SizedBox(
+                                    width: 8,
+                                  ),
                                   Text(
-                                    key,
-                                    style: theme?.textTheme.titleMedium,),
+                                    AppConstants.languages[key]!.languageName,
+                                    style: theme?.textTheme.titleMedium,
+                                  ),
                                 ],
                               ),
                             );
@@ -149,46 +138,83 @@ class ProfileView extends GetView<ProfileController> {
                         ],
                       ));
                       if (result != null) {
-                        controller.changeDisplayUnit(result);
+                        controller.changeLanguage(result);
                       }
-                    }
+                    },
                   ),
+                  SettingsTile(
+                      title: 'Display Unit',
+                      trailing: Text(
+                        "Nifty point",
+                        style: theme?.textTheme.titleLarge,
+                      ),
+                      onTap: () async {
+                        var result = await Get.dialog(SimpleDialog(
+                          title: Text(
+                            "Display unit",
+                            style: theme?.textTheme.titleLarge,
+                          ),
+                          children: <Widget>[
+                            ...AppConstants.displayUnits.map((key) {
+                              return SimpleDialogOption(
+                                onPressed: () {
+                                  Get.back(result: key);
+                                },
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      key,
+                                      style: theme?.textTheme.titleMedium,
+                                    ),
+                                  ],
+                                ),
+                              );
+                            })
+                          ],
+                        ));
+                        if (result != null) {
+                          controller.changeDisplayUnit(result);
+                        }
+                      }),
                 ],
               ),
             ),
-
             Expanded(child: Container()),
             Neumorphic(
               child: Column(
                 children: [
                   SettingsTile(
                     title: 'Logout',
-                    icon: Icon(
-                      Icons.logout
-                    ),
-                    onTap: () async{
+                    icon: Icon(Icons.logout),
+                    onTap: () async {
                       var result = await Get.dialog(AlertDialog(
-                        title: Text('Logout', style: theme?.textTheme.titleLarge,),
+                        title: Text(
+                          'Logout',
+                          style: theme?.textTheme.titleLarge,
+                        ),
                         content: Text('Are you sure you want to logout?'),
                         actions: <Widget>[
                           TextButton(
-                            child: Text('Cancel' , style: theme?.textTheme.titleMedium?.copyWith(
-                                fontWeight: FontWeight.bold
-                            ),),
+                            child: Text(
+                              'Cancel',
+                              style: theme?.textTheme.titleMedium
+                                  ?.copyWith(fontWeight: FontWeight.bold),
+                            ),
                             onPressed: () {
                               Get.back(result: false);
                             },
                           ),
                           TextButton(
-                            child: Text('Logout' , style: theme?.textTheme.titleMedium),
+                            child: Text('Logout',
+                                style: theme?.textTheme.titleMedium),
                             onPressed: () {
                               Get.back(result: true);
                             },
                           ),
                         ],
                       ));
-                      if(result == true) {
-                        controller.logout() ;
+                      if (result == true) {
+                        controller.logout();
                       }
                     },
                   ),
@@ -201,16 +227,25 @@ class ProfileView extends GetView<ProfileController> {
     );
   }
 
-  Future showOptionDialog ({required String title, required Map<String, String> options, NeumorphicThemeData? theme}) {
+  Future showOptionDialog(
+      {required String title,
+      required Map<String, String> options,
+      NeumorphicThemeData? theme}) {
     return Get.dialog(SimpleDialog(
-      title: Text(title , style: theme?.textTheme.titleLarge,),
+      title: Text(
+        title,
+        style: theme?.textTheme.titleLarge,
+      ),
       children: <Widget>[
         ...options.keys.map((key) {
           return SimpleDialogOption(
             onPressed: () {
-              Get.back(result: key) ;
+              Get.back(result: key);
             },
-            child: Text(options[key]! , style: theme?.textTheme.titleMedium,),
+            child: Text(
+              options[key]!,
+              style: theme?.textTheme.titleMedium,
+            ),
           );
         })
       ],
@@ -221,10 +256,16 @@ class ProfileView extends GetView<ProfileController> {
 class SettingsTile extends StatelessWidget {
   final String title;
   final Widget? trailing;
-  final Widget? icon ;
-  final GestureTapCallback? onTap ;
+  final Widget? icon;
 
-  const SettingsTile({Key? key, required this.title,required this.onTap,this.icon, this.trailing})
+  final GestureTapCallback? onTap;
+
+  const SettingsTile(
+      {Key? key,
+      required this.title,
+      required this.onTap,
+      this.icon,
+      this.trailing})
       : super(key: key);
 
   @override
@@ -234,24 +275,24 @@ class SettingsTile extends StatelessWidget {
     return ListTile(
       title: Text(
         title,
-        style:
-            theme?.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.normal),
+        style: theme?.textTheme.titleLarge
+            ?.copyWith(fontWeight: FontWeight.normal),
       ),
       trailing: Row(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              trailing ?? Container(
-              ),
-              SizedBox(
-                width: 8,
-              ),
-              icon ?? Icon(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          trailing ?? Container(),
+          SizedBox(
+            width: 8,
+          ),
+          icon ??
+              Icon(
                 Icons.arrow_forward_ios,
                 color: ColorConstants.accentColor.withOpacity(0.5),
               ),
-            ],
-          ),
+        ],
+      ),
       onTap: onTap,
     );
   }

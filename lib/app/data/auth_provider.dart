@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:nifty_mobile/app/base/base_provider.dart';
 import 'package:nifty_mobile/app/config/api_constants.dart';
+import 'package:nifty_mobile/app/data/models/change_password_request_model.dart';
 import 'package:nifty_mobile/app/modules/register/signup_request_model.dart';
 
 import 'models/user_permission_model.dart';
@@ -22,6 +23,12 @@ class AuthProvider extends BaseProvider {
 
   Future<UserPermission?> getMe() async {
     final response = await get(ConfigAPI.meUrl);
+
+    return decode<UserPermission?>(response, UserPermission.fromJson);
+  }
+
+  Future<UserPermission?> changePassword(ChangePasswordRequest reqBody) async {
+    final response = await post(ConfigAPI.changePasswordUrl, reqBody.toJson());
 
     return decode<UserPermission?>(response, UserPermission.fromJson);
   }
