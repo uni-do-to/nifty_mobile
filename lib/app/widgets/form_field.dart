@@ -1,3 +1,4 @@
+import 'package:flutter/src/services/text_formatter.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 
@@ -17,9 +18,10 @@ class NeuFormField extends StatelessWidget {
   final FocusNode? focusNode; // Add an errorText property
   final bool maintainErrorSize  ;
   final String? initialValue ;
+  List<TextInputFormatter>? inputFormatters;
   final void Function(String)? onChanged ;
 
-  const NeuFormField({
+  NeuFormField({
     required this.hintText,
     this.controller,
     this.initialValue,
@@ -35,7 +37,7 @@ class NeuFormField extends StatelessWidget {
     this.readOnly = false,
     this.autocorrect = false,
     this.obscureText = false,
-
+    this.inputFormatters,
     this.padding = const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
     Key? key,
   }) : super(key: key);
@@ -89,6 +91,7 @@ class NeuFormField extends StatelessWidget {
             keyboardType: keyboardType,
             autocorrect: autocorrect,
             validator: validator,
+            inputFormatters: inputFormatters,
           ),
         ),
         Visibility(

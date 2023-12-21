@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 import 'package:get/get.dart';
@@ -86,8 +87,10 @@ class AddNewRecipeView extends GetView<AddNewRecipeController> {
                     NeuFormField(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       hintText: '500',
-                      keyboardType: TextInputType.number,
-                      controller: controller.recipeGramsPerCircleController,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly,
+                      ],
+                      keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),                      controller: controller.recipeGramsPerCircleController,
                       autocorrect: false,
                       errorText: controller.recipeGramsPerCircleError.value,
                     )
