@@ -3,6 +3,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
+import 'package:nifty_mobile/app/config/size_constants.dart';
 import 'package:nifty_mobile/app/data/models/unit_model.dart';
 import 'package:nifty_mobile/app/modules/addSport/views/sport_tab_view.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
@@ -26,9 +27,6 @@ class AddSportView extends GetView<AddSportController> {
       appBar: AppBar(
         leadingWidth: 25,
         leading: Container(
-          padding: EdgeInsets.only(
-            top: 35,
-          ),
           child: IconButton(
             icon: Icon(
               Icons.arrow_back_ios,
@@ -39,16 +37,14 @@ class AddSportView extends GetView<AddSportController> {
           ),
         ),
         title: Container(
-          padding: const EdgeInsets.only(
-            top: 47,
-            bottom: 13,
-          ),
+          // padding: SizeConstants.toolBarPadding,
           child: Text(LocaleKeys.add_to_sport_screen_title.tr.toUpperCase()),
         ),
         centerTitle: false,
         backgroundColor: Colors.white,
-        titleTextStyle: theme?.textTheme.titleLarge,
-        toolbarHeight: 86,
+        titleTextStyle: theme?.textTheme.titleLarge
+            ?.copyWith(color: ColorConstants.toolbarTextColor),
+        toolbarHeight: 40,
       ),
       body: Container(
         color: ColorConstants.grayBackgroundColor,

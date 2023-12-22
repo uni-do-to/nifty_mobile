@@ -6,6 +6,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
+import 'package:nifty_mobile/app/config/size_constants.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/widgets/form_field.dart';
 import 'package:nifty_mobile/app/widgets/small_action_button.dart';
@@ -38,17 +39,15 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
           ),
         ),
         title: Container(
-          padding: const EdgeInsets.only(
-            top: 47,
-            bottom: 13,
-          ),
+          padding: SizeConstants.toolBarPadding,
           child:
               Text(LocaleKeys.add_new_ingredient_screen_title.tr.toUpperCase()),
         ),
         centerTitle: false,
         backgroundColor: Colors.white,
-        titleTextStyle: theme?.textTheme.titleLarge,
-        toolbarHeight: 86,
+        titleTextStyle: theme?.textTheme.titleLarge
+            ?.copyWith(color: ColorConstants.toolbarTextColor),
+        toolbarHeight: 40,
       ),
       body: SafeArea(
         child: Container(

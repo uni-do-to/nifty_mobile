@@ -3,6 +3,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
+import 'package:nifty_mobile/app/config/size_constants.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/widgets/delete_alert_dialog.dart';
 import 'package:nifty_mobile/app/widgets/form_field.dart';
@@ -21,20 +22,14 @@ class RecipeView extends GetView<RecipeController> {
     return Scaffold(
       appBar: AppBar(
         title: Padding(
-          padding: const EdgeInsets.only(
-            top: 47,
-            left: 19,
-            bottom: 13,
-          ),
+          padding: SizeConstants.toolBarPadding,
           child: Text(LocaleKeys.recipes_screen_title.tr.toUpperCase()),
         ),
         backgroundColor: Colors.white,
-        titleTextStyle: theme?.textTheme.bodySmall?.copyWith(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
+        titleTextStyle: theme?.textTheme.titleLarge
+            ?.copyWith(color: ColorConstants.toolbarTextColor),
         centerTitle: false,
-        toolbarHeight: 86,
+        toolbarHeight: 40,
       ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 20),

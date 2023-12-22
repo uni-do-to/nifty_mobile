@@ -18,7 +18,7 @@ class NeuFormField extends StatelessWidget {
   final FocusNode? focusNode; // Add an errorText property
   final bool maintainErrorSize  ;
   final String? initialValue ;
-  List<TextInputFormatter>? inputFormatters;
+  final List<TextInputFormatter>? inputFormatters;
   final void Function(String)? onChanged ;
 
   NeuFormField({

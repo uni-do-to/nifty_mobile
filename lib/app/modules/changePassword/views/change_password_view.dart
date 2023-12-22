@@ -3,6 +3,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
+import 'package:nifty_mobile/app/config/size_constants.dart';
 import 'package:nifty_mobile/app/widgets/form_field.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
@@ -18,11 +19,8 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        leadingWidth: 25,
+        leadingWidth: 30,
         leading: Container(
-          padding: EdgeInsets.only(
-            top: 35,
-          ),
           child: IconButton(
             icon: Icon(
               Icons.arrow_back_ios,
@@ -32,16 +30,14 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
           ),
         ),
         title: Container(
-          padding: const EdgeInsets.only(
-            top: 47,
-            bottom: 13,
-          ),
+          // padding: SizeConstants.toolBarPadding,
           child: Text(LocaleKeys.change_password_screen_title.tr.toUpperCase()),
         ),
         centerTitle: false,
         backgroundColor: Colors.white,
-        titleTextStyle: theme?.textTheme.titleLarge,
-        toolbarHeight: 86,
+        titleTextStyle: theme?.textTheme.titleLarge
+            ?.copyWith(color: ColorConstants.toolbarTextColor),
+        toolbarHeight: 40,
       ),
       body: SafeArea(
         child: Container(

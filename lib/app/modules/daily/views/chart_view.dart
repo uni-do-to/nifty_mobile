@@ -81,7 +81,7 @@ class BudgetChart extends StatelessWidget {
                       left: 0,
                       child: Container(
                         width: 171,
-                        height: consumedHeight,
+                        height: max(consumedHeight , 10),
                         decoration: boxDecoration.copyWith(
                           color: ColorConstants.mainThemeColor.withOpacity(0.32),
                         ),
