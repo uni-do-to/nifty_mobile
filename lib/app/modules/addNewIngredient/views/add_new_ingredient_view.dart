@@ -25,21 +25,18 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        leadingWidth: 25,
+        leadingWidth: 30,
         leading: Container(
-          padding: EdgeInsets.only(
-            top: 35,
-          ),
           child: IconButton(
             icon: Icon(
               Icons.arrow_back_ios,
               color: theme?.iconTheme.color,
             ),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () => Get.back(),
           ),
         ),
         title: Container(
-          padding: SizeConstants.toolBarPadding,
+          // padding: SizeConstants.toolBarPadding,
           child:
               Text(LocaleKeys.add_new_ingredient_screen_title.tr.toUpperCase()),
         ),
@@ -288,7 +285,7 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                   Expanded(child: Container()),
                   Container(
                     height: 54,
-                    width: 191,
+                    width: 220,
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.circular(10),

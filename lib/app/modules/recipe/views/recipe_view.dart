@@ -136,7 +136,6 @@ class RecipeView extends GetView<RecipeController> {
           onCancelPressed: () => Get.back(),
           onDeletePressed: () async {
             await controller.removeRecipe(controller.filteredItems[index]);
-            controller.filteredItems.removeAt(index);
             Get.back();
             controller.initData();
           },

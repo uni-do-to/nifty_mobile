@@ -11,7 +11,7 @@ import '../data/models/unit_model.dart';
 class AddQuantityWidget extends StatelessWidget {
   final NeumorphicThemeData theme;
   final List<Units> measurementUnitsItems;
-  Units? selectedMeasurementUnit;
+  final Units? selectedMeasurementUnit;
   final String quantityValue;
   final Function(Units?) onMeasurementUnitChange;
   final Function(String) onQuantityChange;

@@ -42,10 +42,10 @@ class AddToMealView extends GetView<AddToMealController> {
 
         toolbarHeight: 40,
       ),
-      body: SafeArea(
-        child: Container(
-          color: ColorConstants.white,
-          padding: EdgeInsets.symmetric(vertical: 30.toHeight),
+      body: Container(
+        color: ColorConstants.grayBackgroundColor,
+        padding: const EdgeInsets.only(top:16),
+        child: SafeArea(
           child: DefaultTabController(
             length: 2,
             child: Container(

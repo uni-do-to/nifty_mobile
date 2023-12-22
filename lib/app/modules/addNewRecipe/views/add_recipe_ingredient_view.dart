@@ -25,7 +25,7 @@ class AddRecipeIngredientView extends GetView<AddNewRecipeController> {
               Icons.arrow_back_ios,
               color: theme?.iconTheme.color,
             ),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () => Get.back(),
           ),
         ),
         title: Container(

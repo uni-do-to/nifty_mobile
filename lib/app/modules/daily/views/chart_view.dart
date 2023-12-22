@@ -81,7 +81,7 @@ class BudgetChart extends StatelessWidget {
                       left: 0,
                       child: Container(
                         width: 171,
-                        height: max(consumedHeight , 10),
+                        height: consumedHeight,
                         decoration: boxDecoration.copyWith(
                           color: ColorConstants.mainThemeColor.withOpacity(0.32),
                         ),
@@ -180,7 +180,7 @@ class BudgetChart extends StatelessWidget {
             //Consumed calories
             if(overBudgetHeight == null)
               Positioned(
-              bottom: max( 0 , consumedHeight -10),
+              bottom: max( 5 , consumedHeight -10),
               left: 170,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,

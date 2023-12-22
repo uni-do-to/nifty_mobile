@@ -25,13 +25,12 @@ class AddSportView extends GetView<AddSportController> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        leadingWidth: 25,
+        leadingWidth: 30,
         leading: Container(
           child: IconButton(
             icon: Icon(
               Icons.arrow_back_ios,
               color: theme?.iconTheme.color,
-              size: 20,
             ),
             onPressed: () => Get.back(),
           ),
