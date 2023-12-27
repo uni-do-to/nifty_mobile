@@ -36,7 +36,7 @@ class NeuFormField extends StatelessWidget {
     this.autocorrect = false,
     this.obscureText = false,
 
-    this.padding = const EdgeInsets.symmetric(vertical: 8, horizontal: 18),
+    this.padding = const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
     Key? key,
   }) : super(key: key);
 
@@ -63,24 +63,24 @@ class NeuFormField extends StatelessWidget {
               border: InputBorder.none,
               hintText: hintText,
               hintStyle:
-                  NeumorphicTheme.of(context)?.current?.textTheme.bodySmall,
+                  NeumorphicTheme.of(context)?.current?.textTheme.titleMedium,
               filled: true,
               isDense: true,
               fillColor: Colors.transparent,
-              contentPadding: EdgeInsets.symmetric(vertical: 15.toHeight),
+              // contentPadding: EdgeInsets.symmetric(vertical: 15.toHeight),
               prefixIcon: prefixIcon,
               prefixIconColor: NeumorphicTheme.accentColor(context),
-              prefixIconConstraints: BoxConstraints(
-                minHeight: 50.toHeight,
-                minWidth: 50.toWidth,
-              ),
+              // prefixIconConstraints: BoxConstraints(
+              //   minWidth: 35,
+              // ),
               suffixIcon: suffixIcon,
-              suffixIconConstraints: BoxConstraints(
-                minHeight: 50.toHeight,
-                minWidth: 50.toWidth,
-              ),
+              // suffixIconConstraints: BoxConstraints(
+              //   minHeight: 50.toHeight,
+              //   minWidth: 50.toWidth,
+              // ),
             ),
-            style: NeumorphicTheme.of(context)?.current?.textTheme.bodyMedium,
+            textAlignVertical: TextAlignVertical.center,
+            style: NeumorphicTheme.of(context)?.current?.textTheme.titleMedium,
             focusNode: focusNode,
             readOnly: readOnly,
             onTap: onTap,

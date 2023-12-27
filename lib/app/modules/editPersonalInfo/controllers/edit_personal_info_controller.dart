@@ -67,34 +67,34 @@ class EditPersonalInfoController extends AuthController {
 
   Future<void> signup() async {
     if (!validateUserInfoForm()) return;
-
-    if (validateUserInfoForm() && !isInfoFormUpdated.value) {
-      try {
-        isInfoFormUpdated.value = true;
-        DateTime birthDate =
-            DateFormat("dd-mm-yyyy").parse(dateOfBirthController.text);
-        String formattedBirthDate = DateFormat("yyyy-MM-dd").format(birthDate);
-
-        SignupRequest data = SignupRequest(
-          name: nameController.text,
-          gender: selectedGender.value,
-          birthDate: formattedBirthDate,
-        );
-
-        await provider.editUserInfo(data);
-      } catch (err, _) {
-        // message = 'There is an issue with the app during request the data, '
-        //         'please contact admin for fixing the issues ' +
-
-        passwordController.clear();
-        confirmPasswordController.clear();
-        rethrow;
-      } finally {
-        isSignup.value = false;
-      }
-      signupFormKey.currentState!.save();
-    } else {
-      throw Exception(LocaleKeys.global_error_message.tr);
-    }
+    //
+    // if (validateUserInfoForm() && !isInfoFormUpdated.value) {
+    //   try {
+    //     isInfoFormUpdated.value = true;
+    //     DateTime birthDate =
+    //         DateFormat("dd-mm-yyyy").parse(dateOfBirthController.text);
+    //     String formattedBirthDate = DateFormat("yyyy-MM-dd").format(birthDate);
+    //
+    //     SignupRequest data = SignupRequest(
+    //       name: nameController.text,
+    //       gender: selectedGender.value,
+    //       birthDate: formattedBirthDate,
+    //     );
+    //
+    //     await provider.editUserInfo(data);
+    //   } catch (err, _) {
+    //     // message = 'There is an issue with the app during request the data, '
+    //     //         'please contact admin for fixing the issues ' +
+    //
+    //     passwordController.clear();
+    //     confirmPasswordController.clear();
+    //     rethrow;
+    //   } finally {
+    //     isSignup.value = false;
+    //   }
+    //   signupFormKey.currentState!.save();
+    // } else {
+    //   throw Exception(LocaleKeys.global_error_message.tr);
+    // }
   }
 }

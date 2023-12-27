@@ -129,7 +129,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.EDIT_PERSONAL_INFO,
-      page: () => const EditPersonalInfoView(),
+      page: () => EditPersonalInfoView(),
       binding: EditPersonalInfoBinding(),
     ),
   ];

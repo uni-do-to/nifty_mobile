@@ -33,7 +33,7 @@ class AuthProvider extends BaseProvider {
     return decode<UserPermission?>(response, UserPermission.fromJson);
   }
 
-  Future<UserPermission?> editUserInfo(EditUserInfoRequest reqBody) async {
+  Future<UserPermission?> editUserInfo(SignupRequest reqBody) async {
     final response = await post(ConfigAPI.changePasswordUrl, reqBody.toJson());
 
     return decode<UserPermission?>(response, UserPermission.fromJson);

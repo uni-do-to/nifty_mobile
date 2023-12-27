@@ -58,7 +58,10 @@ class LoginView extends GetView<LoginController> {
                             controller: controller.emailController,
                             keyboardType: TextInputType.emailAddress,
                             autocorrect: false,
-                            prefixIcon: const Icon(Icons.email),
+                            prefixIcon: const Icon(
+                              Icons.email,
+                              size: 24,
+                            ),
                             errorText: controller.emailError.value,
                           );
                         }, controller.emailError),
@@ -70,7 +73,10 @@ class LoginView extends GetView<LoginController> {
                             hintText: LocaleKeys.password_label.tr,
                             obscureText: true,
                             controller: controller.passwordController,
-                            prefixIcon: const Icon(Icons.password),
+                            prefixIcon: const Icon(
+                              Icons.lock,
+                              size: 24,
+                            ),
                             errorText: controller.passwordError.value,
                           );
                         }, controller.passwordError),
@@ -78,17 +84,14 @@ class LoginView extends GetView<LoginController> {
                           height: 16,
                         ),
                         NeumorphicButton(
-                            // style: NeumorphicTheme.of(context)
-                            //     ?.current
-                            //     ?.buttonStyle,
                             child: Container(
-                                height: 48.toHeight,
+                                height: 30,
                                 alignment: Alignment.center,
                                 child: ObxValue((isLogin) {
                                   return isLogin.value
                                       ? Container(
-                                          width: 32.toHeight,
-                                          height: 32.toHeight,
+                                          width: 25,
+                                          height: 25,
                                           child: CircularProgressIndicator(
                                             backgroundColor:
                                                 NeumorphicTheme.currentTheme(
@@ -102,7 +105,7 @@ class LoginView extends GetView<LoginController> {
                                           style: NeumorphicTheme.currentTheme(
                                                   context)
                                               .textTheme
-                                              .labelLarge);
+                                              .titleLarge);
                                 }, controller.isLogin)),
                             onPressed: () async {
                               try {
@@ -139,7 +142,7 @@ class LoginView extends GetView<LoginController> {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(LocaleKeys.not_have_account_label.tr),
-                      SizedBox(
+                      const SizedBox(
                         height: 8,
                       ),
                       NeumorphicButton(
@@ -147,7 +150,7 @@ class LoginView extends GetView<LoginController> {
                             LocaleKeys.sign_up_label.tr,
                             style: NeumorphicTheme.currentTheme(context)
                                 .textTheme
-                                .bodyText1,
+                                .titleMedium,
                           ),
                           onPressed: () {
                             Get.toNamed(Routes.REGISTER);
