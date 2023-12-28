@@ -30,7 +30,6 @@ class AboutYouView extends GetView<RegisterController> {
 
   @override
   Widget build(BuildContext context) {
-    SizeConfig().init(context);
     var theme = NeumorphicTheme.of(context)?.current;
     return Scaffold(
       resizeToAvoidBottomInset: false,

@@ -132,6 +132,7 @@
   "current_password_label": "Mot de passe actuel",
   "new_password_label": "nouveau mot de passe",
   "duration_label": "Durée",
+  "edit_personal_info_screen_title": "Modifier les informations personnelles",
   "error_snackbar_label": "Erreur",
   "exception_snackbar_label": "Exception : ",
   "email_error_message": "Un e-mail est requis.",

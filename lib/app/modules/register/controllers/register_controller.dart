@@ -262,7 +262,7 @@ class RegisterController extends AuthController {
       try {
         isSignup.value = true;
         DateTime birthDate =
-            DateFormat("dd-mm-yyyy").parse(dateOfBirthController.text);
+            DateFormat("dd-MM-yyyy").parse(dateOfBirthController.text);
         String formattedBirthDate = DateFormat("yyyy-MM-dd").format(birthDate);
 
         SignupRequest data = SignupRequest(

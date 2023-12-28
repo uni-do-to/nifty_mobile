@@ -132,6 +132,7 @@
   "current_password_label": "current password",
   "new_password_label": "new password",
   "duration_label": "Duration",
+  "edit_personal_info_screen_title": "Edit Personal Info",
   "error_snackbar_label": "Error",
   "exception_snackbar_label": "Exception : ",
   "email_error_message": "Email is required.",

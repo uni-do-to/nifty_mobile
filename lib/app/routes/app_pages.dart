@@ -124,13 +124,18 @@ class AppPages {
         ]),
     GetPage(
       name: _Paths.CHANGE_PASSWORD,
-      page: () => const ChangePasswordView(),
+      page: () => ScaleWidget(
+          builder: (context, child) => scaleWidgetBuilder(context, child!),
+          child: const ChangePasswordView()),
       binding: ChangePasswordBinding(),
     ),
     GetPage(
       name: _Paths.EDIT_PERSONAL_INFO,
-      page: () => EditPersonalInfoView(),
+      page: () => ScaleWidget(
+          builder: (context, child) => scaleWidgetBuilder(context, child!),
+          child: EditPersonalInfoView()),
       binding: EditPersonalInfoBinding(),
+      middlewares: [AuthMiddleware()],
     ),
   ];
 }

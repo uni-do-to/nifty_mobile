@@ -166,6 +166,8 @@ class LocaleKeys {
   static const current_password_label = 'current_password_label';
   static const new_password_label = 'new_password_label';
   static const duration_label = 'duration_label';
+  static const edit_personal_info_screen_title =
+      'edit_personal_info_screen_title';
   static const error_snackbar_label = 'error_snackbar_label';
   static const exception_snackbar_label = 'exception_snackbar_label';
   static const email_error_message = 'email_error_message';
@@ -346,6 +348,7 @@ class Locales {
     'current_password_label': 'current password',
     'new_password_label': 'new password',
     'duration_label': 'Duration',
+    'edit_personal_info_screen_title': 'Edit Personal Info',
     'error_snackbar_label': 'Error',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Email is required.',
@@ -527,6 +530,7 @@ class Locales {
     'current_password_label': 'Mot de passe actuel',
     'new_password_label': 'nouveau mot de passe',
     'duration_label': 'Durée',
+    'edit_personal_info_screen_title': 'Modifier les informations personnelles',
     'error_snackbar_label': 'Erreur',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Un e-mail est requis.',

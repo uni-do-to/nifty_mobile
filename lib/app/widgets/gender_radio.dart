@@ -21,8 +21,6 @@ class GenderRadio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = NeumorphicTheme.of(context)?.current;
-    print("GroupValue: $groupValue");
-    print("value: $value");
     return NeumorphicRadio(
       groupValue: groupValue,
       // padding: EdgeInsets.symmetric( vertical: 36.toHeight),

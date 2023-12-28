@@ -69,7 +69,7 @@ class ProfileView extends GetView<ProfileController> {
                 children: [
                   SettingsTile(
                     title: LocaleKeys.personal_info.tr,
-                    onTap: () => {},
+                    onTap: () => {Get.toNamed(Routes.EDIT_PERSONAL_INFO)},
                   ),
                   SettingsTile(
                     title: 'Health Profile',
