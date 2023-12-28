@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/modules/addToMeal/controllers/add_to_meal_controller.dart';
@@ -10,7 +11,7 @@ import '../data/models/unit_model.dart';
 class AddQuantityWidget extends StatelessWidget {
   final NeumorphicThemeData theme;
   final List<Units> measurementUnitsItems;
-  Units? selectedMeasurementUnit;
+  final Units? selectedMeasurementUnit;
   final String quantityValue;
   final Function(Units?) onMeasurementUnitChange;
   final Function(String) onQuantityChange;
@@ -92,8 +93,10 @@ class AddQuantityWidget extends StatelessWidget {
                   padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                   hintText: LocaleKeys.quantity_text_field_label.tr,
                   initialValue: quantityValue,
-                  keyboardType: TextInputType.number,
-                  onChanged: (value) {
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly,
+                  ],
+                  keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),                  onChanged: (value) {
                     onQuantityChange(value);
                   },
                 )

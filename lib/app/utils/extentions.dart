@@ -39,7 +39,7 @@ extension ToDisplayUnit on double {
     if(currentDisplayUnit == AppConstants.displayUnits[0]) {
       return "${(this / 33).toPrecision(1)}" ;
     }
-    return "${toPrecision(1)}" ;
+    return "${toInt()}" ;
   }
 }
 

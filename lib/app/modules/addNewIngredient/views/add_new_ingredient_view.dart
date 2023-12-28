@@ -1,10 +1,12 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
+import 'package:nifty_mobile/app/config/size_constants.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/widgets/form_field.dart';
 import 'package:nifty_mobile/app/widgets/small_action_button.dart';
@@ -23,31 +25,26 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        leadingWidth: 25,
+        leadingWidth: 30,
         leading: Container(
-          padding: EdgeInsets.only(
-            top: 35,
-          ),
           child: IconButton(
             icon: Icon(
               Icons.arrow_back_ios,
               color: theme?.iconTheme.color,
             ),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () => Get.back(),
           ),
         ),
         title: Container(
-          padding: const EdgeInsets.only(
-            top: 47,
-            bottom: 13,
-          ),
+          // padding: SizeConstants.toolBarPadding,
           child:
               Text(LocaleKeys.add_new_ingredient_screen_title.tr.toUpperCase()),
         ),
         centerTitle: false,
         backgroundColor: Colors.white,
-        titleTextStyle: theme?.textTheme.titleLarge,
-        toolbarHeight: 86,
+        titleTextStyle: theme?.textTheme.titleLarge
+            ?.copyWith(color: ColorConstants.toolbarTextColor),
+        toolbarHeight: 40,
       ),
       body: SafeArea(
         child: Container(
@@ -114,8 +111,10 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                         return NeuFormField(
                           hintText: LocaleKeys.grams_per_circle_label.tr,
                           controller: controller.gramsPerCircleController,
-                          keyboardType: TextInputType.number,
-                          autocorrect: false,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly,
+                          ],
+                          keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),                          autocorrect: false,
                           padding: const EdgeInsets.symmetric(
                               horizontal: 10, vertical: 3),
                           errorText: controller.gramsPerCircleError.value,
@@ -132,8 +131,10 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                                 hintText: LocaleKeys.calories_per_gram_label.tr,
                                 controller:
                                     controller.caloriesPerGramController,
-                                keyboardType: TextInputType.number,
-                                autocorrect: false,
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.digitsOnly,
+                                ],
+                                keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),                                autocorrect: false,
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 3),
                                 errorText:
@@ -150,8 +151,10 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                                 hintText:
                                     LocaleKeys.nifty_points_measurement.tr,
                                 controller: controller.niftyPointsController,
-                                keyboardType: TextInputType.number,
-                                autocorrect: false,
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.digitsOnly,
+                                ],
+                                keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),                                autocorrect: false,
                                 readOnly: true,
                                 padding: const EdgeInsets.symmetric(
                                     horizontal: 10, vertical: 3),
@@ -203,8 +206,10 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                                     .equivalent_unit_in_grams_label.tr,
                                 controller:
                                     controller.equivalentUnitInGramsController,
-                                keyboardType: TextInputType.number,
-                                autocorrect: false,
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.digitsOnly,
+                                ],
+                                keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),                                autocorrect: false,
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 10,
                                   vertical: 3,
@@ -249,8 +254,10 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                                     .equivalent_unit_in_grams_label.tr,
                                 controller:
                                     controller.equivalentUnitInGramsController2,
-                                keyboardType: TextInputType.number,
-                                autocorrect: false,
+                                inputFormatters: [
+                                  FilteringTextInputFormatter.digitsOnly,
+                                ],
+                                keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),                                autocorrect: false,
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 10,
                                   vertical: 3,
@@ -278,7 +285,7 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                   Expanded(child: Container()),
                   Container(
                     height: 54,
-                    width: 191,
+                    width: 220,
                     decoration: BoxDecoration(
                       shape: BoxShape.rectangle,
                       borderRadius: BorderRadius.circular(10),

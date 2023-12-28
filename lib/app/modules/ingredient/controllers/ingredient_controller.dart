@@ -22,7 +22,7 @@ class IngredientController extends GetxController {
   Future initData() async {
     try {
       loading.value = true;
-      var responseIngredientList = await provider.getIngredientList();
+      var responseIngredientList = await provider.getMyIngredientsList();
       ingredientsList = responseIngredientList?.data ?? [];
       filteredItems.value = ingredientsList; // Initially, all items are visible
     } catch (err, _) {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class SizeConstants {
   static EdgeInsets toolBarPadding = const EdgeInsets.only(
-    top: 47,
+    top: 0,
     bottom: 13,
     right: 19,
   );

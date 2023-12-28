@@ -37,7 +37,7 @@ class SelectedIngredientRecipeItem extends StatelessWidget {
             child: Text(
               selectedItemName,
               style: theme.textTheme.titleMedium?.copyWith(
-                fontSize: 18,
+                fontSize: 16,
                 overflow: TextOverflow.ellipsis,
                 color: isChecked
                     ? ColorConstants.accentColor

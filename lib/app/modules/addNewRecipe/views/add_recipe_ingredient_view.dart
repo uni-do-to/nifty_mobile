@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
+import 'package:nifty_mobile/app/config/size_constants.dart';
 import 'package:nifty_mobile/app/modules/addNewRecipe/controllers/add_new_recipe_controller.dart';
 import 'package:nifty_mobile/app/modules/addNewRecipe/views/recipe_ingredient_tab.dart';
 import 'package:nifty_mobile/app/widgets/main_tab_bar.dart';
@@ -17,34 +18,26 @@ class AddRecipeIngredientView extends GetView<AddNewRecipeController> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        leadingWidth: 25,
+        leadingWidth: 30,
         leading: Container(
-          padding: EdgeInsets.only(
-            top: 35,
-          ),
           child: IconButton(
             icon: Icon(
               Icons.arrow_back_ios,
               color: theme?.iconTheme.color,
             ),
-            onPressed: () => Navigator.of(context).pop(),
+            onPressed: () => Get.back(),
           ),
         ),
         title: Container(
-          padding: const EdgeInsets.only(
-            top: 47,
-            bottom: 13,
-          ),
+          // padding: SizeConstants.toolBarPadding,
           child: Text(
               LocaleKeys.add_ingredient_to_recipe_title_page.tr.toUpperCase()),
         ),
         centerTitle: false,
         backgroundColor: Colors.white,
-        titleTextStyle: theme?.textTheme.bodySmall?.copyWith(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
-        toolbarHeight: 86,
+        titleTextStyle: theme?.textTheme.titleLarge
+            ?.copyWith(color: ColorConstants.toolbarTextColor),
+        toolbarHeight: 40,
       ),
       body: Container(
         color: ColorConstants.grayBackgroundColor,

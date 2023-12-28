@@ -57,7 +57,7 @@ class ProfileView extends GetView<ProfileController> {
         backgroundColor: Colors.white,
         titleTextStyle: theme?.textTheme.titleLarge
             ?.copyWith(color: ColorConstants.toolbarTextColor),
-        toolbarHeight: 86,
+        toolbarHeight: 64,
       ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),

@@ -180,7 +180,7 @@ class BudgetChart extends StatelessWidget {
             //Consumed calories
             if(overBudgetHeight == null)
               Positioned(
-              bottom: max( 0 , consumedHeight -10),
+              bottom: max( 5 , consumedHeight -10),
               left: 170,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,

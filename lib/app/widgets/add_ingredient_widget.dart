@@ -194,6 +194,7 @@ class AddIngredientFormWidget extends StatelessWidget {
                         controller.searchSubCategory(search),
                     builder: (context, controller, focusNode) {
                       return NeuFormField(
+
                         padding:
                             EdgeInsets.symmetric(vertical: 5, horizontal: 18),
                         hintText:

@@ -87,7 +87,7 @@ class IngredientTabView extends StatelessWidget {
           ),
           ObxValue((state) {
             return Container(
-              height: 180,
+              height: 200,
               child: AddQuantityWidget(
                 theme: theme,
                 measurementUnitsItems:

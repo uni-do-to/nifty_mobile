@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:another_xlider/another_xlider.dart';
 import 'package:another_xlider/models/trackbar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 import 'package:get/get.dart';
@@ -55,8 +56,10 @@ class YourBmiView extends GetView<RegisterController> {
                     return NeuFormField(
                       hintText: LocaleKeys.your_tall_label.tr,
                       controller: controller.tallController,
-                      keyboardType: TextInputType.number,
-                      autocorrect: false,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly,
+                      ],
+                      keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),                      autocorrect: false,
                       prefixIcon: const Icon(
                         Icons.height,
                         size: 24,
@@ -76,7 +79,10 @@ class YourBmiView extends GetView<RegisterController> {
                     return NeuFormField(
                       hintText: LocaleKeys.your_weight_label.tr,
                       controller: controller.weightController,
-                      keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly,
+                      ],
+                      keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),              autocorrect: false,
                       autocorrect: false,
                       prefixIcon: const Icon(
                         Icons.balance,
