@@ -202,10 +202,14 @@ class LocaleKeys {
   static const ingredient_calories_per_grams_error_message =
       'ingredient_calories_per_grams_error_message';
   static const global_error_message = 'global_error_message';
+  static const logout_confirm_question = 'logout_confirm_question';
   static const personal_info = 'personal_info';
   static const health_profile = 'health_profile';
   static const cal = 'cal';
   static const np = 'np';
+  static const language_label = 'language_label';
+  static const display_unit_label = 'display_unit_label';
+  static const logout_label = 'logout_label';
 }
 
 class Locales {
@@ -383,10 +387,14 @@ class Locales {
     'ingredient_calories_per_grams_error_message':
         'Ingredient Calories per grams is required',
     'global_error_message': 'An error occurred, invalid inputs value',
+    'logout_confirm_question': 'Are you sure you want to logout?',
     'personal_info': 'Personal Info',
     'health_profile': 'Health Profile',
     'cal': 'KCAL',
     'np': 'NP',
+    'language_label': 'Language',
+    'display_unit_label': 'Calorie measurement unit',
+    'logout_label': 'Logout',
   };
   static const fr_FR = {
     'login': 'Connectez-vous',
@@ -569,9 +577,13 @@ class Locales {
         'le nom de l\'ingrédient France est obligatoire',
     'global_error_message':
         'Une erreur s\'est produite, valeur d\'entrée non valide',
+    'logout_confirm_question': 'Êtes-vous sûr de vouloir vous déconnecter?',
     'personal_info': 'Informations personnelles',
-    'health_profile': 'Profil de santé',
+    'health_profile': 'Historique de poids',
     'cal': 'KCAL',
     'np': 'NP',
+    'language_label': 'Langue',
+    'display_unit_label': 'Unité de mesure calorique',
+    'logout_label': 'Quitter',
   };
 }

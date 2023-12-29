@@ -89,7 +89,7 @@ class ProfileView extends GetView<ProfileController> {
               child: Column(
                 children: [
                   SettingsTile(
-                    title: 'Language',
+                    title: LocaleKeys.language_label.tr,
                     trailing: Row(
                       children: [
                         CountryFlag.fromLanguageCode(
@@ -111,7 +111,7 @@ class ProfileView extends GetView<ProfileController> {
                       // Handle the tap action
                       var result = await Get.dialog(SimpleDialog(
                         title: Text(
-                          "Language",
+                          LocaleKeys.language_label.tr,
                           style: theme?.textTheme.titleLarge,
                         ),
                         children: <Widget>[
@@ -143,7 +143,7 @@ class ProfileView extends GetView<ProfileController> {
                     },
                   ),
                   SettingsTile(
-                      title: 'Display Unit',
+                      title: LocaleKeys.display_unit_label.tr,
                       trailing: Text(
                         "Nifty point",
                         style: theme?.textTheme.titleLarge,
@@ -151,7 +151,7 @@ class ProfileView extends GetView<ProfileController> {
                       onTap: () async {
                         var result = await Get.dialog(SimpleDialog(
                           title: Text(
-                            "Display unit",
+                            LocaleKeys.display_unit_label.tr,
                             style: theme?.textTheme.titleLarge,
                           ),
                           children: <Widget>[
@@ -184,19 +184,19 @@ class ProfileView extends GetView<ProfileController> {
               child: Column(
                 children: [
                   SettingsTile(
-                    title: 'Logout',
+                    title: LocaleKeys.logout_label.tr,
                     icon: Icon(Icons.logout),
                     onTap: () async {
                       var result = await Get.dialog(AlertDialog(
                         title: Text(
-                          'Logout',
+                          LocaleKeys.logout_label.tr,
                           style: theme?.textTheme.titleLarge,
                         ),
-                        content: Text('Are you sure you want to logout?'),
+                        content: Text(LocaleKeys.logout_confirm_question.tr),
                         actions: <Widget>[
                           TextButton(
                             child: Text(
-                              'Cancel',
+                              LocaleKeys.cancel_label.tr,
                               style: theme?.textTheme.titleMedium
                                   ?.copyWith(fontWeight: FontWeight.bold),
                             ),
@@ -205,7 +205,7 @@ class ProfileView extends GetView<ProfileController> {
                             },
                           ),
                           TextButton(
-                            child: Text('Logout',
+                            child: Text(LocaleKeys.logout_label.tr,
                                 style: theme?.textTheme.titleMedium),
                             onPressed: () {
                               Get.back(result: true);

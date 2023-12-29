@@ -156,8 +156,12 @@
   "ingredient_name_English_error_message": "le nom de l'ingrédient est obligatoire en anglais",
   "ingredient_name_france_error_message": "le nom de l'ingrédient France est obligatoire",
   "global_error_message": "Une erreur s'est produite, valeur d'entrée non valide" ,
+  "logout_confirm_question": "Êtes-vous sûr de vouloir vous déconnecter?",
   "personal_info" : "Informations personnelles",
-  "health_profile" : "Profil de santé",
+  "health_profile" : "Historique de poids",
   "cal" : "KCAL",
-  "np" : "NP"
+  "np" : "NP",
+  "language_label":"Langue",
+  "display_unit_label":"Unité de mesure calorique",
+  "logout_label": "Quitter"
 }

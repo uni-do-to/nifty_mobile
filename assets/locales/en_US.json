@@ -156,8 +156,12 @@
   "ingredient_grams_per_circle_error_message":"Ingredient Grams per circle is required",
   "ingredient_calories_per_grams_error_message":"Ingredient Calories per grams is required",
   "global_error_message": "An error occurred, invalid inputs value",
+  "logout_confirm_question": "Are you sure you want to logout?",
   "personal_info" : "Personal Info",
   "health_profile" : "Health Profile",
   "cal" : "KCAL",
-  "np" : "NP"
+  "np" : "NP",
+  "language_label":"Language",
+  "display_unit_label":"Calorie measurement unit",
+  "logout_label": "Logout"
 }
