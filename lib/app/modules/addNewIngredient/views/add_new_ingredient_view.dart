@@ -93,19 +93,19 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                         );
                       }, controller.ingredientNameFranceError),
 
-                      ObxValue((state) {
-                        return NeuFormField(
-                          hintText: LocaleKeys.ingredient_name_english_label.tr,
-                          controller:
-                              controller.ingredientNameEnglishController,
-                          keyboardType: TextInputType.text,
-                          autocorrect: false,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 3),
-                          errorText:
-                              controller.ingredientNameEnglishError.value,
-                        );
-                      }, controller.ingredientNameEnglishError),
+                      // ObxValue((state) {
+                      //   return NeuFormField(
+                      //     hintText: LocaleKeys.ingredient_name_english_label.tr,
+                      //     controller:
+                      //         controller.ingredientNameEnglishController,
+                      //     keyboardType: TextInputType.text,
+                      //     autocorrect: false,
+                      //     padding: const EdgeInsets.symmetric(
+                      //         horizontal: 10, vertical: 3),
+                      //     errorText:
+                      //         controller.ingredientNameEnglishError.value,
+                      //   );
+                      // }, controller.ingredientNameEnglishError),
 
                       ObxValue((state) {
                         return NeuFormField(

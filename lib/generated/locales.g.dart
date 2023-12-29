@@ -304,9 +304,9 @@ class Locales {
     'change_password_screen_hint':
         'Complete all fields to change your password',
     'mandatory_fields_mark': '* mandatory',
-    'ingredient_name_france_label': 'Ingredient name* (French)',
+    'ingredient_name_france_label': 'Ingredient name*',
     'ingredient_name_english_label': 'Ingredient name (English)',
-    'grams_per_circle_label': 'Grams per circle*',
+    'grams_per_circle_label': 'Grams per circle',
     'calories_per_gram_label': 'Calories/100g*',
     'extra_measurement_section_label': 'extra measurements units',
     'unit_name_measurement_label': 'Unit name',
@@ -491,9 +491,9 @@ class Locales {
     'add_new_ingredient_screen_hint':
         'Remplissez tous les champs pour ajouter un nouvel ingrédient',
     'mandatory_fields_mark': '* obligatoire',
-    'ingredient_name_france_label': 'Nom de l\'ingrédient* (Français)',
+    'ingredient_name_france_label': 'Nom de l\'ingrédient*',
     'ingredient_name_english_label': 'Nom de l\'ingrédient (English)',
-    'grams_per_circle_label': 'Grammes par cercle*',
+    'grams_per_circle_label': 'Grammes par cercle',
     'calories_per_gram_label': 'Calories/100g*',
     'extra_measurement_section_label': 'unités de mesures supplémentaires',
     'unit_name_measurement_label': 'Nom de l\'unité',
