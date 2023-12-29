@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:nifty_mobile/app/base/base_provider.dart';
 import 'package:nifty_mobile/app/config/api_constants.dart';
 import 'package:nifty_mobile/app/data/models/change_password_request_model.dart';
+import 'package:nifty_mobile/app/data/models/edit_health_profile_request_model.dart';
 import 'package:nifty_mobile/app/data/models/edit_personal_info_request_model.dart';
 import 'package:nifty_mobile/app/modules/register/signup_request_model.dart';
 
@@ -35,6 +36,11 @@ class AuthProvider extends BaseProvider {
   }
 
   Future<UserPermission?> editUserInfo(EditPersonalInfoRequest reqBody) async {
+    final response = await put(ConfigAPI.meUrl, reqBody.toJson());
+
+    return decode<UserPermission?>(response, UserPermission.fromJson);
+  }
+  Future<UserPermission?> editUserHealthProfile(EditHealthProfileRequest reqBody) async {
     final response = await put(ConfigAPI.meUrl, reqBody.toJson());
 
     return decode<UserPermission?>(response, UserPermission.fromJson);

@@ -72,8 +72,8 @@ class ProfileView extends GetView<ProfileController> {
                     onTap: () => {Get.toNamed(Routes.EDIT_PERSONAL_INFO)},
                   ),
                   SettingsTile(
-                    title: 'Health Profile',
-                    onTap: () => {},
+                    title: LocaleKeys.health_profile.tr,
+                    onTap: () => {Get.toNamed(Routes.EDIT_HEALTH_PROFILE)},
                   ),
                   SettingsTile(
                     title: LocaleKeys.change_password_screen_title.tr,

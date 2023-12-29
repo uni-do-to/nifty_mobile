@@ -15,6 +15,8 @@ import '../modules/addToMeal/bindings/add_to_meal_binding.dart';
 import '../modules/addToMeal/views/add_to_meal_view.dart';
 import '../modules/changePassword/bindings/change_password_binding.dart';
 import '../modules/changePassword/views/change_password_view.dart';
+import '../modules/editHealthProfile/bindings/edit_health_profile_binding.dart';
+import '../modules/editHealthProfile/views/edit_health_profile_view.dart';
 import '../modules/editPersonalInfo/bindings/edit_personal_info_binding.dart';
 import '../modules/editPersonalInfo/views/edit_personal_info_view.dart';
 import '../modules/home/bindings/home_binding.dart';
@@ -62,13 +64,18 @@ class AppPages {
         binding: LoginBinding(),
         middlewares: [NotAuthMiddleware()]),
     GetPage(
-        name: _Paths.REGISTER,
-        page: () => const RegisterView(),
-        binding: RegisterBinding(),
-        middlewares: [NotAuthMiddleware()]),
+      name: _Paths.REGISTER,
+      page: () => ScaleWidget(
+          builder: (context, child) => scaleWidgetBuilder(context, child!),
+          child: const RegisterView()),
+      binding: RegisterBinding(),
+      // middlewares: [NotAuthMiddleware()]
+    ),
     GetPage(
         name: _Paths.SUBSCRIPTION,
-        page: () => const SubscriptionView(),
+        page: () => ScaleWidget(
+            builder: (context, child) => scaleWidgetBuilder(context, child!),
+            child: const SubscriptionView()),
         binding: SubscriptionBinding(),
         middlewares: [NotAuthMiddleware()]),
     GetPage(
@@ -136,6 +143,13 @@ class AppPages {
           child: EditPersonalInfoView()),
       binding: EditPersonalInfoBinding(),
       middlewares: [AuthMiddleware()],
+    ),
+    GetPage(
+      name: _Paths.EDIT_HEALTH_PROFILE,
+      page: () => ScaleWidget(
+          builder: (context, child) => scaleWidgetBuilder(context, child!),
+          child: EditHealthProfileView()),
+      binding: EditHealthProfileBinding(),
     ),
   ];
 }

@@ -31,112 +31,95 @@ class RegisterView extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     var theme = NeumorphicTheme.of(context)?.current;
-
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: SafeArea(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: ObxValue((state) {
-                return NeumorphicProgress(
-                  percent: state.value / 3,
-                  curve: Curves.easeIn,
-                  duration: Duration(seconds: 1),
-                );
-              }, controller.currentStep),
-            ),
-            ObxValue((state) {
-              if (state.value == 0) {
-                return Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 40.0.toHeight),
-                    child: AboutYouView(),
-                  ),
-                );
-              } else if (state.value == 1) {
-                return Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.all(40.0.toHeight),
-                    child: YourBmiView(),
-                  ),
-                );
-              } else if (state.value == 2) {
-                return Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.all(40.0.toHeight),
-                    child: NiftyPointsView(),
-                  ),
-                );
-              } else if (state.value == 3) {
-                return Expanded(
-                  child: Padding(
-                    padding: EdgeInsets.all(40.0.toHeight),
-                    child: SignupView(),
-                  ),
-                );
-              } else {
-                return Container();
-              }
-            }, controller.currentStep),
-            Container(
-              padding: EdgeInsets.all(20),
-              child: Obx(() {
-                return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Visibility(
-                      visible: controller.currentStep.value > 0,
-                      child: SmallActionButton(
-                        text: LocaleKeys.back_button_label.tr,
-                        prefixIcon: Icon(
-                          Icons.arrow_back_ios,
-                          color: ColorConstants.accentColor,
-                          size: 17,
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 20 , right: 20),
+                child: ObxValue((state) {
+                  return NeumorphicProgress(
+                    percent: state.value / 3,
+                    curve: Curves.easeIn,
+                    duration: Duration(seconds: 1),
+                  );
+                }, controller.currentStep),
+              ),
+              Expanded(
+                child: ObxValue((state) {
+                  if (state.value == 0) {
+                    return AboutYouView();
+                  } else if (state.value == 1) {
+                    return YourBmiView();
+                  } else if (state.value == 2) {
+                    return NiftyPointsView();
+                  } else if (state.value == 3) {
+                    return SignupView();
+                  } else {
+                    return Container();
+                  }
+                }, controller.currentStep),
+              ),
+              Container(
+                child: Obx(() {
+                  return Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      Visibility(
+                        visible: controller.currentStep.value > 0,
+                        child: SmallActionButton(
+                          text: LocaleKeys.back_button_label.tr,
+                          prefixIcon: Icon(
+                            Icons.arrow_back_ios,
+                            color: ColorConstants.accentColor,
+                            size: 17,
+                          ),
+                          onPressed: () => controller.currentStep.value--,
+                          // Optionally, specify width and height
                         ),
-                        onPressed: () => controller.currentStep.value--,
-                        // Optionally, specify width and height
                       ),
-                    ),
-                    Visibility(
-                      visible: controller.currentStep.value < 3,
-                      child: SmallActionButton(
-                        text: LocaleKeys.continue_button_label.tr,
-                        backgroundColor: Color(0xff274C5B),
-                        textColor: Colors.white,
-                        icon: const Icon(
-                          Icons.arrow_forward_ios_sharp,
-                          color: Colors.white,
-                          size: 17,
+                      Visibility(
+                        visible: controller.currentStep.value < 3,
+                        child: SmallActionButton(
+                          text: LocaleKeys.continue_button_label.tr,
+                          backgroundColor: Color(0xff274C5B),
+                          textColor: Colors.white,
+                          icon: const Icon(
+                            Icons.arrow_forward_ios_sharp,
+                            color: Colors.white,
+                            size: 17,
+                          ),
+                          onPressed: () {
+                            if (controller.currentStep.value == 0 &&
+                                !controller.validateUserInfoForm()) return;
+
+                            if (controller.currentStep.value == 1 &&
+                                !controller.validateBMIForm()) return;
+
+                            if (controller.currentStep.value == 2 &&
+                                !controller.validateNiftyPointsForm()) return;
+
+                            if (controller.currentStep.value == 0) {
+                              controller.userAge.value =
+                                  controller.calculateUserAge();
+                            }
+                            if (controller.currentStep.value == 1) {
+                              controller.calculateNiftyPoints();
+                            }
+                            controller.currentStep.value++;
+                          },
+                          // Optionally, specify width and height
                         ),
-                        onPressed: () {
-                          if (controller.currentStep.value == 0 &&
-                              !controller.validateUserInfoForm()) return;
-
-                          if (controller.currentStep.value == 1 &&
-                              !controller.validateBMIForm()) return;
-
-                          if (controller.currentStep.value == 2 &&
-                              !controller.validateNiftyPointsForm()) return;
-
-                          if (controller.currentStep.value == 0) {
-                            controller.userAge.value =
-                                controller.calculateUserAge();
-                          }
-                          if (controller.currentStep.value == 1) {
-                            controller.calculateNiftyPoints();
-                          }
-                          controller.currentStep.value++;
-                        },
-                        // Optionally, specify width and height
                       ),
-                    ),
-                  ],
-                );
-              }),
-            ),
-          ],
+                    ],
+                  );
+                }),
+              ),
+            ],
+          ),
         ),
       ),
     );

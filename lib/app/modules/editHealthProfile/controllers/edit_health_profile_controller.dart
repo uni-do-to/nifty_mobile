@@ -1,27 +1,18 @@
-import 'dart:async';
-
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:nifty_mobile/app/controllers/auth_controller.dart';
-import 'package:nifty_mobile/app/modules/register/signup_request_model.dart';
+import 'package:nifty_mobile/app/data/auth_provider.dart';
+import 'package:nifty_mobile/app/data/models/edit_health_profile_request_model.dart';
+import 'package:nifty_mobile/app/data/models/user_permission_model.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
-class RegisterController extends AuthController {
-  RxInt currentStep = 0.obs;
+class EditHealthProfileController extends AuthController {
+  final GlobalKey<FormState> editHealthFormKey = GlobalKey<FormState>();
 
-  final GlobalKey<FormState> yourInfoFormKey = GlobalKey<FormState>();
-  final GlobalKey<FormState> yourBmiFormKey = GlobalKey<FormState>();
-  final GlobalKey<FormState> niftyPointsFormKey = GlobalKey<FormState>();
-  final GlobalKey<FormState> signupFormKey = GlobalKey<FormState>();
-  final nameController = TextEditingController();
   final tallController = TextEditingController();
   final weightController = TextEditingController();
-  final dateOfBirthController = TextEditingController();
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-  final confirmPasswordController = TextEditingController();
-  RxString selectedGender = ''.obs;
+
   RxDouble minBMIValue = 0.0.obs;
   RxDouble maxBMIValue = 0.0.obs;
   RxDouble currentBMI = 0.0.obs;
@@ -29,21 +20,16 @@ class RegisterController extends AuthController {
   RxDouble targetWeight = 0.0.obs;
   RxDouble targetCaloriesPerDay = 0.0.obs;
   RxDouble niftyPoints = 0.0.obs;
-  RxInt userAge = 0.obs;
-  var nameError = ''.obs;
-  var birthDateError = ''.obs;
-  var genderError = ''.obs;
+
   var tallError = ''.obs;
   var weightError = ''.obs;
   var targetBMIError = ''.obs;
-  var termsAndConditionsError = ''.obs;
-  var emailError = ''.obs;
-  var passwordError = ''.obs;
-  var confirmPasswordError = ''.obs;
-  RxBool isSignup = false.obs;
-  RxBool termsAndConditions = false.obs;
 
-  RegisterController(super.authProvider);
+  RxBool isHealthFormUpdated = false.obs;
+  User? userData;
+  final AuthProvider provider;
+
+  EditHealthProfileController(this.provider) : super(provider);
 
   @override
   void onInit() {
@@ -54,28 +40,8 @@ class RegisterController extends AuthController {
     weightController.addListener(() {
       calculateBmiChange();
     });
-  }
-
-  bool validateUserInfoForm() {
-    if (nameController.text.isEmpty) {
-      nameError.value = LocaleKeys.name_error_message.tr;
-    } else {
-      nameError.value = '';
-    }
-
-    if (dateOfBirthController.text.isEmpty) {
-      birthDateError.value = LocaleKeys.birth_date_error_message.tr;
-    } else {
-      birthDateError.value = '';
-    }
-
-    if (selectedGender.isEmpty) {
-      genderError.value = LocaleKeys.gender_error_message.tr;
-    } else {
-      genderError.value = '';
-    }
-
-    return nameError.isEmpty && birthDateError.isEmpty && genderError.isEmpty;
+    getUserInfo();
+    setUserData();
   }
 
   bool validateBMIForm() {
@@ -100,45 +66,17 @@ class RegisterController extends AuthController {
     return tallError.isEmpty && weightError.isEmpty && targetBMIError.isEmpty;
   }
 
-  bool validateNiftyPointsForm() {
-    if (!termsAndConditions.value) {
-      termsAndConditionsError.value =
-          LocaleKeys.terms_and_conditions_error_message.tr;
-    } else {
-      termsAndConditionsError.value = '';
-    }
-
-    return termsAndConditionsError.isEmpty;
+  getUserInfo() {
+    userData = provider.authService.credentials?.user;
   }
 
-  bool validateSignUpForm() {
-    if (emailController.text.isEmpty) {
-      emailError.value = LocaleKeys.email_error_message.tr;
-    } else {
-      emailError.value = '';
-    }
-
-    if (passwordController.text.isEmpty) {
-      passwordError.value = LocaleKeys.password_error_message.tr;
-    } else {
-      passwordError.value = '';
-    }
-
-    if (confirmPasswordController.text.isEmpty) {
-      confirmPasswordError.value = LocaleKeys.confirm_password_error_message.tr;
-    } else {
-      confirmPasswordError.value = '';
-    }
-
-    if (confirmPasswordController.text != passwordController.text) {
-      confirmPasswordError.value =
-          LocaleKeys.password_not_match_error_message.tr;
-    } else {
-      confirmPasswordError.value = '';
-    }
-    return emailError.isEmpty &&
-        passwordError.isEmpty &&
-        confirmPasswordError.isEmpty;
+  setUserData() {
+    tallController.text = userData!.height.toString() ?? "";
+    weightController.text = userData!.weight.toString() ?? "";
+    currentBMI.value = userData!.bmi ?? 0.0;
+    targetBMI.value = (userData!.targetBmi ?? 0).toDouble();
+    targetWeight.value = userData!.targetWeight ?? 0.0;
+    targetCaloriesPerDay.value = userData!.dailyCalories ?? 0.0;
   }
 
   void calculateBmiChange() {
@@ -153,23 +91,27 @@ class RegisterController extends AuthController {
     currentBMI.value = (weight / (height * height)) * 10000;
     maxBMIValue.value = currentBMI.value + 15;
     minBMIValue.value = currentBMI.value - 15;
-    targetBMI.value = (selectedGender.value == 'male') ? 25.0 : 20.0;
+    targetBMI.value = (userData!.gender == 'male') ? 25.0 : 20.0;
 
     calculateTargetWeight(targetBMI.value, (height / 100));
-
-    if (userAge.value > 19) {
-      calculateDailyCaloriesAbove19YearsOld(targetWeight.value, (height / 100),
-          userAge.value, selectedGender.value);
+    int userAge = calculateUserAge();
+    if (userAge > 19) {
+      calculateDailyCaloriesAbove19YearsOld(
+          targetWeight.value, (height / 100), userAge, userData!.gender!);
     } else {
-      calculateDailyCaloriesBelow19YearsOld(
-          userAge.value, selectedGender.value);
+      calculateDailyCaloriesBelow19YearsOld(userAge, userData!.gender!);
     }
+  }
+
+  //calculate target weight according to target BMI and height
+  void calculateTargetWeight(double targetBMI, double height) {
+    targetWeight.value = (targetBMI * (height * height));
   }
 
   //calculate user age from the birthdate
   int calculateUserAge() {
     DateTime birthDate =
-        DateFormat("dd-MM-yyyy").parse(dateOfBirthController.text);
+        DateFormat("yyyy-MM-dd").parse(userData!.birthDate ?? "");
     DateTime now = DateTime.now();
     int age = now.year - birthDate.year;
 
@@ -180,16 +122,6 @@ class RegisterController extends AuthController {
     }
 
     return age;
-  }
-
-  //calculate nifty points according to target calories per day
-  void calculateNiftyPoints() {
-    niftyPoints.value = targetCaloriesPerDay.value / 33;
-  }
-
-  //calculate target weight according to target BMI and height
-  void calculateTargetWeight(double targetBMI, double height) {
-    targetWeight.value = (targetBMI * (height * height));
   }
 
   // calculate daily calories above 19 years old according to gender, age , height and target BMI
@@ -243,55 +175,40 @@ class RegisterController extends AuthController {
 
     calculateTargetWeight(targetBMI.value, (height / 100));
 
-    if (userAge.value > 19) {
+    var userAge = calculateUserAge();
+    if (userAge > 19) {
       calculateDailyCaloriesAbove19YearsOld(
-          targetBMI.value, (height / 100), userAge.value, selectedGender.value);
+          targetBMI.value, (height / 100), userAge, userData!.gender ?? "");
     } else {
-      calculateDailyCaloriesBelow19YearsOld(
-          userAge.value, selectedGender.value);
+      calculateDailyCaloriesBelow19YearsOld(userAge, userData!.gender ?? "");
     }
   }
 
-  Future<void> signup() async {
-    if (!validateUserInfoForm() &&
-        !validateBMIForm() &&
-        !validateNiftyPointsForm() &&
-        !validateSignUpForm()) return;
+  Future<void> editHealthProfile() async {
+    if (!validateBMIForm()) return;
 
-    if (validateSignUpForm() && !isSignup.value) {
+    if (validateBMIForm() && !isHealthFormUpdated.value) {
       try {
-        isSignup.value = true;
-        DateTime birthDate =
-            DateFormat("dd-MM-yyyy").parse(dateOfBirthController.text);
-        String formattedBirthDate = DateFormat("yyyy-MM-dd").format(birthDate);
+        isHealthFormUpdated.value = true;
 
-        SignupRequest data = SignupRequest(
-            username: emailController.text,
-            // or another appropriate field for username
-            email: emailController.text,
-            password: passwordController.text,
-            name: nameController.text,
-            gender: selectedGender.value,
-            birthDate: formattedBirthDate,
+        EditHealthProfileRequest data = EditHealthProfileRequest(
             height: tallController.text,
             weight: weightController.text,
             bmi: currentBMI.value.toString(),
             targetBmi: targetBMI.value.toString(),
             targetWeight: targetWeight.value.toString(),
-            dailyCalories: targetCaloriesPerDay.value);
+            dailyCalories: targetCaloriesPerDay.value.toString());
 
-        await signUp(data);
+        await provider.editUserHealthProfile(data);
       } catch (err, _) {
         // message = 'There is an issue with the app during request the data, '
         //         'please contact admin for fixing the issues ' +
 
-        passwordController.clear();
-        confirmPasswordController.clear();
         rethrow;
       } finally {
-        isSignup.value = false;
+        isHealthFormUpdated.value = false;
       }
-      signupFormKey.currentState!.save();
+      editHealthFormKey.currentState!.save();
     } else {
       throw Exception(LocaleKeys.global_error_message.tr);
     }

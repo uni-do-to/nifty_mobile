@@ -34,11 +34,8 @@ class EditPersonalInfoView extends GetView<EditPersonalInfoController> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        leadingWidth: 25,
+        leadingWidth: 30,
         leading: Container(
-          padding: EdgeInsets.only(
-            top: 35,
-          ),
           child: IconButton(
             icon: Icon(
               Icons.arrow_back_ios,
@@ -48,17 +45,14 @@ class EditPersonalInfoView extends GetView<EditPersonalInfoController> {
           ),
         ),
         title: Container(
-          padding: const EdgeInsets.only(
-            top: 47,
-            bottom: 13,
-          ),
-          child:
-              Text(LocaleKeys.edit_personal_info_screen_title.tr.toUpperCase()),
+          // padding: SizeConstants.toolBarPadding,
+          child: Text(LocaleKeys.edit_personal_info_screen_title.tr.toUpperCase()),
         ),
         centerTitle: false,
         backgroundColor: Colors.white,
-        titleTextStyle: theme?.textTheme.titleLarge,
-        toolbarHeight: 86,
+        titleTextStyle: theme?.textTheme.titleLarge
+            ?.copyWith(color: ColorConstants.toolbarTextColor),
+        toolbarHeight: 40,
       ),
       body: SafeArea(
         child: Form(
@@ -69,18 +63,7 @@ class EditPersonalInfoView extends GetView<EditPersonalInfoController> {
               mainAxisSize: MainAxisSize.max,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                Container(
-                  alignment: Alignment.center,
-                  child: Image.asset(
-                    'assets/images/logo.png',
-                    height: 182,
-                    width: 244,
-                    fit: BoxFit.fill,
-                  ),
-                ),
-                const SizedBox(
-                  height: 24.8,
-                ),
+
                 Neumorphic(
                   style: NeumorphicStyle(depth: 1.3, intensity: 1),
                   padding: const EdgeInsets.only(

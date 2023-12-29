@@ -83,7 +83,6 @@ class YourBmiView extends GetView<RegisterController> {
                         FilteringTextInputFormatter.digitsOnly,
                       ],
                       keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),              autocorrect: false,
-                      autocorrect: false,
                       prefixIcon: const Icon(
                         Icons.balance,
                         size: 24,
@@ -364,7 +363,7 @@ class YourBmiView extends GetView<RegisterController> {
             ),
           ),
 
-          // Expanded(child: Container()),
+          Expanded(child: Container()),
         ],
       ),
     );

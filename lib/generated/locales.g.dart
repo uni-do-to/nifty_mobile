@@ -168,6 +168,8 @@ class LocaleKeys {
   static const duration_label = 'duration_label';
   static const edit_personal_info_screen_title =
       'edit_personal_info_screen_title';
+  static const edit_health_profile_screen_title =
+      'edit_health_profile_screen_title';
   static const error_snackbar_label = 'error_snackbar_label';
   static const exception_snackbar_label = 'exception_snackbar_label';
   static const email_error_message = 'email_error_message';
@@ -201,6 +203,7 @@ class LocaleKeys {
       'ingredient_calories_per_grams_error_message';
   static const global_error_message = 'global_error_message';
   static const personal_info = 'personal_info';
+  static const health_profile = 'health_profile';
   static const cal = 'cal';
   static const np = 'np';
 }
@@ -349,6 +352,7 @@ class Locales {
     'new_password_label': 'new password',
     'duration_label': 'Duration',
     'edit_personal_info_screen_title': 'Edit Personal Info',
+    'edit_health_profile_screen_title': 'Edit Health Profile',
     'error_snackbar_label': 'Error',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Email is required.',
@@ -380,6 +384,7 @@ class Locales {
         'Ingredient Calories per grams is required',
     'global_error_message': 'An error occurred, invalid inputs value',
     'personal_info': 'Personal Info',
+    'health_profile': 'Health Profile',
     'cal': 'KCAL',
     'np': 'NP',
   };
@@ -531,6 +536,7 @@ class Locales {
     'new_password_label': 'nouveau mot de passe',
     'duration_label': 'Durée',
     'edit_personal_info_screen_title': 'Modifier les informations personnelles',
+    'edit_health_profile_screen_title': 'modifier le profil de santé',
     'error_snackbar_label': 'Erreur',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Un e-mail est requis.',
@@ -563,7 +569,8 @@ class Locales {
         'le nom de l\'ingrédient France est obligatoire',
     'global_error_message':
         'Une erreur s\'est produite, valeur d\'entrée non valide',
-    'personal_info': 'Personal Info',
+    'personal_info': 'Informations personnelles',
+    'health_profile': 'Profil de santé',
     'cal': 'KCAL',
     'np': 'NP',
   };

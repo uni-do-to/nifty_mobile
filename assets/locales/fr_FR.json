@@ -133,6 +133,7 @@
   "new_password_label": "nouveau mot de passe",
   "duration_label": "Durée",
   "edit_personal_info_screen_title": "Modifier les informations personnelles",
+  "edit_health_profile_screen_title": "modifier le profil de santé",
   "error_snackbar_label": "Erreur",
   "exception_snackbar_label": "Exception : ",
   "email_error_message": "Un e-mail est requis.",
@@ -155,7 +156,8 @@
   "ingredient_name_English_error_message": "le nom de l'ingrédient est obligatoire en anglais",
   "ingredient_name_france_error_message": "le nom de l'ingrédient France est obligatoire",
   "global_error_message": "Une erreur s'est produite, valeur d'entrée non valide" ,
-  "personal_info" : "Personal Info",
+  "personal_info" : "Informations personnelles",
+  "health_profile" : "Profil de santé",
   "cal" : "KCAL",
   "np" : "NP"
 }

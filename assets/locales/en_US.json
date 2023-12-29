@@ -133,6 +133,7 @@
   "new_password_label": "new password",
   "duration_label": "Duration",
   "edit_personal_info_screen_title": "Edit Personal Info",
+  "edit_health_profile_screen_title": "Edit Health Profile",
   "error_snackbar_label": "Error",
   "exception_snackbar_label": "Exception : ",
   "email_error_message": "Email is required.",
@@ -156,6 +157,7 @@
   "ingredient_calories_per_grams_error_message":"Ingredient Calories per grams is required",
   "global_error_message": "An error occurred, invalid inputs value",
   "personal_info" : "Personal Info",
+  "health_profile" : "Health Profile",
   "cal" : "KCAL",
   "np" : "NP"
 }

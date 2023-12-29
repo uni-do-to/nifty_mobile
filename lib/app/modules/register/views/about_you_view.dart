@@ -31,11 +31,11 @@ class AboutYouView extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     var theme = NeumorphicTheme.of(context)?.current;
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: SafeArea(
-        child: Form(
-          key: controller.yourInfoFormKey,
+    return Container(
+      child: Form(
+        key: controller.yourInfoFormKey,
+        child: Padding(
+          padding: const EdgeInsets.all(0.0),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -50,7 +50,7 @@ class AboutYouView extends GetView<RegisterController> {
                 ),
               ),
               const SizedBox(
-                height: 28.5,
+                height: 24.8,
               ),
               RegisterViewsTitle(text: LocaleKeys.about_you_screen_title.tr),
               const SizedBox(
@@ -116,7 +116,7 @@ class AboutYouView extends GetView<RegisterController> {
                             GenderRadio(
                               label: LocaleKeys.male_radio_label.tr,
                               icon: Icons.male,
-                              value: "Male",
+                              value: "male",
                               groupValue: controller.selectedGender.value,
                               onChanged: (value) => controller
                                   .selectedGender.value = value.toString(),
@@ -124,7 +124,7 @@ class AboutYouView extends GetView<RegisterController> {
                             GenderRadio(
                               label: LocaleKeys.female_radio_label.tr,
                               icon: Icons.female,
-                              value: "Female",
+                              value: "female",
                               groupValue: controller.selectedGender.value,
                               onChanged: (value) => controller
                                   .selectedGender.value = value.toString(),
@@ -144,7 +144,6 @@ class AboutYouView extends GetView<RegisterController> {
                   }, controller.selectedGender),
                 ),
               ),
-              // Expanded(child: Container()),
             ],
           ),
         ),
