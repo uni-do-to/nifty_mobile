@@ -64,9 +64,9 @@ class AppPages {
         middlewares: [NotAuthMiddleware()]),
     GetPage(
         name: _Paths.SUBSCRIPTION,
-        page: () => const SubscriptionView(),
+        page: () => SubscriptionView(),
         binding: SubscriptionBinding(),
-        middlewares: [NotAuthMiddleware()]),
+        middlewares: [AuthMiddleware()]),
     GetPage(
       name: _Paths.HOME,
       page: () => ScaleWidget(

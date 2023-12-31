@@ -12,12 +12,12 @@ class BaseProvider extends GetConnect {
   late AuthService authService ;
 
   bool isLoginRequest(request) {
-    return (ConfigAPI.baseUrl + ConfigAPI.signInUrl ==
+    return (ConfigAPI.baseApiUrl + ConfigAPI.signInUrl ==
         request.url.toString());
   }  
   
   bool isMeRequest(request) {
-    return (ConfigAPI.baseUrl + ConfigAPI.meUrl == request.url.toString());
+    return (ConfigAPI.baseApiUrl + ConfigAPI.meUrl == request.url.toString());
   }
 
 
@@ -48,7 +48,7 @@ class BaseProvider extends GetConnect {
   void onInit() {
     authService = Get.find() ;
 
-    httpClient.baseUrl = ConfigAPI.baseUrl;
+    httpClient.baseUrl = ConfigAPI.baseApiUrl;
     httpClient.timeout = const Duration(seconds: 30);
     httpClient.maxAuthRetries = retry = 3;
     httpClient.followRedirects = true;

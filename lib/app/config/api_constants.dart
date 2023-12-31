@@ -1,6 +1,8 @@
 class ConfigAPI {
   //Example: https://www.example.com without /
-  static const String baseUrl = 'https://nifty-diet-adb2127174f3.herokuapp.com/api';
+  static const String baseUrl = 'http://192.168.1.9:1337';
+  static const String baseApiUrl = '$baseUrl/api';
+  static const stripePublishableKey =  "pk_test_51Lme2ZHFBOGEpvokPdsziGdnSmsF9CiUdC5SEUlQIQxvuXZmuKpKF1J5uRryAP8jTMXK8Fw4nCaUqSCaQ5Tp5UY500Oo2qEV7L";
 
   static const int sessionTimeoutThreshold =
   0; // Will refresh the access token 5 minutes before it expires
@@ -18,4 +20,9 @@ class ConfigAPI {
   static const String recipesUrl = '/recipes';
   static const String dailyUrl = '/dailies';
   static const String sportUrl = '/sports';
+
+
+  //subscription apis
+  static const String checkoutSessionUrl = '/checkoutSession';
+
 }

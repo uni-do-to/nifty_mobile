@@ -33,6 +33,9 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.18.1
+  flutter_stripe: ^9.5.0+1
+  flutter_stripe_web: ^4.5.0
+  stripe_checkout: ^1.0.2
 
 dev_dependencies: 
   flutter_lints: ^2.0.0

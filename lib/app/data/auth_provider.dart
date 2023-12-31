@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:nifty_mobile/app/base/base_provider.dart';
 import 'package:nifty_mobile/app/config/api_constants.dart';
+import 'package:nifty_mobile/app/data/models/checkout_url_response_model.dart';
 import 'package:nifty_mobile/app/modules/register/signup_request_model.dart';
 
 import 'models/user_permission_model.dart';

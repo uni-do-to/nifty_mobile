@@ -10,7 +10,11 @@ import '../../../../generated/locales.g.dart';
 import '../../../utils/size_utils.dart';
 
 class SubscriptionView extends GetView<SubscriptionController> {
-  const SubscriptionView({Key? key}) : super(key: key);
+
+  final GlobalKey webViewKey = GlobalKey();
+
+
+  SubscriptionView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -112,6 +116,7 @@ class SubscriptionView extends GetView<SubscriptionController> {
                   NeumorphicButton(
                     onPressed: () {
                       // Handle your button press
+                      controller.redirectToSubscription() ;
                     },
                     child: Container(
                       width: 300.toWidth,
