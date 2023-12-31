@@ -43,6 +43,9 @@ class AddSportController extends GetxController {
       var responseSportList = await provider.getSportsList();
       this.sportsList = responseSportList?.data ?? [];
       filteredItems.value = sportsList;
+      selectedSport.value = filteredItems[0];
+      initMeasurementUnits();
+
     } catch (err, _) {
       print(err);
     } finally {

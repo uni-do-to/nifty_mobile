@@ -59,7 +59,9 @@ class YourBmiView extends GetView<RegisterController> {
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly,
                       ],
-                      keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),                      autocorrect: false,
+                      keyboardType: TextInputType.numberWithOptions(
+                          decimal: true, signed: true),
+                      autocorrect: false,
                       prefixIcon: const Icon(
                         Icons.height,
                         size: 24,
@@ -82,7 +84,9 @@ class YourBmiView extends GetView<RegisterController> {
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly,
                       ],
-                      keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),              autocorrect: false,
+                      keyboardType: TextInputType.numberWithOptions(
+                          decimal: true, signed: true),
+                      autocorrect: false,
                       prefixIcon: const Icon(
                         Icons.balance,
                         size: 24,
@@ -296,33 +300,57 @@ class YourBmiView extends GetView<RegisterController> {
                       visible: !(controller.tallController.text.isEmpty &&
                           controller.weightController.text.isEmpty),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          FlutterSlider(
-                              values: [controller.targetBMI.value],
-                              max: max(controller.maxBMIValue.value,
-                                  controller.targetBMI.value),
-                              min: min(controller.minBMIValue.value,
-                                  controller.targetBMI.value),
-                              centeredOrigin: true,
-                              trackBar: const FlutterSliderTrackBar(),
-                              onDragging:
-                                  (handlerIndex, lowerValue, upperValue) {
-                                if (lowerValue <= controller.minBMIValue.value)
-                                  return;
-
-                                controller.targetBMI.value = lowerValue;
-                                controller.calculateUserGoalMeasurements();
-
-                                // if (lowerValue > (max - min) / 2) {
-                                //   // trackBarColor = Colors.blueAccent;
-                                // } else {
-                                //   // trackBarColor = Colors.redAccent;
-                                // }
-                                // setState(() {});
-                              }),
-                          const SizedBox(
-                            height: 5,
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Text(
+                                "${min(controller.minBMIValue.value, controller.targetBMI.value).round()}",
+                                style: theme?.textTheme.titleMedium?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 3,
+                              ),
+                              Expanded(
+                                child: FlutterSlider(
+                                    values: [controller.targetBMI.value],
+                                    max: max(controller.maxBMIValue.value,
+                                        controller.targetBMI.value),
+                                    min: min(controller.minBMIValue.value,
+                                        controller.targetBMI.value),
+                                    centeredOrigin: true,
+                                    trackBar: const FlutterSliderTrackBar(),
+                                    onDragging:
+                                        (handlerIndex, lowerValue, upperValue) {
+                                      if (lowerValue <=
+                                          controller.minBMIValue.value) return;
+                                
+                                      controller.targetBMI.value = lowerValue;
+                                      controller.calculateUserGoalMeasurements();
+                                
+                                      // if (lowerValue > (max - min) / 2) {
+                                      //   // trackBarColor = Colors.blueAccent;
+                                      // } else {
+                                      //   // trackBarColor = Colors.redAccent;
+                                      // }
+                                      // setState(() {});
+                                    }),
+                              ),
+                              const SizedBox(
+                                width: 3,
+                              ),
+                              Text(
+                                "${max(controller.maxBMIValue.value, controller.targetBMI.value).round()}",
+                                style: theme?.textTheme.titleMedium?.copyWith(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ],
                           ),
+
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -362,7 +390,6 @@ class YourBmiView extends GetView<RegisterController> {
               ),
             ),
           ),
-
           Expanded(child: Container()),
         ],
       ),

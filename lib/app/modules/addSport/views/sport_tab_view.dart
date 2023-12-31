@@ -61,36 +61,29 @@ class SportTabView extends StatelessWidget {
                                 itemBuilder: (context, index) {
                                   return Column(
                                     children: [
-                                      GestureDetector(
-                                        onTap: () {
-                                          controller.selectedSport.value =
-                                              controller.filteredItems[index];
-                                          controller.initMeasurementUnits();
-                                        },
-                                        child: ObxValue((state) {
-                                          return RecipeIngredientListItem(
-                                            isSportItem: true,
-                                            isSelected: controller
-                                                    .selectedSport.value ==
-                                                controller.filteredItems[index],
-                                            icon: Icons.fitness_center_sharp,
-                                            text: Get.locale?.languageCode ==
-                                                    "fr"
-                                                ? controller
-                                                    .filteredItems[index]
-                                                    .attributes!
-                                                    .nameFr!
-                                                : controller
-                                                        .filteredItems[index]
-                                                        .attributes!
-                                                        .nameEn ??
-                                                    LocaleKeys
-                                                        .no_search_result_label
-                                                        .tr,
-                                            onDeletePressed: () {},
-                                          );
-                                        }, controller.selectedSport),
-                                      ),
+                                      ObxValue((state) {
+                                        return RecipeIngredientListItem(
+                                          isSportItem: true,
+                                          isSelected: controller
+                                                  .selectedSport.value ==
+                                              controller.filteredItems[index],
+                                          icon: Icons.fitness_center_sharp,
+                                          text: Get.locale?.languageCode ==
+                                                  "fr"
+                                              ? controller
+                                                  .filteredItems[index]
+                                                  .attributes!
+                                                  .nameFr!
+                                              : controller
+                                                      .filteredItems[index]
+                                                      .attributes!
+                                                      .nameEn ??
+                                                  LocaleKeys
+                                                      .no_search_result_label
+                                                      .tr,
+                                          onDeletePressed: () {},
+                                        );
+                                      }, controller.selectedSport),
                                       SizedBox(
                                         height: 10,
                                       ),

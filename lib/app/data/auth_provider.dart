@@ -36,12 +36,13 @@ class AuthProvider extends BaseProvider {
   }
 
   Future<UserPermission?> editUserInfo(EditPersonalInfoRequest reqBody) async {
-    final response = await put(ConfigAPI.meUrl, reqBody.toJson());
+    final response = await put(ConfigAPI.meUrl, {"data": reqBody.toJson()});
 
     return decode<UserPermission?>(response, UserPermission.fromJson);
   }
+
   Future<UserPermission?> editUserHealthProfile(EditHealthProfileRequest reqBody) async {
-    final response = await put(ConfigAPI.meUrl, reqBody.toJson());
+    final response = await put(ConfigAPI.meUrl, {"data": reqBody.toJson()});
 
     return decode<UserPermission?>(response, UserPermission.fromJson);
   }
