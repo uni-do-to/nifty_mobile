@@ -5,6 +5,7 @@ import 'package:nifty_mobile/app/data/models/api_response.dart';
 import 'package:nifty_mobile/app/data/models/ingredient_model.dart';
 import 'package:nifty_mobile/app/data/models/sub_category_model.dart';
 
+import '../../utils/extensions.dart';
 import '../models/category_model.dart';
 import '../models/ingredient_request_model.dart';
 
@@ -18,7 +19,7 @@ class IngredientProvider extends BaseProvider {
   Future<ApiSingleResponse<Ingredient>?> createIngredient(
       IngredientRequest ingredientRequest) async {
     var response =
-        await post(ConfigAPI.ingredientsUrl, ingredientRequest.toJson());
+        await post(ConfigAPI.ingredientsUrl, removeNull(ingredientRequest.toJson()));
 
     return decode<ApiSingleResponse<Ingredient>?>(
         response,
@@ -36,6 +37,7 @@ class IngredientProvider extends BaseProvider {
           'filters[sub_category]': subCategoryId?.toString(),
           'filters[isAdmin]': "true",
           'pagination[pageSize]': "1000",
+          'populate': 'units',
           'sort': '${Get.locale?.languageCode == 'fr' ? 'nameFr' : 'nameEn'}:asc'
         }..removeWhere((key, value) => value == null));
 
@@ -47,8 +49,12 @@ class IngredientProvider extends BaseProvider {
 
   Future<ApiListResponse<Ingredient>?> getMyIngredientsList() async {
     final response = await get(ConfigAPI.ingredientsUrl,
-        query: {'filters[isAdmin]': "false"}
-          ..removeWhere((key, value) => value == null));
+        query: {
+          'filters[isAdmin]': "false",
+          'pagination[pageSize]': "1000",
+          'populate': 'units',
+          'sort': '${Get.locale?.languageCode == 'fr' ? 'nameFr' : 'nameEn'}:asc'
+        }..removeWhere((key, value) => value == null));
 
     return decode<ApiListResponse<Ingredient>?>(
         response,

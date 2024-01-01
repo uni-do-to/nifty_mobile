@@ -53,8 +53,11 @@ class IngredientView extends GetView<IngredientController> {
                       color: Colors.white,
                       size: 17.75,
                     ),
-                    onPressed: () {
-                      Get.toNamed(Routes.ADD_NEW_INGREDIENT);
+                    onPressed: () async{
+                      var result = await Get.toNamed(Routes.ADD_NEW_INGREDIENT);
+                      if(result == true) {
+                        controller.initData();
+                      }
                     },
                   ),
                 ),

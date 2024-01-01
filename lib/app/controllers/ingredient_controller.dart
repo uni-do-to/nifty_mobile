@@ -77,61 +77,47 @@ class IngredientController extends GetxController {
 
   Future<List<Ingredient>> searchIngredients(String searchKeyword) async {
     return ingredientsList.where((ingredient) {
-      return ingredient.attributes!.nameEn!
-          .toLowerCase()
-          .contains(searchKeyword.toLowerCase()) ||
-          ingredient.attributes!.nameFr!
-              .toLowerCase()
-              .contains(searchKeyword.toLowerCase());
+      return ingredient.attributes?.nameEn?.toLowerCase()
+          .contains(searchKeyword.toLowerCase()) == true ||
+          ingredient.attributes?.nameFr?.toLowerCase()
+              .contains(searchKeyword.toLowerCase()) == true;
     }).toList();
   }
 
   Future<List<Category>> searchCategory(String searchKeyword) async {
     return categoriesList.where((category) {
-      return category.attributes!.nameEn!
-          .toLowerCase()
-          .contains(searchKeyword.toLowerCase()) ||
-          category.attributes!.nameFr!
-              .toLowerCase()
-              .contains(searchKeyword.toLowerCase());
+      return category.attributes?.nameEn?.toLowerCase()
+          .contains(searchKeyword.toLowerCase()) == true ||
+          category.attributes?.nameFr?.toLowerCase()
+              .contains(searchKeyword.toLowerCase()) == true;
     }).toList();
   }
 
   Future<List<SubCategory>> searchSubCategory(String searchKeyword) async {
     return subCategoriesList.where((subCategory) {
-      bool matchesKeyword = subCategory.attributes!.nameEn!
-          .toLowerCase()
-          .contains(searchKeyword.toLowerCase()) ||
-          subCategory.attributes!.nameFr!
-              .toLowerCase()
-              .contains(searchKeyword.toLowerCase());
-
-      return matchesKeyword;
+      return subCategory.attributes?.nameEn?.toLowerCase()
+          .contains(searchKeyword.toLowerCase()) == true ||
+          subCategory.attributes?.nameFr?.toLowerCase()
+              .contains(searchKeyword.toLowerCase()) == true;
     }).toList();
   }
 
   Future<List<Ingredient>> searchIngredientsSubCategory(
       String searchKeyword) async {
     return ingredientsSubcategoryList.where((ingredientSubCategory) {
-      bool matchesKeyword = ingredientSubCategory.attributes!.nameEn!
-          .toLowerCase()
-          .contains(searchKeyword.toLowerCase()) ||
-          ingredientSubCategory.attributes!.nameFr!
-              .toLowerCase()
-              .contains(searchKeyword.toLowerCase());
-
-      return matchesKeyword;
+      return ingredientSubCategory.attributes?.nameEn?.toLowerCase()
+          .contains(searchKeyword.toLowerCase()) == true ||
+          ingredientSubCategory.attributes?.nameFr?.toLowerCase()
+              .contains(searchKeyword.toLowerCase()) == true;
     }).toList();
   }
 
   Future<List<Ingredient>> searchMyIngredients(String searchKeyword) async {
     return myIngredientsList.where((ingredient) {
-      return ingredient.attributes!.nameEn!
-          .toLowerCase()
-          .contains(searchKeyword.toLowerCase()) ||
-          ingredient.attributes!.nameFr!
-              .toLowerCase()
-              .contains(searchKeyword.toLowerCase());
+      return ingredient.attributes?.nameEn?.toLowerCase()
+          .contains(searchKeyword.toLowerCase()) == true ||
+          ingredient.attributes?.nameFr?.toLowerCase()
+              .contains(searchKeyword.toLowerCase()) == true;
     }).toList();
   }
 

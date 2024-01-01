@@ -20,6 +20,10 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
 
   @override
   Widget build(BuildContext context) {
+    const formFieldPadding = EdgeInsets.symmetric(
+      horizontal: 10,
+      vertical: 8,
+    ) ;
     SizeConfig().init(context);
     var theme = NeumorphicTheme.of(context)?.current;
     return Scaffold(
@@ -87,8 +91,7 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                           controller: controller.ingredientNameFranceController,
                           keyboardType: TextInputType.text,
                           autocorrect: false,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 3),
+                          padding: formFieldPadding,
                           errorText: controller.ingredientNameFranceError.value,
                         );
                       }, controller.ingredientNameFranceError),
@@ -100,8 +103,7 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                       //         controller.ingredientNameEnglishController,
                       //     keyboardType: TextInputType.text,
                       //     autocorrect: false,
-                      //     padding: const EdgeInsets.symmetric(
-                      //         horizontal: 10, vertical: 3),
+                      //      padding: formFieldPadding,
                       //     errorText:
                       //         controller.ingredientNameEnglishError.value,
                       //   );
@@ -115,8 +117,7 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                             FilteringTextInputFormatter.digitsOnly,
                           ],
                           keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),                          autocorrect: false,
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 3),
+                          padding: formFieldPadding,
                           errorText: controller.gramsPerCircleError.value,
                         );
                       }, controller.gramsPerCircleError),
@@ -135,8 +136,7 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                                   FilteringTextInputFormatter.digitsOnly,
                                 ],
                                 keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),                                autocorrect: false,
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 3),
+                                padding: formFieldPadding,
                                 errorText:
                                     controller.caloriesPerGramError.value,
                               );
@@ -156,8 +156,7 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                                 ],
                                 keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),                                autocorrect: false,
                                 readOnly: true,
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 10, vertical: 3),
+                                padding: formFieldPadding,
                                 errorText: controller.niftyPointsError.value,
                               );
                             }, controller.niftyPointsError),
@@ -187,10 +186,7 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                                     controller.unitNameMeasurementController,
                                 keyboardType: TextInputType.text,
                                 autocorrect: false,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                  vertical: 3,
-                                ),
+                                padding: formFieldPadding,
                                 errorText:
                                     controller.unitNameMeasurementError.value,
                               );
@@ -210,10 +206,7 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                                   FilteringTextInputFormatter.digitsOnly,
                                 ],
                                 keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),                                autocorrect: false,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                  vertical: 3,
-                                ),
+                                padding: formFieldPadding,
                                 errorText:
                                     controller.equivalentUnitInGramsError.value,
                               );
@@ -235,10 +228,7 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                                     .unitNameAnotherMeasurementController,
                                 keyboardType: TextInputType.text,
                                 autocorrect: false,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                  vertical: 3,
-                                ),
+                                padding: formFieldPadding,
                                 errorText: controller
                                     .unitNameAnotherMeasurementError.value,
                               );
@@ -258,10 +248,7 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                                   FilteringTextInputFormatter.digitsOnly,
                                 ],
                                 keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),                                autocorrect: false,
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                  vertical: 3,
-                                ),
+                                padding: formFieldPadding,
                                 errorText:
                                     controller.equivalentUnitInGramsError.value,
                               );
@@ -321,7 +308,7 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                         onPressed: () async {
                           try {
                             await controller.createNewIngredient();
-                            Get.back();
+                            Get.back(result: true);
                           } catch (err, _) {
                             printError(info: err.toString());
                             final strippedMessage = err.toString().replaceFirst(

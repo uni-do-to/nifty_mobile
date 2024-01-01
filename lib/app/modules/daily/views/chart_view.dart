@@ -5,7 +5,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
-import 'package:nifty_mobile/app/utils/extentions.dart';
+import 'package:nifty_mobile/app/utils/extensions.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
 class BudgetChart extends StatelessWidget {

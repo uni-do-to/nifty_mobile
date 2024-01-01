@@ -37,7 +37,7 @@ class AddNewIngredientController extends GetxController {
   void onInit() {
     super.onInit();
     caloriesPerGramController.addListener(() {
-      if (double.tryParse(caloriesPerGramController.text)! > 0) {
+      if ((double.tryParse(caloriesPerGramController.text)??-1) > 0) {
         isNiftyPointValueChanged.value = true;
         double caloriesPer =
             double.tryParse(caloriesPerGramController.text) ?? 0;
