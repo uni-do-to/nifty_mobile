@@ -45,6 +45,7 @@ class AuthProvider extends BaseProvider {
   Future<User?> editUserHealthProfile(EditHealthProfileRequest reqBody) async {
     final response = await put(ConfigAPI.meUrl, reqBody.toJson());
 
+    print(response.body) ;
     return decode<User?>(response, User.fromJson);
   }
 }

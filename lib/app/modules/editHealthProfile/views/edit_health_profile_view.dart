@@ -418,25 +418,25 @@ class EditHealthProfileView extends GetView<EditHealthProfileController> {
                                       ?.copyWith(color: ColorConstants.white));
                         }, controller.isHealthFormUpdated)),
                     onPressed: () async {
-                      try {
+                      // try {
                         await controller.editHealthProfile();
                         Get.back();
-                      } catch (err, _) {
-                        printError(info: err.toString());
-                        final strippedMessage = err.toString().replaceFirst(
-                            LocaleKeys.exception_snackbar_label.tr, '');
-
-                        Get.snackbar(
-                          LocaleKeys.error_snackbar_label.tr,
-                          strippedMessage,
-                          snackPosition: SnackPosition.TOP,
-                          backgroundColor: Colors.red.withOpacity(.75),
-                          colorText: Colors.white,
-                          icon: const Icon(Icons.error, color: Colors.white),
-                          shouldIconPulse: true,
-                          barBlur: 20,
-                        );
-                      } finally {}
+                      // } catch (err, _) {
+                      //   printError(info: err.toString());
+                      //   final strippedMessage = err.toString().replaceFirst(
+                      //       LocaleKeys.exception_snackbar_label.tr, '');
+                      //
+                      //   Get.snackbar(
+                      //     LocaleKeys.error_snackbar_label.tr,
+                      //     strippedMessage,
+                      //     snackPosition: SnackPosition.TOP,
+                      //     backgroundColor: Colors.red.withOpacity(.75),
+                      //     colorText: Colors.white,
+                      //     icon: const Icon(Icons.error, color: Colors.white),
+                      //     shouldIconPulse: true,
+                      //     barBlur: 20,
+                      //   );
+                      // } finally {}
                     })
               ],
             ),

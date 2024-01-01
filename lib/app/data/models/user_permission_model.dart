@@ -32,7 +32,7 @@ class User {
   int? height;
   int? weight;
   double? bmi;
-  int? targetBmi;
+  double? targetBmi;
   double? targetWeight;
   double? dailyCalories;
   String? createdAt;
@@ -53,9 +53,7 @@ class User {
       this.bmi,
       this.targetBmi,
       this.targetWeight,
-      this.dailyCalories,
-      this.createdAt,
-      this.updatedAt});
+      this.dailyCalories});
 
   User.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -69,12 +67,10 @@ class User {
     birthDate = json['birthDate'];
     height = json['height'];
     weight = json['weight'];
-    bmi = json['bmi'];
-    targetBmi = json['targetBmi'];
-    targetWeight = json['targetWeight'];
-    dailyCalories = json['dailyCalories'];
-    createdAt = json['createdAt'];
-    updatedAt = json['updatedAt'];
+    bmi = double.tryParse(json['bmi'].toString());
+    targetBmi = double.tryParse(json['targetBmi'].toString());
+    targetWeight = double.tryParse(json['targetWeight'].toString());
+    dailyCalories = double.tryParse(json['dailyCalories'].toString());
   }
 
   Map<String, dynamic> toJson() {
@@ -94,8 +90,6 @@ class User {
     data['targetBmi'] = targetBmi;
     data['targetWeight'] = targetWeight;
     data['dailyCalories'] = dailyCalories;
-    data['createdAt'] = createdAt;
-    data['updatedAt'] = updatedAt;
     return data;
   }
 }
