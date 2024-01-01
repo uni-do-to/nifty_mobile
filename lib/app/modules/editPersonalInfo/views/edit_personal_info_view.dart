@@ -176,25 +176,25 @@ class EditPersonalInfoView extends GetView<EditPersonalInfoController> {
                                       ?.copyWith(color: ColorConstants.white));
                         }, controller.isInfoFormUpdated)),
                     onPressed: () async {
-                      try {
+                      // try {
                         await controller.editProfile();
-                        Get.offAllNamed(Routes.PROFILE);
-                      } catch (err, _) {
-                        printError(info: err.toString());
-                        final strippedMessage = err.toString().replaceFirst(
-                            LocaleKeys.exception_snackbar_label.tr, '');
-
-                        Get.snackbar(
-                          LocaleKeys.error_snackbar_label.tr,
-                          strippedMessage,
-                          snackPosition: SnackPosition.TOP,
-                          backgroundColor: Colors.red.withOpacity(.75),
-                          colorText: Colors.white,
-                          icon: const Icon(Icons.error, color: Colors.white),
-                          shouldIconPulse: true,
-                          barBlur: 20,
-                        );
-                      } finally {}
+                        Get.back();
+                      // } catch (err, _) {
+                      //   printError(info: err.toString());
+                      //   final strippedMessage = err.toString().replaceFirst(
+                      //       LocaleKeys.exception_snackbar_label.tr, '');
+                      //
+                      //   Get.snackbar(
+                      //     LocaleKeys.error_snackbar_label.tr,
+                      //     strippedMessage,
+                      //     snackPosition: SnackPosition.TOP,
+                      //     backgroundColor: Colors.red.withOpacity(.75),
+                      //     colorText: Colors.white,
+                      //     icon: const Icon(Icons.error, color: Colors.white),
+                      //     shouldIconPulse: true,
+                      //     barBlur: 20,
+                      //   );
+                      // } finally {}
                     })
               ],
             ),

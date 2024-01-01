@@ -199,7 +199,10 @@ class EditHealthProfileController extends AuthController {
             targetWeight: targetWeight.value.toString(),
             dailyCalories: targetCaloriesPerDay.value.toString());
 
-        await provider.editUserHealthProfile(data);
+        var result = await provider.editUserHealthProfile(data);
+        if(result?.email != null) {
+          await authProvider.authService.updateUserInfo(result!) ;
+        }
       } catch (err, _) {
         // message = 'There is an issue with the app during request the data, '
         //         'please contact admin for fixing the issues ' +

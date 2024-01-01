@@ -1,5 +1,6 @@
 import 'package:flutter/src/services/text_formatter.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 
 class NeuFormField extends StatelessWidget {
@@ -17,14 +18,14 @@ class NeuFormField extends StatelessWidget {
   final String? errorText; // Add an errorText property
   final FocusNode? focusNode; // Add an errorText property
   final bool maintainErrorSize  ;
-  final String? initialValue ;
+  // final String? initialValue ;
   final List<TextInputFormatter>? inputFormatters;
   final void Function(String)? onChanged ;
 
   NeuFormField({
     required this.hintText,
     this.controller,
-    this.initialValue,
+    // this.initialValue,
     this.onChanged,
     this.keyboardType,
     this.validator,
@@ -59,13 +60,12 @@ class NeuFormField extends StatelessWidget {
           ),
           padding: padding,
           child: TextFormField(
-            initialValue: initialValue,
             onChanged: onChanged,
             decoration: InputDecoration(
               border: InputBorder.none,
               hintText: hintText,
               hintStyle:
-                  NeumorphicTheme.of(context)?.current?.textTheme.titleMedium,
+                  NeumorphicTheme.of(context)?.current?.textTheme.titleMedium?.copyWith(color: ColorConstants.lightGray),
               filled: true,
               isDense: true,
               fillColor: Colors.transparent,

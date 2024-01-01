@@ -420,7 +420,7 @@ class EditHealthProfileView extends GetView<EditHealthProfileController> {
                     onPressed: () async {
                       try {
                         await controller.editHealthProfile();
-                        Get.offAllNamed(Routes.PROFILE);
+                        Get.back();
                       } catch (err, _) {
                         printError(info: err.toString());
                         final strippedMessage = err.toString().replaceFirst(

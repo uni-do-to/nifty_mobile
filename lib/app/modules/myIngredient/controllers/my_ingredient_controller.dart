@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:nifty_mobile/app/data/models/ingredient_model.dart';
 import 'package:nifty_mobile/app/data/providers/ingredient_provider.dart';
 
-class IngredientController extends GetxController {
+class MyIngredientController extends GetxController {
   final searchIngredientsController = TextEditingController();
   List<Ingredient> ingredientsList = []; // Your list of items
   RxList<Ingredient> filteredItems = RxList();
@@ -11,7 +11,7 @@ class IngredientController extends GetxController {
 
   IngredientProvider provider;
 
-  IngredientController(this.provider);
+  MyIngredientController(this.provider);
 
   @override
   void onInit() {

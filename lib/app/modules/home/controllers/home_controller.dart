@@ -4,13 +4,14 @@ import 'package:nifty_mobile/app/controllers/auth_controller.dart';
 import 'package:nifty_mobile/app/middleware/auth_middleware.dart';
 import 'package:nifty_mobile/app/modules/daily/bindings/daily_binding.dart';
 import 'package:nifty_mobile/app/modules/daily/views/daily_view.dart';
-import 'package:nifty_mobile/app/modules/ingredient/bindings/ingredient_binding.dart';
-import 'package:nifty_mobile/app/modules/ingredient/views/ingredient_view.dart';
 import 'package:nifty_mobile/app/modules/profile/bindings/profile_binding.dart';
 import 'package:nifty_mobile/app/modules/profile/views/profile_view.dart';
 import 'package:nifty_mobile/app/modules/recipe/bindings/recipe_binding.dart';
 import 'package:nifty_mobile/app/modules/recipe/views/recipe_view.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
+
+import '../../myIngredient/bindings/my_ingredient_binding.dart';
+import '../../myIngredient/views/my_ingredient_view.dart';
 
 class HomeController extends AuthController {
   var currentIndex = 0.obs;
@@ -49,8 +50,8 @@ class HomeController extends AuthController {
     if (settings.name == Routes.INGREDIENT) {
       return GetPageRoute(
         routeName: Routes.INGREDIENT,
-        page: () => const IngredientView(),
-        binding: IngredientBinding(),
+        page: () => const MyIngredientView(),
+        binding: MyIngredientBinding(),
       );
     }
     if (settings.name == Routes.PROFILE) {

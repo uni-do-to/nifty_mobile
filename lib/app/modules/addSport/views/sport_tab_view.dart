@@ -106,11 +106,10 @@ class SportTabView extends StatelessWidget {
                 measurementUnitsItems: controller.measurementUnitsItems,
                 selectedMeasurementUnit:
                     controller.selectedMeasurementUnit.value,
-                quantityValue: controller.sportQuantity.value,
+                quantityController: controller.sportQuantityController,
                 onMeasurementUnitChange: (unit) =>
                     controller.selectedMeasurementUnit.value = unit,
-                onQuantityChange: (value) =>
-                    controller.sportQuantity.value = value,
+                onQuantityChange: (value) => {},
               ),
             );
           }, controller.selectedMeasurementUnit),

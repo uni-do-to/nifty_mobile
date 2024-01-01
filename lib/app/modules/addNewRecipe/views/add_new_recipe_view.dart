@@ -66,7 +66,7 @@ class AddNewRecipeView extends GetView<AddNewRecipeController> {
                       height: 5,
                     ),
                     NeuFormField(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 18 , vertical: 8),
                       hintText: LocaleKeys.recipe_name_hint.tr,
                       keyboardType: TextInputType.text,
                       controller: controller.recipeNameController,
@@ -81,7 +81,7 @@ class AddNewRecipeView extends GetView<AddNewRecipeController> {
                       height: 5,
                     ),
                     NeuFormField(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 18 , vertical: 8),
                       hintText: '500',
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly,

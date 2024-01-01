@@ -23,6 +23,7 @@ class AddSportController extends GetxController {
   RxBool isSportSelected = false.obs;
   RxBool sportListItemIsSelected = false.obs;
   RxBool loading = false.obs;
+  TextEditingController sportQuantityController = TextEditingController();
   RxString sportQuantity = "".obs;
 
   RxBool isValidSportForm = false.obs ;
@@ -34,6 +35,9 @@ class AddSportController extends GetxController {
   void onInit() {
     super.onInit();
     initData();
+    sportQuantityController.addListener(() {
+      sportQuantity.value = sportQuantityController.text ;
+    }) ;
   }
 
   Future initData() async {
@@ -55,7 +59,7 @@ class AddSportController extends GetxController {
 
   initMeasurementUnits() {
     selectedMeasurementUnit.value = null;
-    sportQuantity.value = '';
+    sportQuantityController.text = '';
     List<Units> items = [
       Units(name: LocaleKeys.minutes_unit_label.tr, id: 1),
       Units(name: LocaleKeys.calories_unit_label.tr, id: 2),
@@ -106,14 +110,14 @@ class AddSportController extends GetxController {
       result = false;
     }
 
-    if (sportQuantity.value == null || sportQuantity.value.isEmpty) {
+    if (sportQuantityController.text .isEmpty) {
       print("sport quantity not entered");
       result = false;
     }
 
     double quantity;
     try {
-      quantity = double.parse(sportQuantity.value);
+      quantity = double.parse(sportQuantityController.text);
     } catch (e) {
       print("Invalid number for ingredient quantity");
       result = false;
@@ -127,7 +131,7 @@ class AddSportController extends GetxController {
     if (!isValidSportsForm())
       return;
 
-    var quantity = double.parse(sportQuantity.value);
+    var quantity = double.parse(sportQuantityController.text);
     print("adding $quantity   ${selectedMeasurementUnit.value?.id}" , ) ;
     var userWeight = Get.find<AuthService>().credentials?.user?.weight??0 ;
     // Assuming you have a way to calculate calories for the ingredient

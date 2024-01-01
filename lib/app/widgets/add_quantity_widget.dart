@@ -12,7 +12,7 @@ class AddQuantityWidget extends StatelessWidget {
   final NeumorphicThemeData theme;
   final List<Units> measurementUnitsItems;
   final Units? selectedMeasurementUnit;
-  final String quantityValue;
+  final TextEditingController quantityController;
   final Function(Units?) onMeasurementUnitChange;
   final Function(String) onQuantityChange;
 
@@ -21,7 +21,7 @@ class AddQuantityWidget extends StatelessWidget {
     required this.theme,
     required this.selectedMeasurementUnit,
     required this.measurementUnitsItems,
-    required this.quantityValue,
+    required this.quantityController,
     required this.onMeasurementUnitChange,
     required this.onQuantityChange,
   }) : super(key: key);
@@ -58,6 +58,7 @@ class AddQuantityWidget extends StatelessWidget {
                     ),
                   ),
                   child: DropdownButtonFormField<Units>(
+
                     value: selectedMeasurementUnit,
                     onChanged: (newValue) {
                       onMeasurementUnitChange(newValue);
@@ -92,7 +93,7 @@ class AddQuantityWidget extends StatelessWidget {
                 NeuFormField(
                   padding: EdgeInsets.symmetric(vertical: 5, horizontal: 20),
                   hintText: LocaleKeys.quantity_text_field_label.tr,
-                  initialValue: quantityValue,
+                  controller: quantityController,
                   inputFormatters: [
                     FilteringTextInputFormatter.digitsOnly,
                   ],

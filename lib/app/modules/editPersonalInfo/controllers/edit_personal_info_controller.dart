@@ -35,18 +35,21 @@ class EditPersonalInfoController extends AuthController {
 
   getUserInfo() {
     userData = provider.authService.credentials?.user;
-    print(userData!.birthDate!);
+    print(userData!.birthDate);
   }
 
   setUserData() {
     nameController.text = userData!.name ?? "";
     selectedGender.value = userData!.gender ?? "";
 
-    DateTime birthDate =
-        DateFormat("yyyy-MM-dd").parse(userData!.birthDate ?? "");
-    String formattedBirthDate = DateFormat("dd-MM-yyyy").format(birthDate);
-
-    dateOfBirthController.text = formattedBirthDate;
+    try {
+      DateTime birthDate =
+      DateFormat("yyyy-MM-dd").parse(userData!.birthDate ?? "");
+      String formattedBirthDate = DateFormat("dd-MM-yyyy").format(birthDate);
+      dateOfBirthController.text = formattedBirthDate;
+    }catch(e){
+      print(e) ;
+    }
   }
 
   bool validateUserInfoForm() {
@@ -103,7 +106,10 @@ class EditPersonalInfoController extends AuthController {
           birthDate: formattedBirthDate,
         );
 
-        await provider.editUserInfo(data);
+        var result = await provider.editUserInfo(data);
+        if(result?.email != null) {
+          await authProvider.authService.updateUserInfo(result!) ;
+        }
       } catch (err, _) {
         // message = 'There is an issue with the app during request the data, '
         //         'please contact admin for fixing the issues ' +

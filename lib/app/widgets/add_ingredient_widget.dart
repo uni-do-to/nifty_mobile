@@ -19,7 +19,10 @@ class AddIngredientFormWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    const formFieldPadding = EdgeInsets.symmetric(vertical: 0, horizontal: 18);
     IngredientController controller = Get.find();
+
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -38,7 +41,7 @@ class AddIngredientFormWidget extends StatelessWidget {
                 controller.searchIngredients(search),
             builder: (context, controller, focusNode) {
               return NeuFormField(
-                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 18),
+                padding: formFieldPadding,
                 hintText: LocaleKeys.search_ingredients_dropdown_label.tr,
                 controller: controller,
                 focusNode: focusNode,
@@ -90,7 +93,7 @@ class AddIngredientFormWidget extends StatelessWidget {
                 controller.searchMyIngredients(search),
             builder: (context, controller, focusNode) {
               return NeuFormField(
-                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 18),
+                padding: formFieldPadding,
                 hintText: LocaleKeys.choose_ingredient_dropdown_label.tr,
                 controller: controller,
                 focusNode: focusNode,
@@ -140,7 +143,7 @@ class AddIngredientFormWidget extends StatelessWidget {
             suggestionsCallback: (search) => controller.searchCategory(search),
             builder: (context, controller, focusNode) {
               return NeuFormField(
-                padding: EdgeInsets.symmetric(vertical: 5, horizontal: 18),
+                padding: formFieldPadding,
                 hintText: LocaleKeys.choose_category_dropdown_label.tr,
                 controller: controller,
                 focusNode: focusNode,
@@ -195,8 +198,7 @@ class AddIngredientFormWidget extends StatelessWidget {
                     builder: (context, controller, focusNode) {
                       return NeuFormField(
 
-                        padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 18),
+                        padding: formFieldPadding,
                         hintText:
                             LocaleKeys.choose_sub_category_dropdown_label.tr,
                         controller: controller,
@@ -257,8 +259,7 @@ class AddIngredientFormWidget extends StatelessWidget {
                         controller.searchIngredientsSubCategory(search),
                     builder: (context, controller, focusNode) {
                       return NeuFormField(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 5, horizontal: 18),
+                        padding: formFieldPadding,
                         hintText:
                             LocaleKeys.choose_ingredient_dropdown_label.tr,
                         controller: controller,

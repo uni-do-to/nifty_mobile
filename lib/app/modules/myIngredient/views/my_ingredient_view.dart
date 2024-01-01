@@ -10,10 +10,10 @@ import 'package:nifty_mobile/app/widgets/recipe_ingredient_list_item.dart';
 import 'package:nifty_mobile/app/widgets/small_action_button.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
-import '../controllers/ingredient_controller.dart';
+import '../controllers/my_ingredient_controller.dart';
 
-class IngredientView extends GetView<IngredientController> {
-  const IngredientView({Key? key}) : super(key: key);
+class MyIngredientView extends GetView<MyIngredientController> {
+  const MyIngredientView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

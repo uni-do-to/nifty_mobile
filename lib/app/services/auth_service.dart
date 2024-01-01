@@ -48,4 +48,9 @@ class AuthService extends GetxService {
   bool sessionIsEmpty() {
     return credentials == null;
   }
+
+  updateUserInfo(User result) {
+    credentials?.user = result ;
+    saveCredentials(credentials) ;
+  }
 }

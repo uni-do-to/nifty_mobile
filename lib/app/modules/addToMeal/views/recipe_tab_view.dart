@@ -85,7 +85,7 @@ class RecipeTabView extends StatelessWidget {
                           ),
                           NeuFormField(
                             padding: EdgeInsets.symmetric(
-                                vertical: 5, horizontal: 18),
+                                vertical: 3, horizontal: 18),
                             hintText:
                                 LocaleKeys.search_recipes_dropdown_label.tr,
                             controller: controller.searchRecipesController,
@@ -155,11 +155,10 @@ class RecipeTabView extends StatelessWidget {
                 measurementUnitsItems: controller.measurementUnitsRecipeItems,
                 selectedMeasurementUnit:
                     controller.selectedRecipeMeasurementUnit.value,
-                quantityValue: controller.recipeQuantity.value,
+                quantityController: controller.recipeQuantityController,
                 onMeasurementUnitChange: (unit) =>
                     controller.selectedRecipeMeasurementUnit.value = unit,
-                onQuantityChange: (value) =>
-                    controller.recipeQuantity.value = value,
+                onQuantityChange: (value) => {},
               ),
             );
           }, controller.selectedRecipeMeasurementUnit),

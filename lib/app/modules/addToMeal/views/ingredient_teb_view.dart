@@ -94,11 +94,10 @@ class IngredientTabView extends StatelessWidget {
                     controller.measurementUnitsIngredientItems,
                 selectedMeasurementUnit:
                     controller.selectedIngredientMeasurementUnit.value,
-                quantityValue: controller.ingredientQuantity.value,
+                quantityController: controller.ingredientQuantityController,
                 onMeasurementUnitChange: (unit) =>
                     controller.selectedIngredientMeasurementUnit.value = unit,
-                onQuantityChange: (value) =>
-                    controller.ingredientQuantity.value = value,
+                onQuantityChange: (value) => {},
               ),
             );
           }, controller.selectedIngredientMeasurementUnit),

@@ -27,6 +27,9 @@ class AddToMealController extends GetxController {
 
   final RecipeProvider recipeProvider;
 
+  TextEditingController ingredientQuantityController = TextEditingController();
+  TextEditingController recipeQuantityController = TextEditingController();
+
   RxString ingredientQuantity = "".obs;
   RxString recipeQuantity = "".obs;
 
@@ -39,8 +42,14 @@ class AddToMealController extends GetxController {
   void onInit() {
     super.onInit();
     initData();
-    recipeQuantity.listen((val) {
+    recipeQuantityController.addListener(() {
       isValidRecipeForm() ;
+      recipeQuantity.value = recipeQuantityController.text ;
+    });
+
+    ingredientQuantityController.addListener(() {
+      isValidRecipeForm() ;
+      ingredientQuantity.value = ingredientQuantityController.text ;
     });
 
     selectedRecipeMeasurementUnit.listen((p0) {
@@ -86,7 +95,7 @@ class AddToMealController extends GetxController {
 
   initIngredientMeasurementUnits(Ingredient ingredient) {
     selectedIngredientMeasurementUnit.value = null;
-    ingredientQuantity.value = '';
+    ingredientQuantityController.text = '';
     List<Units> items = [
       Units(name: LocaleKeys.grams_unit_label.tr, grams: 1),
     ];
@@ -109,7 +118,7 @@ class AddToMealController extends GetxController {
 
   initRecipeMeasurementUnits() {
     selectedRecipeMeasurementUnit.value = null;
-    recipeQuantity.value = '';
+    recipeQuantityController.text = '';
     List<Units> items = [
       Units(name: LocaleKeys.grams_unit_label.tr, grams: 1),
     ];
@@ -177,7 +186,7 @@ class AddToMealController extends GetxController {
       result = false;
     }
 
-    if (recipeQuantity.value == null || recipeQuantity.value.isEmpty) {
+    if (recipeQuantityController.text.isEmpty) {
       // Handle the case when recipe quantity is not entered
       print("Recipe quantity not entered");
       result = false;
@@ -185,7 +194,7 @@ class AddToMealController extends GetxController {
 
     double quantity;
     try {
-      quantity = double.parse(recipeQuantity.value);
+      quantity = double.parse(recipeQuantityController.text);
       // Add further processing if needed
     } catch (e) {
       // Handle the case when the entered quantity is not a valid number
@@ -202,7 +211,7 @@ class AddToMealController extends GetxController {
       return ;
 
     var grams = selectedRecipeMeasurementUnit.value!.grams! *
-        double.parse(recipeQuantity.value);
+        double.parse(recipeQuantityController.text);
 
     var calories =
         (this.selectedRecipe.value!.attributes!.caloriesPer100grams! /
@@ -234,14 +243,14 @@ class AddToMealController extends GetxController {
       result = false;
     }
 
-    if (ingredientQuantity.value == null || ingredientQuantity.value.isEmpty) {
+    if (ingredientQuantityController.text.isEmpty) {
       print("Ingredient quantity not entered");
       result = false;
     }
 
     double quantity;
     try {
-      quantity = double.parse(ingredientQuantity.value);
+      quantity = double.parse(ingredientQuantityController.text);
     } catch (e) {
       print("Invalid number for ingredient quantity");
       result = false;
@@ -256,7 +265,7 @@ class AddToMealController extends GetxController {
       return;
 
     var grams = selectedIngredientMeasurementUnit.value!.grams! *
-        double.parse(ingredientQuantity.value);
+        double.parse(ingredientQuantityController.text);
 
     // Assuming you have a way to calculate calories for the ingredient
     var calories = (selectedIngredient.value!.attributes!.caloriesPer100grams! / 100) * grams;

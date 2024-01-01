@@ -23,6 +23,7 @@ class AddNewRecipeController extends GetxController {
   var recipeNameError = ''.obs;
   var recipeGramsPerCircleError = ''.obs;
   var recipeIngredientsListError = ''.obs;
+  TextEditingController ingredientQuantityController = TextEditingController();
   RxString ingredientQuantity = "".obs;
 
   Rx<Ingredient?> selectedIngredient = Rx(null);
@@ -44,11 +45,14 @@ class AddNewRecipeController extends GetxController {
     recipeIngredientsList.stream.listen((snapShot) {
       validateAddNewRecipeForm();
     });
+    ingredientQuantityController.addListener(() {
+      ingredientQuantity.value = ingredientQuantityController.text ;
+    });
   }
 
   initIngredientMeasurementUnits(Ingredient ingredient) {
     selectedIngredientMeasurementUnit.value = null;
-    ingredientQuantity.value = '';
+    ingredientQuantityController.text = '';
     List<Units> items = [
       Units(name: LocaleKeys.grams_unit_label.tr, grams: 1),
     ];
@@ -71,7 +75,7 @@ class AddNewRecipeController extends GetxController {
   // add ingredients to user recipe to make recipeIngredientList
   void addIngredientsToRecipe() {
     var grams = selectedIngredientMeasurementUnit.value!.grams! *
-        double.parse(ingredientQuantity.value);
+        double.parse(ingredientQuantityController.text);
 
     var calories =
         (this.selectedIngredient.value!.attributes!.caloriesPer100grams! /
@@ -100,6 +104,7 @@ class AddNewRecipeController extends GetxController {
   }
 
   bool validateAddNewRecipeForm() {
+    //todo need to be fixed
     if (recipeNameController.text.isEmpty) {
       recipeNameError.value = LocaleKeys.recipe_name_error_message.tr;
     } else {
@@ -130,8 +135,8 @@ class AddNewRecipeController extends GetxController {
     //clear the form
     IngredientController ingredientController = Get.find();
     ingredientController.clearIngredientForm();
+    ingredientQuantityController.text = '';
     selectedIngredientMeasurementUnit.value = null;
-    ingredientQuantity.value = '';
   }
 
   Future<void> createNewRecipe() async {
