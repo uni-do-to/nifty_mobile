@@ -5,8 +5,9 @@ import 'package:nifty_mobile/generated/locales.g.dart';
 
 class NeuCard extends StatelessWidget {
   final Widget? child;
+  final Color? backgroundColor;
 
-  const NeuCard({Key? key, this.child}) : super(key: key);
+  const NeuCard({Key? key, this.child,this.backgroundColor}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +16,12 @@ class NeuCard extends StatelessWidget {
     return Neumorphic(
       style: NeumorphicStyle(
         boxShape: NeumorphicBoxShape.roundRect(
-          BorderRadius.circular(8),
+          BorderRadius.circular(17),
+
         ),
-        depth: 1,
+        depth: -3,
         intensity: 1,
-        color: theme?.baseColor,
+        color: backgroundColor,
         border: NeumorphicBorder(color: theme?.borderColor, width: 1),
       ),
       child: child,

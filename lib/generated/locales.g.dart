@@ -103,6 +103,9 @@ class LocaleKeys {
       'add_new_ingredient_screen_sub_title';
   static const add_new_ingredient_screen_hint =
       'add_new_ingredient_screen_hint';
+  static const change_password_screen_sub_title =
+      'change_password_screen_sub_title';
+  static const change_password_screen_hint = 'change_password_screen_hint';
   static const mandatory_fields_mark = 'mandatory_fields_mark';
   static const ingredient_name_france_label = 'ingredient_name_france_label';
   static const ingredient_name_english_label = 'ingredient_name_english_label';
@@ -159,10 +162,19 @@ class LocaleKeys {
       'calculate_your_effort_sub_title';
   static const intensity_physical_effort_sub_title =
       'intensity_physical_effort_sub_title';
+  static const change_password_screen_title = 'change_password_screen_title';
+  static const current_password_label = 'current_password_label';
+  static const new_password_label = 'new_password_label';
   static const duration_label = 'duration_label';
+  static const edit_personal_info_screen_title =
+      'edit_personal_info_screen_title';
+  static const edit_health_profile_screen_title =
+      'edit_health_profile_screen_title';
   static const error_snackbar_label = 'error_snackbar_label';
   static const exception_snackbar_label = 'exception_snackbar_label';
   static const email_error_message = 'email_error_message';
+  static const current_password_error_message =
+      'current_password_error_message';
   static const password_error_message = 'password_error_message';
   static const confirm_password_error_message =
       'confirm_password_error_message';
@@ -190,9 +202,14 @@ class LocaleKeys {
   static const ingredient_calories_per_grams_error_message =
       'ingredient_calories_per_grams_error_message';
   static const global_error_message = 'global_error_message';
+  static const logout_confirm_question = 'logout_confirm_question';
   static const personal_info = 'personal_info';
+  static const health_profile = 'health_profile';
   static const cal = 'cal';
   static const np = 'np';
+  static const language_label = 'language_label';
+  static const display_unit_label = 'display_unit_label';
+  static const logout_label = 'logout_label';
 }
 
 class Locales {
@@ -220,9 +237,10 @@ class Locales {
     'birthdate_label': 'Your Birthdate',
     'calender_label': 'Date',
     'your_goals_title': 'Your goals',
-    'target_bmi_instructions': 'Move markers as you wish to achieve your goals',
-    'current_bmi_label': 'Your current BMI',
-    'target_bmi_label': 'Your goal',
+    'target_bmi_instructions':
+        'You can keep the goal proposed by Nifty Diet or slide the marker to choose the goal that suits you best.',
+    'current_bmi_label': 'Current',
+    'target_bmi_label': 'Goal',
     'above_bmi_slider_label': 'Severe obesity',
     'below_bmi_slider_label': 'Anorexia',
     'back_button_label': 'Back',
@@ -243,7 +261,7 @@ class Locales {
     'daily_bottom_navigation_label': 'Daily',
     'ingredient_bottom_navigation_label': 'Ingredient',
     'profile_bottom_navigation_label': 'Profile',
-    'vegetables_chart_label': 'Vegetables',
+    'vegetables_chart_label': 'Vegetable package',
     'today_label': 'Today',
     'subscription_button_label': 'Choose this formula',
     'subscription_view_title': 'Choose your formula',
@@ -251,7 +269,7 @@ class Locales {
     'add_something_to_daily_label': 'Something to add ?',
     'your_meals_label': 'Your meals',
     'new_meal_button_label': 'New meal',
-    'nifty_points_budget_label': 'My budget',
+    'nifty_points_budget_label': 'Budget',
     'remaining_budget_label': 'Spent',
     'sport_budget_label': 'Sport',
     'delete_dialog_recipe_title': 'Confirm Delete Recipe',
@@ -283,10 +301,13 @@ class Locales {
     'add_new_ingredient_screen_sub_title': 'Add a new ingredient',
     'add_new_ingredient_screen_hint':
         'Complete all fields to add a new ingredient',
+    'change_password_screen_sub_title': 'Change your password',
+    'change_password_screen_hint':
+        'Complete all fields to change your password',
     'mandatory_fields_mark': '* mandatory',
-    'ingredient_name_france_label': 'Ingredient name* (French)',
+    'ingredient_name_france_label': 'Ingredient name*',
     'ingredient_name_english_label': 'Ingredient name (English)',
-    'grams_per_circle_label': 'Grams per circle*',
+    'grams_per_circle_label': 'Grams per circle',
     'calories_per_gram_label': 'Calories/100g*',
     'extra_measurement_section_label': 'extra measurements units',
     'unit_name_measurement_label': 'Unit name',
@@ -331,14 +352,19 @@ class Locales {
     'calculate_your_effort_sub_title':
         'Get the number of calories you burned during your physical exercise',
     'intensity_physical_effort_sub_title': 'Intensity of physical effort',
+    'change_password_screen_title': 'change password',
+    'current_password_label': 'current password',
+    'new_password_label': 'new password',
     'duration_label': 'Duration',
+    'edit_personal_info_screen_title': 'Edit Personal Info',
+    'edit_health_profile_screen_title': 'Edit Health Profile',
     'error_snackbar_label': 'Error',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Email is required.',
+    'current_password_error_message': 'Current password is required.',
     'password_error_message': 'Password is required.',
     'confirm_password_error_message': 'Confirm password is required.',
-    'password_not_match_error_message':
-        'Confirm password is not match password.',
+    'password_not_match_error_message': 'Passwords are not identical.',
     'name_error_message': 'Name is required.',
     'birth_date_error_message': 'Birth date is required.',
     'gender_error_message': 'Gender is required.',
@@ -361,9 +387,14 @@ class Locales {
     'ingredient_calories_per_grams_error_message':
         'Ingredient Calories per grams is required',
     'global_error_message': 'An error occurred, invalid inputs value',
+    'logout_confirm_question': 'Are you sure you want to logout?',
     'personal_info': 'Personal Info',
+    'health_profile': 'Health Profile',
     'cal': 'KCAL',
     'np': 'NP',
+    'language_label': 'Language',
+    'display_unit_label': 'Calorie measurement unit',
+    'logout_label': 'Logout',
   };
   static const fr_FR = {
     'login': 'Connectez-vous',
@@ -383,13 +414,13 @@ class Locales {
     'euro_mark': '€',
     'male_radio_label': 'Un homme',
     'female_radio_label': 'Une femme',
-    'birthdate_label': 'Vous êtes né',
+    'birthdate_label': 'Vous êtes né le',
     'calender_label': 'Date',
     'your_goals_title': 'Vos objectifs',
     'target_bmi_instructions':
-        'Déplacez les repères comme vous le souhaitez pour atteindre vos objectifs',
-    'current_bmi_label': 'Votre IMC actuel',
-    'target_bmi_label': 'Votre objectif',
+        'Vous pouvez conserver l\'objectif proposé par Nifty Diet ou faire clisser le repère pour choisir I objectif qui vous convient le mieux.',
+    'current_bmi_label': 'Actuel',
+    'target_bmi_label': 'Objectif',
     'above_bmi_slider_label': 'Obésité sévère',
     'below_bmi_slider_label': 'Anorexie',
     'back_button_label': 'Retour',
@@ -412,7 +443,7 @@ class Locales {
     'daily_bottom_navigation_label': 'Journal',
     'ingredient_bottom_navigation_label': 'Ingrédient',
     'profile_bottom_navigation_label': 'Profil',
-    'vegetables_chart_label': 'Légumes',
+    'vegetables_chart_label': 'Forfait légumes',
     'today_label': 'Aujourd\'hui',
     'subscription_button_label': 'Choisir cette formule',
     'subscription_view_title': 'Choisissez votre formule',
@@ -421,8 +452,8 @@ class Locales {
     'daily_calories_home_title': 'Vos calories journalières',
     'add_something_to_daily_label': 'Quelque chose à ajouter ?',
     'your_meals_label': 'Vos repas',
-    'nifty_points_budget_label': 'Mon Budget',
-    'remaining_budget_label': 'Depensé',
+    'nifty_points_budget_label': 'Budget',
+    'remaining_budget_label': 'Dépensé',
     'sport_budget_label': 'Sport',
     'delete_dialog_recipe_title': 'Confirmer la suppression de la recette',
     'delete_dialog_ingredient_title':
@@ -454,12 +485,15 @@ class Locales {
         'Vous n\'avez pas encore mangé aujourd\'hui, ajoutez un ingrédient ou une recette à votre repas',
     'add_new_ingredient_screen_title': 'Nouvel ingrédient',
     'add_new_ingredient_screen_sub_title': 'Ajouter un nouvel ingrédient',
+    'change_password_screen_sub_title': 'Changez votre mot de passe',
+    'change_password_screen_hint':
+        'Remplissez tous les champs pour changer votre mot de passe',
     'add_new_ingredient_screen_hint':
         'Remplissez tous les champs pour ajouter un nouvel ingrédient',
     'mandatory_fields_mark': '* obligatoire',
-    'ingredient_name_france_label': 'Nom de l\'ingrédient* (Français)',
+    'ingredient_name_france_label': 'Nom de l\'ingrédient*',
     'ingredient_name_english_label': 'Nom de l\'ingrédient (English)',
-    'grams_per_circle_label': 'Grammes par cercle*',
+    'grams_per_circle_label': 'Grammes par cercle',
     'calories_per_gram_label': 'Calories/100g*',
     'extra_measurement_section_label': 'unités de mesures supplémentaires',
     'unit_name_measurement_label': 'Nom de l\'unité',
@@ -505,15 +539,21 @@ class Locales {
     'calculate_your_effort_sub_title':
         'Obtenez le nombre de calories que vous avez brulées au cours de votre effort physique',
     'intensity_physical_effort_sub_title': 'Intensité de l\'effort physique',
+    'change_password_screen_title': 'changer le mot de passe',
+    'current_password_label': 'Mot de passe actuel',
+    'new_password_label': 'nouveau mot de passe',
     'duration_label': 'Durée',
+    'edit_personal_info_screen_title': 'Modifier les informations personnelles',
+    'edit_health_profile_screen_title': 'modifier le profil de santé',
     'error_snackbar_label': 'Erreur',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Un e-mail est requis.',
+    'current_password_error_message': 'Le mot de passe actuel est requis.',
     'password_error_message': 'Mot de passe requis.',
     'confirm_password_error_message':
         'Confirmer que le mot de passe est requis.',
     'password_not_match_error_message':
-        'Confirmez que le mot de passe ne correspond pas au mot de passe.',
+        'Les mots de passe ne sont pas identiques.',
     'name_error_message': 'Le nom est requis.',
     'birth_date_error_message': 'La date de naissance est requise.',
     'gender_error_message': 'Le sexe est requis.',
@@ -537,8 +577,13 @@ class Locales {
         'le nom de l\'ingrédient France est obligatoire',
     'global_error_message':
         'Une erreur s\'est produite, valeur d\'entrée non valide',
-    'personal_info': 'Personal Info',
+    'logout_confirm_question': 'Êtes-vous sûr de vouloir vous déconnecter?',
+    'personal_info': 'Informations personnelles',
+    'health_profile': 'Historique de poids',
     'cal': 'KCAL',
     'np': 'NP',
+    'language_label': 'Langue',
+    'display_unit_label': 'Unité de mesure calorique',
+    'logout_label': 'Quitter',
   };
 }

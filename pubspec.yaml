@@ -1,5 +1,5 @@
 name: nifty_mobile
-version: 1.0.1+2
+version: 1.0.2+3
 publish_to: none
 description: A new Flutter project.
 environment: 
@@ -53,7 +53,8 @@ flutter_native_splash:
 flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "assets/images/logo.png"
+  image_path_ios: "assets/images/logo_ios.png"
+  image_path_android: "assets/images/logo.png"
   min_sdk_android: 21 # android min sdk min:16, default 21
 
 

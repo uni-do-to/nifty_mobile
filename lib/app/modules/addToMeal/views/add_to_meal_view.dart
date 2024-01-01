@@ -3,6 +3,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
+import 'package:nifty_mobile/app/config/size_constants.dart';
 import 'package:nifty_mobile/app/modules/addToMeal/views/ingredient_teb_view.dart';
 import 'package:nifty_mobile/app/modules/addToMeal/views/recipe_tab_view.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
@@ -20,39 +21,31 @@ class AddToMealView extends GetView<AddToMealController> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
-        leadingWidth: 25,
+        leadingWidth: 30,
         leading: Container(
-          padding: EdgeInsets.only(
-            top: 35,
-          ),
+          alignment: Alignment.center,
           child: IconButton(
             icon: Icon(
               Icons.arrow_back_ios,
               color: theme?.iconTheme.color,
-              size: 20,
             ),
             onPressed: () => Get.back(),
           ),
         ),
         title: Container(
-          padding: const EdgeInsets.only(
-            top: 47,
-            bottom: 13,
-          ),
           child: Text('Ajouter Au Repas'.tr.toUpperCase()),
         ),
         centerTitle: false,
         backgroundColor: Colors.white,
-        titleTextStyle: theme?.textTheme.bodySmall?.copyWith(
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
-        toolbarHeight: 86,
+        titleTextStyle: theme?.textTheme.titleLarge
+            ?.copyWith(color: ColorConstants.toolbarTextColor),
+
+        toolbarHeight: 40,
       ),
-      body: SafeArea(
-        child: Container(
-          color: ColorConstants.white,
-          padding: EdgeInsets.symmetric(vertical: 30.toHeight),
+      body: Container(
+        color: ColorConstants.grayBackgroundColor,
+        padding: const EdgeInsets.only(top:16),
+        child: SafeArea(
           child: DefaultTabController(
             length: 2,
             child: Container(

@@ -36,7 +36,7 @@ class DailyView extends GetView<DailyController> {
         backgroundColor: Colors.white,
         titleTextStyle: theme?.textTheme.titleLarge
             ?.copyWith(color: ColorConstants.toolbarTextColor),
-        toolbarHeight: 86,
+        toolbarHeight: 40,
       ),
       body: Container(
         color: Colors.white,

@@ -38,7 +38,7 @@ class BudgetChart extends StatelessWidget {
     final double vegetablesPercent = 5 ;
 
     // Calculate box heights
-    final double consumedHeight = viewHeight * consumedPercent / 100;
+    final double consumedHeight = viewHeight * (consumedPercent + vegetablesPercent) / 100;
     final double sportHeight = viewHeight * sportPercent / 100;
     final double? overBudgetHeight = overBudgetPercent > 0 ? viewHeight * overBudgetPercent / 100 : null ;
 
@@ -180,7 +180,7 @@ class BudgetChart extends StatelessWidget {
             //Consumed calories
             if(overBudgetHeight == null)
               Positioned(
-              bottom: max( 0 , consumedHeight -10),
+              bottom: max( 5 , consumedHeight -10),
               left: 170,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,

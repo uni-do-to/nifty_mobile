@@ -78,7 +78,7 @@ class RecipeIngredientTab extends StatelessWidget {
           ),
           Obx(() {
             return Container(
-              height: 180,
+              height: 200,
               child: AddQuantityWidget(
                 theme: theme!,
                 measurementUnitsItems:

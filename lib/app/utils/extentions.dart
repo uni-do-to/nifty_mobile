@@ -37,9 +37,9 @@ extension ToDisplayUnit on double {
     var currentDisplayUnit = Get.find<ConfigService>().displayUnit ;
 
     if(currentDisplayUnit == AppConstants.displayUnits[0]) {
-      return "${(this / 33).toPrecision(1)}" ;
+      return "${(this / 33).round()}" ;
     }
-    return "${toPrecision(1)}" ;
+    return "${round()}" ;
   }
 }
 

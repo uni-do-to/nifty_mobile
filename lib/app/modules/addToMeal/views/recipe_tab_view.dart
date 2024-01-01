@@ -149,7 +149,7 @@ class RecipeTabView extends StatelessWidget {
           }, controller.loading),
           ObxValue((state) {
             return Container(
-              height: 180,
+              height: 200,
               child: AddQuantityWidget(
                 theme: theme,
                 measurementUnitsItems: controller.measurementUnitsRecipeItems,

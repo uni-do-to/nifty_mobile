@@ -57,16 +57,16 @@ class AddNewIngredientController extends GetxController {
     } else {
       ingredientNameFranceError.value = '';
     }
-    if (ingredientNameEnglishController.text.isEmpty) {
-      ingredientNameEnglishError.value = LocaleKeys.ingredient_name_english_label.tr;
-    } else {
-      ingredientNameEnglishError.value = '';
-    }
-    if (gramsPerCircleController.text.isEmpty) {
-      gramsPerCircleError.value = LocaleKeys.ingredient_grams_per_circle_error_message.tr;
-    } else {
-      gramsPerCircleError.value = '';
-    }
+    // if (ingredientNameEnglishController.text.isEmpty) {
+    //   ingredientNameEnglishError.value = LocaleKeys.ingredient_name_english_label.tr;
+    // } else {
+    //   ingredientNameEnglishError.value = '';
+    // }
+    // if (gramsPerCircleController.text.isEmpty) {
+    //   gramsPerCircleError.value = LocaleKeys.ingredient_grams_per_circle_error_message.tr;
+    // } else {
+    //   gramsPerCircleError.value = '';
+    // }
     if (caloriesPerGramController.text.isEmpty) {
       caloriesPerGramError.value = LocaleKeys.ingredient_calories_per_grams_error_message.tr;
     } else {
@@ -74,8 +74,6 @@ class AddNewIngredientController extends GetxController {
     }
 
     return ingredientNameFranceError.isEmpty &&
-        ingredientNameEnglishError.isEmpty &&
-        gramsPerCircleError.isEmpty &&
         caloriesPerGramError.isEmpty;
   }
 
@@ -110,7 +108,7 @@ class AddNewIngredientController extends GetxController {
 
         IngredientRequest request = IngredientRequest(
           data: Data(
-              nameEn: ingredientNameEnglishController.text,
+              // nameEn: ingredientNameEnglishController.text,
               nameFr: ingredientNameFranceController.text,
               caloriesPer100grams:
                   double.tryParse(caloriesPerGramController.text),

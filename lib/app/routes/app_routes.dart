@@ -20,6 +20,9 @@ abstract class Routes {
   static const ADD_NEW_RECIPE = _Paths.ADD_NEW_RECIPE;
   static const RECIPE_INGREDIENT_TAB = _Paths.RECIPE_INGREDIENT_TAB;
   static const SPLASH = _Paths.SPLASH;
+  static const CHANGE_PASSWORD = _Paths.CHANGE_PASSWORD;
+  static const EDIT_PERSONAL_INFO = _Paths.EDIT_PERSONAL_INFO;
+  static const EDIT_HEALTH_PROFILE = _Paths.EDIT_HEALTH_PROFILE;
 }
 
 abstract class _Paths {
@@ -42,4 +45,7 @@ abstract class _Paths {
   static const ADD_NEW_INGREDIENT = '/add-new-ingredient';
   static const ADD_SPORT = '/add-sport';
   static const SPLASH = '/splash';
+  static const CHANGE_PASSWORD = '/change-password';
+  static const EDIT_PERSONAL_INFO = '/edit-personal-info';
+  static const EDIT_HEALTH_PROFILE = '/edit-health-profile';
 }

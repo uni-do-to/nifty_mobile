@@ -5,6 +5,7 @@ import 'package:nifty_mobile/app/data/models/daily_model.dart';
 import 'package:nifty_mobile/app/data/models/sports_model.dart';
 import 'package:nifty_mobile/app/data/models/unit_model.dart';
 import 'package:nifty_mobile/app/data/providers/sport_provider.dart';
+import 'package:nifty_mobile/app/services/auth_service.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
 class AddSportController extends GetxController {
@@ -42,6 +43,9 @@ class AddSportController extends GetxController {
       var responseSportList = await provider.getSportsList();
       this.sportsList = responseSportList?.data ?? [];
       filteredItems.value = sportsList;
+      selectedSport.value = filteredItems[0];
+      initMeasurementUnits();
+
     } catch (err, _) {
       print(err);
     } finally {
@@ -125,8 +129,9 @@ class AddSportController extends GetxController {
 
     var quantity = double.parse(sportQuantity.value);
     print("adding $quantity   ${selectedMeasurementUnit.value?.id}" , ) ;
+    var userWeight = Get.find<AuthService>().credentials?.user?.weight??0 ;
     // Assuming you have a way to calculate calories for the ingredient
-    var calories = selectedMeasurementUnit.value?.id == 1 ? ((selectedSport.value!.attributes?.caloriesPerMinute??0) * quantity) : quantity;
+    var calories = selectedMeasurementUnit.value?.id == 1 ? ((selectedSport.value!.attributes?.caloriesPerMinute??0) * quantity * userWeight) : quantity;
 
     print("adding $calories" , ) ;
     print("adding ${selectedSport.value!.attributes?.caloriesPerMinute}") ;

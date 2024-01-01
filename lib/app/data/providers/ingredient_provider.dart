@@ -9,6 +9,7 @@ import '../models/category_model.dart';
 import '../models/ingredient_request_model.dart';
 
 class IngredientProvider extends BaseProvider {
+
   Future<Ingredient?> getIngredient(int id) async {
     final response = await get('ingredients/$id');
     return decode<Ingredient?>(response, Ingredient.fromJson);
@@ -34,7 +35,8 @@ class IngredientProvider extends BaseProvider {
         query: {
           'filters[sub_category]': subCategoryId?.toString(),
           'filters[isAdmin]': "true",
-          'pagination[pageSize]': "1000"
+          'pagination[pageSize]': "1000",
+          'sort': '${Get.locale?.languageCode == 'fr' ? 'nameFr' : 'nameEn'}:asc'
         }..removeWhere((key, value) => value == null));
 
     return decode<ApiListResponse<Ingredient>?>(
