@@ -110,7 +110,7 @@ class LoginView extends GetView<LoginController> {
                             onPressed: () async {
                               try {
                                 await controller.login();
-                                Get.offAllNamed(Routes.HOME);
+
                               } catch (err, _) {
                                 printError(info: err.toString());
                                 final strippedMessage = err

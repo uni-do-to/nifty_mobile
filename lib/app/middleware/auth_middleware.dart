@@ -28,3 +28,27 @@ class NotAuthMiddleware extends GetMiddleware {
     return null ;
   }
 }
+
+class SubscribedMiddleware extends GetMiddleware {
+  final AuthService authService = Get.find();
+
+  @override
+  RouteSettings? redirect(String? route) {
+    if (authService.credentials?.user?.subscribed != true) {
+      return const RouteSettings(name: Routes.SUBSCRIPTION);
+    }
+    return null ;
+  }
+}
+
+class NotSubscribedMiddleware extends GetMiddleware {
+  final AuthService authService = Get.find();
+
+  @override
+  RouteSettings? redirect(String? route) {
+    if (authService.credentials?.user?.subscribed == true) {
+      return const RouteSettings(name: Routes.HOME);
+    }
+    return null ;
+  }
+}

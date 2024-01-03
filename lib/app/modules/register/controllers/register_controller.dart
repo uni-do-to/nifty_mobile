@@ -7,6 +7,8 @@ import 'package:nifty_mobile/app/controllers/auth_controller.dart';
 import 'package:nifty_mobile/app/modules/register/signup_request_model.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
+import '../../../routes/app_pages.dart';
+
 class RegisterController extends AuthController {
   RxInt currentStep = 0.obs;
 
@@ -280,7 +282,12 @@ class RegisterController extends AuthController {
             targetWeight: targetWeight.value.toString(),
             dailyCalories: targetCaloriesPerDay.value);
 
-        await signUp(data);
+        var auth = await signUp(data);
+        if(auth?.user?.subscribed == true) {
+          Get.offAllNamed(Routes.HOME);
+        }else {
+          Get.offAllNamed(Routes.SUBSCRIPTION);
+        }
       } catch (err, _) {
         // message = 'There is an issue with the app during request the data, '
         //         'please contact admin for fixing the issues ' +

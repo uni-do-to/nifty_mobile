@@ -29,6 +29,8 @@ class LocaleKeys {
   static const nifty_points_measurement = 'nifty_points_measurement';
   static const subscription_per_year = 'subscription_per_year';
   static const euro_mark = 'euro_mark';
+  static const month = 'month';
+  static const year = 'year';
   static const male_radio_label = 'male_radio_label';
   static const female_radio_label = 'female_radio_label';
   static const birthdate_label = 'birthdate_label';
@@ -232,6 +234,8 @@ class Locales {
     'nifty_points_measurement': 'NP',
     'subscription_per_year': '/year',
     'euro_mark': '€',
+    'month': 'mo',
+    'year': 'y',
     'male_radio_label': 'Male',
     'female_radio_label': 'Female',
     'birthdate_label': 'Your Birthdate',
@@ -412,6 +416,8 @@ class Locales {
     'calories_per_gram_measurement': 'kCal/J',
     'subscription_per_year': '/an',
     'euro_mark': '€',
+    'month': 'mo',
+    'year': 'an',
     'male_radio_label': 'Un homme',
     'female_radio_label': 'Une femme',
     'birthdate_label': 'Vous êtes né le',

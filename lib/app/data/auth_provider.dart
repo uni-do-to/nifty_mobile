@@ -24,10 +24,10 @@ class AuthProvider extends BaseProvider {
     return decode<UserPermission?>(response, UserPermission.fromJson);
   }
 
-  Future<UserPermission?> getMe() async {
+  Future<User?> getMe() async {
     final response = await get(ConfigAPI.meUrl);
 
-    return decode<UserPermission?>(response, UserPermission.fromJson);
+    return decode<User?>(response, User.fromJson);
   }
 
   Future<UserPermission?> changePassword(ChangePasswordRequest reqBody) async {

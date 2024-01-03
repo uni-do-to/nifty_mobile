@@ -45,12 +45,12 @@ class AuthController extends GetxController {
     }
   }
 
-  Future<UserPermission?> getMe() async {
+  Future<User?> getMe() async {
     try {
-      UserPermission? user = await authProvider.getMe();
+      User? user = await authProvider.getMe();
 
-      if(user?.jwt != null) {
-        await _authService.saveCredentials(user) ;
+      if(user?.id != null) {
+        await _authService.updateUserInfo(user!) ;
       }
       return user ;
     } catch (e) {

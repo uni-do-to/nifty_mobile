@@ -86,7 +86,6 @@ class SignupView extends GetView<RegisterController> {
               onPressed: () async {
                 try {
                   await controller.signup();
-                  Get.offAllNamed(Routes.HOME);
                 } catch (err, _) {
                   printError(info: err.toString());
                   final strippedMessage = err

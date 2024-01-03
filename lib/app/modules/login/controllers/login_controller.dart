@@ -4,6 +4,8 @@ import 'package:nifty_mobile/app/controllers/auth_controller.dart';
 import 'package:nifty_mobile/app/data/auth_provider.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
+import '../../../routes/app_pages.dart';
+
 class LoginController extends AuthController {
   final AuthProvider provider;
 
@@ -43,7 +45,14 @@ class LoginController extends AuthController {
       try {
         isLogin.value = true;
 
-        await signIn(emailController.text, passwordController.text);
+        var auth = await signIn(emailController.text, passwordController.text);
+        if(auth?.user != null){
+          if(auth?.user?.subscribed == true){
+            Get.offAllNamed(Routes.HOME);
+          }else {
+            Get.offAllNamed(Routes.SUBSCRIPTION);
+          }
+        }
       } catch (err, _) {
         // message = 'There is an issue with the app during request the data, '
         //         'please contact admin for fixing the issues ' +

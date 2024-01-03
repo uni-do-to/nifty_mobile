@@ -24,6 +24,9 @@ class ConfigAPI {
 
 
   //subscription apis
-  static const String checkoutSessionUrl = '/checkoutSession';
+  static const String createProductCheckoutSessionUrl = '/createProductCheckoutSession';
+  static const String retrieveCheckoutSessionUrl = '/retrieveCheckoutSession';
+
+  static const String getSubscriptionsPlans = '/getSubscriptionsPlans';
 
 }

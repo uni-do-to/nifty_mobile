@@ -1,0 +1,18 @@
+{
+  "id": "cs_test_a1V6WMk1RmA0JKhI2vlMIrJrINvFWq62hgUnuyYbyxuBr2twbsMA4TXXDD",
+  "object": "checkout.session",
+
+  "amount_total": 500000,
+  "currency": "inr",
+  "customer_details": {
+    "email": "test@gmail.com",
+    "name": "test",
+    "phone": null,
+    "tax_exempt": "none"
+  },
+  "payment_status": "paid",
+  "metadata": {
+    "productId": "23",
+    "productName": "Web Development"
+  }
+}

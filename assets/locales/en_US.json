@@ -17,6 +17,8 @@
   "nifty_points_measurement": "NP",
   "subscription_per_year": "/year",
   "euro_mark": "€",
+  "month" : "mo",
+  "year" : "y",
   "male_radio_label": "Male",
   "female_radio_label": "Female",
   "birthdate_label": "Your Birthdate",

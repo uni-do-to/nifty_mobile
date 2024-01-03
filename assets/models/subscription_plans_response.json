@@ -1,0 +1,45 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "title": "strapi App subscription ",
+      "description": "test product for strapi ",
+      "price": 10,
+      "currency": "eur",
+      "isSubscription": true,
+      "interval": "month",
+      "trialPeriodDays": 30,
+      "stripeProductId": "prod_PBXh2VLli92I3D",
+      "stripePriceId": "",
+      "stripePlanId": "plan_PBXhGu2TSAmTvH"
+    },
+    {
+      "id": 2,
+      "title": "strapi stripe payment product 2",
+      "slug": null,
+      "description": "strapi stripe payment product 2",
+      "price": 11,
+      "currency": "eur",
+      "isSubscription": true,
+      "interval": "month",
+      "trialPeriodDays": 60,
+      "stripeProductId": "prod_PBXjnTej4sHT5S",
+      "stripePriceId": "",
+      "stripePlanId": "plan_PBXji9wsAvRYjq"
+    },
+    {
+      "id": 3,
+      "title": "test price",
+      "slug": null,
+      "description": "test product",
+      "price": 10.99,
+      "currency": "eur",
+      "isSubscription": true,
+      "interval": "month",
+      "trialPeriodDays": 0,
+      "stripeProductId": "prod_PJ8pQwRL8tMniq",
+      "stripePriceId": "",
+      "stripePlanId": "plan_PJ8pfL2Nbc9Sn5"
+    }
+  ]
+}

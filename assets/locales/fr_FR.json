@@ -14,6 +14,8 @@
   "calories_per_gram_measurement": "kCal/J",
   "subscription_per_year": "/an",
   "euro_mark": "€",
+  "month" : "mo",
+  "year" : "an",
   "male_radio_label": "Un homme",
   "female_radio_label": "Une femme",
   "birthdate_label": "Vous êtes né le",

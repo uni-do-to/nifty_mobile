@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:nifty_mobile/app/data/auth_provider.dart';
 import 'package:nifty_mobile/app/data/providers/subscription_provider.dart';
 
 import '../controllers/subscription_controller.dart';
@@ -9,8 +10,11 @@ class SubscriptionBinding extends Bindings {
     Get.lazyPut<SubscriptionProvider>(
           () => SubscriptionProvider(),
     );
+    Get.lazyPut<AuthProvider>(
+          () => AuthProvider(),
+    );
     Get.lazyPut<SubscriptionController>(
-      () => SubscriptionController(Get.find()),
+      () => SubscriptionController(Get.find() , Get.find()),
     );
   }
 }

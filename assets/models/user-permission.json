@@ -16,7 +16,11 @@
     "targetBmi": 25,
     "targetWeight": 72.25,
     "dailyCalories": 1736.55,
-    "createdAt": "2023-12-12T23:58:31.741Z",
-    "updatedAt": "2023-12-12T23:58:31.741Z"
+    "subscribed": false,
+    "subscriptionStatus": "Unknown",
+    "subscriptionEndDate": "2024-05-04",
+    "lastSubscriptionUpdate": "2024-01-03T23:44:04+02:00",
+    "subscriptionProductId": "prod_PJB0Z6hN6oK4oV",
+    "subscriptionPlanId": "plan_PJB0sZ3u8NshMb"
   }
 }

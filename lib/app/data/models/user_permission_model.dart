@@ -35,8 +35,12 @@ class User {
   double? targetBmi;
   double? targetWeight;
   double? dailyCalories;
-  String? createdAt;
-  String? updatedAt;
+  bool? subscribed;
+  String? subscriptionStatus;
+  String? subscriptionEndDate;
+  String? lastSubscriptionUpdate;
+  String? subscriptionProductId;
+  String? subscriptionPlanId;
 
   User(
       {this.id,
@@ -53,7 +57,13 @@ class User {
       this.bmi,
       this.targetBmi,
       this.targetWeight,
-      this.dailyCalories});
+      this.dailyCalories,
+      this.subscribed,
+      this.subscriptionStatus,
+      this.subscriptionEndDate,
+      this.lastSubscriptionUpdate,
+      this.subscriptionProductId,
+      this.subscriptionPlanId});
 
   User.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -71,6 +81,12 @@ class User {
     targetBmi = double.tryParse(json['targetBmi'].toString());
     targetWeight = double.tryParse(json['targetWeight'].toString());
     dailyCalories = double.tryParse(json['dailyCalories'].toString());
+    subscribed = json['subscribed'];
+    subscriptionStatus = json['subscriptionStatus'];
+    subscriptionEndDate = json['subscriptionEndDate'];
+    lastSubscriptionUpdate = json['lastSubscriptionUpdate'];
+    subscriptionProductId = json['subscriptionProductId'];
+    subscriptionPlanId = json['subscriptionPlanId'];
   }
 
   Map<String, dynamic> toJson() {
@@ -90,6 +106,12 @@ class User {
     data['targetBmi'] = targetBmi;
     data['targetWeight'] = targetWeight;
     data['dailyCalories'] = dailyCalories;
+    data['subscribed'] = subscribed;
+    data['subscriptionStatus'] = subscriptionStatus;
+    data['subscriptionEndDate'] = subscriptionEndDate;
+    data['lastSubscriptionUpdate'] = lastSubscriptionUpdate;
+    data['subscriptionProductId'] = subscriptionProductId;
+    data['subscriptionPlanId'] = subscriptionPlanId;
     return data;
   }
 }

@@ -77,14 +77,20 @@ class AppPages {
             builder: (context, child) => scaleWidgetBuilder(context, child!),
             child: SubscriptionView()),
         binding: SubscriptionBinding(),
-        middlewares: [AuthMiddleware()]),
+        middlewares: [
+          AuthMiddleware(),
+          NotSubscribedMiddleware()
+        ]),
     GetPage(
       name: _Paths.HOME,
       page: () => ScaleWidget(
           builder: (context, child) => scaleWidgetBuilder(context, child!),
           child: const HomeView()),
       binding: HomeBinding(),
-      middlewares: [AuthMiddleware()],
+      middlewares: [
+        AuthMiddleware(),
+        SubscribedMiddleware()
+      ],
     ),
     GetPage(
       name: _Paths.ADD_TO_MEAL,
@@ -92,7 +98,10 @@ class AppPages {
           builder: (context, child) => scaleWidgetBuilder(context, child!),
           child: const AddToMealView()),
       binding: AddToMealBinding(),
-      middlewares: [AuthMiddleware()],
+      middlewares: [
+        AuthMiddleware(),
+        SubscribedMiddleware()
+      ],
     ),
     GetPage(
       name: _Paths.ADD_NEW_INGREDIENT,
@@ -100,7 +109,10 @@ class AppPages {
           builder: (context, child) => scaleWidgetBuilder(context, child!),
           child: const AddNewIngredientView()),
       binding: AddNewIngredientBinding(),
-      middlewares: [AuthMiddleware()],
+      middlewares: [
+        AuthMiddleware(),
+        SubscribedMiddleware()
+      ],
     ),
     GetPage(
       name: _Paths.ADD_SPORT,
@@ -108,7 +120,10 @@ class AppPages {
           builder: (context, child) => scaleWidgetBuilder(context, child!),
           child: const AddSportView()),
       binding: AddSportBinding(),
-      middlewares: [AuthMiddleware()],
+      middlewares: [
+        AuthMiddleware(),
+        SubscribedMiddleware()
+      ],
     ),
     GetPage(
         name: _Paths.ADD_NEW_RECIPE,
@@ -117,7 +132,8 @@ class AppPages {
             child: const AddNewRecipeView()),
         binding: AddNewRecipeBinding(),
         middlewares: [
-          AuthMiddleware()
+          AuthMiddleware(),
+          SubscribedMiddleware()
         ],
         children: [
           GetPage(
@@ -126,7 +142,10 @@ class AppPages {
                 builder: (context, child) =>
                     scaleWidgetBuilder(context, child!),
                 child: const AddRecipeIngredientView()),
-            middlewares: [AuthMiddleware()],
+            middlewares: [
+              AuthMiddleware(),
+              SubscribedMiddleware()
+            ],
           ),
         ]),
     GetPage(
@@ -135,6 +154,9 @@ class AppPages {
           builder: (context, child) => scaleWidgetBuilder(context, child!),
           child: const ChangePasswordView()),
       binding: ChangePasswordBinding(),
+      middlewares: [
+        AuthMiddleware(),
+      ],
     ),
     GetPage(
       name: _Paths.EDIT_PERSONAL_INFO,
@@ -150,6 +172,9 @@ class AppPages {
           builder: (context, child) => scaleWidgetBuilder(context, child!),
           child: EditHealthProfileView()),
       binding: EditHealthProfileBinding(),
+      middlewares: [
+        AuthMiddleware(),
+      ],
     ),
   ];
 }
