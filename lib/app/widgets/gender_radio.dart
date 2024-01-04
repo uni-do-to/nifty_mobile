@@ -55,7 +55,7 @@ class GenderRadio extends StatelessWidget {
               label,
               style: theme?.textTheme.titleMedium?.copyWith(
                 fontSize: 18,
-                fontWeight: FontWeight.w800
+                // fontWeight: FontWeight.w800
               ),
               textAlign: TextAlign.center,
             ),

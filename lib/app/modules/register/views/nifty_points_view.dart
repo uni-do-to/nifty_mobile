@@ -18,7 +18,15 @@ class NiftyPointsView extends GetView<RegisterController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          RegisterViewsTitle(text: LocaleKeys.nifty_points_screen_title.tr),
+          const SizedBox(
+            height: 10.5,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RegisterViewsTitle(text: LocaleKeys.nifty_points_screen_title.tr),
+            ],
+          ),
           Expanded(child: Container()),
           Text(
             controller.nameController.text + LocaleKeys.daily_quantity_label.tr,

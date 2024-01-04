@@ -41,7 +41,12 @@ class YourBmiView extends GetView<RegisterController> {
           const SizedBox(
             height: 10.5,
           ),
-          RegisterViewsTitle(text: LocaleKeys.your_bmi_screen_title.tr),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              RegisterViewsTitle(text: LocaleKeys.your_bmi_screen_title.tr),
+            ],
+          ),
           const SizedBox(
             height: 10.8,
           ),
@@ -116,15 +121,15 @@ class YourBmiView extends GetView<RegisterController> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    LocaleKeys.your_goals_title.tr,
-                    style: theme?.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 7,
-                  ),
+                  // Text(
+                  //   LocaleKeys.your_goals_title.tr,
+                  //   style: theme?.textTheme.titleMedium?.copyWith(
+                  //     fontWeight: FontWeight.w600,
+                  //   ),
+                  // ),
+                  // const SizedBox(
+                  //   height: 7,
+                  // ),
                   Text(
                     LocaleKeys.target_bmi_instructions.tr,
                     style: theme?.textTheme.titleSmall?.copyWith(
@@ -141,8 +146,8 @@ class YourBmiView extends GetView<RegisterController> {
                       NeuCard(
                         backgroundColor: Colors.white,
                         child: Container(
-                          width: 136,
-                          height: 130,
+                          width: 148,
+                          height: 132,
                           padding: const EdgeInsets.symmetric(
                             vertical: 5,
                             horizontal: 20,
@@ -216,8 +221,8 @@ class YourBmiView extends GetView<RegisterController> {
                         backgroundColor:
                             ColorConstants.mainThemeColor.withOpacity(0.4),
                         child: Container(
-                          width: 136,
-                          height: 130,
+                          width: 148,
+                          height: 132,
                           padding: const EdgeInsets.symmetric(
                             vertical: 5,
                             horizontal: 20,

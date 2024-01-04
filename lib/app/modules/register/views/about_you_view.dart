@@ -40,19 +40,24 @@ class AboutYouView extends GetView<RegisterController> {
             mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Container(
-                alignment: Alignment.center,
-                child: Image.asset(
-                  'assets/images/logo.png',
-                  height: 182,
-                  width: 244,
-                  fit: BoxFit.fill,
-                ),
-              ),
+              // Container(
+              //   alignment: Alignment.center,
+              //   child: Image.asset(
+              //     'assets/images/logo.png',
+              //     height: 182,
+              //     width: 244,
+              //     fit: BoxFit.fill,
+              //   ),
+              // ),
               const SizedBox(
-                height: 24.8,
+                height: 10.5,
               ),
-              RegisterViewsTitle(text: LocaleKeys.about_you_screen_title.tr),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  RegisterViewsTitle(text: LocaleKeys.about_you_screen_title.tr),
+                ],
+              ),
               const SizedBox(
                 height: 24.8,
               ),
@@ -100,6 +105,15 @@ class AboutYouView extends GetView<RegisterController> {
                 ),
               ),
               const SizedBox(
+                height: 24,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  RegisterViewsTitle(text: LocaleKeys.choose_gender_label.tr),
+                ],
+              ),
+              const SizedBox(
                 height: 12,
               ),
               Neumorphic(
@@ -111,7 +125,7 @@ class AboutYouView extends GetView<RegisterController> {
                     return Column(
                       children: [
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
                             GenderRadio(
                               label: LocaleKeys.male_radio_label.tr,
@@ -120,6 +134,9 @@ class AboutYouView extends GetView<RegisterController> {
                               groupValue: controller.selectedGender.value,
                               onChanged: (value) => controller
                                   .selectedGender.value = value.toString(),
+                            ),
+                            SizedBox(
+                              width: 8,
                             ),
                             GenderRadio(
                               label: LocaleKeys.female_radio_label.tr,
