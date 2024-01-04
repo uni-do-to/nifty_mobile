@@ -29,15 +29,15 @@ class YourBmiView extends GetView<RegisterController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Container(
-            alignment: Alignment.center,
-            child: Image.asset(
-              'assets/images/logo.png',
-              height: 182,
-              width: 244,
-              fit: BoxFit.fill,
-            ),
-          ),
+          // Container(
+          //   alignment: Alignment.center,
+          //   child: Image.asset(
+          //     'assets/images/logo.png',
+          //     height: 182,
+          //     width: 244,
+          //     fit: BoxFit.fill,
+          //   ),
+          // ),
           const SizedBox(
             height: 10.5,
           ),

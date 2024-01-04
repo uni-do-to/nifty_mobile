@@ -107,7 +107,7 @@ class SubscriptionView extends GetView<SubscriptionController> {
                           padding: EdgeInsets.all(16),
                           child: Column(
                             children: <Widget>[
-                              SizedBox(height: 48),
+                              SizedBox(height: 32),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -133,13 +133,15 @@ class SubscriptionView extends GetView<SubscriptionController> {
                                   ),
                                   Text(
                                     "/${plan.interval?.tr}",
-                                    style: theme?.textTheme.titleMedium,
+                                    style: theme?.textTheme.titleMedium?.copyWith(
+                                      height: 0.4
+                                    ),
                                     textAlign: TextAlign.end,
                                   ),
                                 ],
                               ),
 
-                              SizedBox(height: 24),
+                              SizedBox(height: 16),
                               Visibility(
                                   visible: plan.trialPeriodDays!=null && plan.trialPeriodDays! > 0,
                                   maintainSize: true,
