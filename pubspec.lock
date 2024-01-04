@@ -718,9 +718,11 @@ packages:
   stripe_checkout:
     dependency: "direct main"
     description:
-      path: "../flutter_stripe_fork/packages/stripe_checkout"
-      relative: true
-    source: path
+      path: "packages/stripe_checkout"
+      ref: HEAD
+      resolved-ref: a3fe62680229d2795f896cd858498a196a15cf3a
+      url: "https://github.com/tohami/flutter_stripe.git"
+    source: git
     version: "1.0.2"
   stripe_ios:
     dependency: transitive
