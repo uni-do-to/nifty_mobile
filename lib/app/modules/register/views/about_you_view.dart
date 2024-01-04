@@ -50,7 +50,7 @@ class AboutYouView extends GetView<RegisterController> {
               //   ),
               // ),
               const SizedBox(
-                height: 10.5,
+                height: 20,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -82,6 +82,7 @@ class AboutYouView extends GetView<RegisterController> {
                           errorText: controller.nameError.value,
                         );
                       }, controller.nameError),
+                      SizedBox(height: 16,),
                       ObxValue((state) {
                         return NeuFormField(
                           hintText: LocaleKeys.birthdate_label.tr,

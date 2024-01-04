@@ -11,6 +11,7 @@ import 'package:nifty_mobile/app/modules/subscription/controllers/subscription_c
 import '../../../../generated/locales.g.dart';
 import '../../../utils/size_utils.dart';
 import '../../profile/views/profile_view.dart';
+import '../../register/views/register_views_title.dart';
 
 class SubscriptionView extends GetView<SubscriptionController> {
 
@@ -25,17 +26,14 @@ class SubscriptionView extends GetView<SubscriptionController> {
     var theme = NeumorphicTheme.of(context)?.current;
 
     return Scaffold(
+
       body: Padding(
-        padding: const EdgeInsets.all(40.0),
+        padding: const EdgeInsets.all(24.0),
         child: Column(
           children: [
-            Expanded(child: Container()),
-            Text(
-              LocaleKeys.subscription_view_title.tr,
-              style: theme?.textTheme.bodyMedium?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            SizedBox(height: 36,) ,
+            RegisterViewsTitle(text: LocaleKeys.subscription_view_title.tr),
+
             Expanded(child: Container()),
             Container(
               child: Obx( () {
@@ -98,11 +96,12 @@ class SubscriptionView extends GetView<SubscriptionController> {
                     options: CarouselOptions(
                       height: 420,
                       enlargeCenterPage: true,
-                      enableInfiniteScroll: false
+                      enableInfiniteScroll: false,
+                      viewportFraction: 0.9
                     ),
                     items: controller.plans.map((plan) {
                       return Container(
-                        padding: EdgeInsets.all(8),
+                        padding: EdgeInsets.all(4),
                         child: Neumorphic(
                           padding: EdgeInsets.all(16),
                           child: Column(
@@ -140,7 +139,6 @@ class SubscriptionView extends GetView<SubscriptionController> {
                                   ),
                                 ],
                               ),
-
                               SizedBox(height: 16),
                               Visibility(
                                   visible: plan.trialPeriodDays!=null && plan.trialPeriodDays! > 0,

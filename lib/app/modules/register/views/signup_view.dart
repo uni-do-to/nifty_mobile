@@ -22,6 +22,7 @@ class SignupView extends GetView<RegisterController> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
+          SizedBox(height: 20,) ,
           RegisterViewsTitle(text: LocaleKeys.signup_screen_title.tr),
           Expanded(child: Container()),
           ObxValue((state) {

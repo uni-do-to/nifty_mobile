@@ -71,7 +71,7 @@ class AddNewRecipeView extends GetView<AddNewRecipeController> {
                       keyboardType: TextInputType.text,
                       controller: controller.recipeNameController,
                       autocorrect: false,
-                      errorText: controller.recipeNameError.value,
+                      // errorText: controller.recipeNameError.value,
                     ),
                     Text(
                       LocaleKeys.grams_per_circle_label.tr,
@@ -88,7 +88,7 @@ class AddNewRecipeView extends GetView<AddNewRecipeController> {
                       ],
                       keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),                      controller: controller.recipeGramsPerCircleController,
                       autocorrect: false,
-                      errorText: controller.recipeGramsPerCircleError.value,
+                      // errorText: controller.recipeGramsPerCircleError.value,
                     )
                   ],
                 ),

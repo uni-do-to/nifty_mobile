@@ -75,16 +75,18 @@ class AddQuantityWidget extends StatelessWidget {
                   height: 8,
                 ),
                 Text(
-                  selectedMeasurementUnit?.name ==
-                          LocaleKeys.circle_unit_label.tr
-                      ? LocaleKeys.circle_unit_label.tr
-                      : selectedMeasurementUnit?.name ==
-                              LocaleKeys.quantity_text_field_label.tr
-                          ? LocaleKeys.quantity_text_field_label.tr
-                          : selectedMeasurementUnit?.name ==
-                                  LocaleKeys.minutes_unit_label.tr
-                              ? LocaleKeys.duration_label.tr
-                              : LocaleKeys.calories_burned_unit_label.tr,
+                  LocaleKeys.quantity_text_field_label.tr ,
+
+                  // selectedMeasurementUnit?.name ==
+                  //         LocaleKeys.circle_unit_label.tr
+                  //     ? LocaleKeys.circle_unit_label.tr
+                  //     : selectedMeasurementUnit?.name ==
+                  //             LocaleKeys.quantity_text_field_label.tr
+                  //         ? LocaleKeys.quantity_text_field_label.tr
+                  //         : selectedMeasurementUnit?.name ==
+                  //                 LocaleKeys.minutes_unit_label.tr
+                  //             ? LocaleKeys.duration_label.tr
+                  //             : LocaleKeys.calories_burned_unit_label.tr,
                   style: theme.textTheme.bodySmall?.copyWith(fontSize: 14),
                 ),
                 SizedBox(

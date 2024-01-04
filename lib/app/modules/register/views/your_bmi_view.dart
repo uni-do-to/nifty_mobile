@@ -39,7 +39,7 @@ class YourBmiView extends GetView<RegisterController> {
           //   ),
           // ),
           const SizedBox(
-            height: 10.5,
+            height: 20,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -52,7 +52,7 @@ class YourBmiView extends GetView<RegisterController> {
           ),
           Neumorphic(
             style: const NeumorphicStyle(depth: 1.3, intensity: 1),
-            padding: const EdgeInsets.only(left: 18, right: 18, top: 25),
+            padding: const EdgeInsets.only(left: 18, right: 18, top: 25 , bottom: 12),
             child: Container(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,6 +82,7 @@ class YourBmiView extends GetView<RegisterController> {
                       errorText: controller.tallError.value,
                     );
                   }, controller.tallError),
+                  SizedBox(height: 16,),
                   ObxValue((state) {
                     return NeuFormField(
                       hintText: LocaleKeys.your_weight_label.tr,
@@ -116,7 +117,7 @@ class YourBmiView extends GetView<RegisterController> {
           ),
           Neumorphic(
             style: const NeumorphicStyle(depth: 1.3, intensity: 1),
-            padding: const EdgeInsets.only(left: 18, right: 18, top: 15),
+            padding: const EdgeInsets.only(left: 18, right: 18, top: 15 , bottom: 12),
             child: Container(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -145,156 +146,166 @@ class YourBmiView extends GetView<RegisterController> {
                     children: <Widget>[
                       NeuCard(
                         backgroundColor: Colors.white,
-                        child: Container(
-                          width: 148,
-                          height: 132,
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 5,
-                            horizontal: 20,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                LocaleKeys.current_bmi_label.tr,
-                                style: theme?.textTheme.titleLarge?.copyWith(
-                                    color: ColorConstants.mainThemeColor,
-                                    fontWeight: FontWeight.normal),
-                              ),
-                              Row(
-                                children: [
-                                  ObxValue((state) {
-                                    return Visibility(
-                                      visible: state.value > 0,
-                                      child: Text(
-                                        (state.value.round()).toString(),
-                                        style: theme?.textTheme.titleLarge
-                                            ?.copyWith(),
-                                      ),
-                                    );
-                                  }, controller.currentBMI),
-                                  const SizedBox(
-                                    width: 5,
-                                  ),
-                                  ObxValue((state) {
-                                    return Visibility(
-                                      visible: state.value > 0,
-                                      child: Text(
-                                        LocaleKeys.bmi_measurement.tr,
-                                        style: theme?.textTheme.titleSmall,
-                                      ),
-                                    );
-                                  }, controller.currentBMI),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  ObxValue((state) {
-                                    return Visibility(
-                                      visible: state.value > 0,
-                                      child: Text(
-                                        controller.weightController.text,
-                                        style: theme?.textTheme.titleLarge
-                                            ?.copyWith(),
-                                      ),
-                                    );
-                                  }, controller.currentBMI),
-                                  const SizedBox(
-                                    width: 5,
-                                  ),
-                                  ObxValue((state) {
-                                    return Visibility(
-                                      visible: state.value > 0,
-                                      child: Text(
-                                        LocaleKeys.weight_measurement.tr,
-                                        style: theme?.textTheme.titleSmall,
-                                      ),
-                                    );
-                                  }, controller.currentBMI),
-                                ],
-                              ),
-                            ],
+                        child: GestureDetector(
+                          onTap: (){
+                            Get.snackbar("IMC", "Indice de masse corporelle") ;
+                          },
+                          child: Container(
+                            width: 148,
+                            height: 132,
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 5,
+                              horizontal: 20,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  LocaleKeys.current_bmi_label.tr,
+                                  style: theme?.textTheme.titleLarge?.copyWith(
+                                      color: ColorConstants.mainThemeColor,
+                                      fontWeight: FontWeight.normal),
+                                ),
+                                Row(
+                                  children: [
+                                    ObxValue((state) {
+                                      return Visibility(
+                                        visible: state.value > 0,
+                                        child: Text(
+                                          (state.value.round()).toString(),
+                                          style: theme?.textTheme.titleLarge
+                                              ?.copyWith(),
+                                        ),
+                                      );
+                                    }, controller.currentBMI),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    ObxValue((state) {
+                                      return Visibility(
+                                        visible: state.value > 0,
+                                        child: Text(
+                                          "${LocaleKeys.bmi_measurement.tr}*",
+                                          style: theme?.textTheme.titleSmall,
+                                        ),
+                                      );
+                                    }, controller.currentBMI),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    ObxValue((state) {
+                                      return Visibility(
+                                        visible: state.value > 0,
+                                        child: Text(
+                                          controller.weightController.text,
+                                          style: theme?.textTheme.titleLarge
+                                              ?.copyWith(),
+                                        ),
+                                      );
+                                    }, controller.currentBMI),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    ObxValue((state) {
+                                      return Visibility(
+                                        visible: state.value > 0,
+                                        child: Text(
+                                          LocaleKeys.weight_measurement.tr,
+                                          style: theme?.textTheme.titleSmall,
+                                        ),
+                                      );
+                                    }, controller.currentBMI),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       ),
                       NeuCard(
                         backgroundColor:
                             ColorConstants.mainThemeColor.withOpacity(0.4),
-                        child: Container(
-                          width: 148,
-                          height: 132,
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 5,
-                            horizontal: 20,
-                          ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Text(
-                                LocaleKeys.target_bmi_label.tr,
-                                style: theme?.textTheme.titleLarge?.copyWith(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.normal),
-                              ),
-                              ObxValue((state) {
-                                return Visibility(
-                                  visible: state.value > 0,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.stretch,
-                                    children: [
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "${state.value.round()}",
-                                            style: theme?.textTheme.titleLarge,
-                                          ),
-                                          const SizedBox(
-                                            width: 5,
-                                          ),
-                                          Text(
-                                            LocaleKeys.bmi_measurement.tr,
-                                            style: theme?.textTheme.titleSmall,
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "${controller.targetWeight.round()}",
-                                            style: theme?.textTheme.titleLarge,
-                                          ),
-                                          const SizedBox(
-                                            width: 5,
-                                          ),
-                                          Text(
-                                            LocaleKeys.weight_measurement.tr,
-                                            style: theme?.textTheme.titleSmall,
-                                          ),
-                                        ],
-                                      ),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            "${controller.targetCaloriesPerDay.round()}",
-                                            style: theme?.textTheme.titleLarge,
-                                          ),
-                                          const SizedBox(
-                                            width: 5,
-                                          ),
-                                          Text(
-                                            LocaleKeys
-                                                .calories_per_gram_measurement
-                                                .tr,
-                                            style: theme?.textTheme.titleSmall,
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              }, controller.targetBMI),
-                            ],
+                        child: GestureDetector(
+                          onTap: (){
+                            Get.snackbar("IMC", "Indice de masse corporelle") ;
+                          },
+                          child: Container(
+                            width: 148,
+                            height: 132,
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 5,
+                              horizontal: 20,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Text(
+                                  LocaleKeys.target_bmi_label.tr,
+                                  style: theme?.textTheme.titleLarge?.copyWith(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.normal),
+                                ),
+                                ObxValue((state) {
+                                  return Visibility(
+                                    visible: state.value > 0,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.stretch,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "${state.value.round()}",
+                                              style: theme?.textTheme.titleLarge,
+                                            ),
+                                            const SizedBox(
+                                              width: 5,
+                                            ),
+                                            Text(
+                                              "${LocaleKeys.bmi_measurement.tr}*",
+                                              style: theme?.textTheme.titleSmall,
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "${controller.targetWeight.round()}",
+                                              style: theme?.textTheme.titleLarge,
+                                            ),
+                                            const SizedBox(
+                                              width: 5,
+                                            ),
+                                            Text(
+                                              LocaleKeys.weight_measurement.tr,
+                                              style: theme?.textTheme.titleSmall,
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "${controller.targetCaloriesPerDay.round()}",
+                                              style: theme?.textTheme.titleLarge,
+                                            ),
+                                            const SizedBox(
+                                              width: 5,
+                                            ),
+                                            Text(
+                                              LocaleKeys
+                                                  .calories_per_gram_measurement
+                                                  .tr,
+                                              style: theme?.textTheme.titleSmall,
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                }, controller.targetBMI),
+                              ],
+                            ),
                           ),
                         ),
                       ),

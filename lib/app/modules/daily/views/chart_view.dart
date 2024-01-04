@@ -165,7 +165,11 @@ class BudgetChart extends StatelessWidget {
                     children: [
                       Text(
                         LocaleKeys.vegetables_chart_label.tr,
-                        style: theme?.textTheme.bodySmall?.copyWith(fontSize: 13 , color: ColorConstants.accentColor.withOpacity(0.5)),
+                        maxLines: 2,
+                        softWrap: true,
+                        overflow: TextOverflow.visible,
+                        style: theme?.textTheme.bodySmall?.copyWith(
+                            fontSize: 13 , color: ColorConstants.accentColor.withOpacity(0.5)),
                       ),
                       Text(
                         "5%",

@@ -19,7 +19,7 @@ class NiftyPointsView extends GetView<RegisterController> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           const SizedBox(
-            height: 10.5,
+            height: 20,
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -38,29 +38,36 @@ class NiftyPointsView extends GetView<RegisterController> {
           const SizedBox(
             height: 40,
           ),
-          Container(
-            padding: const EdgeInsets.all(20),
-            color: theme?.accentColor,
-            child: Column(
-              children: [
-                Text(
-                  "${controller.targetCaloriesPerDay.value.round()} ${LocaleKeys.calories_measurement.tr}",
-                  style: theme?.textTheme.titleSmall?.copyWith(
-                    color: Colors.white,
+          GestureDetector(
+            onTap: () {
+              Get.snackbar("Pas de panique !",
+                  "vous pourrez y ajouter les calories brûlées par le sport.",
+                  margin: EdgeInsets.only(top: 100 ,left: 16 ,right: 16) , duration: Duration(seconds: 3));
+            },
+            child: Container(
+              padding: const EdgeInsets.all(20),
+              color: theme?.accentColor,
+              child: Column(
+                children: [
+                  Text(
+                    "${controller.targetCaloriesPerDay.value.round()} ${LocaleKeys.calories_measurement.tr}",
+                    style: theme?.textTheme.titleSmall?.copyWith(
+                      color: Colors.white,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Text(
-                  "${controller.niftyPoints.value.round()} ${LocaleKeys.nifty_points_measurement_unit.tr}",
-                  style: theme?.textTheme.titleLarge?.copyWith(
-                    color: Colors.white,
+                  const SizedBox(
+                    height: 20,
                   ),
-                  textAlign: TextAlign.center,
-                ),
-              ],
+                  Text(
+                    "${controller.niftyPoints.value.round()} ${LocaleKeys.nifty_points_measurement_unit.tr}",
+                    style: theme?.textTheme.titleLarge?.copyWith(
+                      color: Colors.white,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
+              ),
             ),
           ),
           const SizedBox(

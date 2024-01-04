@@ -38,7 +38,8 @@ class RecipeTabView extends StatelessWidget {
           Row(
             children: [
               Container(
-                height: 37.35,
+                height: 46,
+                clipBehavior: Clip.none,
                 margin: const EdgeInsets.only(
                   left: 21,
                   top: 21,
@@ -47,11 +48,11 @@ class RecipeTabView extends StatelessWidget {
                   text: LocaleKeys.add_new_recipe_button_label.tr,
                   backgroundColor: ColorConstants.mainThemeColor,
                   textColor: Colors.white,
-                  fontSize: 14,
+                  fontSize: 16,
                   icon: const Icon(
                     Icons.arrow_forward,
                     color: Colors.white,
-                    size: 17.75,
+                    size: 20,
                   ),
                   onPressed: onAddNewRecipe,
                 ),

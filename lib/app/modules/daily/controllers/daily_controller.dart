@@ -49,21 +49,21 @@ class DailyController extends GetxController {
         day.value = LocaleKeys.today_label.tr;
       } else {
         // Otherwise, format DateTime to a String
-        day.value = DateFormat('yyyy-MM-dd').format(currentDay.value);
+        day.value = DateFormat('dd-MM-yyyy').format(currentDay.value);
       }
       getDaily(currentDay.value);
     }
   }
 
   void getPreviousDay() {
-    DateTime sevenDaysAgo = DateTime.now().subtract(Duration(days: 7));
+    DateTime sevenDaysAgo = DateTime.now().subtract(Duration(days: 356));
     DateTime newDate = currentDay.value.subtract(Duration(days: 1));
 
     // Check if newDate is not earlier than seven days ago
     if (newDate.isAfter(sevenDaysAgo) ||
         newDate.isAtSameMomentAs(sevenDaysAgo)) {
       currentDay.value = newDate;
-      day.value = DateFormat('yyyy-MM-dd')
+      day.value = DateFormat('dd-MM-yyyy')
           .format(currentDay.value); // Format DateTime to String
       getDaily(currentDay.value);
     }

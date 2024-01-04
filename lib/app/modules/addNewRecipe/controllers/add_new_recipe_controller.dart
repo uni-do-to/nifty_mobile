@@ -110,12 +110,13 @@ class AddNewRecipeController extends GetxController {
     } else {
       recipeNameError.value = '';
     }
-    if (recipeGramsPerCircleController.text.isEmpty) {
-      recipeGramsPerCircleError.value =
-          LocaleKeys.recipe_grams_per_circle_error_message.tr;
-    } else {
-      recipeGramsPerCircleError.value = '';
-    }
+
+    // if (recipeGramsPerCircleController.text.isEmpty) {
+    //   recipeGramsPerCircleError.value =
+    //       LocaleKeys.recipe_grams_per_circle_error_message.tr;
+    // } else {
+    //   recipeGramsPerCircleError.value = '';
+    // }
 
     if (recipeIngredientsList.isEmpty) {
       recipeIngredientsListError.value =

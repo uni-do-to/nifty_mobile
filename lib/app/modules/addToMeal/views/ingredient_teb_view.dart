@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
+import 'package:nifty_mobile/app/config/theme_data.dart';
 import 'package:nifty_mobile/app/data/models/daily_model.dart';
 import 'package:nifty_mobile/app/modules/addToMeal/controllers/add_to_meal_controller.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
@@ -31,13 +32,19 @@ class IngredientTabView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      // decoration: BoxDecoration(
+      //   boxShadow: [
+      //     ThemeConfig.mainTabsShadow,
+      //   ],
+      // ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Row(
             children: [
               Container(
-                height: 37.35,
+                height: 46,
+                clipBehavior: Clip.none,
                 margin: const EdgeInsets.only(
                   left: 21,
                   top: 21,
@@ -46,11 +53,11 @@ class IngredientTabView extends StatelessWidget {
                   text: LocaleKeys.add_new_ingredient_screen_sub_title.tr,
                   backgroundColor: ColorConstants.mainThemeColor,
                   textColor: Colors.white,
-                  fontSize: 14,
+                  fontSize: 16,
                   icon: const Icon(
                     Icons.arrow_forward,
                     color: Colors.white,
-                    size: 17.75,
+                    size: 20,
                   ),
                   onPressed: () {
                     Get.toNamed(Routes.ADD_NEW_INGREDIENT);
