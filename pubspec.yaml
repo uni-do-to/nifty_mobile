@@ -33,8 +33,6 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: ^0.18.1
-  flutter_stripe: ^9.5.0+1
-  flutter_stripe_web: ^4.5.0
   stripe_checkout:
     git:
       url: https://github.com/tohami/flutter_stripe.git
