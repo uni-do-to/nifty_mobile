@@ -1,6 +1,6 @@
 class ConfigAPI {
   //Example: https://www.example.com without /
-  static const String baseUrl = 'http://10.0.2.2:1337';
+  static const String baseUrl = 'https://nifty-diet-adb2127174f3.herokuapp.com';
   static const String baseApiUrl = '$baseUrl/api';
   static const stripePublishableKey =  "pk_test_51Lme2ZHFBOGEpvokPdsziGdnSmsF9CiUdC5SEUlQIQxvuXZmuKpKF1J5uRryAP8jTMXK8Fw4nCaUqSCaQ5Tp5UY500Oo2qEV7L";
 

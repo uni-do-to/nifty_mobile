@@ -55,7 +55,7 @@ class SubscriptionController extends AuthController {
         sessionId: session!.id!,
         publishableKey: ConfigAPI.stripePublishableKey,
         successUrl: 'https://dashboard.theniftydiet.com/payment/success',
-        canceledUrl: 'https://dashboard.theniftydiet.com/payment/success',
+        canceledUrl:'https://dashboard.theniftydiet.com/payment/cancel',
         initialPageUrl:
             "https://tohami.github.io/stripe_checkout_template/index.html");
 
