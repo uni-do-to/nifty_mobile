@@ -158,6 +158,7 @@ class RegisterController extends AuthController {
     targetBMI.value = (selectedGender.value == 'male') ? 25.0 : 20.0;
 
     calculateTargetWeight(targetBMI.value, (height / 100));
+    print("Target weight: $targetWeight , Target BMI: ${targetBMI.value}, Height:$height") ;
 
     if (userAge.value > 19) {
       calculateDailyCaloriesAbove19YearsOld(targetWeight.value, (height / 100),
@@ -197,6 +198,8 @@ class RegisterController extends AuthController {
   // calculate daily calories above 19 years old according to gender, age , height and target BMI
   void calculateDailyCaloriesAbove19YearsOld(
       double targetWeight, double height, int age, String gender) {
+
+    print("Target weight: $targetWeight , Target BMI: ${targetBMI.value}, Height:$height , age: $age , Gender: $gender") ;
     if (gender == 'male') {
       targetCaloriesPerDay.value = (height != 0)
           ? (83.362 +
@@ -247,7 +250,7 @@ class RegisterController extends AuthController {
 
     if (userAge.value > 19) {
       calculateDailyCaloriesAbove19YearsOld(
-          targetBMI.value, (height / 100), userAge.value, selectedGender.value);
+          targetWeight.value, (height / 100), userAge.value, selectedGender.value);
     } else {
       calculateDailyCaloriesBelow19YearsOld(
           userAge.value, selectedGender.value);
