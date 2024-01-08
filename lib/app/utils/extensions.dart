@@ -24,7 +24,7 @@ dynamic removeNull(dynamic params) {
       }
     }
     // comment this condition if you want empty list
-    if (_list.isNotEmpty)
+    // if (_list.isNotEmpty)
       return _list;
   } else if (params != null) {
     return params;
