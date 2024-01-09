@@ -50,7 +50,7 @@ class NiftyPointsView extends GetView<RegisterController> {
               child: Column(
                 children: [
                   Text(
-                    "${controller.targetCaloriesPerDay.value.round()} ${LocaleKeys.calories_measurement.tr}",
+                    "${(controller.targetCaloriesPerDay.value + (controller.targetCaloriesPerDay.value * 0.05)).round()} ${LocaleKeys.calories_measurement.tr}*",
                     style: theme?.textTheme.titleSmall?.copyWith(
                       color: Colors.white,
                     ),
@@ -60,7 +60,7 @@ class NiftyPointsView extends GetView<RegisterController> {
                     height: 20,
                   ),
                   Text(
-                    "${controller.niftyPoints.value.round()} ${LocaleKeys.nifty_points_measurement_unit.tr}",
+                    "${(controller.niftyPoints.value + (controller.niftyPoints.value * 0.05)).round()} ${LocaleKeys.nifty_points_measurement_unit.tr}",
                     style: theme?.textTheme.titleLarge?.copyWith(
                       color: Colors.white,
                     ),

@@ -24,8 +24,8 @@ class RegisterController extends AuthController {
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
   RxString selectedGender = ''.obs;
-  RxDouble minBMIValue = 0.0.obs;
-  RxDouble maxBMIValue = 0.0.obs;
+  double minBMIValue = 16;
+  double maxBMIValue = 40;
   RxDouble currentBMI = 0.0.obs;
   RxDouble targetBMI = 0.0.obs;
   RxDouble targetWeight = 0.0.obs;
@@ -153,8 +153,7 @@ class RegisterController extends AuthController {
     }
 
     currentBMI.value = (weight / (height * height)) * 10000;
-    maxBMIValue.value = currentBMI.value + 15;
-    minBMIValue.value = currentBMI.value - 15;
+
     targetBMI.value = (selectedGender.value == 'male') ? 25.0 : 20.0;
 
     calculateTargetWeight(targetBMI.value, (height / 100));

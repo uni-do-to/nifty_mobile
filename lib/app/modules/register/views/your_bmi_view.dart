@@ -286,7 +286,7 @@ class YourBmiView extends GetView<RegisterController> {
                                         Row(
                                           children: [
                                             Text(
-                                              "${controller.targetCaloriesPerDay.round()}",
+                                              "${(controller.targetCaloriesPerDay.value + (controller.targetCaloriesPerDay.value * 0.05)).round()}",
                                               style: theme?.textTheme.titleLarge,
                                             ),
                                             const SizedBox(
@@ -322,7 +322,7 @@ class YourBmiView extends GetView<RegisterController> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Text(
-                                "${min(controller.minBMIValue.value, controller.targetBMI.value).round()}",
+                                "${min(controller.minBMIValue, controller.targetBMI.value).round()}",
                                 style: theme?.textTheme.titleMedium?.copyWith(
                                   fontWeight: FontWeight.bold,
                                 ),
@@ -333,16 +333,16 @@ class YourBmiView extends GetView<RegisterController> {
                               Expanded(
                                 child: FlutterSlider(
                                     values: [controller.targetBMI.value],
-                                    max: max(controller.maxBMIValue.value,
+                                    max: max(controller.maxBMIValue,
                                         controller.targetBMI.value),
-                                    min: min(controller.minBMIValue.value,
+                                    min: min(controller.minBMIValue,
                                         controller.targetBMI.value),
                                     centeredOrigin: true,
                                     trackBar: const FlutterSliderTrackBar(),
                                     onDragging:
                                         (handlerIndex, lowerValue, upperValue) {
-                                      if (lowerValue <=
-                                          controller.minBMIValue.value) return;
+                                      // if (lowerValue <=
+                                      //     controller.minBMIValue) return;
                                 
                                       controller.targetBMI.value = lowerValue;
                                       controller.calculateUserGoalMeasurements();
@@ -359,7 +359,7 @@ class YourBmiView extends GetView<RegisterController> {
                                 width: 3,
                               ),
                               Text(
-                                "${max(controller.maxBMIValue.value, controller.targetBMI.value).round()}",
+                                "${max(controller.maxBMIValue, controller.targetBMI.value).round()}",
                                 style: theme?.textTheme.titleMedium?.copyWith(
                                   fontWeight: FontWeight.bold,
                                 ),

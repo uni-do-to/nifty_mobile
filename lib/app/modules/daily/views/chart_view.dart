@@ -31,14 +31,15 @@ class BudgetChart extends StatelessWidget {
     var theme = NeumorphicTheme.of(context)?.current;
 
     // Calculate percentages
-    final fullBudget = dailyBudget + sportBudget ;
-    final double sportPercent = (sportBudget / fullBudget) * 100;
-    final double consumedPercent = (consumedBudget / fullBudget) * 100;
-    final double overBudgetPercent = consumedPercent - 100 ;
     final double vegetablesPercent = 5 ;
+    final double vegetablesBudget = dailyBudget * vegetablesPercent / 100 ;
+    final fullBudget = dailyBudget + vegetablesBudget + sportBudget ;
+    final double sportPercent = (sportBudget / fullBudget) * 100;
+    final double consumedPercent = ((consumedBudget + vegetablesBudget) / fullBudget) * 100;
+    final double overBudgetPercent = (consumedPercent + vegetablesBudget) - 100 ;
 
     // Calculate box heights
-    final double consumedHeight = viewHeight * (consumedPercent + vegetablesPercent) / 100;
+    final double consumedHeight = viewHeight * (consumedPercent) / 100;
     final double sportHeight = viewHeight * sportPercent / 100;
     final double? overBudgetHeight = overBudgetPercent > 0 ? viewHeight * overBudgetPercent / 100 : null ;
 
@@ -184,7 +185,7 @@ class BudgetChart extends StatelessWidget {
             //Consumed calories
             if(overBudgetHeight == null)
               Positioned(
-              bottom: max( 5 , consumedHeight -10),
+              bottom: max( 0 , consumedHeight -10),
               left: 170,
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
@@ -203,7 +204,7 @@ class BudgetChart extends StatelessWidget {
                         style: theme?.textTheme.bodySmall?.copyWith(fontSize: 13 , color: ColorConstants.accentColor),
                       ),
                       Text(
-                        consumedBudget.displayUnit,
+                        (consumedBudget + vegetablesBudget).displayUnit,
                         style: theme?.textTheme.bodySmall?.copyWith(fontSize: 24 ,fontWeight: FontWeight.w900, color: ColorConstants.accentColor),
                       )
                     ],
@@ -232,7 +233,7 @@ class BudgetChart extends StatelessWidget {
                           style: theme?.textTheme.bodySmall?.copyWith(fontSize: 13 , color: Color(0xff9D0600)),
                         ),
                         Text(
-                          consumedBudget.displayUnit,
+                          (consumedBudget + vegetablesBudget).displayUnit,
                           style: theme?.textTheme.bodySmall?.copyWith(fontSize: 24 ,fontWeight: FontWeight.w900, color: Color(0xff9D0600)),
                         )
                       ],
