@@ -28,6 +28,12 @@ class BudgetChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    print(dailyBudget) ;
+    print(sportBudget) ;
+    print(consumedBudget) ;
+    print("-------------------------------") ;
+
     var theme = NeumorphicTheme.of(context)?.current;
 
     // Calculate percentages
@@ -36,7 +42,7 @@ class BudgetChart extends StatelessWidget {
     final fullBudget = dailyBudget + vegetablesBudget + sportBudget ;
     final double sportPercent = (sportBudget / fullBudget) * 100;
     final double consumedPercent = ((consumedBudget + vegetablesBudget) / fullBudget) * 100;
-    final double overBudgetPercent = (consumedPercent + vegetablesBudget) - 100 ;
+    final double overBudgetPercent = (consumedPercent + vegetablesPercent) - 100 ;
 
     // Calculate box heights
     final double consumedHeight = viewHeight * (consumedPercent) / 100;
@@ -44,6 +50,17 @@ class BudgetChart extends StatelessWidget {
     final double? overBudgetHeight = overBudgetPercent > 0 ? viewHeight * overBudgetPercent / 100 : null ;
 
     final double vegetablesHeight = viewHeight * vegetablesPercent /100;
+
+    print(vegetablesPercent) ;
+    print(vegetablesBudget) ;
+    print(fullBudget) ;
+    print(sportPercent) ;
+    print(consumedPercent) ;
+    print(overBudgetPercent) ;
+
+
+    print("-------------------------------") ;
+
 
     return LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {

@@ -106,13 +106,13 @@ class AddNewIngredientController extends GetxController {
           ));
         }
 
+         var caloriesPer100grams = double.tryParse(caloriesPerGramController.text) ;
         IngredientRequest request = IngredientRequest(
           data: Data(
               // nameEn: ingredientNameEnglishController.text,
               nameFr: ingredientNameFranceController.text,
-              caloriesPer100grams:
-                  double.tryParse(caloriesPerGramController.text),
-              niftyPoints: double.tryParse(niftyPointsController.text),
+              caloriesPer100grams: caloriesPer100grams,
+              niftyPoints: caloriesPer100grams != null ? caloriesPer100grams / 33 : null,
               gramsPerCircle: double.tryParse(gramsPerCircleController.text),
               units: units),
         );

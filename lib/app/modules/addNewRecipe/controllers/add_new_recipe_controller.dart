@@ -157,6 +157,7 @@ class AddNewRecipeController extends GetxController {
             .reduce((previousValue, currentValue) =>
                 previousValue! + currentValue!) as double?;
 
+        var caloriesPer100grams = (recipeTotalCalories! / recipeTotalWeight!) * 100;
         //init recipe request
         RecipeRequest request = RecipeRequest(
           name: recipeNameController.text,
