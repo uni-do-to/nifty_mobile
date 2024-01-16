@@ -70,6 +70,9 @@ class IngredientController extends GetxController {
       var responseIngredientsSubCategories = await ingredientProvider
           .getIngredientList(subCategoryId: subCategoryId);
       ingredientsSubcategoryList = responseIngredientsSubCategories?.data ?? [];
+
+      selectedSubCategoryId.value = subCategoryId!;
+
     } catch (err, stacktrace) {
       print(err);
     } finally {}

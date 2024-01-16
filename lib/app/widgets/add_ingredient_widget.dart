@@ -183,6 +183,7 @@ class AddIngredientFormWidget extends StatelessWidget {
           ObxValue((state) {
             return Visibility(
               visible: state.value > 0,
+              key: ValueKey(state.value),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -217,7 +218,6 @@ class AddIngredientFormWidget extends StatelessWidget {
                       );
                     },
                     onSelected: (subcategory) {
-                      controller.selectedSubCategoryId.value = subcategory.id!;
                       controller.getIngredientsSubcategory(subcategory.id);
 
                       controller.searchIngredientsController.text = "";
@@ -242,6 +242,9 @@ class AddIngredientFormWidget extends StatelessWidget {
           //search in ingredients of subcategories
           ObxValue((state) {
             return Visibility(
+              //important to update the view once new supcategory selected
+              //without this line the view wont be updated
+              key: ValueKey(state.value),
               visible: state.value > 0,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
