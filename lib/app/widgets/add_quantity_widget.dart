@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
-import 'package:nifty_mobile/app/modules/addToMeal/controllers/add_to_meal_controller.dart';
-import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:nifty_mobile/app/widgets/form_field.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 import '../data/models/unit_model.dart';
+import '../utils/input_formatters.dart';
 
 class AddQuantityWidget extends StatelessWidget {
   final NeumorphicThemeData theme;
@@ -97,7 +96,7 @@ class AddQuantityWidget extends StatelessWidget {
                   hintText: LocaleKeys.quantity_text_field_label.tr,
                   controller: quantityController,
                   inputFormatters: [
-                    FilteringTextInputFormatter.digitsOnly,
+                    DecimalTextInputFormatter(decimalRange: 2),
                   ],
                   keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),                  onChanged: (value) {
                     onQuantityChange(value);
