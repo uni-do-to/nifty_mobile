@@ -82,11 +82,13 @@ class IngredientTabView extends StatelessWidget {
                           left: 21,
                           top: 10.6,
                         ),
-                        child: AddIngredientFormWidget(
-                          theme: theme,
-                          onIngredientSelected: (ingredient) {
-                            controller.onIngredientSelected(ingredient);
-                          },
+                        child: SingleChildScrollView(
+                          child: AddIngredientFormWidget(
+                            theme: theme,
+                            onIngredientSelected: (ingredient) {
+                              controller.onIngredientSelected(ingredient);
+                            },
+                          ),
                         ),
                       );
               }, controller.loading),
