@@ -1,3 +1,4 @@
+import 'package:diacritic/diacritic.dart';
 import 'package:nifty_mobile/app/data/models/api_response.dart';
 
 import 'category_model.dart';
@@ -28,6 +29,10 @@ class SubCategory extends ApiDataModel {
 class Attributes {
   String? nameEn;
   String? nameFr;
+
+  get simpleEnName => removeDiacritics(nameEn?.toLowerCase()??"") ;
+  get simpleFrName => removeDiacritics(nameFr?.toLowerCase()??"") ;
+
   ApiSingleResponse<Category>? category;
 
   Attributes({this.nameEn, this.nameFr, this.category});

@@ -1,3 +1,4 @@
+import 'package:diacritic/diacritic.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/data/models/category_model.dart';
@@ -79,48 +80,55 @@ class IngredientController extends GetxController {
   }
 
   Future<List<Ingredient>> searchIngredients(String searchKeyword) async {
+    String query = removeDiacritics(searchKeyword.toLowerCase());
     return ingredientsList.where((ingredient) {
-      return ingredient.attributes?.nameEn?.toLowerCase()
-          .contains(searchKeyword.toLowerCase()) == true ||
-          ingredient.attributes?.nameFr?.toLowerCase()
-              .contains(searchKeyword.toLowerCase()) == true;
+      return ingredient.attributes?.simpleEnName
+          .contains(query) == true ||
+          ingredient.attributes?.simpleFrName
+              .contains(query) == true;
     }).toList();
   }
 
   Future<List<Category>> searchCategory(String searchKeyword) async {
+    String query = removeDiacritics(searchKeyword.toLowerCase());
+
     return categoriesList.where((category) {
-      return category.attributes?.nameEn?.toLowerCase()
-          .contains(searchKeyword.toLowerCase()) == true ||
-          category.attributes?.nameFr?.toLowerCase()
-              .contains(searchKeyword.toLowerCase()) == true;
+      return category.attributes?.simpleEnName
+          .contains(query) == true ||
+          category.attributes?.simpleFrName
+              .contains(query) == true;
     }).toList();
   }
 
   Future<List<SubCategory>> searchSubCategory(String searchKeyword) async {
+    String query = removeDiacritics(searchKeyword.toLowerCase());
+
     return subCategoriesList.where((subCategory) {
-      return subCategory.attributes?.nameEn?.toLowerCase()
-          .contains(searchKeyword.toLowerCase()) == true ||
-          subCategory.attributes?.nameFr?.toLowerCase()
-              .contains(searchKeyword.toLowerCase()) == true;
+      return subCategory.attributes?.simpleEnName
+          .contains(query) == true ||
+          subCategory.attributes?.simpleFrName
+              .contains(query) == true;
     }).toList();
   }
 
   Future<List<Ingredient>> searchIngredientsSubCategory(
       String searchKeyword) async {
+    String query = removeDiacritics(searchKeyword.toLowerCase());
     return ingredientsSubcategoryList.where((ingredientSubCategory) {
-      return ingredientSubCategory.attributes?.nameEn?.toLowerCase()
-          .contains(searchKeyword.toLowerCase()) == true ||
-          ingredientSubCategory.attributes?.nameFr?.toLowerCase()
-              .contains(searchKeyword.toLowerCase()) == true;
+      return ingredientSubCategory.attributes?.simpleEnName
+          .contains(query) == true ||
+          ingredientSubCategory.attributes?.simpleFrName
+              .contains(query) == true;
     }).toList();
   }
 
   Future<List<Ingredient>> searchMyIngredients(String searchKeyword) async {
+    String query = removeDiacritics(searchKeyword.toLowerCase());
     return myIngredientsList.where((ingredient) {
-      return ingredient.attributes?.nameEn?.toLowerCase()
-          .contains(searchKeyword.toLowerCase()) == true ||
-          ingredient.attributes?.nameFr?.toLowerCase()
-              .contains(searchKeyword.toLowerCase()) == true;
+      return ingredient.attributes?.simpleEnName
+          .contains(query) == true ||
+          ingredient.attributes?.simpleFrName
+              .contains(query) == true;
     }).toList();
   }
 

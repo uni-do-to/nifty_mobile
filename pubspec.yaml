@@ -38,6 +38,7 @@ dependencies:
       url: https://github.com/tohami/flutter_stripe.git
       path: packages/stripe_checkout
   carousel_slider: ^4.2.1
+  diacritic: ^0.1.5
 
 dev_dependencies: 
   flutter_lints: ^2.0.0

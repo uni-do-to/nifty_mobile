@@ -1,3 +1,4 @@
+import 'package:diacritic/diacritic.dart';
 import 'package:nifty_mobile/app/data/models/api_response.dart';
 import 'package:nifty_mobile/app/data/models/sub_category_model.dart';
 import 'package:nifty_mobile/app/data/models/unit_model.dart';
@@ -35,6 +36,9 @@ class Attributes {
   double? niftyPoints;
   double? gramsPerCircle;
   List<Units>? units;
+
+  get simpleEnName => removeDiacritics(nameEn?.toLowerCase()??"") ;
+  get simpleFrName => removeDiacritics(nameFr?.toLowerCase()??"") ;
 
   Attributes(
       {this.nameEn,
