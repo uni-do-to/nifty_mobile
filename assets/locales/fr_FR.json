@@ -165,5 +165,6 @@
   "np" : "NP",
   "language_label":"Langue",
   "display_unit_label":"Unité de mesure calorique",
-  "logout_label": "Quitter"
+  "logout_label": "Quitter",
+  "no_ingredient" : "Il n'y a pas encore d'ingrédients ajoutés dans cette recette"
 }

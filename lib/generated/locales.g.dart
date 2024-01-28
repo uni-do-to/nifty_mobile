@@ -212,6 +212,7 @@ class LocaleKeys {
   static const language_label = 'language_label';
   static const display_unit_label = 'display_unit_label';
   static const logout_label = 'logout_label';
+  static const no_ingredient = 'no_ingredient';
 }
 
 class Locales {
@@ -399,6 +400,7 @@ class Locales {
     'language_label': 'Language',
     'display_unit_label': 'Calorie measurement unit',
     'logout_label': 'Logout',
+    'no_ingredient': 'There are no ingredients added yet',
   };
   static const fr_FR = {
     'login': 'Connectez-vous',
@@ -591,5 +593,7 @@ class Locales {
     'language_label': 'Langue',
     'display_unit_label': 'Unité de mesure calorique',
     'logout_label': 'Quitter',
+    'no_ingredient':
+        'Il n\'y a pas encore d\'ingrédients ajoutés dans cette recette',
   };
 }

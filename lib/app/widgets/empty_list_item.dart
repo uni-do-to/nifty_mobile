@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:get/get.dart';
+
+import '../../generated/locales.g.dart';
 
 class EmptyListItem extends StatelessWidget {
   const EmptyListItem({Key? key}) : super(key: key);
@@ -10,7 +13,7 @@ class EmptyListItem extends StatelessWidget {
       height: 20,
       alignment: Alignment.center,
       child: Text(
-        'There is no ingredients added yet',
+        LocaleKeys.no_ingredient.tr,
         style: NeumorphicTheme.of(context)?.current?.textTheme.titleMedium,
       ),
     );

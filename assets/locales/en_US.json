@@ -165,5 +165,6 @@
   "np" : "NP",
   "language_label":"Language",
   "display_unit_label":"Calorie measurement unit",
-  "logout_label": "Logout"
+  "logout_label": "Logout",
+  "no_ingredient" : "There are no ingredients added yet"
 }
