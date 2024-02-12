@@ -164,6 +164,7 @@ class AddToMealController extends GetxController {
     try {
       loading.value = true;
       var response = await recipeProvider.deleteRecipe(recipeItem.id!);
+      recipesList.remove(recipeItem) ;
       print(response);
     } catch (err, _) {
       print(err);

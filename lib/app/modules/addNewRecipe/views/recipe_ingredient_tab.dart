@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
+import 'package:nifty_mobile/app/controllers/ingredient_controller.dart';
 import 'package:nifty_mobile/app/modules/addNewRecipe/controllers/add_new_recipe_controller.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/widgets/add_ingredient_widget.dart';
@@ -15,7 +16,8 @@ import '../../../data/models/ingredient_model.dart';
 class RecipeIngredientTab extends StatelessWidget {
   RecipeIngredientTab({Key? key}) : super(key: key);
 
-  AddNewRecipeController controller = Get.find();
+  final AddNewRecipeController controller = Get.find();
+  final IngredientController ingredientController = Get.find();
 
   @override
   Widget build(BuildContext context) {

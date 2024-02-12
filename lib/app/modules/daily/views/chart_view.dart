@@ -42,7 +42,7 @@ class BudgetChart extends StatelessWidget {
     final fullBudget = dailyBudget + vegetablesBudget + sportBudget ;
     final double sportPercent = (sportBudget / fullBudget) * 100;
     final double consumedPercent = ((consumedBudget + vegetablesBudget) / fullBudget) * 100;
-    final double overBudgetPercent = (consumedPercent + vegetablesPercent) - 100 ;
+    final double overBudgetPercent = (consumedPercent ) - 100 ;
 
     // Calculate box heights
     final double consumedHeight = viewHeight * (consumedPercent) / 100;
@@ -221,7 +221,7 @@ class BudgetChart extends StatelessWidget {
                         style: theme?.textTheme.bodySmall?.copyWith(fontSize: 13 , color: ColorConstants.accentColor),
                       ),
                       Text(
-                        (consumedBudget + vegetablesBudget).displayUnit,
+                        "${(consumedBudget + vegetablesBudget).displayUnit} $displayUnit",
                         style: theme?.textTheme.bodySmall?.copyWith(fontSize: 24 ,fontWeight: FontWeight.w900, color: ColorConstants.accentColor),
                       )
                     ],
@@ -250,7 +250,7 @@ class BudgetChart extends StatelessWidget {
                           style: theme?.textTheme.bodySmall?.copyWith(fontSize: 13 , color: Color(0xff9D0600)),
                         ),
                         Text(
-                          (consumedBudget + vegetablesBudget).displayUnit,
+                          "${(consumedBudget + vegetablesBudget).displayUnit} $displayUnit",
                           style: theme?.textTheme.bodySmall?.copyWith(fontSize: 24 ,fontWeight: FontWeight.w900, color: Color(0xff9D0600)),
                         )
                       ],
@@ -279,8 +279,10 @@ class BudgetChart extends StatelessWidget {
                         style: theme?.textTheme.bodySmall?.copyWith(fontSize: 14 , color: ColorConstants.mainThemeColor),
                       ),
                       Text(
-                        fullBudget.displayUnit,
-                        style: theme?.textTheme.bodySmall?.copyWith(fontSize: 24 ,fontWeight: FontWeight.w900, color: ColorConstants.mainThemeColor),
+                        "${fullBudget.displayUnit} $displayUnit",
+                        // maxLines: 2,
+                        style: theme?.textTheme.bodySmall?.copyWith(
+                            fontSize: 24 ,fontWeight: FontWeight.w900, color: ColorConstants.mainThemeColor),
                       )
                     ],
                   )

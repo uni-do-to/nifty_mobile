@@ -15,8 +15,8 @@ class AddNewRecipeBinding extends Bindings {
       () => IngredientProvider(),
     );
 
-    Get.lazyPut<IngredientController>(
-        ()=>IngredientController(Get.find())
+    Get.put<IngredientController>(
+        IngredientController(Get.find())
     );
 
     Get.put<AddNewRecipeController>(

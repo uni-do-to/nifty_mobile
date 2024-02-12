@@ -45,6 +45,7 @@
   "login_label": "login",
   "daily_bottom_navigation_label": "Daily",
   "ingredient_bottom_navigation_label": "Ingredient",
+  "recipe_bottom_navigation_label": "Recipes",
   "profile_bottom_navigation_label": "Profile",
   "vegetables_chart_label": "Vegetable\npackage",
   "today_label": "Today",
@@ -166,5 +167,7 @@
   "language_label":"Language",
   "display_unit_label":"Calorie measurement unit",
   "logout_label": "Logout",
-  "no_ingredient" : "There are no ingredients added yet"
+  "no_ingredient" : "There are no ingredients added yet",
+  "settings_nifty_points_value" : "Nifty Points (33 kCAL)",
+  "settings_calories_value" : "Kilo Calories"
 }

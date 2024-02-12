@@ -3,6 +3,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/app_constants.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
+import 'package:nifty_mobile/app/services/config_service.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
 import '../../../config/color_constants.dart';
@@ -145,7 +146,7 @@ class ProfileView extends GetView<ProfileController> {
                   SettingsTile(
                       title: LocaleKeys.display_unit_label.tr,
                       trailing: Text(
-                        "Nifty point",
+                        Get.find<ConfigService>().displayUnit.tr,
                         style: theme?.textTheme.titleLarge,
                       ),
                       onTap: () async {
@@ -163,7 +164,7 @@ class ProfileView extends GetView<ProfileController> {
                                 child: Row(
                                   children: [
                                     Text(
-                                      key,
+                                      key.tr,
                                       style: theme?.textTheme.titleMedium,
                                     ),
                                   ],

@@ -1,4 +1,6 @@
 
+import 'package:nifty_mobile/generated/locales.g.dart';
+
 import '../locale/language_model.dart';
 
 class AppConstants {
@@ -16,5 +18,5 @@ class AppConstants {
       countryCode: 'FR', languageCode: 'fr',),
   };
 
-  static List<String> displayUnits = ["Nifty" , "Calories"];
+  static List<String> displayUnits = [LocaleKeys.settings_nifty_points , LocaleKeys.settings_calories];
 }

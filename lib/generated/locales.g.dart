@@ -58,6 +58,8 @@ class LocaleKeys {
   static const daily_bottom_navigation_label = 'daily_bottom_navigation_label';
   static const ingredient_bottom_navigation_label =
       'ingredient_bottom_navigation_label';
+  static const recipe_bottom_navigation_label =
+      'recipe_bottom_navigation_label';
   static const profile_bottom_navigation_label =
       'profile_bottom_navigation_label';
   static const vegetables_chart_label = 'vegetables_chart_label';
@@ -213,6 +215,10 @@ class LocaleKeys {
   static const display_unit_label = 'display_unit_label';
   static const logout_label = 'logout_label';
   static const no_ingredient = 'no_ingredient';
+  static const settings_nifty_points_value = 'settings_nifty_points_value';
+  static const settings_calories_value = 'settings_calories_value';
+  static const settings_nifty_points = 'settings_nifty_points';
+  static const settings_calories = 'settings_calories';
 }
 
 class Locales {
@@ -265,6 +271,7 @@ class Locales {
     'login_label': 'login',
     'daily_bottom_navigation_label': 'Daily',
     'ingredient_bottom_navigation_label': 'Ingredient',
+    'recipe_bottom_navigation_label': 'Recipes',
     'profile_bottom_navigation_label': 'Profile',
     'vegetables_chart_label': 'Vegetable\npackage',
     'today_label': 'Today',
@@ -401,6 +408,8 @@ class Locales {
     'display_unit_label': 'Calorie measurement unit',
     'logout_label': 'Logout',
     'no_ingredient': 'There are no ingredients added yet',
+    'settings_nifty_points_value': 'Nifty Points (33 kCAL)',
+    'settings_calories_value': 'Kilo Calories',
   };
   static const fr_FR = {
     'login': 'Connectez-vous',
@@ -449,7 +458,8 @@ class Locales {
     'have_account_label': 'Vous avez déjà un compte ?',
     'login_label': 'Connectez-vous',
     'daily_bottom_navigation_label': 'Journal',
-    'ingredient_bottom_navigation_label': 'Ingrédient',
+    'ingredient_bottom_navigation_label': 'Aliments perso',
+    'recipe_bottom_navigation_label': 'Recettes',
     'profile_bottom_navigation_label': 'Profil',
     'vegetables_chart_label': 'Forfait\nlégumes',
     'today_label': 'Aujourd\'hui',
@@ -470,11 +480,11 @@ class Locales {
     'delete_label': 'Supprimer',
     'cancel_label': 'Annuler',
     'add_meal_item_button_label': 'Ajouter un nouvel élément',
-    'add_new_recipe_button_label': 'Ajouter une nouvelle recette',
+    'add_new_recipe_button_label': 'Créer une nouvelle recette',
     'no_search_result_label': 'Aucun résultat de recherche',
     'meal_tab_number_label': 'Repas n°',
     'sport_tab_number_label': 'Sport n°',
-    'ingredient_tab_label': 'Ingrédients',
+    'ingredient_tab_label': 'Aliments',
     'recipe_tab_label': 'Recette',
     'selected_ingredient_recipe_hint_label':
         'Choisissez un élément dans la liste',
@@ -485,23 +495,23 @@ class Locales {
     'add_recipe_screen_title': 'Ajouter une recette',
     'recipe_name_label': 'Nom de la recette',
     'recipe_name_hint': 'Ma nouvelle recette',
-    'add_recipe_button_label': 'Ajouter la recette',
+    'add_recipe_button_label': 'Enregistrer',
     'add_ingredient_to_recipe_title_page': 'Ajouter à la recette',
     'new_meal_button_label': 'Nouveau repas',
-    'close_label': 'Enregistrer',
+    'close_label': 'Terminer',
     'empty_meal_tab_hint':
-        'Vous n\'avez pas encore mangé aujourd\'hui, ajoutez un ingrédient ou une recette à votre repas',
-    'add_new_ingredient_screen_title': 'Nouvel ingrédient',
-    'add_new_ingredient_screen_sub_title': 'Ajouter un nouvel ingrédient',
+        'Vous n\'avez pas encore mangé aujourd\'hui, ajoutez un aliment ou une recette à votre repas',
+    'add_new_ingredient_screen_title': 'Nouvel aliment',
+    'add_new_ingredient_screen_sub_title': 'Ajouter un nouvel aliment',
     'change_password_screen_sub_title': 'Changez votre mot de passe',
     'change_password_screen_hint':
         'Remplissez tous les champs pour changer votre mot de passe',
     'add_new_ingredient_screen_hint':
-        'Remplissez tous les champs pour ajouter un nouvel ingrédient',
+        'Remplissez tous les champs pour ajouter un nouvel aliment',
     'mandatory_fields_mark': '* obligatoire',
-    'ingredient_name_france_label': 'Nom de l\'ingrédient*',
-    'ingredient_name_english_label': 'Nom de l\'ingrédient (English)',
-    'grams_per_circle_label': 'Grammes par cercle',
+    'ingredient_name_france_label': 'Nom de l\'aliment*',
+    'ingredient_name_english_label': 'Nom de l\'aliment (English)',
+    'grams_per_circle_label': 'quand la recette est terminée',
     'calories_per_gram_label': 'Calories/100g*',
     'extra_measurement_section_label': 'Unités de mesures supplémentaires',
     'unit_name_measurement_label': 'Nom de l\'unité',
@@ -510,21 +520,21 @@ class Locales {
     'tutorial_link_label':
         'Vous ne savez pas comment faire ? Voir le tutoriel :',
     'cancel_button_label': 'Annuler',
-    'create_ingredient_button_label': 'Créer cet ingrédient',
+    'create_ingredient_button_label': 'Créer cet aliment',
     'choose_title': 'Choisir',
     'choose_sub_title': 'Ce que je vais manger',
-    'find_my_ingredient_hint': 'Trouver mon ingrédient',
+    'find_my_ingredient_hint': 'Trouver mon aliment',
     'find_ingredient_searchbar_or_categories_hint':
-        'Trouver votre ingrédient à l\'aide de la barre de recherche ou des catégories',
+        'Trouver votre aliment à l\'aide de la barre de recherche ou des catégories',
     'research_dropdown_label': 'Recherche',
     'personal_ingredient_dropdown_label': 'liste alimentaire personnelle',
     'categories_dropdown_label': 'catégories',
     'sub_categories_dropdown_label': 'sous-catégories',
-    'choose_ingredient_dropdown_label': 'Choississez votre ingrédient',
+    'choose_ingredient_dropdown_label': 'Choississez votre aliment',
     'choose_sub_category_dropdown_label': 'Choississez votre sous-catégorie',
     'choose_category_dropdown_label': 'Choississez votre catégorie',
     'search_ingredients_dropdown_label':
-        'Recherchez le un fruit, un légume, un ingrédient',
+        'Recherchez le un fruit, un légume, un aliment',
     'search_recipes_dropdown_label': 'Cherchez une recette',
     'search_sports_dropdown_label': 'Cherchez une sport',
     'your_recipe_label': 'Votre recette',
@@ -537,7 +547,7 @@ class Locales {
     'minutes_unit_label': 'Minutes',
     'calories_unit_label': 'Calories',
     'calories_burned_unit_label': 'calories',
-    'your_ingredient_label': 'Votre ingrédient',
+    'your_ingredient_label': 'Votre aliment',
     'recipes_screen_title': 'recettes',
     'find_your_recipes_title': 'Trouvez vos recettes',
     'find_your_recipes_sub_title':
@@ -551,7 +561,7 @@ class Locales {
     'current_password_label': 'Mot de passe actuel',
     'new_password_label': 'nouveau mot de passe',
     'duration_label': 'Durée',
-    'edit_personal_info_screen_title': 'Modifier les informations personnelles',
+    'edit_personal_info_screen_title': 'informations personnelles',
     'edit_health_profile_screen_title': 'modifier le profil de santé',
     'error_snackbar_label': 'Erreur',
     'exception_snackbar_label': 'Exception : ',
@@ -574,15 +584,15 @@ class Locales {
     'recipe_grams_per_circle_error_message':
         'Recette Des grammes par cercle sont requis',
     'recipe_ingredients_length_error_message':
-        'Vous devez ajouter au moins un ingrédient',
+        'Vous devez ajouter au moins un aliment',
     'ingredient_calories_per_grams_error_message':
-        'Ingrédient Calories par gramme requis',
+        'Aliment Calories par gramme requis',
     'ingredient_grams_per_circle_error_message':
-        'Ingrédient Des grammes par cercle sont requis',
+        'Aliment Des grammes par cercle sont requis',
     'ingredient_name_English_error_message':
-        'le nom de l\'ingrédient est obligatoire en anglais',
+        'le nom de l\'aliment est obligatoire en anglais',
     'ingredient_name_france_error_message':
-        'le nom de l\'ingrédient France est obligatoire',
+        'le nom de l\'aliment France est obligatoire',
     'global_error_message':
         'Une erreur s\'est produite, valeur d\'entrée non valide',
     'logout_confirm_question': 'Êtes-vous sûr de vouloir vous déconnecter?',
@@ -594,6 +604,8 @@ class Locales {
     'display_unit_label': 'Unité de mesure calorique',
     'logout_label': 'Quitter',
     'no_ingredient':
-        'Il n\'y a pas encore d\'ingrédients ajoutés dans cette recette',
+        'Il n\'y a pas encore d\'aliments ajoutés dans cette recette',
+    'settings_nifty_points': 'Nifty Points (33 kCAL)',
+    'settings_calories': 'Kilo Calories',
   };
 }

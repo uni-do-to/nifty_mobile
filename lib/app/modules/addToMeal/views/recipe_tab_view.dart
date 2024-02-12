@@ -76,14 +76,14 @@ class RecipeTabView extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            LocaleKeys.research_dropdown_label.tr,
-                            style: theme.textTheme.bodySmall
-                                ?.copyWith(fontSize: 14),
-                          ),
-                          const SizedBox(
-                            height: 6,
-                          ),
+                          // Text(
+                          //   LocaleKeys.research_dropdown_label.tr,
+                          //   style: theme.textTheme.bodySmall
+                          //       ?.copyWith(fontSize: 14),
+                          // ),
+                          // const SizedBox(
+                          //   height: 6,
+                          // ),
                           NeuFormField(
                             padding: EdgeInsets.symmetric(
                                 vertical: 3, horizontal: 18),
@@ -232,8 +232,8 @@ class RecipeTabView extends StatelessWidget {
           itemName: controller.filteredItems[index].attributes!.name!,
           onCancelPressed: () => Get.back(),
           onDeletePressed: () {
-            controller.filteredItems.removeAt(index);
             controller.removeRecipe(controller.filteredItems[index]);
+            controller.filteredItems.removeAt(index);
             Get.back();
           },
         );

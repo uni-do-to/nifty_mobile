@@ -66,7 +66,7 @@ class HomeView extends GetView<HomeController> {
                 height: 28.18,
                 width: 21.72,
               ),
-              label: LocaleKeys.recipe_tab_label.tr,
+              label: LocaleKeys.recipe_bottom_navigation_label.tr,
             ),
             BottomNavigationBarItem(
               icon: SvgPicture.asset(
