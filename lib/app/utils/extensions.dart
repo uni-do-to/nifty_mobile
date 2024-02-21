@@ -36,7 +36,7 @@ extension ToDisplayUnit on double {
   String get displayUnit {
     var currentDisplayUnit = Get.find<ConfigService>().displayUnit ;
 
-    if(currentDisplayUnit == AppConstants.displayUnits[0]) {
+    if(currentDisplayUnit == AppConstants.displayUnits[0]["short"]) {
       return "${(this / 33).round()}" ;
     }
     return "${round()}" ;
@@ -46,7 +46,7 @@ extension ToDisplayUnit on double {
 String get displayUnit {
   var currentDisplayUnit = Get.find<ConfigService>().displayUnit;
 
-  if (currentDisplayUnit == AppConstants.displayUnits[0]) {
+  if (currentDisplayUnit == AppConstants.displayUnits[0]["short"]) {
     return LocaleKeys.np.tr;
   }
   return LocaleKeys.cal.tr;

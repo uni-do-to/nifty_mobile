@@ -137,6 +137,8 @@
   "duration_label": "Duration",
   "edit_personal_info_screen_title": "Edit Personal Info",
   "edit_health_profile_screen_title": "Edit Health Profile",
+  "edit_health_profile_btn": "Save",
+  "save": "Save",
   "error_snackbar_label": "Error",
   "exception_snackbar_label": "Exception : ",
   "email_error_message": "Email is required.",

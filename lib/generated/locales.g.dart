@@ -174,6 +174,8 @@ class LocaleKeys {
       'edit_personal_info_screen_title';
   static const edit_health_profile_screen_title =
       'edit_health_profile_screen_title';
+  static const edit_health_profile_btn = 'edit_health_profile_btn';
+  static const save = 'save';
   static const error_snackbar_label = 'error_snackbar_label';
   static const exception_snackbar_label = 'exception_snackbar_label';
   static const email_error_message = 'email_error_message';
@@ -370,6 +372,8 @@ class Locales {
     'duration_label': 'Duration',
     'edit_personal_info_screen_title': 'Edit Personal Info',
     'edit_health_profile_screen_title': 'Edit Health Profile',
+    'edit_health_profile_btn': 'Save',
+    'save': 'Save',
     'error_snackbar_label': 'Error',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Email is required.',
@@ -563,6 +567,8 @@ class Locales {
     'duration_label': 'Durée',
     'edit_personal_info_screen_title': 'informations personnelles',
     'edit_health_profile_screen_title': 'modifier le profil de santé',
+    'edit_health_profile_btn': 'Enregistrer',
+    'save': 'Enregistrer',
     'error_snackbar_label': 'Erreur',
     'exception_snackbar_label': 'Exception : ',
     'email_error_message': 'Un e-mail est requis.',

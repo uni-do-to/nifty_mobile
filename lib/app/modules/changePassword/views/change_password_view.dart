@@ -45,15 +45,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                LocaleKeys.change_password_screen_sub_title.tr,
-                style: theme?.textTheme.titleLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
+
               Text(
                 LocaleKeys.change_password_screen_hint.tr,
                 style: theme?.textTheme.titleMedium?.copyWith(height: 1.8),
@@ -123,6 +115,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                       NeumorphicStyle(color: ColorConstants.mainThemeColor),
                       child: Container(
                           height: 30,
+                          width: 240,
                           alignment: Alignment.center,
                           child: ObxValue((isPasswordChanged) {
                             return isPasswordChanged.value
@@ -134,7 +127,7 @@ class ChangePasswordView extends GetView<ChangePasswordController> {
                               ),
                             )
                                 : Text(
-                                LocaleKeys.change_password_screen_title.tr,
+                                LocaleKeys.save.tr,
                                 style: NeumorphicTheme.currentTheme(context)
                                     .textTheme
                                     .titleLarge

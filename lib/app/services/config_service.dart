@@ -60,7 +60,7 @@ class ConfigService extends GetxService {
   }
 
   Future<bool> saveDisplayUnit(String unit) async {
-    if(!AppConstants.displayUnits.contains(unit)) {
+    if(!AppConstants.displayUnits.map((e) => e["short"]).contains(unit)) {
       return false;
     }
 

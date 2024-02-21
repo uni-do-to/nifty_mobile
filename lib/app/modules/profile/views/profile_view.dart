@@ -8,6 +8,7 @@ import 'package:nifty_mobile/generated/locales.g.dart';
 
 import '../../../config/color_constants.dart';
 import '../../../config/size_constants.dart';
+import '../../../utils/extensions.dart';
 import '../controllers/profile_controller.dart';
 
 class ProfileView extends GetView<ProfileController> {
@@ -146,7 +147,7 @@ class ProfileView extends GetView<ProfileController> {
                   SettingsTile(
                       title: LocaleKeys.display_unit_label.tr,
                       trailing: Text(
-                        Get.find<ConfigService>().displayUnit.tr,
+                        displayUnit.toUpperCase(),
                         style: theme?.textTheme.titleLarge,
                       ),
                       onTap: () async {
@@ -159,12 +160,12 @@ class ProfileView extends GetView<ProfileController> {
                             ...AppConstants.displayUnits.map((key) {
                               return SimpleDialogOption(
                                 onPressed: () {
-                                  Get.back(result: key);
+                                  Get.back(result: key["short"]);
                                 },
                                 child: Row(
                                   children: [
                                     Text(
-                                      key.tr,
+                                      key["long"].toString().tr,
                                       style: theme?.textTheme.titleMedium,
                                     ),
                                   ],

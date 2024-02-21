@@ -8,7 +8,7 @@ class AppConstants {
   static const String LANG_KEY = 'lang';
   static const String UNIT_KEY = 'unit';
   static const String DEFAULT_LANGUAGE = 'fr';
-  static const String DEFAULT_DISPLAY_UNIT = "Nifty";
+  static const String DEFAULT_DISPLAY_UNIT = "NP";
 
 
   static Map<String,LanguageModel> languages = {
@@ -18,5 +18,12 @@ class AppConstants {
       countryCode: 'FR', languageCode: 'fr',),
   };
 
-  static List<String> displayUnits = [LocaleKeys.settings_nifty_points , LocaleKeys.settings_calories];
+  static List<Map> displayUnits = [
+    {
+      "short" : "NP" ,
+      "long" : LocaleKeys.settings_nifty_points
+    } , {
+    "short" : "kCAL" ,
+      "long" : LocaleKeys.settings_calories
+    }];
 }

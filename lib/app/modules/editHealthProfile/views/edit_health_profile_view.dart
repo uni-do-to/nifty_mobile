@@ -54,7 +54,6 @@ class EditHealthProfileView extends GetView<EditHealthProfileController> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-
                 Neumorphic(
                   style: const NeumorphicStyle(depth: 1.3, intensity: 1),
                   padding: const EdgeInsets.only(left: 18, right: 18, top: 25),
@@ -348,6 +347,32 @@ class EditHealthProfileView extends GetView<EditHealthProfileController> {
                                       // }
                                       // setState(() {});
                                     }),
+                                Container(
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 15),
+                                  child: Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text(
+                                        "${(controller.minBMIValue.value).toInt()}",
+                                        style: theme?.textTheme.titleMedium
+                                            ?.copyWith(
+                                          color: ColorConstants.mainThemeColor,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                      Text(
+                                        "${(controller.maxBMIValue.value).toInt()}",
+                                        style: theme?.textTheme.titleMedium
+                                            ?.copyWith(
+                                          color: ColorConstants.mainThemeColor,
+                                          fontWeight: FontWeight.w600,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                                 const SizedBox(
                                   height: 5,
                                 ),
@@ -409,9 +434,7 @@ class EditHealthProfileView extends GetView<EditHealthProfileController> {
                                     backgroundColor: Colors.white,
                                   ),
                                 )
-                              : Text(
-                                  LocaleKeys
-                                      .edit_health_profile_screen_title.tr,
+                              : Text(LocaleKeys.edit_health_profile_btn.tr,
                                   style: NeumorphicTheme.currentTheme(context)
                                       .textTheme
                                       .titleLarge
@@ -419,8 +442,8 @@ class EditHealthProfileView extends GetView<EditHealthProfileController> {
                         }, controller.isHealthFormUpdated)),
                     onPressed: () async {
                       // try {
-                        await controller.editHealthProfile();
-                        Get.back();
+                      await controller.editHealthProfile();
+                      Get.back();
                       // } catch (err, _) {
                       //   printError(info: err.toString());
                       //   final strippedMessage = err.toString().replaceFirst(
