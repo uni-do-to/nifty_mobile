@@ -105,6 +105,7 @@ class LocaleKeys {
       'add_new_ingredient_screen_title';
   static const add_new_ingredient_screen_sub_title =
       'add_new_ingredient_screen_sub_title';
+  static const add_new_my_ingredient = 'add_new_my_ingredient';
   static const add_new_ingredient_screen_hint =
       'add_new_ingredient_screen_hint';
   static const change_password_screen_sub_title =
@@ -144,6 +145,8 @@ class LocaleKeys {
       'choose_sub_category_dropdown_label';
   static const search_ingredients_dropdown_label =
       'search_ingredients_dropdown_label';
+  static const search_my_ingredients_dropdown_label =
+      'search_my_ingredients_dropdown_label';
   static const search_recipes_dropdown_label = 'search_recipes_dropdown_label';
   static const search_sports_dropdown_label = 'search_sports_dropdown_label';
   static const quantity_screen_title = 'quantity_screen_title';
@@ -272,7 +275,7 @@ class Locales {
     'have_account_label': 'Already have an account ?',
     'login_label': 'login',
     'daily_bottom_navigation_label': 'Daily',
-    'ingredient_bottom_navigation_label': 'Ingredient',
+    'ingredient_bottom_navigation_label': 'Ingredients',
     'recipe_bottom_navigation_label': 'Recipes',
     'profile_bottom_navigation_label': 'Profile',
     'vegetables_chart_label': 'Vegetable\npackage',
@@ -313,6 +316,7 @@ class Locales {
         'You haven\'t eaten yet today, add an ingredient or recipe to your meal',
     'add_new_ingredient_screen_title': 'New ingredient',
     'add_new_ingredient_screen_sub_title': 'Add a new ingredient',
+    'add_new_my_ingredient': 'Create your own food',
     'add_new_ingredient_screen_hint':
         'Complete all fields to add a new ingredient',
     'change_password_screen_sub_title': 'Change your password',
@@ -344,6 +348,7 @@ class Locales {
     'choose_sub_category_dropdown_label': 'Choose your subcategory',
     'search_ingredients_dropdown_label':
         'Look for a fruit, a vegetable, an ingredient',
+    'search_my_ingredients_dropdown_label': 'Search for a personal food',
     'search_recipes_dropdown_label': 'Look for a recipe',
     'search_sports_dropdown_label': 'Look for a sport',
     'quantity_screen_title': 'Quantify',
@@ -507,6 +512,7 @@ class Locales {
         'Vous n\'avez pas encore mangé aujourd\'hui, ajoutez un aliment ou une recette à votre repas',
     'add_new_ingredient_screen_title': 'Nouvel aliment',
     'add_new_ingredient_screen_sub_title': 'Ajouter un nouvel aliment',
+    'add_new_my_ingredient': 'Créez un aliment personnel',
     'change_password_screen_sub_title': 'Changez votre mot de passe',
     'change_password_screen_hint':
         'Remplissez tous les champs pour changer votre mot de passe',
@@ -539,6 +545,7 @@ class Locales {
     'choose_category_dropdown_label': 'Choississez votre catégorie',
     'search_ingredients_dropdown_label':
         'Recherchez le un fruit, un légume, un aliment',
+    'search_my_ingredients_dropdown_label': 'Cherchez un aliment personnel',
     'search_recipes_dropdown_label': 'Cherchez une recette',
     'search_sports_dropdown_label': 'Cherchez une sport',
     'your_recipe_label': 'Votre recette',

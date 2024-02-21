@@ -22,7 +22,8 @@ class MyIngredientView extends GetView<MyIngredientController> {
       appBar: AppBar(
         title: Padding(
           padding: SizeConstants.toolBarPadding,
-          child: Text('Ingredients'.tr.toUpperCase()),
+          child: Text(
+              LocaleKeys.ingredient_bottom_navigation_label.tr.toUpperCase()),
         ),
         backgroundColor: Colors.white,
         titleTextStyle: theme?.textTheme.titleLarge
@@ -44,7 +45,7 @@ class MyIngredientView extends GetView<MyIngredientController> {
                     top: 20,
                   ),
                   child: SmallActionButton(
-                    text: LocaleKeys.add_new_ingredient_screen_sub_title.tr,
+                    text: LocaleKeys.add_new_my_ingredient.tr,
                     backgroundColor: ColorConstants.mainThemeColor,
                     textColor: Colors.white,
                     fontSize: 14,
@@ -53,9 +54,9 @@ class MyIngredientView extends GetView<MyIngredientController> {
                       color: Colors.white,
                       size: 17.75,
                     ),
-                    onPressed: () async{
+                    onPressed: () async {
                       var result = await Get.toNamed(Routes.ADD_NEW_INGREDIENT);
-                      if(result == true) {
+                      if (result == true) {
                         controller.initData();
                       }
                     },
@@ -79,8 +80,8 @@ class MyIngredientView extends GetView<MyIngredientController> {
                           NeuFormField(
                             padding: EdgeInsets.symmetric(
                                 vertical: 5, horizontal: 18),
-                            hintText:
-                                LocaleKeys.search_ingredients_dropdown_label.tr,
+                            hintText: LocaleKeys
+                                .search_my_ingredients_dropdown_label.tr,
                             controller: controller.searchIngredientsController,
                             suffixIcon: Icon(Icons.search),
                             maintainErrorSize: false,
