@@ -13,8 +13,8 @@ class EditHealthProfileController extends AuthController {
   final tallController = TextEditingController();
   final weightController = TextEditingController();
 
-  RxDouble minBMIValue = 0.0.obs;
-  RxDouble maxBMIValue = 0.0.obs;
+  RxDouble minBMIValue = 16.0.obs;
+  RxDouble maxBMIValue = 40.0.obs;
   RxDouble currentBMI = 0.0.obs;
   RxDouble targetBMI = 0.0.obs;
   RxDouble targetWeight = 0.0.obs;
@@ -89,8 +89,8 @@ class EditHealthProfileController extends AuthController {
     }
 
     currentBMI.value = (weight / (height * height)) * 10000;
-    maxBMIValue.value = currentBMI.value + 15;
-    minBMIValue.value = currentBMI.value - 15;
+    // maxBMIValue.value = currentBMI.value + 15;
+    // minBMIValue.value = currentBMI.value - 15;
     targetBMI.value = (userData!.gender == 'male') ? 25.0 : 20.0;
 
     calculateTargetWeight(targetBMI.value, (height / 100));
@@ -178,7 +178,7 @@ class EditHealthProfileController extends AuthController {
     var userAge = calculateUserAge();
     if (userAge > 19) {
       calculateDailyCaloriesAbove19YearsOld(
-          targetBMI.value, (height / 100), userAge, userData!.gender ?? "");
+          targetWeight.value, (height / 100), userAge, userData!.gender ?? "");
     } else {
       calculateDailyCaloriesBelow19YearsOld(userAge, userData!.gender ?? "");
     }

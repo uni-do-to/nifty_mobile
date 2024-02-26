@@ -53,7 +53,7 @@ class AddRecipeIngredientView extends GetView<AddNewRecipeController> {
                   tabs: [
                     MainTab(
                       child: Text(
-                        LocaleKeys.ingredient_bottom_navigation_label.tr,
+                        LocaleKeys.ingredient_tab_label.tr,
                         textAlign: TextAlign.center,
                       ),
                     ),

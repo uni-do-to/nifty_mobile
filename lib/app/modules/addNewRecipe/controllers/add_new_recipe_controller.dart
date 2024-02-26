@@ -75,7 +75,7 @@ class AddNewRecipeController extends GetxController {
   // add ingredients to user recipe to make recipeIngredientList
   void addIngredientsToRecipe() {
     var grams = selectedIngredientMeasurementUnit.value!.grams! *
-        double.parse(ingredientQuantityController.text);
+        double.parse(ingredientQuantityController.text.replaceAll(",", "."));
 
     var calories =
         (this.selectedIngredient.value!.attributes!.caloriesPer100grams! /
@@ -161,7 +161,7 @@ class AddNewRecipeController extends GetxController {
         //init recipe request
         RecipeRequest request = RecipeRequest(
           name: recipeNameController.text,
-          gramsPerCircle: double.tryParse(recipeGramsPerCircleController.text),
+          gramsPerCircle: double.tryParse(recipeGramsPerCircleController.text.replaceAll(",", ".")),
           caloriesPer100grams:
               (recipeTotalCalories! / recipeTotalWeight!) * 100,
           niftyPoints: 1,

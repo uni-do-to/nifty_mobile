@@ -12,6 +12,7 @@ import 'package:nifty_mobile/app/widgets/form_field.dart';
 import 'package:nifty_mobile/app/widgets/small_action_button.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
+import '../../../utils/input_formatters.dart';
 import '../../../utils/size_utils.dart';
 import '../controllers/add_new_ingredient_controller.dart';
 
@@ -111,10 +112,10 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
 
                       ObxValue((state) {
                         return NeuFormField(
-                          hintText: LocaleKeys.grams_per_circle_label.tr,
+                          hintText: LocaleKeys.add_ingredient_grams_per_circle_label.tr,
                           controller: controller.gramsPerCircleController,
                           inputFormatters: [
-                            FilteringTextInputFormatter.digitsOnly,
+                            DecimalTextInputFormatter(decimalRange: 2),
                           ],
                           keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),                          autocorrect: false,
                           padding: formFieldPadding,
@@ -133,7 +134,7 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                                 controller:
                                     controller.caloriesPerGramController,
                                 inputFormatters: [
-                                  FilteringTextInputFormatter.digitsOnly,
+                                  DecimalTextInputFormatter(decimalRange: 2),
                                 ],
                                 keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),                                autocorrect: false,
                                 padding: formFieldPadding,
@@ -152,7 +153,7 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                                     LocaleKeys.nifty_points_measurement.tr,
                                 controller: controller.niftyPointsController,
                                 inputFormatters: [
-                                  FilteringTextInputFormatter.digitsOnly,
+                                  DecimalTextInputFormatter(decimalRange: 2),
                                 ],
                                 keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),                                autocorrect: false,
                                 readOnly: true,
@@ -203,7 +204,7 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                                 controller:
                                     controller.equivalentUnitInGramsController,
                                 inputFormatters: [
-                                  FilteringTextInputFormatter.digitsOnly,
+                                  DecimalTextInputFormatter(decimalRange: 2),
                                 ],
                                 keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),                                autocorrect: false,
                                 padding: formFieldPadding,
@@ -245,7 +246,7 @@ class AddNewIngredientView extends GetView<AddNewIngredientController> {
                                 controller:
                                     controller.equivalentUnitInGramsController2,
                                 inputFormatters: [
-                                  FilteringTextInputFormatter.digitsOnly,
+                                  DecimalTextInputFormatter(decimalRange: 2),
                                 ],
                                 keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),                                autocorrect: false,
                                 padding: formFieldPadding,

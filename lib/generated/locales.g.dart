@@ -115,6 +115,8 @@ class LocaleKeys {
   static const ingredient_name_france_label = 'ingredient_name_france_label';
   static const ingredient_name_english_label = 'ingredient_name_english_label';
   static const grams_per_circle_label = 'grams_per_circle_label';
+  static const add_ingredient_grams_per_circle_label =
+      'add_ingredient_grams_per_circle_label';
   static const calories_per_gram_label = 'calories_per_gram_label';
   static const extra_measurement_section_label =
       'extra_measurement_section_label';
@@ -222,6 +224,7 @@ class LocaleKeys {
   static const no_ingredient = 'no_ingredient';
   static const settings_nifty_points_value = 'settings_nifty_points_value';
   static const settings_calories_value = 'settings_calories_value';
+  static const no_items_found = 'no_items_found';
   static const settings_nifty_points = 'settings_nifty_points';
   static const settings_calories = 'settings_calories';
 }
@@ -300,7 +303,7 @@ class Locales {
     'meal_tab_number_label': 'Meal n°',
     'sport_tab_number_label': 'Sport n°',
     'ingredient_tab_label': 'Ingredients',
-    'recipe_tab_label': 'Recipe',
+    'recipe_tab_label': 'Recipes',
     'selected_ingredient_recipe_hint_label': 'Choose an item from the list',
     'quantity_of_selected_item_hint': 'QTY',
     'add_to_meal_button_label': 'Add to meal',
@@ -315,7 +318,7 @@ class Locales {
     'empty_meal_tab_hint':
         'You haven\'t eaten yet today, add an ingredient or recipe to your meal',
     'add_new_ingredient_screen_title': 'New ingredient',
-    'add_new_ingredient_screen_sub_title': 'Add a new ingredient',
+    'add_new_ingredient_screen_sub_title': 'Create new personal ingredient',
     'add_new_my_ingredient': 'Create your own food',
     'add_new_ingredient_screen_hint':
         'Complete all fields to add a new ingredient',
@@ -326,6 +329,7 @@ class Locales {
     'ingredient_name_france_label': 'Ingredient name*',
     'ingredient_name_english_label': 'Ingredient name (English)',
     'grams_per_circle_label': 'Grams per circle',
+    'add_ingredient_grams_per_circle_label': 'Grams per circle',
     'calories_per_gram_label': 'Calories/100g*',
     'extra_measurement_section_label': 'Extra measurements units',
     'unit_name_measurement_label': 'Unit name',
@@ -339,15 +343,14 @@ class Locales {
     'find_my_ingredient_hint': 'Find my ingredient',
     'find_ingredient_searchbar_or_categories_hint':
         'Find your ingredient using the search bar or categories',
-    'research_dropdown_label': 'Research',
-    'personal_ingredient_dropdown_label': 'personal food list',
-    'categories_dropdown_label': 'categories',
+    'research_dropdown_label': 'Nifty Diet`s Ingredients list',
+    'personal_ingredient_dropdown_label': 'or personal food list',
+    'categories_dropdown_label': 'Search by category',
     'sub_categories_dropdown_label': 'subcategories',
-    'choose_ingredient_dropdown_label': 'Choose your ingredient',
-    'choose_category_dropdown_label': 'Choose your category',
+    'choose_ingredient_dropdown_label': 'Search for an ingredient',
+    'choose_category_dropdown_label': 'Search for category',
     'choose_sub_category_dropdown_label': 'Choose your subcategory',
-    'search_ingredients_dropdown_label':
-        'Look for a fruit, a vegetable, an ingredient',
+    'search_ingredients_dropdown_label': 'Search for an ingredient',
     'search_my_ingredients_dropdown_label': 'Search for a personal food',
     'search_recipes_dropdown_label': 'Look for a recipe',
     'search_sports_dropdown_label': 'Look for a sport',
@@ -411,14 +414,15 @@ class Locales {
     'logout_confirm_question': 'Are you sure you want to logout?',
     'personal_info': 'Personal Info',
     'health_profile': 'Health Profile',
-    'cal': 'KCAL',
+    'cal': 'kCal',
     'np': 'NP',
     'language_label': 'Language',
     'display_unit_label': 'Calorie measurement unit',
     'logout_label': 'Logout',
     'no_ingredient': 'There are no ingredients added yet',
-    'settings_nifty_points_value': 'Nifty Points (33 kCAL)',
+    'settings_nifty_points_value': 'Nifty Points (33 kCal)',
     'settings_calories_value': 'Kilo Calories',
+    'no_items_found': 'No items found!',
   };
   static const fr_FR = {
     'login': 'Connectez-vous',
@@ -474,7 +478,7 @@ class Locales {
     'today_label': 'Aujourd\'hui',
     'subscription_button_label': 'Choisir cette formule',
     'subscription_view_title': 'Choisissez votre formule',
-    'calories_measurement': 'KCal',
+    'calories_measurement': 'kCal',
     'nifty_points_measurement': 'NP',
     'daily_calories_home_title': 'Vos calories journalières',
     'add_something_to_daily_label': 'Quelque chose à ajouter ?',
@@ -494,24 +498,24 @@ class Locales {
     'meal_tab_number_label': 'Repas n°',
     'sport_tab_number_label': 'Sport n°',
     'ingredient_tab_label': 'Aliments',
-    'recipe_tab_label': 'Recette',
+    'recipe_tab_label': 'Recettes',
     'selected_ingredient_recipe_hint_label':
         'Choisissez un élément dans la liste',
-    'quantity_of_selected_item_hint': 'QTé',
+    'quantity_of_selected_item_hint': 'Qté',
     'add_to_meal_button_label': 'Ajouter au repas',
     'add_to_sport_screen_title': 'Ajouter Au sport',
     'new_recipe_tab_label': 'Nouvelle recette',
     'add_recipe_screen_title': 'Ajouter une recette',
     'recipe_name_label': 'Nom de la recette',
     'recipe_name_hint': 'Ma nouvelle recette',
-    'add_recipe_button_label': 'Enregistrer',
+    'add_recipe_button_label': 'Enregistrer la recette',
     'add_ingredient_to_recipe_title_page': 'Ajouter à la recette',
     'new_meal_button_label': 'Nouveau repas',
     'close_label': 'Terminer',
     'empty_meal_tab_hint':
         'Vous n\'avez pas encore mangé aujourd\'hui, ajoutez un aliment ou une recette à votre repas',
     'add_new_ingredient_screen_title': 'Nouvel aliment',
-    'add_new_ingredient_screen_sub_title': 'Ajouter un nouvel aliment',
+    'add_new_ingredient_screen_sub_title': 'Créez un aliment personnel',
     'add_new_my_ingredient': 'Créez un aliment personnel',
     'change_password_screen_sub_title': 'Changez votre mot de passe',
     'change_password_screen_hint':
@@ -521,7 +525,9 @@ class Locales {
     'mandatory_fields_mark': '* obligatoire',
     'ingredient_name_france_label': 'Nom de l\'aliment*',
     'ingredient_name_english_label': 'Nom de l\'aliment (English)',
-    'grams_per_circle_label': 'quand la recette est terminée',
+    'grams_per_circle_label':
+        'Grammes par cercle (quand la recette est terminée)',
+    'add_ingredient_grams_per_circle_label': 'Grammes par cercle',
     'calories_per_gram_label': 'Calories/100g*',
     'extra_measurement_section_label': 'Unités de mesures supplémentaires',
     'unit_name_measurement_label': 'Nom de l\'unité',
@@ -536,15 +542,14 @@ class Locales {
     'find_my_ingredient_hint': 'Trouver mon aliment',
     'find_ingredient_searchbar_or_categories_hint':
         'Trouver votre aliment à l\'aide de la barre de recherche ou des catégories',
-    'research_dropdown_label': 'Recherche',
-    'personal_ingredient_dropdown_label': 'liste alimentaire personnelle',
-    'categories_dropdown_label': 'catégories',
+    'research_dropdown_label': 'Liste alimentaire Nifty Diet',
+    'personal_ingredient_dropdown_label': 'ou liste alimentaire personnelle',
+    'categories_dropdown_label': 'ou recherche par catégorie',
     'sub_categories_dropdown_label': 'sous-catégories',
-    'choose_ingredient_dropdown_label': 'Choississez votre aliment',
+    'choose_ingredient_dropdown_label': 'Recherchez un aliment',
     'choose_sub_category_dropdown_label': 'Choississez votre sous-catégorie',
-    'choose_category_dropdown_label': 'Choississez votre catégorie',
-    'search_ingredients_dropdown_label':
-        'Recherchez le un fruit, un légume, un aliment',
+    'choose_category_dropdown_label': 'Recherchez une catégorie',
+    'search_ingredients_dropdown_label': 'Recherchez un aliment',
     'search_my_ingredients_dropdown_label': 'Cherchez un aliment personnel',
     'search_recipes_dropdown_label': 'Cherchez une recette',
     'search_sports_dropdown_label': 'Cherchez une sport',
@@ -611,14 +616,15 @@ class Locales {
     'logout_confirm_question': 'Êtes-vous sûr de vouloir vous déconnecter?',
     'personal_info': 'Informations personnelles',
     'health_profile': 'Historique de poids',
-    'cal': 'KCAL',
+    'cal': 'kCal',
     'np': 'NP',
     'language_label': 'Langue',
     'display_unit_label': 'Unité de mesure calorique',
     'logout_label': 'Quitter',
     'no_ingredient':
         'Il n\'y a pas encore d\'aliments ajoutés dans cette recette',
-    'settings_nifty_points': 'Nifty Points (33 kCAL)',
+    'settings_nifty_points': 'Nifty Points (33 kCal)',
     'settings_calories': 'Kilo Calories',
+    'no_items_found': 'Pas d\'éléments trouvés !',
   };
 }

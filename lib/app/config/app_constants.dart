@@ -23,7 +23,7 @@ class AppConstants {
       "short" : "NP" ,
       "long" : LocaleKeys.settings_nifty_points
     } , {
-    "short" : "kCAL" ,
+    "short" : "kCal" ,
       "long" : LocaleKeys.settings_calories
     }];
 }

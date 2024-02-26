@@ -195,7 +195,7 @@ class AddToMealController extends GetxController {
 
     double quantity;
     try {
-      quantity = double.parse(recipeQuantityController.text);
+      quantity = double.parse(recipeQuantityController.text.replaceAll(",", "."));
       // Add further processing if needed
     } catch (e) {
       // Handle the case when the entered quantity is not a valid number
@@ -212,7 +212,7 @@ class AddToMealController extends GetxController {
       return ;
 
     var grams = selectedRecipeMeasurementUnit.value!.grams! *
-        double.parse(recipeQuantityController.text);
+        double.parse(recipeQuantityController.text.replaceAll(",", "."));
 
     var calories =
         (this.selectedRecipe.value!.attributes!.caloriesPer100grams! /
@@ -251,7 +251,7 @@ class AddToMealController extends GetxController {
 
     double quantity;
     try {
-      quantity = double.parse(ingredientQuantityController.text);
+      quantity = double.parse(ingredientQuantityController.text.replaceAll(",", "."));
     } catch (e) {
       print("Invalid number for ingredient quantity");
       result = false;
@@ -266,7 +266,7 @@ class AddToMealController extends GetxController {
       return;
 
     var grams = selectedIngredientMeasurementUnit.value!.grams! *
-        double.parse(ingredientQuantityController.text);
+        double.parse(ingredientQuantityController.text.replaceAll(",", "."));
 
     // Assuming you have a way to calculate calories for the ingredient
     var calories = (selectedIngredient.value!.attributes!.caloriesPer100grams! / 100) * grams;

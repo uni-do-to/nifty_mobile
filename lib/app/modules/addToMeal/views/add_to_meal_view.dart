@@ -9,6 +9,7 @@ import 'package:nifty_mobile/app/modules/addToMeal/views/recipe_tab_view.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 import 'package:nifty_mobile/app/widgets/main_tab_bar.dart';
+import 'package:nifty_mobile/generated/locales.g.dart';
 
 import '../controllers/add_to_meal_controller.dart';
 
@@ -53,17 +54,17 @@ class AddToMealView extends GetView<AddToMealController> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const MainTabBar(
+                  MainTabBar(
                     tabs: [
                       MainTab(
                         child: Text(
-                          "Ingrédient",
+                          LocaleKeys.ingredient_tab_label.tr,
                           textAlign: TextAlign.center,
                         ),
                       ),
                       MainTab(
                         child: Text(
-                          "Recette",
+                          LocaleKeys.recipe_tab_label.tr,
                           textAlign: TextAlign.center,
                         ),
                       ),

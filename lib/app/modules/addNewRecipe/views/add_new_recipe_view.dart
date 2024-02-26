@@ -12,6 +12,7 @@ import 'package:nifty_mobile/app/widgets/recipe_ingredient_list_item.dart';
 import 'package:nifty_mobile/app/widgets/small_action_button.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
+import '../../../utils/input_formatters.dart';
 import '../controllers/add_new_recipe_controller.dart';
 
 class AddNewRecipeView extends GetView<AddNewRecipeController> {
@@ -84,7 +85,7 @@ class AddNewRecipeView extends GetView<AddNewRecipeController> {
                       padding: const EdgeInsets.symmetric(horizontal: 18 , vertical: 8),
                       hintText: '500',
                       inputFormatters: [
-                        FilteringTextInputFormatter.digitsOnly,
+                        DecimalTextInputFormatter(decimalRange: 2),
                       ],
                       keyboardType: TextInputType.numberWithOptions(decimal: true , signed: true),                      controller: controller.recipeGramsPerCircleController,
                       autocorrect: false,

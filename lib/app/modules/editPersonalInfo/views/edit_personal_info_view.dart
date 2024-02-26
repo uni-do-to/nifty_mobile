@@ -169,7 +169,7 @@ class EditPersonalInfoView extends GetView<EditPersonalInfoController> {
                                   ),
                                 )
                               : Text(
-                                  LocaleKeys.edit_personal_info_screen_title.tr,
+                                  LocaleKeys.edit_health_profile_btn.tr,
                                   style: NeumorphicTheme.currentTheme(context)
                                       .textTheme
                                       .titleLarge

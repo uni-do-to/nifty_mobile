@@ -128,6 +128,15 @@ class BudgetChart extends StatelessWidget {
                         decoration: boxDecoration.copyWith(
                           color: Color(0xffEDCD67).withOpacity(0.20),
                         ),
+                        padding: EdgeInsets.only(right: 4 , top: 4),
+                        child: Visibility(
+                          visible: sportHeight > 0,
+                          child: Align(
+                            alignment: Alignment.topRight,
+                              child: Icon(Icons.fitness_center_sharp , color: ColorConstants
+                                .secondaryTabBarTextColor,size: 20,)
+                          ),
+                        ),
                       ),
                     ),
                   ],
@@ -220,9 +229,21 @@ class BudgetChart extends StatelessWidget {
                         LocaleKeys.remaining_budget_label.tr,
                         style: theme?.textTheme.bodySmall?.copyWith(fontSize: 13 , color: ColorConstants.accentColor),
                       ),
-                      Text(
-                        "${(consumedBudget + vegetablesBudget).displayUnit} $displayUnit",
-                        style: theme?.textTheme.bodySmall?.copyWith(fontSize: 24 ,fontWeight: FontWeight.w900, color: ColorConstants.accentColor),
+                      Row(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(
+                            "${(consumedBudget + vegetablesBudget).displayUnit}",
+                            style: theme?.textTheme.bodySmall?.copyWith(fontSize: 24 ,fontWeight: FontWeight.w900, color: ColorConstants.accentColor),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(bottom: 3),
+                            child: Text(
+                              " $displayUnit",
+                              style: theme?.textTheme.bodySmall?.copyWith(fontSize: 13 ,fontWeight: FontWeight.w900, color: ColorConstants.accentColor),
+                            ),
+                          ),
+                        ],
                       )
                     ],
                   )
@@ -249,9 +270,21 @@ class BudgetChart extends StatelessWidget {
                           LocaleKeys.remaining_budget_label.tr,
                           style: theme?.textTheme.bodySmall?.copyWith(fontSize: 13 , color: Color(0xff9D0600)),
                         ),
-                        Text(
-                          "${(consumedBudget + vegetablesBudget).displayUnit} $displayUnit",
-                          style: theme?.textTheme.bodySmall?.copyWith(fontSize: 24 ,fontWeight: FontWeight.w900, color: Color(0xff9D0600)),
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children: [
+                            Text(
+                              "${(consumedBudget + vegetablesBudget).displayUnit}",
+                              style: theme?.textTheme.bodySmall?.copyWith(fontSize: 20 ,fontWeight: FontWeight.w900, color: Color(0xff9D0600)),
+                            ),
+                            Container(
+                              padding: EdgeInsets.only(bottom: 3),
+                              child: Text(
+                                " $displayUnit",
+                                style: theme?.textTheme.bodySmall?.copyWith(fontSize: 13 ,fontWeight: FontWeight.w900, color: Color(0xff9D0600)),
+                              ),
+                            ),
+                          ],
                         )
                       ],
                     )
@@ -270,19 +303,38 @@ class BudgetChart extends StatelessWidget {
                     height: 1,
                     color: Colors.grey,
                   ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
-                      Text(
-                        LocaleKeys.nifty_points_budget_label.tr,
-                        style: theme?.textTheme.bodySmall?.copyWith(fontSize: 14 , color: ColorConstants.mainThemeColor),
-                      ),
-                      Text(
-                        "${fullBudget.displayUnit} $displayUnit",
-                        // maxLines: 2,
-                        style: theme?.textTheme.bodySmall?.copyWith(
-                            fontSize: 24 ,fontWeight: FontWeight.w900, color: ColorConstants.mainThemeColor),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            LocaleKeys.nifty_points_budget_label.tr,
+                            style: theme?.textTheme.bodySmall?.copyWith(fontSize: 14 , color: ColorConstants.mainThemeColor),
+                          ),
+                          Row(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              Text(
+                                "${fullBudget.displayUnit}",
+                                // maxLines: 2,
+                                style: theme?.textTheme.bodySmall?.copyWith(
+                                    fontSize: 20 ,fontWeight: FontWeight.w900, color: ColorConstants.mainThemeColor),
+                              ),
+                              Container(
+                                padding: EdgeInsets.only(bottom: 3),
+                                child: Text(
+                                  " $displayUnit",
+                                  // maxLines: 2,
+                                  style: theme?.textTheme.bodySmall?.copyWith(
+                                      fontSize: 13 ,fontWeight: FontWeight.w900, color: ColorConstants.mainThemeColor),
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
                       )
                     ],
                   )

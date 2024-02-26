@@ -37,10 +37,10 @@ class AddNewIngredientController extends GetxController {
   void onInit() {
     super.onInit();
     caloriesPerGramController.addListener(() {
-      if ((double.tryParse(caloriesPerGramController.text)??-1) > 0) {
+      if ((double.tryParse(caloriesPerGramController.text.replaceAll(",", "."))??-1) > 0) {
         isNiftyPointValueChanged.value = true;
         double caloriesPer =
-            double.tryParse(caloriesPerGramController.text) ?? 0;
+            double.tryParse(caloriesPerGramController.text.replaceAll(",", ".")) ?? 0;
 
         niftyPointsController.text = (caloriesPer / 33).round().toString();
       } else {
@@ -86,34 +86,34 @@ class AddNewIngredientController extends GetxController {
 
 // Check for the first set of unit name and equivalent unit in grams
         if (unitNameMeasurementController.text.isNotEmpty &&
-            double.tryParse(equivalentUnitInGramsController.text)
+            double.tryParse(equivalentUnitInGramsController.text.replaceAll(",", "."))
                     ?.compareTo(0) !=
                 0) {
           units.add(Units(
             name: unitNameMeasurementController.text,
-            grams: double.tryParse(equivalentUnitInGramsController.text),
+            grams: double.tryParse(equivalentUnitInGramsController.text.replaceAll(",", ".")),
           ));
         }
 
 // Check for the second set of unit name and equivalent unit in grams
         if (unitNameAnotherMeasurementController.text.isNotEmpty &&
-            double.tryParse(equivalentUnitInGramsController2.text)
+            double.tryParse(equivalentUnitInGramsController2.text.replaceAll(",", "."))
                     ?.compareTo(0) !=
                 0) {
           units.add(Units(
             name: unitNameAnotherMeasurementController.text,
-            grams: double.tryParse(equivalentUnitInGramsController2.text),
+            grams: double.tryParse(equivalentUnitInGramsController2.text.replaceAll(",", ".")),
           ));
         }
 
-         var caloriesPer100grams = double.tryParse(caloriesPerGramController.text) ;
+         var caloriesPer100grams = double.tryParse(caloriesPerGramController.text.replaceAll(",", ".")) ;
         IngredientRequest request = IngredientRequest(
           data: Data(
               // nameEn: ingredientNameEnglishController.text,
               nameFr: ingredientNameFranceController.text,
               caloriesPer100grams: caloriesPer100grams,
               niftyPoints: caloriesPer100grams != null ? caloriesPer100grams / 33 : null,
-              gramsPerCircle: double.tryParse(gramsPerCircleController.text),
+              gramsPerCircle: double.tryParse(gramsPerCircleController.text.replaceAll(",", ".")),
               units: units),
         );
 

@@ -39,6 +39,15 @@ class AddIngredientFormWidget extends StatelessWidget {
             controller: controller.searchIngredientsController,
             suggestionsCallback: (search) =>
                 controller.searchIngredients(search),
+            emptyBuilder: (context){
+              return Container(
+                padding: EdgeInsets.all(8),
+                child: Text(
+                  LocaleKeys.no_items_found.tr,
+                  style: theme.textTheme.bodySmall?.copyWith(fontSize: 18),
+                ),
+              );
+            },
             builder: (context, controller, focusNode) {
               return NeuFormField(
                 padding: formFieldPadding,
@@ -91,6 +100,15 @@ class AddIngredientFormWidget extends StatelessWidget {
             controller: controller.userIngredientsController,
             suggestionsCallback: (search) =>
                 controller.searchMyIngredients(search),
+            emptyBuilder: (context){
+              return Container(
+                padding: EdgeInsets.all(8),
+                child: Text(
+                  LocaleKeys.no_items_found.tr,
+                  style: theme.textTheme.bodySmall?.copyWith(fontSize: 18),
+                ),
+              );
+            },
             builder: (context, controller, focusNode) {
               return NeuFormField(
                 padding: formFieldPadding,
@@ -141,6 +159,15 @@ class AddIngredientFormWidget extends StatelessWidget {
           TypeAheadField<Category>(
             controller: controller.categoriesController,
             suggestionsCallback: (search) => controller.searchCategory(search),
+            emptyBuilder: (context){
+              return Container(
+                padding: EdgeInsets.all(8),
+                child: Text(
+                  LocaleKeys.no_items_found.tr,
+                  style: theme.textTheme.bodySmall?.copyWith(fontSize: 18),
+                ),
+              );
+            },
             builder: (context, controller, focusNode) {
               return NeuFormField(
                 padding: formFieldPadding,
@@ -194,6 +221,15 @@ class AddIngredientFormWidget extends StatelessWidget {
                   const SizedBox(height: 6),
                   TypeAheadField<SubCategory>(
                     controller: controller.subcategoriesController,
+                    emptyBuilder: (context){
+                      return Container(
+                        padding: EdgeInsets.all(8),
+                        child: Text(
+                          LocaleKeys.no_items_found.tr,
+                          style: theme.textTheme.bodySmall?.copyWith(fontSize: 18),
+                        ),
+                      );
+                    },
                     suggestionsCallback: (search) =>
                         controller.searchSubCategory(search),
                     builder: (context, controller, focusNode) {
@@ -258,6 +294,15 @@ class AddIngredientFormWidget extends StatelessWidget {
                   ),
                   TypeAheadField<Ingredient>(
                     controller: controller.ingredientsSubCategoriesController,
+                    emptyBuilder: (context){
+                      return Container(
+                        padding: EdgeInsets.all(8),
+                        child: Text(
+                          LocaleKeys.no_items_found.tr,
+                          style: theme.textTheme.bodySmall?.copyWith(fontSize: 18),
+                        ),
+                      );
+                    },
                     suggestionsCallback: (search) =>
                         controller.searchIngredientsSubCategory(search),
                     builder: (context, controller, focusNode) {

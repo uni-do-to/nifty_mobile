@@ -117,7 +117,7 @@ class AddSportController extends GetxController {
 
     double quantity;
     try {
-      quantity = double.parse(sportQuantityController.text);
+      quantity = double.parse(sportQuantityController.text.replaceAll(",", "."));
     } catch (e) {
       print("Invalid number for ingredient quantity");
       result = false;
@@ -131,7 +131,7 @@ class AddSportController extends GetxController {
     if (!isValidSportsForm())
       return;
 
-    var quantity = double.parse(sportQuantityController.text);
+    var quantity = double.parse(sportQuantityController.text.replaceAll(",", "."));
     print("adding $quantity   ${selectedMeasurementUnit.value?.id}" , ) ;
     var userWeight = Get.find<AuthService>().credentials?.user?.weight??0 ;
     // Assuming you have a way to calculate calories for the ingredient
