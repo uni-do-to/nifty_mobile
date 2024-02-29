@@ -94,56 +94,11 @@ class IngredientTabView extends StatelessWidget {
               }, controller.loading),
             ),
           ),
-          ObxValue((state) {
-            return Container(
-              height: 200,
-              child: AddQuantityWidget(
-                theme: theme,
-                measurementUnitsItems:
-                    controller.measurementUnitsIngredientItems,
-                selectedMeasurementUnit:
-                    controller.selectedIngredientMeasurementUnit.value,
-                quantityController: controller.ingredientQuantityController,
-                onMeasurementUnitChange: (unit) =>
-                    controller.selectedIngredientMeasurementUnit.value = unit,
-                onQuantityChange: (value) => {},
-              ),
-            );
-          }, controller.selectedIngredientMeasurementUnit),
-          const SizedBox(
-            height: 11,
-          ),
           Obx(
             () {
-              return Column(
+              return
+                Column(
                 children: [
-                  Container(
-                    height: 61,
-                    child: SelectedIngredientRecipeItem(
-                      theme: theme,
-                      selectedItemName: Get.locale?.languageCode == 'fr'
-                          ? controller.selectedIngredient.value?.attributes
-                                  ?.nameFr ??
-                              LocaleKeys
-                                  .selected_ingredient_recipe_hint_label.tr
-                          : controller.selectedIngredient.value?.attributes
-                                  ?.nameEn ??
-                              LocaleKeys
-                                  .selected_ingredient_recipe_hint_label.tr,
-                      quantityName: controller
-                              .selectedIngredientMeasurementUnit.value?.name ??
-                          LocaleKeys.quantity_of_selected_item_hint.tr,
-                      quantityValue: controller.ingredientQuantity.value,
-                      isChecked: controller
-                                  .selectedIngredient.value?.attributes !=
-                              null &&
-                          controller.selectedIngredientMeasurementUnit.value !=
-                              null,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 9,
-                  ),
                   Row(
                     children: [
                       Expanded(
@@ -157,10 +112,6 @@ class IngredientTabView extends StatelessWidget {
                           text: LocaleKeys.add_to_meal_button_label.tr,
                           backgroundColor:
                               controller.selectedIngredient.value?.attributes !=
-                                          null &&
-                                      controller
-                                              .selectedIngredientMeasurementUnit
-                                              .value !=
                                           null
                                   ? ColorConstants.accentColor
                                   : ColorConstants.accentColor.withOpacity(0.4),
@@ -170,7 +121,8 @@ class IngredientTabView extends StatelessWidget {
                         ),
                       ),
                     ],
-                  )
+                  ),
+                  const SizedBox(height: 20,)
                 ],
               );
             },

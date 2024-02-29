@@ -148,47 +148,47 @@ class RecipeTabView extends StatelessWidget {
                     ),
                   );
           }, controller.loading),
-          ObxValue((state) {
-            return Container(
-              height: 200,
-              child: AddQuantityWidget(
-                theme: theme,
-                measurementUnitsItems: controller.measurementUnitsRecipeItems,
-                selectedMeasurementUnit:
-                    controller.selectedRecipeMeasurementUnit.value,
-                quantityController: controller.recipeQuantityController,
-                onMeasurementUnitChange: (unit) =>
-                    controller.selectedRecipeMeasurementUnit.value = unit,
-                onQuantityChange: (value) => {},
-              ),
-            );
-          }, controller.selectedRecipeMeasurementUnit),
-          const SizedBox(
-            height: 11,
-          ),
+          // ObxValue((state) {
+          //   return Container(
+          //     height: 200,
+          //     child: AddQuantityWidget(
+          //       theme: theme,
+          //       measurementUnitsItems: controller.measurementUnitsRecipeItems,
+          //       selectedMeasurementUnit:
+          //           controller.selectedRecipeMeasurementUnit.value,
+          //       quantityController: controller.recipeQuantityController,
+          //       onMeasurementUnitChange: (unit) =>
+          //           controller.selectedRecipeMeasurementUnit.value = unit,
+          //       onQuantityChange: (value) => {},
+          //     ),
+          //   );
+          // }, controller.selectedRecipeMeasurementUnit),
+          // const SizedBox(
+          //   height: 11,
+          // ),
           Obx(
             () {
               return Column(
                 children: [
-                  Container(
-                    child: SelectedIngredientRecipeItem(
-                      theme: theme,
-                      selectedItemName: controller
-                              .selectedRecipe.value?.attributes?.name ??
-                          LocaleKeys.selected_ingredient_recipe_hint_label.tr,
-                      quantityName: controller
-                              .selectedRecipeMeasurementUnit.value?.name ??
-                          LocaleKeys.quantity_of_selected_item_hint.tr,
-                      quantityValue: controller.recipeQuantity.value,
-                      isChecked:
-                          controller.selectedRecipe.value?.attributes != null &&
-                              controller.selectedRecipeMeasurementUnit.value !=
-                                  null,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 9,
-                  ),
+                  // Container(
+                  //   child: SelectedIngredientRecipeItem(
+                  //     theme: theme,
+                  //     selectedItemName: controller
+                  //             .selectedRecipe.value?.attributes?.name ??
+                  //         LocaleKeys.selected_ingredient_recipe_hint_label.tr,
+                  //     quantityName: controller
+                  //             .selectedRecipeMeasurementUnit.value?.name ??
+                  //         LocaleKeys.quantity_of_selected_item_hint.tr,
+                  //     quantityValue: controller.recipeQuantity.value,
+                  //     isChecked:
+                  //         controller.selectedRecipe.value?.attributes != null &&
+                  //             controller.selectedRecipeMeasurementUnit.value !=
+                  //                 null,
+                  //   ),
+                  // ),
+                  // const SizedBox(
+                  //   height: 9,
+                  // ),
                   Row(
                     children: [
                       Expanded(
@@ -214,7 +214,9 @@ class RecipeTabView extends StatelessWidget {
                             ),
                       ),
                     ],
-                  )
+                  ),
+                  const SizedBox(height: 20,)
+
                 ],
               );
             },

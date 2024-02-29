@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
+import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/data/models/api_response.dart';
 import 'package:nifty_mobile/app/data/models/daily_model.dart';
 import 'package:nifty_mobile/app/data/models/ingredient_model.dart';
 import 'package:nifty_mobile/app/data/models/recipe_model.dart';
 import 'package:nifty_mobile/app/data/models/unit_model.dart';
 import 'package:nifty_mobile/app/data/providers/recipe_provider.dart';
+import 'package:nifty_mobile/app/widgets/quantity_ingredient_dialog.dart';
+import 'package:nifty_mobile/app/widgets/quantity_recipe_dialog.dart';
+import 'package:nifty_mobile/app/widgets/selected_ingredient_recipe_item.dart';
+import 'package:nifty_mobile/app/widgets/small_action_button.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
 class AddToMealController extends GetxController {
@@ -43,21 +49,21 @@ class AddToMealController extends GetxController {
     super.onInit();
     initData();
     recipeQuantityController.addListener(() {
-      isValidRecipeForm() ;
-      recipeQuantity.value = recipeQuantityController.text ;
+      isValidRecipeForm();
+      recipeQuantity.value = recipeQuantityController.text;
     });
 
     ingredientQuantityController.addListener(() {
-      isValidRecipeForm() ;
-      ingredientQuantity.value = ingredientQuantityController.text ;
+      isValidRecipeForm();
+      ingredientQuantity.value = ingredientQuantityController.text;
     });
 
     selectedRecipeMeasurementUnit.listen((p0) {
-      isValidRecipeForm() ;
+      isValidRecipeForm();
     });
 
     selectedRecipe.listen((p0) {
-      isValidRecipeForm() ;
+      isValidRecipeForm();
     });
   }
 
@@ -164,7 +170,7 @@ class AddToMealController extends GetxController {
     try {
       loading.value = true;
       var response = await recipeProvider.deleteRecipe(recipeItem.id!);
-      recipesList.remove(recipeItem) ;
+      recipesList.remove(recipeItem);
       print(response);
     } catch (err, _) {
       print(err);
@@ -174,7 +180,7 @@ class AddToMealController extends GetxController {
   }
 
   bool isValidRecipeForm() {
-    var result = true ;
+    var result = true;
     if (selectedRecipe.value == null) {
       // Handle the case when no recipe is selected
       print("No recipe selected");
@@ -195,41 +201,67 @@ class AddToMealController extends GetxController {
 
     double quantity;
     try {
-      quantity = double.parse(recipeQuantityController.text.replaceAll(",", "."));
+      quantity =
+          double.parse(recipeQuantityController.text.replaceAll(",", "."));
       // Add further processing if needed
     } catch (e) {
       // Handle the case when the entered quantity is not a valid number
       print("Invalid number for recipe quantity");
       result = false;
     }
-    isValidAddRecipe.value = result ;
-    return result ;
+    isValidAddRecipe.value = result;
+    return result;
   }
 
   void onAddRecipeToMeal() {
+    if (selectedRecipe.value == null) return;
 
-    if(!isValidRecipeForm())
-      return ;
+    Get.bottomSheet(
+      QuantityRecipeDialogWidget(
+        selectedRecipe: selectedRecipe,
+        recipeQuantity: recipeQuantity,
+        measurementUnitsItems: measurementUnitsRecipeItems,
+        selectedMeasurementUnit: selectedRecipeMeasurementUnit,
+        quantityController: recipeQuantityController,
+        onMeasurementUnitChange: (unit) =>
+            selectedRecipeMeasurementUnit.value = unit,
+        onCancelClicked: () {
+          recipeQuantityController.text = '';
+          initRecipeMeasurementUnits();
+          Get.back();
+        },
+        onAddClicked: () => addRecipeToMealImpl(),
+      ),
+      clipBehavior: Clip.none,
+      backgroundColor: ColorConstants.grayBackgroundColor,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20.0),
+          topRight: Radius.circular(20.0),
+        ),
+      ),
+    );
+  }
+
+  void addRecipeToMealImpl() {
+    if (!isValidRecipeForm()) return;
 
     var grams = selectedRecipeMeasurementUnit.value!.grams! *
         double.parse(recipeQuantityController.text.replaceAll(",", "."));
 
     var calories =
-        (this.selectedRecipe.value!.attributes!.caloriesPer100grams! /
-            100) *
+        (this.selectedRecipe.value!.attributes!.caloriesPer100grams! / 100) *
             grams;
 
-
     MealItem mealItem = MealItem(
-      recipe: ApiSingleResponse<Recipe>(
-        data: selectedRecipe.value
-      ),
-
+      recipe: ApiSingleResponse<Recipe>(data: selectedRecipe.value),
       calories: calories,
       weight: grams,
     );
-
-    Get.back(result: mealItem) ;
+    //to close dialog
+    Get.back();
+    // back to add to meal view
+    Get.back(result: mealItem);
   }
 
   bool isValidIngredientForm() {
@@ -251,7 +283,8 @@ class AddToMealController extends GetxController {
 
     double quantity;
     try {
-      quantity = double.parse(ingredientQuantityController.text.replaceAll(",", "."));
+      quantity =
+          double.parse(ingredientQuantityController.text.replaceAll(",", "."));
     } catch (e) {
       print("Invalid number for ingredient quantity");
       result = false;
@@ -262,24 +295,53 @@ class AddToMealController extends GetxController {
   }
 
   void onAddIngredientToMeal() {
-    if (!isValidIngredientForm())
-      return;
+    Get.bottomSheet(
+      QuantityIngredientDialogWidget(
+        selectedIngredient: selectedIngredient,
+        ingredientQuantity: ingredientQuantity,
+        measurementUnitsItems: measurementUnitsIngredientItems,
+        selectedMeasurementUnit: selectedIngredientMeasurementUnit,
+        quantityController: ingredientQuantityController,
+        onMeasurementUnitChange: (unit) =>
+            selectedIngredientMeasurementUnit.value = unit,
+        onCancelClicked: () {
+          ingredientQuantityController.text = '';
+          initIngredientMeasurementUnits(selectedIngredient.value!);
+          Get.back();
+        },
+        onAddClicked: () => addIngredientToMealImpl(),
+      ),
+      clipBehavior: Clip.none,
+      backgroundColor: ColorConstants.grayBackgroundColor,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20.0),
+          topRight: Radius.circular(20.0),
+        ),
+      ),
+    );
+  }
+
+  addIngredientToMealImpl() {
+    if (!isValidIngredientForm()) return;
 
     var grams = selectedIngredientMeasurementUnit.value!.grams! *
         double.parse(ingredientQuantityController.text.replaceAll(",", "."));
 
     // Assuming you have a way to calculate calories for the ingredient
-    var calories = (selectedIngredient.value!.attributes!.caloriesPer100grams! / 100) * grams;
+    var calories =
+        (selectedIngredient.value!.attributes!.caloriesPer100grams! / 100) *
+            grams;
 
     // Assuming MealItem or a similar class is applicable for ingredients as well
     MealItem mealItem = MealItem(
-      ingredient: ApiSingleResponse<Ingredient>(
-          data: selectedIngredient.value
-      ),
+      ingredient: ApiSingleResponse<Ingredient>(data: selectedIngredient.value),
       calories: calories,
       weight: grams,
     );
-
+    //to close dialog
+    Get.back();
+    // back to add to meal view
     Get.back(result: mealItem);
   }
 }

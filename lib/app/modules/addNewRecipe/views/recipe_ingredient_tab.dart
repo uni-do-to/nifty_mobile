@@ -80,58 +80,58 @@ class RecipeIngredientTab extends StatelessWidget {
               }, controller.loading),
             ),
           ),
-          Obx(() {
-            return Container(
-              height: 200,
-              child: AddQuantityWidget(
-                theme: theme!,
-                measurementUnitsItems:
-                    controller.measurementUnitsIngredientItems,
-                selectedMeasurementUnit:
-                    controller.selectedIngredientMeasurementUnit.value,
-                quantityController: controller.ingredientQuantityController,
-                onMeasurementUnitChange: (unit) =>
-                    controller.selectedIngredientMeasurementUnit.value = unit,
-                onQuantityChange: (value) => {},
-              ),
-            );
-          }),
-          const SizedBox(
-            height: 9,
-          ),
+          // Obx(() {
+          //   return Container(
+          //     height: 200,
+          //     child: AddQuantityWidget(
+          //       theme: theme!,
+          //       measurementUnitsItems:
+          //           controller.measurementUnitsIngredientItems,
+          //       selectedMeasurementUnit:
+          //           controller.selectedIngredientMeasurementUnit.value,
+          //       quantityController: controller.ingredientQuantityController,
+          //       onMeasurementUnitChange: (unit) =>
+          //           controller.selectedIngredientMeasurementUnit.value = unit,
+          //       onQuantityChange: (value) => {},
+          //     ),
+          //   );
+          // }),
+          // const SizedBox(
+          //   height: 9,
+          // ),
           Obx(
             () {
               return Column(
                 children: [
-                  Container(
-                    height: 61,
-                    child: SelectedIngredientRecipeItem(
-                      theme: theme!,
-                      selectedIngredientsRecipeLength:
-                          controller.recipeIngredientsList.length,
-                      selectedItemName: Get.locale?.languageCode == 'fr'
-                          ? controller.selectedIngredient.value?.attributes
-                                  ?.nameFr ??
-                              LocaleKeys
-                                  .selected_ingredient_recipe_hint_label.tr
-                          : controller.selectedIngredient.value?.attributes
-                                  ?.nameEn ??
-                              LocaleKeys
-                                  .selected_ingredient_recipe_hint_label.tr,
-                      quantityName: controller
-                              .selectedIngredientMeasurementUnit.value?.name ??
-                          LocaleKeys.quantity_of_selected_item_hint.tr,
-                      quantityValue: controller.ingredientQuantity.value,
-                      isChecked: controller
-                                  .selectedIngredient.value?.attributes !=
-                              null &&
-                          controller.selectedIngredientMeasurementUnit.value !=
-                              null,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 9,
-                  ),
+                  // Container(
+                  //   height: 61,
+                  //   child: SelectedIngredientRecipeItem(
+                  //     theme: theme!,
+                  //     selectedIngredientsRecipeLength:
+                  //         controller.recipeIngredientsList.length,
+                  //     selectedItemName: Get.locale?.languageCode == 'fr'
+                  //         ? controller.selectedIngredient.value?.attributes
+                  //                 ?.nameFr ??
+                  //             LocaleKeys
+                  //                 .selected_ingredient_recipe_hint_label.tr
+                  //         : controller.selectedIngredient.value?.attributes
+                  //                 ?.nameEn ??
+                  //             LocaleKeys
+                  //                 .selected_ingredient_recipe_hint_label.tr,
+                  //     quantityName: controller
+                  //             .selectedIngredientMeasurementUnit.value?.name ??
+                  //         LocaleKeys.quantity_of_selected_item_hint.tr,
+                  //     quantityValue: controller.ingredientQuantity.value,
+                  //     isChecked: controller
+                  //                 .selectedIngredient.value?.attributes !=
+                  //             null &&
+                  //         controller.selectedIngredientMeasurementUnit.value !=
+                  //             null,
+                  //   ),
+                  // ),
+                  // const SizedBox(
+                  //   height: 9,
+                  // ),
                   Row(
                     children: [
                       Container(
@@ -168,11 +168,7 @@ class RecipeIngredientTab extends StatelessWidget {
                                   : ColorConstants.accentColor.withOpacity(0.4),
                           textColor: Colors.white,
                           onPressed: () {
-                            if (controller.selectedIngredient.value != null &&
-                                controller.selectedIngredientMeasurementUnit
-                                        .value !=
-                                    null &&
-                                controller.ingredientQuantityController.text != "") {
+                            if (controller.selectedIngredient.value != null) {
                               controller.addIngredientsToRecipe();
                               controller.clearRecipeIngredientForm();
                             }
@@ -181,7 +177,7 @@ class RecipeIngredientTab extends StatelessWidget {
                         ),
                       ),
                     ],
-                  )
+                  ),
                 ],
               );
             },

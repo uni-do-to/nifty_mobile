@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/controllers/ingredient_controller.dart';
 import 'package:nifty_mobile/app/data/models/api_response.dart';
 import 'package:nifty_mobile/app/data/models/ingredient_model.dart';
 import 'package:nifty_mobile/app/data/models/recipe_request_model.dart';
 import 'package:nifty_mobile/app/data/models/unit_model.dart';
 import 'package:nifty_mobile/app/data/providers/recipe_provider.dart';
+import 'package:nifty_mobile/app/widgets/quantity_ingredient_dialog.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
 class AddNewRecipeController extends GetxController {
@@ -74,12 +76,43 @@ class AddNewRecipeController extends GetxController {
 
   // add ingredients to user recipe to make recipeIngredientList
   void addIngredientsToRecipe() {
+    if (selectedIngredient.value == null) return;
+
+    Get.bottomSheet(
+      QuantityIngredientDialogWidget(
+        selectedIngredient: selectedIngredient,
+        ingredientQuantity: ingredientQuantity,
+        measurementUnitsItems: measurementUnitsIngredientItems,
+        selectedMeasurementUnit: selectedIngredientMeasurementUnit,
+        quantityController: ingredientQuantityController,
+        onMeasurementUnitChange: (unit) =>
+        selectedIngredientMeasurementUnit.value = unit,
+        onCancelClicked: () {
+          ingredientQuantityController.text = '';
+          initIngredientMeasurementUnits(selectedIngredient.value!);
+          Get.back();
+        },
+        onAddClicked: () => addIngredientsToRecipeImpl(),
+      ),
+      clipBehavior: Clip.none,
+      backgroundColor: ColorConstants.grayBackgroundColor,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20.0),
+          topRight: Radius.circular(20.0),
+        ),
+      ),
+    );
+  }
+
+  void addIngredientsToRecipeImpl(){
+
     var grams = selectedIngredientMeasurementUnit.value!.grams! *
         double.parse(ingredientQuantityController.text.replaceAll(",", "."));
 
     var calories =
         (this.selectedIngredient.value!.attributes!.caloriesPer100grams! /
-                100) *
+            100) *
             grams;
 
     var recipeItem = RecipeItem(
@@ -88,7 +121,7 @@ class AddNewRecipeController extends GetxController {
       calories: calories,
     );
     var index = recipeIngredientsList.indexWhere(
-        (e) => e.ingredient?.data?.id == recipeItem.ingredient?.data?.id);
+            (e) => e.ingredient?.data?.id == recipeItem.ingredient?.data?.id);
 
     if (index != -1) {
       // Ingredient exists, update quantity and calories
@@ -101,6 +134,7 @@ class AddNewRecipeController extends GetxController {
       // Ingredient does not exist, add it to the list
       recipeIngredientsList.add(recipeItem);
     }
+    Get.back();
   }
 
   bool validateAddNewRecipeForm() {
