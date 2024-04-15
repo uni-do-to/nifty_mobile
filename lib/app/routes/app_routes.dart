@@ -23,6 +23,8 @@ abstract class Routes {
   static const CHANGE_PASSWORD = _Paths.CHANGE_PASSWORD;
   static const EDIT_PERSONAL_INFO = _Paths.EDIT_PERSONAL_INFO;
   static const EDIT_HEALTH_PROFILE = _Paths.EDIT_HEALTH_PROFILE;
+  static const NAME = _Paths.NAME;
+  static const HISTORY = _Paths.HISTORY;
 }
 
 abstract class _Paths {
@@ -48,4 +50,6 @@ abstract class _Paths {
   static const CHANGE_PASSWORD = '/change-password';
   static const EDIT_PERSONAL_INFO = '/edit-personal-info';
   static const EDIT_HEALTH_PROFILE = '/edit-health-profile';
+  static const NAME = '/name';
+  static const HISTORY = '/history';
 }

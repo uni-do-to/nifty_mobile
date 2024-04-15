@@ -48,4 +48,6 @@ class AuthProvider extends BaseProvider {
     print(response.body) ;
     return decode<User?>(response, User.fromJson);
   }
+
+  
 }

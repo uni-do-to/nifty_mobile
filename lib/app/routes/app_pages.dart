@@ -19,6 +19,8 @@ import '../modules/editHealthProfile/bindings/edit_health_profile_binding.dart';
 import '../modules/editHealthProfile/views/edit_health_profile_view.dart';
 import '../modules/editPersonalInfo/bindings/edit_personal_info_binding.dart';
 import '../modules/editPersonalInfo/views/edit_personal_info_view.dart';
+import '../modules/history/bindings/history_binding.dart';
+import '../modules/history/views/history_view.dart';
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
 import '../modules/login/bindings/login_binding.dart';
@@ -77,20 +79,14 @@ class AppPages {
             builder: (context, child) => scaleWidgetBuilder(context, child!),
             child: SubscriptionView()),
         binding: SubscriptionBinding(),
-        middlewares: [
-          AuthMiddleware(),
-          NotSubscribedMiddleware()
-        ]),
+        middlewares: [AuthMiddleware(), NotSubscribedMiddleware()]),
     GetPage(
       name: _Paths.HOME,
       page: () => ScaleWidget(
           builder: (context, child) => scaleWidgetBuilder(context, child!),
           child: const HomeView()),
       binding: HomeBinding(),
-      middlewares: [
-        AuthMiddleware(),
-        SubscribedMiddleware()
-      ],
+      middlewares: [AuthMiddleware(), SubscribedMiddleware()],
     ),
     GetPage(
       name: _Paths.ADD_TO_MEAL,
@@ -98,10 +94,7 @@ class AppPages {
           builder: (context, child) => scaleWidgetBuilder(context, child!),
           child: const AddToMealView()),
       binding: AddToMealBinding(),
-      middlewares: [
-        AuthMiddleware(),
-        SubscribedMiddleware()
-      ],
+      middlewares: [AuthMiddleware(), SubscribedMiddleware()],
     ),
     GetPage(
       name: _Paths.ADD_NEW_INGREDIENT,
@@ -109,10 +102,7 @@ class AppPages {
           builder: (context, child) => scaleWidgetBuilder(context, child!),
           child: const AddNewIngredientView()),
       binding: AddNewIngredientBinding(),
-      middlewares: [
-        AuthMiddleware(),
-        SubscribedMiddleware()
-      ],
+      middlewares: [AuthMiddleware(), SubscribedMiddleware()],
     ),
     GetPage(
       name: _Paths.ADD_SPORT,
@@ -120,10 +110,7 @@ class AppPages {
           builder: (context, child) => scaleWidgetBuilder(context, child!),
           child: const AddSportView()),
       binding: AddSportBinding(),
-      middlewares: [
-        AuthMiddleware(),
-        SubscribedMiddleware()
-      ],
+      middlewares: [AuthMiddleware(), SubscribedMiddleware()],
     ),
     GetPage(
         name: _Paths.ADD_NEW_RECIPE,
@@ -142,10 +129,7 @@ class AppPages {
                 builder: (context, child) =>
                     scaleWidgetBuilder(context, child!),
                 child: const AddRecipeIngredientView()),
-            middlewares: [
-              AuthMiddleware(),
-              SubscribedMiddleware()
-            ],
+            middlewares: [AuthMiddleware(), SubscribedMiddleware()],
           ),
         ]),
     GetPage(
@@ -175,6 +159,11 @@ class AppPages {
       middlewares: [
         AuthMiddleware(),
       ],
+    ),
+    GetPage(
+      name: _Paths.HISTORY,
+      page: () => const HistoryView(),
+      binding: HistoryBinding(),
     ),
   ];
 }

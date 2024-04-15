@@ -1,6 +1,6 @@
 class ConfigAPI {
   //Example: https://www.example.com without /
-  static const String baseUrl = 'https://nifty-diet-adb2127174f3.herokuapp.com';
+  static const String baseUrl = 'http://localhost:1337';
   static const String baseApiUrl = '$baseUrl/api';
   static const stripePublishableKey =  "pk_test_51Lme2ZHFBOGEpvokPdsziGdnSmsF9CiUdC5SEUlQIQxvuXZmuKpKF1J5uRryAP8jTMXK8Fw4nCaUqSCaQ5Tp5UY500Oo2qEV7L";
 
@@ -21,6 +21,7 @@ class ConfigAPI {
   static const String recipesUrl = '/recipes';
   static const String dailyUrl = '/dailies';
   static const String sportUrl = '/sports';
+  static const String historyUrl = '/histories';
 
 
   //subscription apis

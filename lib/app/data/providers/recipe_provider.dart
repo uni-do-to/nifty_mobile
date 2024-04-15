@@ -17,7 +17,6 @@ class RecipeProvider extends BaseProvider {
       ),
     );
 
-    print("request done");
     return decode<ApiSingleResponse<Recipe>?>(
         response,
         (data) =>

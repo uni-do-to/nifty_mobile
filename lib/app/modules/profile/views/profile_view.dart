@@ -78,6 +78,10 @@ class ProfileView extends GetView<ProfileController> {
                     onTap: () => {Get.toNamed(Routes.EDIT_HEALTH_PROFILE)},
                   ),
                   SettingsTile(
+                    title: LocaleKeys.history.tr,
+                    onTap: () => {Get.toNamed(Routes.HISTORY)},
+                  ),
+                  SettingsTile(
                     title: LocaleKeys.change_password_screen_title.tr,
                     onTap: () => {Get.toNamed(Routes.CHANGE_PASSWORD)},
                   ),

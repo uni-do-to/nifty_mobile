@@ -10,14 +10,6 @@ import '../models/api_response.dart';
 import '../models/daily_model.dart' ;
 
 class DailyProvider extends BaseProvider {
-  Future<Recipe?> createRecipe(RecipeRequest recipeRequest) async {
-    var response = await post(ConfigAPI.dailyUrl, recipeRequest.toJson());
-
-    return decode<Recipe?>(response, Recipe.fromJson);
-  }
-
-  Future<Response> deleteRecipe(int id) async =>
-      await delete('${ConfigAPI.dailyUrl}/$id');
 
   Future<ApiListResponse<Daily>?> getDaily(String date) async {
     final response = await get(ConfigAPI.dailyUrl , query: {

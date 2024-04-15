@@ -109,9 +109,9 @@ class MyIngredientView extends GetView<MyIngredientController> {
                                           icon: Icons.egg,
                                           text: Get.locale?.languageCode == 'fr'
                                               ? controller.filteredItems[index]
-                                                  .attributes!.nameFr!
+                                                  .attributes?.nameFr??""
                                               : controller.filteredItems[index]
-                                                  .attributes!.nameEn!),
+                                                  .attributes?.nameEn??""),
                                       const SizedBox(
                                         height: 10,
                                       ),

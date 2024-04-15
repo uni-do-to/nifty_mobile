@@ -175,5 +175,10 @@
   "no_ingredient" : "Il n'y a pas encore d'aliments ajoutés dans cette recette",
   "settings_nifty_points" : "Nifty Points (33 kCal)",
   "settings_calories" : "Kilo Calories",
-  "no_items_found" : "Pas d'éléments trouvés !"
+  "no_items_found" : "Pas d'éléments trouvés !",
+  "history" : "Histoire",
+  "updates" : "Mises à jour",
+  "week": "semaine",
+  "months": "Mois ",
+  "years": "Année"
 }

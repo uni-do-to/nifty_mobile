@@ -6,8 +6,8 @@ import '../config/theme_data.dart';
 
 class MainTabBar extends StatelessWidget {
   final List<Widget> tabs ;
-
-  const MainTabBar({required this.tabs ,Key? key}) : super(key: key);
+  final bool isScrollable ;
+  const MainTabBar({required this.tabs , this.isScrollable = true , Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +29,8 @@ class MainTabBar extends StatelessWidget {
       theme?.textTheme.titleLarge?.copyWith(
         fontWeight: FontWeight.normal,
       ),
-      isScrollable: true,
-      tabAlignment: TabAlignment.start,
+      isScrollable: isScrollable,
+      tabAlignment: isScrollable ? TabAlignment.start : null,
       tabs: tabs ,
     );
   }

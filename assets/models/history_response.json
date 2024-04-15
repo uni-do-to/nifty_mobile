@@ -1,0 +1,28 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "attributes": {
+        "date": "2024-04-15T14:48:25.203Z",
+        "weight": 83.1,
+        "height": 174.2
+      }
+    },
+    {
+      "id": 2,
+      "attributes": {
+        "date": "2024-04-15T14:48:30.695Z",
+        "weight": 84.2,
+        "height": 174.1
+      }
+    }
+  ],
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "pageSize": 100,
+      "pageCount": 1,
+      "total": 2
+    }
+  }
+}

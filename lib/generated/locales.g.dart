@@ -225,6 +225,11 @@ class LocaleKeys {
   static const settings_nifty_points_value = 'settings_nifty_points_value';
   static const settings_calories_value = 'settings_calories_value';
   static const no_items_found = 'no_items_found';
+  static const history = 'history';
+  static const updates = 'updates';
+  static const week = 'week';
+  static const months = 'months';
+  static const years = 'years';
   static const settings_nifty_points = 'settings_nifty_points';
   static const settings_calories = 'settings_calories';
 }
@@ -423,6 +428,11 @@ class Locales {
     'settings_nifty_points_value': 'Nifty Points (33 kCal)',
     'settings_calories_value': 'Kilo Calories',
     'no_items_found': 'No items found!',
+    'history': 'History',
+    'updates': 'Updates',
+    'week': 'Week',
+    'months': 'Month',
+    'years': 'Year',
   };
   static const fr_FR = {
     'login': 'Connectez-vous',
@@ -626,5 +636,10 @@ class Locales {
     'settings_nifty_points': 'Nifty Points (33 kCal)',
     'settings_calories': 'Kilo Calories',
     'no_items_found': 'Pas d\'éléments trouvés !',
+    'history': 'Histoire',
+    'updates': 'Mises à jour',
+    'week': 'semaine',
+    'months': 'Mois ',
+    'years': 'Année',
   };
 }
