@@ -178,7 +178,10 @@
   "no_items_found" : "No items found!",
   "history": "History",
   "updates": "Updates",
-  "week": "Week",
-  "months": "Month",
-  "years": "Year"
+  "days": "Days",
+  "week": "Weeks",
+  "months": "Months",
+  "old" : "OLD",
+  "current": "CURRENT",
+  "change": "CHANGE"
 }

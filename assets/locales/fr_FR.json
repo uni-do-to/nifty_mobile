@@ -178,7 +178,10 @@
   "no_items_found" : "Pas d'éléments trouvés !",
   "history" : "Histoire",
   "updates" : "Mises à jour",
-  "week": "semaine",
-  "months": "Mois ",
-  "years": "Année"
+  "week": "Semaines",
+  "months": "Mois",
+  "days": "Jours",
+  "old" : "DEBUT",
+  "current": "ACTUEL",
+  "change": "CHANGEMENT"
 }

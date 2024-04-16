@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/data/providers/history_provider.dart';
 
@@ -55,6 +56,30 @@ class HistoryController extends GetxController {
     } finally {
       loading.value = false;
     }
+  }
+
+  List<History> aggregateByDate(List<History> historyList) {
+    var groupedByDate = groupBy(historyList, (History h) {
+      return DateTime(h.attributes!.dateTime.year, h.attributes!.dateTime.month, h.attributes!.dateTime.day);
+    });
+
+    List<History> averagedHistory = [];
+    groupedByDate.forEach((date, histories) {
+      double totalWeight = histories.fold(0, (sum, current) => sum + current.attributes!.weight!);
+      double averageWeight = totalWeight / histories.length;
+
+      if (histories.isNotEmpty) {
+        // Creating a new History object for the date with the average weight
+        averagedHistory.add(History(
+            attributes: Attributes(
+              date: date.toString(),
+              weight: averageWeight // Optionally handling height similarly
+            )
+        ));
+      }
+    });
+
+    return averagedHistory;
   }
 
   void sortLists() {

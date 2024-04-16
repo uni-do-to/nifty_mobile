@@ -38,12 +38,11 @@ class HistoryView extends GetView<HistoryController> {
         backgroundColor: Colors.white,
         titleTextStyle: theme?.textTheme.titleLarge
             ?.copyWith(color: ColorConstants.toolbarTextColor),
-
         toolbarHeight: 40,
       ),
       body: Container(
         color: ColorConstants.grayBackgroundColor,
-        padding: const EdgeInsets.only(top:16),
+        padding: const EdgeInsets.only(top: 16),
         child: SafeArea(
           child: DefaultTabController(
             length: 3,
@@ -57,6 +56,12 @@ class HistoryView extends GetView<HistoryController> {
                     tabs: [
                       MainTab(
                         child: Text(
+                          LocaleKeys.days.tr,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      MainTab(
+                        child: Text(
                           LocaleKeys.week.tr,
                           textAlign: TextAlign.center,
                         ),
@@ -64,12 +69,6 @@ class HistoryView extends GetView<HistoryController> {
                       MainTab(
                         child: Text(
                           LocaleKeys.months.tr,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                      MainTab(
-                        child: Text(
-                          LocaleKeys.years.tr,
                           textAlign: TextAlign.center,
                         ),
                       ),
@@ -84,33 +83,44 @@ class HistoryView extends GetView<HistoryController> {
                       physics: NeverScrollableScrollPhysics(),
                       children: [
                         ObxValue((state) {
-                          if(state.isEmpty)
-                            return Container();
-                          var old = state.last.attributes?.weight ?? 0.0 ;
-                          var current = state.first.attributes?.weight ?? 0.0 ;
+                          if (state.isEmpty) return Container();
+                          var old = state.last.attributes?.weight ?? 0.0;
+                          var current = state.first.attributes?.weight ?? 0.0;
 
-                          return SummaryView(old: old, current: current , historyList: state , timeFrame: "days",);
+                          return SummaryView(
+                            old: old,
+                            current: current,
+                            historyList: controller.aggregateByDate(state),
+                            timeFrame: "days",
+                          );
                         }, controller.pastWeekList),
                         ObxValue((state) {
-                          if(state.isEmpty)
-                            return Container();
-                          var old = state.last.attributes?.weight ?? 0.0 ;
-                          var current = state.first.attributes?.weight ?? 0.0 ;
+                          if (state.isEmpty) return Container();
+                          var old = state.last.attributes?.weight ?? 0.0;
+                          var current = state.first.attributes?.weight ?? 0.0;
 
-                          return SummaryView(old: old, current: current , historyList: state , timeFrame: "weeks",);
+                          return SummaryView(
+                            old: old,
+                            current: current,
+                            historyList: controller.aggregateByDate(state),
+                            timeFrame: "weeks",
+                          );
                         }, controller.pastMonthList),
                         ObxValue((state) {
-                          if(state.isEmpty)
-                            return Container();
-                          var old = state.last.attributes?.weight ?? 0.0 ;
-                          var current = state.first.attributes?.weight ?? 0.0 ;
+                          if (state.isEmpty) return Container();
+                          var old = state.last.attributes?.weight ?? 0.0;
+                          var current = state.first.attributes?.weight ?? 0.0;
 
-                          return SummaryView(old: old, current: current , historyList: state , timeFrame: "months",);
+                          return SummaryView(
+                            old: old,
+                            current: current,
+                            historyList: controller.aggregateByDate(state),
+                            timeFrame: "months",
+                          );
                         }, controller.pastYearList),
                       ],
                     ),
                   ),
-
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
@@ -119,13 +129,14 @@ class HistoryView extends GetView<HistoryController> {
                     ),
                     child: Text(
                       LocaleKeys.updates.tr, // Display weight with 'kg' suffix
-                      style: theme?.textTheme.titleLarge ,
+                      style: theme?.textTheme.titleLarge,
                     ),
                   ),
                   Expanded(
                     child: ObxValue((state) {
                       return ListView.builder(
-                        itemCount: state.length, // Your list of History instances
+                        itemCount: state.length,
+                        // Your list of History instances
                         itemBuilder: (context, index) {
                           return HistoryListItem(history: state[index]);
                         },

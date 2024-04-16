@@ -1,7 +1,11 @@
 import 'package:community_charts_flutter/community_charts_flutter.dart'
     as charts;
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:nifty_mobile/app/data/auth_provider.dart';
+import 'package:nifty_mobile/app/services/auth_service.dart';
+import 'package:nifty_mobile/generated/locales.g.dart';
 
 import '../../../data/models/history_response_model.dart';
 
@@ -24,7 +28,7 @@ class SummaryView extends StatelessWidget {
     var theme = NeumorphicTheme.of(context)?.current;
 
     final simpleCurrencyFormatter = charts.BasicNumericTickFormatterSpec(
-      (measure) => "${measure} KG",
+      (measure) => "$measure ${LocaleKeys.weight_measurement.tr}",
     );
 
     var series = [
@@ -45,6 +49,11 @@ class SummaryView extends StatelessWidget {
         data: historyList,
       )..setAttribute(charts.rendererIdKey, 'customPoint'),
     ];
+
+    var targetWeight = Get.find<AuthService>()
+        .credentials
+        ?.user
+        ?.targetWeight?? 60;
 
     return Container(
       decoration: BoxDecoration(
@@ -70,10 +79,23 @@ class SummaryView extends StatelessWidget {
                         // ID used to link series to this renderer.
                         customRendererId: 'customPoint')
                   ],
+                  behaviors: [
+                    charts.RangeAnnotation([
+                      charts.LineAnnotationSegment(
+                          targetWeight,
+                          charts.RangeAnnotationAxisType.measure,
+                          startLabel: "${LocaleKeys.target_bmi_label.tr} $targetWeight ${LocaleKeys.weight_measurement.tr}",
+                          labelAnchor: charts.AnnotationLabelAnchor.start,
+                          labelStyleSpec: charts.TextStyleSpec(color: charts.Color.fromHex(code: "#80D3CC")),
+                          color: charts.Color.fromHex(code: "#80D3CC")),
+                    ], defaultLabelPosition: charts.AnnotationLabelPosition.inside
+                    ),
+
+                  ],
                   primaryMeasureAxis: charts.NumericAxisSpec(
                       showAxisLine: true,
                       tickProviderSpec: const charts.BasicNumericTickProviderSpec(
-                          zeroBound: false, desiredTickCount: 4),
+                          zeroBound: false, desiredMinTickCount: 4),
                       tickFormatterSpec: simpleCurrencyFormatter,
                       renderSpec: charts.GridlineRendererSpec(
                         labelStyle: charts.TextStyleSpec(
@@ -89,11 +111,12 @@ class SummaryView extends StatelessWidget {
                             color: charts.Color.fromHex(code: "#274c5b")),
                         lineStyle: charts.LineStyleSpec(
                             thickness: 2,
-                            color: charts.MaterialPalette.gray.shade300)),
-                    // tickFormatterSpec: charts.AutoDateTimeTickFormatterSpec(
-                    //     day: charts.TimeFormatterSpec(
-                    //         format: 'EEE', transitionFormat: 'EEE dd/MM')
-                    // )
+                            color: charts.MaterialPalette.gray.shade300)
+                    ),
+                    tickFormatterSpec: charts.AutoDateTimeTickFormatterSpec(
+                        // day: charts.TimeFormatterSpec(
+                        //     format: 'EEE', transitionFormat: 'EEE dd/MM')
+                    )
                   )),
             ),
           )
@@ -108,9 +131,9 @@ class SummaryView extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          weightDetail('OLD', old, theme),
-          weightDetail('CURRENT', current, theme),
-          weightDetail('CHANGE', current - old, theme),
+          weightDetail(LocaleKeys.old.tr, old, theme),
+          weightDetail(LocaleKeys.current.tr, current, theme),
+          weightDetail(LocaleKeys.change.tr, current - old, theme),
         ],
       ),
     );

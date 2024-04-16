@@ -227,9 +227,12 @@ class LocaleKeys {
   static const no_items_found = 'no_items_found';
   static const history = 'history';
   static const updates = 'updates';
+  static const days = 'days';
   static const week = 'week';
   static const months = 'months';
-  static const years = 'years';
+  static const old = 'old';
+  static const current = 'current';
+  static const change = 'change';
   static const settings_nifty_points = 'settings_nifty_points';
   static const settings_calories = 'settings_calories';
 }
@@ -430,9 +433,12 @@ class Locales {
     'no_items_found': 'No items found!',
     'history': 'History',
     'updates': 'Updates',
-    'week': 'Week',
-    'months': 'Month',
-    'years': 'Year',
+    'days': 'Days',
+    'week': 'Weeks',
+    'months': 'Months',
+    'old': 'OLD',
+    'current': 'CURRENT',
+    'change': 'CHANGE',
   };
   static const fr_FR = {
     'login': 'Connectez-vous',
@@ -638,8 +644,11 @@ class Locales {
     'no_items_found': 'Pas d\'éléments trouvés !',
     'history': 'Histoire',
     'updates': 'Mises à jour',
-    'week': 'semaine',
-    'months': 'Mois ',
-    'years': 'Année',
+    'week': 'Semaines',
+    'months': 'Mois',
+    'days': 'Jours',
+    'old': 'DEBUT',
+    'current': 'ACTUEL',
+    'change': 'CHANGEMENT',
   };
 }
