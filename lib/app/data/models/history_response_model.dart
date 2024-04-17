@@ -36,8 +36,8 @@ class Attributes {
 
   Attributes.fromJson(Map<String, dynamic> json) {
     date = json['date'];
-    weight = json['weight'];
-    height = json['height'];
+    weight = double.tryParse(json['weight'].toString());
+    height = double.tryParse(json['height'].toString());
   }
 
   Map<String, dynamic> toJson() {

@@ -1,5 +1,6 @@
 import 'package:community_charts_flutter/community_charts_flutter.dart' as charts;
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class IconRenderer extends charts.CustomSymbolRenderer {
   final IconData iconData;
@@ -18,4 +19,16 @@ class IconRenderer extends charts.CustomSymbolRenderer {
     return new SizedBox.fromSize(
         size: size, child: new Icon(iconData, color: Colors.black, size: 12.0));
   }
+}
+
+
+class LocalizedDateTimeFactory extends charts.LocalDateTimeFactory {
+  final Locale locale;
+
+  @override
+  DateFormat createDateFormat(String? pattern) {
+    return DateFormat(pattern, locale.languageCode);
+  }
+
+  LocalizedDateTimeFactory(this.locale);
 }

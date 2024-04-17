@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:nifty_mobile/app/data/auth_provider.dart';
 import 'package:nifty_mobile/app/services/auth_service.dart';
+import 'package:nifty_mobile/app/utils/chart_utils.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
 
 import '../../../data/models/history_response_model.dart';
@@ -92,6 +93,7 @@ class SummaryView extends StatelessWidget {
                     ),
 
                   ],
+                  dateTimeFactory: LocalizedDateTimeFactory(Get.locale!),
                   primaryMeasureAxis: charts.NumericAxisSpec(
                       showAxisLine: true,
                       tickProviderSpec: const charts.BasicNumericTickProviderSpec(
@@ -113,7 +115,10 @@ class SummaryView extends StatelessWidget {
                             thickness: 2,
                             color: charts.MaterialPalette.gray.shade300)
                     ),
-                    tickFormatterSpec: charts.AutoDateTimeTickFormatterSpec(
+                    tickFormatterSpec: const charts.AutoDateTimeTickFormatterSpec(
+                      minute: charts.TimeFormatterSpec(
+                        format: "EEE" , transitionFormat: 'EEE dd/MM'
+                      ),
                         // day: charts.TimeFormatterSpec(
                         //     format: 'EEE', transitionFormat: 'EEE dd/MM')
                     )

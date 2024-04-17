@@ -51,8 +51,9 @@ class HistoryController extends GetxController {
         // Sort the lists if needed
         sortLists();
       }
-    } catch (err) {
-
+    } catch (err , stacktrace) {
+      err.printError();
+      stacktrace.printError() ;
     } finally {
       loading.value = false;
     }
