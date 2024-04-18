@@ -7,7 +7,7 @@ import 'package:nifty_mobile/app/data/auth_provider.dart';
 import 'package:nifty_mobile/app/services/auth_service.dart';
 import 'package:nifty_mobile/app/utils/chart_utils.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
-
+import 'dart:math';
 import '../../../data/models/history_response_model.dart';
 
 class SummaryView extends StatelessWidget {
@@ -29,7 +29,7 @@ class SummaryView extends StatelessWidget {
     var theme = NeumorphicTheme.of(context)?.current;
 
     final simpleCurrencyFormatter = charts.BasicNumericTickFormatterSpec(
-      (measure) => "$measure ${LocaleKeys.weight_measurement.tr}",
+      (measure) => "${measure?.toInt()} ${LocaleKeys.weight_measurement.tr}",
     );
 
     var series = [
@@ -42,13 +42,13 @@ class SummaryView extends StatelessWidget {
         domainFormatterFn: (History history, _) =>
             (datum) => DateFormat('EEE').format(history.attributes!.dateTime),
       ),
-      charts.Series<History, DateTime>(
-        id: 'weightPoints',
-        colorFn: (_, __) => charts.Color.fromHex(code: "#274c5b"),
-        domainFn: (History history, _) => history.attributes!.dateTime,
-        measureFn: (History history, _) => history.attributes!.weight,
-        data: historyList,
-      )..setAttribute(charts.rendererIdKey, 'customPoint'),
+      // charts.Series<History, DateTime>(
+      //   id: 'weightPoints',
+      //   colorFn: (_, __) => charts.Color.fromHex(code: "#274c5b"),
+      //   domainFn: (History history, _) => history.attributes!.dateTime,
+      //   measureFn: (History history, _) => history.attributes!.weight,
+      //   data: historyList,
+      // )..setAttribute(charts.rendererIdKey, 'customPoint'),
     ];
 
     var targetWeight = Get.find<AuthService>()
@@ -74,18 +74,18 @@ class SummaryView extends StatelessWidget {
                   animate: true,
                   defaultRenderer: new charts.LineRendererConfig(),
                   // Custom renderer configuration for the point series.
-                  customSeriesRenderers: [
-                    charts.PointRendererConfig(
-                        symbolRenderer: charts.RectSymbolRenderer(),
-                        // ID used to link series to this renderer.
-                        customRendererId: 'customPoint')
-                  ],
+                  // customSeriesRenderers: [
+                  //   charts.PointRendererConfig(
+                  //       symbolRenderer: charts.RectSymbolRenderer(),
+                  //       // ID used to link series to this renderer.
+                  //       customRendererId: 'customPoint')
+                  // ],
                   behaviors: [
                     charts.RangeAnnotation([
                       charts.LineAnnotationSegment(
                           targetWeight,
                           charts.RangeAnnotationAxisType.measure,
-                          startLabel: "${LocaleKeys.target_bmi_label.tr} $targetWeight ${LocaleKeys.weight_measurement.tr}",
+                          startLabel: "${targetWeight.round()} ${LocaleKeys.weight_measurement.tr}",
                           labelAnchor: charts.AnnotationLabelAnchor.start,
                           labelStyleSpec: charts.TextStyleSpec(color: charts.Color.fromHex(code: "#80D3CC")),
                           color: charts.Color.fromHex(code: "#80D3CC")),
@@ -111,6 +111,14 @@ class SummaryView extends StatelessWidget {
                         labelStyle: charts.TextStyleSpec(
                             fontSize: 14, // size in Pts.
                             color: charts.Color.fromHex(code: "#274c5b")),
+                         labelRotation: 60,
+                        labelCollisionOffsetFromTickPx: 0,
+                        labelCollisionOffsetFromAxisPx: 0,
+                        labelCollisionRotation: 60,
+                        labelOffsetFromTickPx: 0,
+                        minimumPaddingBetweenLabelsPx: 0,
+                        labelOffsetFromAxisPx: 10,
+                        tickLengthPx: 5,
                         lineStyle: charts.LineStyleSpec(
                             thickness: 2,
                             color: charts.MaterialPalette.gray.shade300)
@@ -121,6 +129,9 @@ class SummaryView extends StatelessWidget {
                       ),
                         // day: charts.TimeFormatterSpec(
                         //     format: 'EEE', transitionFormat: 'EEE dd/MM')
+                    ),
+                    tickProviderSpec: charts.DayTickProviderSpec(
+                      increments: [1 , 7 , 31]
                     )
                   )),
             ),

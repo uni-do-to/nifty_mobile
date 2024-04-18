@@ -32,7 +32,7 @@ class HistoryView extends GetView<HistoryController> {
           ),
         ),
         title: Container(
-          child: Text(LocaleKeys.add_to_meal_button_label.tr.toUpperCase()),
+          child: Text(LocaleKeys.history.tr.toUpperCase()),
         ),
         centerTitle: false,
         backgroundColor: Colors.white,
