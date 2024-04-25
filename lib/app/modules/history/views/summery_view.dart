@@ -4,6 +4,7 @@ import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:nifty_mobile/app/data/auth_provider.dart';
+import 'package:nifty_mobile/app/data/models/user_permission_model.dart';
 import 'package:nifty_mobile/app/services/auth_service.dart';
 import 'package:nifty_mobile/app/utils/chart_utils.dart';
 import 'package:nifty_mobile/generated/locales.g.dart';
@@ -23,6 +24,21 @@ class SummaryView extends StatelessWidget {
     required this.timeFrame,
     super.key,
   });
+
+  int calculateUserAge(User userData) {
+    DateTime birthDate =
+    DateFormat("yyyy-MM-dd").parse(userData.birthDate ?? "");
+    DateTime now = DateTime.now();
+    int age = now.year - birthDate.year;
+
+    // Check if the birthday has occurred this year
+    if (now.month < birthDate.month ||
+        (now.month == birthDate.month && now.day < birthDate.day)) {
+      age--;
+    }
+
+    return age;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,10 +67,12 @@ class SummaryView extends StatelessWidget {
       // )..setAttribute(charts.rendererIdKey, 'customPoint'),
     ];
 
-    var targetWeight = Get.find<AuthService>()
+    var userData = Get.find<AuthService>()
         .credentials
-        ?.user
-        ?.targetWeight?? 60;
+        ?.user ;
+    var userAge = calculateUserAge(userData!) ;
+    var targetWeight =
+        userData.targetWeight?? 60;
 
     return Container(
       decoration: BoxDecoration(
@@ -80,7 +98,7 @@ class SummaryView extends StatelessWidget {
                   //       // ID used to link series to this renderer.
                   //       customRendererId: 'customPoint')
                   // ],
-                  behaviors: [
+                  behaviors: userAge > 19 ? [
                     charts.RangeAnnotation([
                       charts.LineAnnotationSegment(
                           targetWeight,
@@ -92,7 +110,7 @@ class SummaryView extends StatelessWidget {
                     ], defaultLabelPosition: charts.AnnotationLabelPosition.inside
                     ),
 
-                  ],
+                  ] : [],
                   dateTimeFactory: LocalizedDateTimeFactory(Get.locale!),
                   primaryMeasureAxis: charts.NumericAxisSpec(
                       showAxisLine: true,

@@ -183,5 +183,6 @@
   "days": "Jours",
   "old" : "DEBUT",
   "current": "ACTUEL",
-  "change": "CHANGEMENT"
+  "change": "CHANGEMENT",
+  "hint_to_age_13_years_old":"Vous devez avoir 13 ans ou plus pour vous enregistrer"
 }

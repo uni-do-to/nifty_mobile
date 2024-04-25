@@ -233,6 +233,7 @@ class LocaleKeys {
   static const old = 'old';
   static const current = 'current';
   static const change = 'change';
+  static const hint_to_age_13_years_old = 'hint_to_age_13_years_old';
   static const settings_nifty_points = 'settings_nifty_points';
   static const settings_calories = 'settings_calories';
 }
@@ -439,6 +440,7 @@ class Locales {
     'old': 'OLD',
     'current': 'CURRENT',
     'change': 'CHANGE',
+    'hint_to_age_13_years_old': 'You must be 13 years or older to register',
   };
   static const fr_FR = {
     'login': 'Connectez-vous',
@@ -650,5 +652,7 @@ class Locales {
     'old': 'DEBUT',
     'current': 'ACTUEL',
     'change': 'CHANGEMENT',
+    'hint_to_age_13_years_old':
+        'Vous devez avoir 13 ans ou plus pour vous enregistrer',
   };
 }

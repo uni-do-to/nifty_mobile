@@ -44,12 +44,15 @@ class RegisterController extends AuthController {
   var confirmPasswordError = ''.obs;
   RxBool isSignup = false.obs;
   RxBool termsAndConditions = false.obs;
+  DateTime today= DateTime.now();
+  DateTime? minAgeDate;
 
   RegisterController(super.authProvider);
 
   @override
   void onInit() {
     super.onInit();
+    minAgeDate = DateTime(today.year-13, today.month , today.day);
     tallController.addListener(() {
       calculateBmiChange();
     });
@@ -157,7 +160,7 @@ class RegisterController extends AuthController {
     targetBMI.value = (selectedGender.value == 'male') ? 25.0 : 20.0;
 
     calculateTargetWeight(targetBMI.value, (height / 100));
-    print("Target weight: $targetWeight , Target BMI: ${targetBMI.value}, Height:$height") ;
+    print("calculateBmiChange ${userAge.value} Target weight: $targetWeight , Target BMI: ${targetBMI.value}, Height:$height") ;
 
     if (userAge.value > 19) {
       calculateDailyCaloriesAbove19YearsOld(targetWeight.value, (height / 100),
@@ -215,6 +218,7 @@ class RegisterController extends AuthController {
 
   // calculate daily calories below 19 years old according to gender
   void calculateDailyCaloriesBelow19YearsOld(int age, String gender) {
+    print("calculate weight below 19") ;
     if (age == 13 && gender == 'male') {
       targetCaloriesPerDay.value = 2414;
     } else if (age == 13 && gender == 'female') {

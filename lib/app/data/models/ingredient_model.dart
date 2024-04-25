@@ -29,7 +29,7 @@ class Ingredient extends ApiDataModel {
 }
 
 class Attributes {
-  String? nameEn;
+  String? _nameEn;
   String? nameFr;
   ApiSingleResponse<SubCategory>? subCategory;
   double? caloriesPer100grams;
@@ -37,11 +37,13 @@ class Attributes {
   double? gramsPerCircle;
   List<Units>? units;
 
-  get simpleEnName => removeDiacritics(nameEn?.toLowerCase()??"") ;
+  get nameEn => _nameEn?.isNotEmpty == true ? _nameEn : nameFr ;
+
+  get simpleEnName => removeDiacritics(_nameEn?.toLowerCase()??"") ;
   get simpleFrName => removeDiacritics(nameFr?.toLowerCase()??"") ;
 
   Attributes(
-      {this.nameEn,
+      {
       this.nameFr,
       this.subCategory,
       this.caloriesPer100grams,
@@ -50,7 +52,7 @@ class Attributes {
       this.units});
 
   Attributes.fromJson(Map<String, dynamic> json) {
-    nameEn = json['nameEn'];
+    _nameEn = json['nameEn'];
     nameFr = json['nameFr'];
     subCategory = json['sub_category'] != null
         ? ApiSingleResponse.fromJson(json['sub_category'], (json) => SubCategory?.fromJson(json))
@@ -68,7 +70,7 @@ class Attributes {
 
   Map<String, dynamic> toJson() {
     final data = <String, dynamic>{};
-    data['nameEn'] = nameEn;
+    data['nameEn'] = _nameEn;
     data['nameFr'] = nameFr;
     if (subCategory != null) {
       data['sub_category'] = subCategory?.toJson();

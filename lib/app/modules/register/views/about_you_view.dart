@@ -21,7 +21,7 @@ class AboutYouView extends GetView<RegisterController> {
         context: context,
         initialDate: DateTime(2000, 1, 1),
         firstDate: DateTime(1900),
-        lastDate: DateTime(2021));
+        lastDate: controller.minAgeDate??DateTime(2021));
     if (picked != null) {
       controller.dateOfBirthController.text =
           DateFormat("dd-MM-yyyy").format(picked);
@@ -101,6 +101,12 @@ class AboutYouView extends GetView<RegisterController> {
                           errorText: controller.birthDateError.value,
                         );
                       }, controller.birthDateError),
+                      Text(
+                        LocaleKeys.hint_to_age_13_years_old.tr,
+                        style: theme?.textTheme.bodySmall?.copyWith(
+                          color: Colors.grey.shade600,
+                        ),
+                      ),
                     ],
                   ),
                 ),

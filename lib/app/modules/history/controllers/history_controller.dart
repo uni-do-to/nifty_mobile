@@ -66,8 +66,8 @@ class HistoryController extends GetxController {
 
     List<History> averagedHistory = [];
     groupedByDate.forEach((date, histories) {
-      double totalWeight = histories.fold(0, (sum, current) => sum + current.attributes!.weight!);
-      double averageWeight = totalWeight / histories.length;
+      double totalWeight = histories.where((element) => element.attributes?.weight != null).fold(0, (sum, current) => sum + (current.attributes!.weight!));
+      double averageWeight = totalWeight / histories.where((element) => element.attributes?.weight != null).length;
 
       if (histories.isNotEmpty) {
         // Creating a new History object for the date with the average weight

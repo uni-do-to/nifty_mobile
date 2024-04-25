@@ -115,6 +115,7 @@ class YourBmiView extends GetView<RegisterController> {
           const SizedBox(
             height: 15,
           ),
+          controller.userAge.value > 19 ?
           Neumorphic(
             style: const NeumorphicStyle(depth: 1.3, intensity: 1),
             padding: const EdgeInsets.only(left: 18, right: 18, top: 15 , bottom: 12),
@@ -405,7 +406,8 @@ class YourBmiView extends GetView<RegisterController> {
                 ],
               ),
             ),
-          ),
+          ) :
+          Container() ,
           Expanded(child: Container()),
         ],
       ),
