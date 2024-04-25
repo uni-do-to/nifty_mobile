@@ -2,7 +2,7 @@ class ConfigAPI {
   //Example: https://www.example.com without /
   static const String baseUrl = 'https://nifty-diet-adb2127174f3.herokuapp.com';
   static const String baseApiUrl = '$baseUrl/api';
-  static const stripePublishableKey =  "pk_test_51Lme2ZHFBOGEpvokPdsziGdnSmsF9CiUdC5SEUlQIQxvuXZmuKpKF1J5uRryAP8jTMXK8Fw4nCaUqSCaQ5Tp5UY500Oo2qEV7L";
+  static const stripePublishableKey =  "pk_live_51Lx4u5Lv66vTYu5LJpj4iHBOcUZn1k8mcASE0zqZznp0Rx5zswEqNCdqNwuBcNb6a10jhpj4w811y9OlpZo5kQuw006SzFlGDV";
 
   static const int sessionTimeoutThreshold =
   0; // Will refresh the access token 5 minutes before it expires
