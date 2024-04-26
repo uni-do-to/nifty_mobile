@@ -166,8 +166,7 @@ class RegisterController extends AuthController {
       calculateDailyCaloriesAbove19YearsOld(targetWeight.value, (height / 100),
           userAge.value, selectedGender.value);
     } else {
-      calculateDailyCaloriesBelow19YearsOld(
-          userAge.value, selectedGender.value);
+      calculateDailyCaloriesBelow19YearsOld(userAge.value, selectedGender.value);
     }
   }
 
@@ -219,31 +218,34 @@ class RegisterController extends AuthController {
   // calculate daily calories below 19 years old according to gender
   void calculateDailyCaloriesBelow19YearsOld(int age, String gender) {
     print("calculate weight below 19") ;
+    var targetCalories = 0 ;
     if (age == 13 && gender == 'male') {
-      targetCaloriesPerDay.value = 2414;
+      targetCalories = 2414;
     } else if (age == 13 && gender == 'female') {
-      targetCaloriesPerDay.value = 2223;
+      targetCalories = 2223;
     } else if (age == 14 && gender == 'male') {
-      targetCaloriesPerDay.value = 2629;
+      targetCalories = 2629;
     } else if (age == 14 && gender == 'female') {
-      targetCaloriesPerDay.value = 2342;
+      targetCalories = 2342;
     } else if (age == 15 && gender == 'male') {
-      targetCaloriesPerDay.value = 2820;
+      targetCalories = 2820;
     } else if (age == 15 && gender == 'female') {
-      targetCaloriesPerDay.value = 2390;
+      targetCalories = 2390;
     } else if (age == 16 && gender == 'male') {
-      targetCaloriesPerDay.value = 2964;
+      targetCalories = 2964;
     } else if (age == 16 && gender == 'female') {
-      targetCaloriesPerDay.value = 2414;
+      targetCalories = 2414;
     } else if (age == 17 && gender == 'male') {
-      targetCaloriesPerDay.value = 3083;
+      targetCalories = 3083;
     } else if (age == 17 && gender == 'female') {
-      targetCaloriesPerDay.value = 2426;
+      targetCalories = 2426;
     } else if (age == 18 && gender == 'male') {
-      targetCaloriesPerDay.value = 3155;
+      targetCalories = 3155;
     } else if (age == 18 && gender == 'female') {
-      targetCaloriesPerDay.value = 2462;
+      targetCalories = 2462;
     }
+
+    targetCaloriesPerDay.value = targetCalories / 1.05 ;
   }
 
   void calculateUserGoalMeasurements() {
@@ -255,8 +257,8 @@ class RegisterController extends AuthController {
       calculateDailyCaloriesAbove19YearsOld(
           targetWeight.value, (height / 100), userAge.value, selectedGender.value);
     } else {
-      calculateDailyCaloriesBelow19YearsOld(
-          userAge.value, selectedGender.value);
+      //not user with teens
+      calculateDailyCaloriesBelow19YearsOld(userAge.value, selectedGender.value);
     }
   }
 

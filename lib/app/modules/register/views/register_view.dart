@@ -93,22 +93,32 @@ class RegisterView extends GetView<RegisterController> {
                             size: 17,
                           ),
                           onPressed: () {
-                            if (controller.currentStep.value == 0 &&
-                                !controller.validateUserInfoForm()) return;
+                            if (controller.currentStep.value == 0) {
+                              if (!controller.validateUserInfoForm()) {
+                                return;
+                              } else {
+                                controller.userAge.value = controller.calculateUserAge();
+                                //clear weight an height force user to enter them again
+                                //important for teens calories calculations cause its recalculated when user change the weight and height
+                                controller.weightController.text = "" ;
+                                controller.tallController.text = "" ;
+                                controller.currentBMI.value = 0.0 ;
+                                controller.targetBMI.value = 0.0 ;
+                              }
+                            }
 
-                            if (controller.currentStep.value == 1 &&
-                                !controller.validateBMIForm()) return;
+
+                            if (controller.currentStep.value == 1) {
+                              if (!controller.validateBMIForm()) {
+                                return;
+                              }else {
+                                controller.calculateNiftyPoints();
+                              }
+                            }
 
                             if (controller.currentStep.value == 2 &&
                                 !controller.validateNiftyPointsForm()) return;
 
-                            if (controller.currentStep.value == 0) {
-                              controller.userAge.value =
-                                  controller.calculateUserAge();
-                            }
-                            if (controller.currentStep.value == 1) {
-                              controller.calculateNiftyPoints();
-                            }
                             controller.currentStep.value++;
                           },
                           // Optionally, specify width and height
