@@ -3,10 +3,14 @@ import 'dart:ui';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/data/models/user_permission_model.dart';
+import 'package:nifty_mobile/app/data/providers/subscription_provider.dart';
 import 'package:nifty_mobile/app/routes/app_pages.dart';
 import 'package:nifty_mobile/app/services/auth_service.dart';
 import 'package:nifty_mobile/app/services/config_service.dart';
+import 'package:stripe_checkout/stripe_checkout.dart';
+import 'package:flutter_custom_tabs/flutter_custom_tabs.dart';
 
+import '../../../data/auth_provider.dart';
 import '../../../locale/language_model.dart';
 
 class ProfileController extends GetxController {
@@ -15,6 +19,11 @@ class ProfileController extends GetxController {
   final ConfigService configService = Get.find() ;
   final AuthService authService = Get.find() ;
   late Rx<LanguageModel?> language  ;
+
+  final SubscriptionProvider provider;
+
+  ProfileController(this.provider) ;
+
 
   @override
   void onInit() {
@@ -51,6 +60,11 @@ class ProfileController extends GetxController {
   void logout() async{
     await authService.removeCredentials();
     Get.offAllNamed(Routes.SPLASH) ;
+  }
+
+  manageUserSubscription() async{
+    var result = await provider.createCustomerPortalSession() ;
+    await launchUrl(Uri.parse(result!.url!));
   }
 
 }

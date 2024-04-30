@@ -74,7 +74,7 @@ class SubscriptionController extends AuthController {
     );
 
     Get.showSnackbar(
-      GetSnackBar(message: text),
+      GetSnackBar(message: text , duration: Duration(seconds: 5),),
     );
   }
 

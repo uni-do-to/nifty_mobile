@@ -1,6 +1,7 @@
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/base/base_provider.dart';
 import 'package:nifty_mobile/app/data/models/checkout_session_response_model.dart';
+import 'package:nifty_mobile/app/data/models/customer_portal_session_response_model.dart';
 import 'package:nifty_mobile/app/data/models/subscription_plans_response_model.dart';
 
 import '../../config/api_constants.dart';
@@ -27,5 +28,10 @@ class SubscriptionProvider extends BaseProvider {
   Future<SubscriptionPlansResponse?> getSubscriptionPans() async {
     final response = await get(ConfigAPI.getSubscriptionsPlans);
     return decode<SubscriptionPlansResponse?>(response, SubscriptionPlansResponse.fromJson);
+  }
+
+  Future<CustomerPortalSessionResponse?> createCustomerPortalSession() async {
+    final response = await get('${ConfigAPI.createCustomerPortalSession}');
+    return decode<CustomerPortalSessionResponse?>(response, CustomerPortalSessionResponse.fromJson);
   }
 }

@@ -85,6 +85,12 @@ class ProfileView extends GetView<ProfileController> {
                     title: LocaleKeys.change_password_screen_title.tr,
                     onTap: () => {Get.toNamed(Routes.CHANGE_PASSWORD)},
                   ),
+                  SettingsTile(
+                    title: "Manage subscription",
+                    onTap: () => {
+                      controller.manageUserSubscription()
+                    },
+                  ),
                 ],
               ),
             ),

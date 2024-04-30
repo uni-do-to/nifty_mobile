@@ -40,6 +40,7 @@ dependencies:
   carousel_slider: ^4.2.1
   diacritic: ^0.1.5
   community_charts_flutter: ^1.0.2
+  flutter_custom_tabs: ^2.0.0+1
 
 dev_dependencies: 
   flutter_lints: ^2.0.0
