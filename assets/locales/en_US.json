@@ -184,5 +184,13 @@
   "old" : "OLD",
   "current": "CURRENT",
   "change": "CHANGE",
-  "hint_to_age_13_years_old":"You must be 13 years or older to register"
+  "hint_to_age_13_years_old":"You must be 13 years or older to register",
+  "manage_subscription" : "Manage subscription",
+  "delete_my_data": "Delete my data",
+  "delete_data_confirmation": "Are you sure you want to delete your data",
+  "action_cannot_undone": "This action cannot be undone",
+  "something_wrong" : "Something went wrong please try again later",
+  "request_sent" : "Your request has been sent successfully",
+  "request_sent_body" : "Thank you, your request has been received! We will contact you very soon"
+
 }

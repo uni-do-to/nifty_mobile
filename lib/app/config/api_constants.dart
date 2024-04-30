@@ -28,6 +28,7 @@ class ConfigAPI {
   static const String createProductCheckoutSessionUrl = '/createProductCheckoutSession';
   static const String retrieveCheckoutSessionUrl = '/retrieveCheckoutSession';
   static const String createCustomerPortalSession = '/createCustomerPortalSession';
+  static const String deleteMyData = '/deleteMyData';
 
   static const String getSubscriptionsPlans = '/getSubscriptionsPlans';
 

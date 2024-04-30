@@ -34,4 +34,10 @@ class SubscriptionProvider extends BaseProvider {
     final response = await get('${ConfigAPI.createCustomerPortalSession}');
     return decode<CustomerPortalSessionResponse?>(response, CustomerPortalSessionResponse.fromJson);
   }
+
+  Future<bool?> deleteMyData() async{
+    final response = await get<bool?>('${ConfigAPI.deleteMyData}');
+
+    return response.body;
+  }
 }

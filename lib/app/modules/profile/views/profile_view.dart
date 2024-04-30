@@ -86,10 +86,8 @@ class ProfileView extends GetView<ProfileController> {
                     onTap: () => {Get.toNamed(Routes.CHANGE_PASSWORD)},
                   ),
                   SettingsTile(
-                    title: "Manage subscription",
-                    onTap: () => {
-                      controller.manageUserSubscription()
-                    },
+                    title: LocaleKeys.manage_subscription.tr,
+                    onTap: () => {controller.manageUserSubscription()},
                   ),
                 ],
               ),
@@ -188,6 +186,94 @@ class ProfileView extends GetView<ProfileController> {
                           controller.changeDisplayUnit(result);
                         }
                       }),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Neumorphic(
+              child: Column(
+                children: [
+                  SettingsTile(
+                    title: LocaleKeys.delete_my_data.tr,
+                    icon: Icon(
+                      Icons.delete,
+                      color: Colors.red,
+                    ),
+                    onTap: () async {
+                      var confirmationResult = await Get.dialog(AlertDialog(
+                        title: Text(
+                          LocaleKeys.delete_my_data.tr,
+                          style: theme?.textTheme.titleLarge,
+                        ),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(LocaleKeys.delete_data_confirmation.tr),
+                            Text(
+                              LocaleKeys.action_cannot_undone.tr,
+                              style: theme?.textTheme.bodyMedium
+                                  ?.copyWith(color: Colors.red),
+                            )
+                          ],
+                        ),
+                        actions: <Widget>[
+                          TextButton(
+                            child: Text(
+                              LocaleKeys.cancel_label.tr,
+                              style: theme?.textTheme.titleMedium
+                                  ?.copyWith(fontWeight: FontWeight.bold),
+                            ),
+                            onPressed: () {
+                              Get.back(result: false);
+                            },
+                          ),
+                          TextButton(
+                            child: Text(LocaleKeys.delete_my_data.tr,
+                                style: theme?.textTheme.titleMedium),
+                            onPressed: () {
+                              Get.back(result: true);
+                            },
+                          ),
+                        ],
+                      ));
+                      if (confirmationResult != true) {
+                        return;
+                      }
+                      var apiResult = await controller.deleteMyData();
+                      if(apiResult == true) {
+                        Get.dialog(AlertDialog(
+                          title: Text(
+                            LocaleKeys.request_sent.tr,
+                            style: theme?.textTheme.titleLarge,
+                          ),
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(LocaleKeys.request_sent_body.tr),
+                            ],
+                          ),
+                          actions: <Widget>[
+                            TextButton(
+                              child: Text(
+                                LocaleKeys.close_label.tr,
+                                style: theme?.textTheme.titleMedium
+                                    ?.copyWith(fontWeight: FontWeight.bold),
+                              ),
+                              onPressed: () {
+                                Get.back(result: false);
+                              },
+                            )
+                          ],
+                        ));
+                      }else {
+                        Get.snackbar(LocaleKeys.error_snackbar_label.tr, LocaleKeys.something_wrong.tr) ;
+                      }
+                    },
+                  ),
                 ],
               ),
             ),

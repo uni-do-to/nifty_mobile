@@ -234,6 +234,13 @@ class LocaleKeys {
   static const current = 'current';
   static const change = 'change';
   static const hint_to_age_13_years_old = 'hint_to_age_13_years_old';
+  static const manage_subscription = 'manage_subscription';
+  static const delete_my_data = 'delete_my_data';
+  static const delete_data_confirmation = 'delete_data_confirmation';
+  static const action_cannot_undone = 'action_cannot_undone';
+  static const something_wrong = 'something_wrong';
+  static const request_sent = 'request_sent';
+  static const request_sent_body = 'request_sent_body';
   static const settings_nifty_points = 'settings_nifty_points';
   static const settings_calories = 'settings_calories';
 }
@@ -441,6 +448,14 @@ class Locales {
     'current': 'CURRENT',
     'change': 'CHANGE',
     'hint_to_age_13_years_old': 'You must be 13 years or older to register',
+    'manage_subscription': 'Manage subscription',
+    'delete_my_data': 'Delete my data',
+    'delete_data_confirmation': 'Are you sure you want to delete your data',
+    'action_cannot_undone': 'This action cannot be undone',
+    'something_wrong': 'Something went wrong please try again later',
+    'request_sent': 'Your request has been sent successfully',
+    'request_sent_body':
+        'Thank you, your request has been received! We will contact you very soon',
   };
   static const fr_FR = {
     'login': 'Connectez-vous',
@@ -654,5 +669,14 @@ class Locales {
     'change': 'CHANGEMENT',
     'hint_to_age_13_years_old':
         'Vous devez avoir 13 ans ou plus pour vous enregistrer',
+    'manage_subscription': 'Gérer l\'abonnement',
+    'delete_my_data': 'Supprimer mes données',
+    'delete_data_confirmation':
+        'Êtes-vous sûr de vouloir supprimer vos données ?',
+    'action_cannot_undone': 'Cette action ne peut pas être annulée',
+    'something_wrong': 'Un problème est survenu, veuillez réessayer plus tard',
+    'request_sent': 'Votre demande a été envoyée avec succès',
+    'request_sent_body':
+        'Merci, votre demande a été reçue ! Nous vous contacterons très bientôt',
   };
 }

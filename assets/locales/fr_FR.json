@@ -184,5 +184,12 @@
   "old" : "DEBUT",
   "current": "ACTUEL",
   "change": "CHANGEMENT",
-  "hint_to_age_13_years_old":"Vous devez avoir 13 ans ou plus pour vous enregistrer"
+  "hint_to_age_13_years_old":"Vous devez avoir 13 ans ou plus pour vous enregistrer",
+  "manage_subscription" : "Gérer l'abonnement",
+  "delete_my_data" : "Supprimer mes données",
+  "delete_data_confirmation" : "Êtes-vous sûr de vouloir supprimer vos données ?",
+  "action_cannot_undone" : "Cette action ne peut pas être annulée",
+  "something_wrong" : "Un problème est survenu, veuillez réessayer plus tard",
+  "request_sent" : "Votre demande a été envoyée avec succès",
+  "request_sent_body" : "Merci, votre demande a été reçue ! Nous vous contacterons très bientôt"
 }

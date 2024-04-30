@@ -67,4 +67,8 @@ class ProfileController extends GetxController {
     await launchUrl(Uri.parse(result!.url!));
   }
 
+  Future<bool?> deleteMyData() async{
+    return provider.deleteMyData() ;
+  }
+
 }
