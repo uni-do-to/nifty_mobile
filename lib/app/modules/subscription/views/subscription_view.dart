@@ -194,7 +194,7 @@ class SubscriptionView extends GetView<SubscriptionController> {
                                         size: 13,
                                       ),
                                       SizedBox(
-                                        width: 20.toWidth,
+                                        width: 12,
                                       ),
                                       Text(
                                         LocaleKeys.subscription_button_label.tr,

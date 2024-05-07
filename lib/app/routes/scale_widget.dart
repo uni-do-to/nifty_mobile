@@ -21,14 +21,14 @@ class ScaleWidget extends StatelessWidget {
 
 scaleWidgetBuilder(BuildContext context,Widget child , {bool withBouncingScroll = true}) {
   return MaxWidthBox(
-    maxWidth: 450,
+    maxWidth: 1024,
     background: Container(color: const Color(0xFFF5F5F5)),
     child: ResponsiveScaledBox(
 
         width: ResponsiveValue<double>(context, conditionalValues: [
           Condition.equals(name: MOBILE, value: 430),
-          // Condition.between(start: 800, end: 1100, value: 800),
-          // Condition.between(start: 1000, end: 1200, value: 1000),
+          // Condition.equals(name: TABLET, value: 768),
+          // Condition.equals(name: DESKTOP, value: 1024),
 
         ]).value,
         child: withBouncingScroll

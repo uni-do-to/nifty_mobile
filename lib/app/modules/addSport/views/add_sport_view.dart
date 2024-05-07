@@ -47,7 +47,7 @@ class AddSportView extends GetView<AddSportController> {
       ),
       body: Container(
         color: ColorConstants.grayBackgroundColor,
-        padding: EdgeInsets.symmetric(vertical: 30.toHeight),
+        padding: EdgeInsets.symmetric(vertical: 18),
         child: DefaultTabController(
           length: 1,
           child: Container(

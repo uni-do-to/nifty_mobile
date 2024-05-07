@@ -69,7 +69,7 @@ class IngredientTabView extends StatelessWidget {
           ),
           Expanded(
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 20.toWidth),
+              padding: EdgeInsets.symmetric(horizontal: 10),
               child: ObxValue((state) {
                 return state.value
                     ? Center(

@@ -29,8 +29,8 @@ class HomeView extends GetView<HomeController> {
           type: BottomNavigationBarType.fixed,
           showSelectedLabels: true,
           showUnselectedLabels: true,
-          selectedFontSize: 26.toFont,
-          unselectedFontSize: 24.toFont,
+          selectedFontSize: 26,
+          unselectedFontSize: 24,
           selectedItemColor: ColorConstants.accentColor,
           unselectedItemColor: ColorConstants.accentColor,
           unselectedLabelStyle: theme?.textTheme.bodySmall?.copyWith(

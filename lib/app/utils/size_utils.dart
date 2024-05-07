@@ -75,7 +75,7 @@ class SizeConfig {
 }
 
 extension SizeUtils on num {
-  double get toWidth => SizeConfig().getWidthRatio(this.toDouble());
-  double get toHeight => SizeConfig().getHeightRatio(this.toDouble());
-  double get toFont => SizeConfig().getFontRatio(this.toDouble());
+//   double get toWidth => SizeConfig().getWidthRatio(this.toDouble());
+//   double get toHeight => SizeConfig().getHeightRatio(this.toDouble());
+//   double get toFont => SizeConfig().getFontRatio(this.toDouble());
 }

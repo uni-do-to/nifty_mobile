@@ -46,17 +46,17 @@ class App extends StatelessWidget {
               fontWeight: FontWeight.w800,
               color: ColorConstants.accentColor,
               letterSpacing: 1.2,
-              fontSize: 40.toFont,
+              fontSize: 24,
             ),
             bodySmall: TextStyle(
               color: ColorConstants.accentColor,
               fontWeight: FontWeight.w400,
-              fontSize: 24.toFont,
+              fontSize: 18,
             ),
             bodyMedium: TextStyle(
               color: ColorConstants.accentColor,
               fontWeight: FontWeight.w400,
-              fontSize: 18,
+              fontSize: 14,
             ),
             titleSmall: TextStyle(
               color: ColorConstants.accentColor,

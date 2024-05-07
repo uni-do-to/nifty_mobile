@@ -36,7 +36,7 @@ class SignupView extends GetView<RegisterController> {
             );
           }, controller.emailError),
           SizedBox(
-            height: 20.toHeight,
+            height: 12,
           ),
           ObxValue((state) {
             return NeuFormField(
@@ -48,7 +48,7 @@ class SignupView extends GetView<RegisterController> {
             );
           }, controller.passwordError),
           SizedBox(
-            height: 20.toHeight,
+            height: 12,
           ),
           ObxValue((state) {
             return NeuFormField(
@@ -64,13 +64,13 @@ class SignupView extends GetView<RegisterController> {
           ),
           NeumorphicButton(
               child: Container(
-                  height: 48.toHeight,
+                  height: 28,
                   alignment: Alignment.center,
                   child: ObxValue((isSignup) {
                     return isSignup.value
                         ? Container(
-                            width: 32.toHeight,
-                            height: 32.toHeight,
+                            width: 20,
+                            height: 20,
                             child: CircularProgressIndicator(
                               backgroundColor:
                                   NeumorphicTheme.currentTheme(context)

@@ -24,16 +24,16 @@ class SportListItem extends StatelessWidget {
       child: Neumorphic(
         style: NeumorphicStyle(depth: 1.2, intensity: 1),
         padding:
-            EdgeInsets.symmetric(horizontal: 50.toWidth, vertical: 30.toHeight),
+            EdgeInsets.symmetric(horizontal: 30, vertical: 18),
         child: Row(
           children: [
             Icon(
               Icons.fitness_center_sharp,
               color: NeumorphicTheme.of(context)?.current?.iconTheme.color,
-              size: 30.toWidth,
+              size: 18,
             ),
             SizedBox(
-              width: 20.toWidth,
+              width: 12,
             ),
             Text(
               Get.locale?.languageCode == 'fr'
@@ -49,7 +49,7 @@ class SportListItem extends StatelessWidget {
                 child: Icon(
                   Icons.check_circle,
                   color: NeumorphicTheme.of(context)?.current?.iconTheme.color,
-                  size: 30.toWidth,
+                  size: 18,
                 ),
               );
             }),
