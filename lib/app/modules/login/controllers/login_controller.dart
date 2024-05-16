@@ -47,7 +47,7 @@ class LoginController extends AuthController {
 
         var auth = await signIn(emailController.text, passwordController.text);
         if(auth?.user != null){
-          if(auth?.user?.subscribed == true){
+          if(auth?.user?.hasPurchasedProduct == true){
             Get.offAllNamed(Routes.HOME);
           }else {
             Get.offAllNamed(Routes.SUBSCRIPTION);

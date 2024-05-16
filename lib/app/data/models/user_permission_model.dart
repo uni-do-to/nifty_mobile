@@ -35,12 +35,12 @@ class User {
   double? targetBmi;
   double? targetWeight;
   double? dailyCalories;
-  bool? subscribed;
-  String? subscriptionStatus;
-  String? subscriptionEndDate;
-  String? lastSubscriptionUpdate;
-  String? subscriptionProductId;
-  String? subscriptionPlanId;
+  bool?   hasPurchasedProduct;
+  String? purchaseStatus;
+  String? purchaseDate;
+  String? lastPurchaseUpdate;
+  String? purchaseProductId;
+  String? purchaseId;
 
   User(
       {this.id,
@@ -58,12 +58,12 @@ class User {
       this.targetBmi,
       this.targetWeight,
       this.dailyCalories,
-      this.subscribed,
-      this.subscriptionStatus,
-      this.subscriptionEndDate,
-      this.lastSubscriptionUpdate,
-      this.subscriptionProductId,
-      this.subscriptionPlanId});
+      this.hasPurchasedProduct,
+      this.purchaseStatus,
+      this.purchaseDate,
+      this.lastPurchaseUpdate,
+      this.purchaseProductId,
+      this.purchaseId});
 
   User.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -81,12 +81,12 @@ class User {
     targetBmi = double.tryParse(json['targetBmi'].toString());
     targetWeight = double.tryParse(json['targetWeight'].toString());
     dailyCalories = double.tryParse(json['dailyCalories'].toString());
-    subscribed = json['subscribed'];
-    subscriptionStatus = json['subscriptionStatus'];
-    subscriptionEndDate = json['subscriptionEndDate'];
-    lastSubscriptionUpdate = json['lastSubscriptionUpdate'];
-    subscriptionProductId = json['subscriptionProductId'];
-    subscriptionPlanId = json['subscriptionPlanId'];
+    hasPurchasedProduct = json['hasPurchasedProduct'];
+    purchaseStatus = json['purchaseStatus'];
+    purchaseDate = json['purchaseDate'];
+    lastPurchaseUpdate = json['lastPurchaseUpdate'];
+    purchaseProductId = json['purchaseProductId'];
+    purchaseId = json['purchaseId'];
   }
 
   Map<String, dynamic> toJson() {
@@ -106,12 +106,12 @@ class User {
     data['targetBmi'] = targetBmi;
     data['targetWeight'] = targetWeight;
     data['dailyCalories'] = dailyCalories;
-    data['subscribed'] = subscribed;
-    data['subscriptionStatus'] = subscriptionStatus;
-    data['subscriptionEndDate'] = subscriptionEndDate;
-    data['lastSubscriptionUpdate'] = lastSubscriptionUpdate;
-    data['subscriptionProductId'] = subscriptionProductId;
-    data['subscriptionPlanId'] = subscriptionPlanId;
+    data['hasPurchasedProduct'] = hasPurchasedProduct;
+    data['purchaseStatus'] = purchaseStatus;
+    data['purchaseDate'] = purchaseDate;
+    data['lastPurchaseUpdate'] = lastPurchaseUpdate;
+    data['purchaseProductId'] = purchaseProductId;
+    data['purchaseId'] = purchaseId;
     return data;
   }
 }
