@@ -191,5 +191,8 @@
   "action_cannot_undone" : "Cette action ne peut pas être annulée",
   "something_wrong" : "Un problème est survenu, veuillez réessayer plus tard",
   "request_sent" : "Votre demande a été envoyée avec succès",
-  "request_sent_body" : "Merci, votre demande a été reçue ! Nous vous contacterons très bientôt"
+  "request_sent_body" : "Merci, votre demande a été reçue ! Nous vous contacterons très bientôt" ,
+  "resend": "RÉESSAYER",
+  "confirmation_send": "Confirmation envoyée",
+  "confirmation_message": "Nous avons envoyé un e-mail avec les instructions de confirmation à votre adresse e-mail. Si vous ne l'avez pas reçu, veuillez vérifier votre dossier de spam. Si vous ne le voyez toujours pas, cliquez sur le bouton RÉESSAYER pour renvoyer l'e-mail de confirmation."
 }

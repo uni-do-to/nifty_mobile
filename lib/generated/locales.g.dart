@@ -241,8 +241,12 @@ class LocaleKeys {
   static const something_wrong = 'something_wrong';
   static const request_sent = 'request_sent';
   static const request_sent_body = 'request_sent_body';
+  static const resend = 'resend';
+  static const Confirmation_send = 'Confirmation_send';
+  static const confirmation_message = 'confirmation_message';
   static const settings_nifty_points = 'settings_nifty_points';
   static const settings_calories = 'settings_calories';
+  static const confirmation_send = 'confirmation_send';
 }
 
 class Locales {
@@ -456,6 +460,10 @@ class Locales {
     'request_sent': 'Your request has been sent successfully',
     'request_sent_body':
         'Thank you, your request has been received! We will contact you very soon',
+    'resend': 'RESEND',
+    'Confirmation_send': 'Confirmation send',
+    'confirmation_message':
+        'We\'ve sent an email with confirmation instructions to your email address. If you haven\'t received it, please check your spam folder. If you still don\'t see it, click on the RESEND button to resend the confirmation email.',
   };
   static const fr_FR = {
     'login': 'Connectez-vous',
@@ -678,5 +686,9 @@ class Locales {
     'request_sent': 'Votre demande a été envoyée avec succès',
     'request_sent_body':
         'Merci, votre demande a été reçue ! Nous vous contacterons très bientôt',
+    'resend': 'RÉESSAYER',
+    'confirmation_send': 'Confirmation envoyée',
+    'confirmation_message':
+        'Nous avons envoyé un e-mail avec les instructions de confirmation à votre adresse e-mail. Si vous ne l\'avez pas reçu, veuillez vérifier votre dossier de spam. Si vous ne le voyez toujours pas, cliquez sur le bouton RÉESSAYER pour renvoyer l\'e-mail de confirmation.',
   };
 }

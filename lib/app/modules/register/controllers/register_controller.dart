@@ -294,7 +294,8 @@ class RegisterController extends AuthController {
         if(auth?.user?.subscribed == true) {
           Get.offAllNamed(Routes.HOME);
         }else {
-          Get.offAllNamed(Routes.SUBSCRIPTION);
+          Get.offNamed(Routes.LOGIN);
+          showConfirmationMessage();
         }
       } catch (err, _) {
         // message = 'There is an issue with the app during request the data, '

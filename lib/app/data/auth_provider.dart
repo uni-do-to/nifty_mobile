@@ -49,5 +49,10 @@ class AuthProvider extends BaseProvider {
     return decode<User?>(response, User.fromJson);
   }
 
+  Future<bool?> sendConfirmationEmail() async{
+    final response = await get<bool?>('${ConfigAPI.sendConfirmationEmail}');
+
+    return response.body;
+  }
   
 }

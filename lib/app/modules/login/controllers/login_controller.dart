@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/controllers/auth_controller.dart';
@@ -16,7 +18,6 @@ class LoginController extends AuthController {
 
   var emailError = ''.obs;
   var passwordError = ''.obs;
-
   LoginController(this.provider) : super(provider);
 
   @override
@@ -40,6 +41,7 @@ class LoginController extends AuthController {
     return emailError.isEmpty && passwordError.isEmpty;
   }
 
+
   Future<void> login() async {
     if (validateForm() && !isLogin.value) {
       try {
@@ -50,7 +52,7 @@ class LoginController extends AuthController {
           if(auth?.user?.subscribed == true){
             Get.offAllNamed(Routes.HOME);
           }else {
-            Get.offAllNamed(Routes.SUBSCRIPTION);
+            showConfirmationMessage();
           }
         }
       } catch (err, _) {

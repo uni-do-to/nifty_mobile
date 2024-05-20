@@ -64,7 +64,7 @@ class AppPages {
             builder: (context, child) => scaleWidgetBuilder(context, child!),
             child: LoginView()),
         binding: LoginBinding(),
-        middlewares: [NotAuthMiddleware()]),
+        middlewares: [NotSubscribedMiddleware()]),
     GetPage(
       name: _Paths.REGISTER,
       page: () => ScaleWidget(

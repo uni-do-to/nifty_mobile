@@ -191,6 +191,8 @@
   "action_cannot_undone": "This action cannot be undone",
   "something_wrong" : "Something went wrong please try again later",
   "request_sent" : "Your request has been sent successfully",
-  "request_sent_body" : "Thank you, your request has been received! We will contact you very soon"
-
+  "request_sent_body" : "Thank you, your request has been received! We will contact you very soon",
+  "resend": "RESEND",
+  "Confirmation_send" : "Confirmation send",
+  "confirmation_message" : "We've sent an email with confirmation instructions to your email address. If you haven't received it, please check your spam folder. If you still don't see it, click on the RESEND button to resend the confirmation email."
 }

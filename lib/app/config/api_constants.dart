@@ -2,6 +2,7 @@ class ConfigAPI {
   //Example: https://www.example.com without /
   static const String baseUrl = 'https://nifty-diet-adb2127174f3.herokuapp.com';
   static const String baseApiUrl = '$baseUrl/api';
+  // static const stripePublishableKey =  "pk_test_51Lx4u5Lv66vTYu5L1v1BnJLM7AKDlwjGblIWAKR5Cmv2bhf45NHCbWlDWWVQ6BlDr6Cu24EsviLE1sTP60tVaId400DGESVSo1";
   static const stripePublishableKey =  "pk_live_51Lx4u5Lv66vTYu5LJpj4iHBOcUZn1k8mcASE0zqZznp0Rx5zswEqNCdqNwuBcNb6a10jhpj4w811y9OlpZo5kQuw006SzFlGDV";
 
   static const int sessionTimeoutThreshold =
@@ -29,6 +30,7 @@ class ConfigAPI {
   static const String retrieveCheckoutSessionUrl = '/retrieveCheckoutSession';
   static const String createCustomerPortalSession = '/createCustomerPortalSession';
   static const String deleteMyData = '/deleteMyData';
+  static const String sendConfirmationEmail = '/sendConfirmationEmail';
 
   static const String getSubscriptionsPlans = '/getSubscriptionsPlans';
 
