@@ -94,7 +94,9 @@ class App extends StatelessWidget {
           intensity: 0.65,
           buttonStyle: NeumorphicStyle(depth: 4)),
       child: GetMaterialApp(
-        title: "Application",
+        title: "Nifty",
+        debugShowCheckedModeBanner: false,
+        debugShowMaterialGrid: false,
         translationsKeys: AppTranslation.translations,
         locale: Locale(languageModel.languageCode, languageModel.countryCode),
         supportedLocales: AppConstants.languages.keys.map((e) => Locale(
