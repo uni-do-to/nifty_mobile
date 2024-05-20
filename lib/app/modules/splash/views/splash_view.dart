@@ -13,7 +13,7 @@ class SplashView extends GetView<AuthController> {
 
     Future.wait([Future.delayed(const Duration(seconds: 4)) , controller.getMe()]).then((value) {
       User user = value[1] ;
-      if(user.hasPurchasedProduct == true) {
+      if(user.subscribed == true) {
         Get.offAllNamed(Routes.SUBSCRIPTION);
       }else {
         Get.offAllNamed(Routes.HOME);

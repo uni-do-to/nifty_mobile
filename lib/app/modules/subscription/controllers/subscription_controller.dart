@@ -82,7 +82,7 @@ class SubscriptionController extends AuthController {
     try {
       await provider.retrieveCheckoutSession(sessionId);
       final user = await getMe();
-      if (user?.hasPurchasedProduct == true) {
+      if (user?.subscribed == true) {
         Get.offNamed(Routes.HOME);
       }
     } catch (e) {

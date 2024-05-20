@@ -291,7 +291,7 @@ class RegisterController extends AuthController {
             dailyCalories: targetCaloriesPerDay.value);
 
         var auth = await signUp(data);
-        if(auth?.user?.hasPurchasedProduct == true) {
+        if(auth?.user?.subscribed == true) {
           Get.offAllNamed(Routes.HOME);
         }else {
           Get.offAllNamed(Routes.SUBSCRIPTION);
