@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "114474626621",
+    "project_id": "nifty-diet",
+    "storage_bucket": "nifty-diet.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114474626621:android:f0a8246c276b46cba60454",
+        "android_client_info": {
+          "package_name": "com.unido.nifty_android"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU4m-mYpZxS0nR4Gnavnex_9GYoj5FrHM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114474626621:android:aa4eaecf34044c06a60454",
+        "android_client_info": {
+          "package_name": "com.unido.nifty_mobile"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU4m-mYpZxS0nR4Gnavnex_9GYoj5FrHM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
