@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/data/models/daily_model.dart';
 import 'package:nifty_mobile/app/modules/addSport/controllers/add_sport_controller.dart';
 import 'package:nifty_mobile/app/widgets/add_quantity_widget.dart';
-import 'package:nifty_mobile/app/widgets/delete_alert_dialog.dart';
-import 'package:nifty_mobile/app/widgets/form_field.dart';
 import 'package:nifty_mobile/app/widgets/recipe_ingredient_list_item.dart';
 import 'package:nifty_mobile/app/widgets/selected_ingredient_recipe_item.dart';
 

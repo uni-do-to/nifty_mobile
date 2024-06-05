@@ -74,7 +74,7 @@ class IngredientController extends GetxController {
 
       selectedSubCategoryId.value = subCategoryId!;
 
-    } catch (err, stacktrace) {
+    } catch (err) {
       print(err);
     } finally {}
   }

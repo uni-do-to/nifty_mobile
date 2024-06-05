@@ -1,6 +1,6 @@
 import 'package:community_charts_flutter/community_charts_flutter.dart'
     as charts;
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:nifty_mobile/app/data/auth_provider.dart';

@@ -1,4 +1,4 @@
-import 'package:flutter_neumorphic/flutter_neumorphic.dart'; // Assuming the Neumorphic package is being used
+import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart'; // Assuming the Neumorphic package is being used
 import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 

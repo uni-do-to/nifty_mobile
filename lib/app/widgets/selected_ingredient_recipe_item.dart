@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
-import 'package:flutter_neumorphic/src/theme/theme.dart';
-import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
-import 'package:nifty_mobile/app/data/models/ingredient_model.dart';
-import 'package:nifty_mobile/app/utils/size_utils.dart';
 
 class SelectedIngredientRecipeItem extends StatelessWidget {
   final NeumorphicThemeData theme;

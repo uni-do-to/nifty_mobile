@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 
 import '../config/color_constants.dart';
 import '../config/theme_data.dart';

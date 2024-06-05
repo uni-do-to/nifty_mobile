@@ -1,4 +1,3 @@
-import 'package:get/get.dart';
 import 'package:nifty_mobile/app/base/base_provider.dart';
 import 'package:nifty_mobile/app/config/api_constants.dart';
 

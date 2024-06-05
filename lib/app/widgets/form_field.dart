@@ -1,5 +1,5 @@
 import 'package:flutter/src/services/text_formatter.dart';
-import 'package:flutter_neumorphic/flutter_neumorphic.dart';
+import 'package:flutter_neumorphic_plus/flutter_neumorphic.dart';
 import 'package:nifty_mobile/app/config/color_constants.dart';
 import 'package:nifty_mobile/app/utils/size_utils.dart';
 
