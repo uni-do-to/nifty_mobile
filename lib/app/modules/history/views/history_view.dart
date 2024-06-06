@@ -64,6 +64,7 @@ class HistoryView extends GetView<HistoryController> {
                         child: Text(
                           LocaleKeys.week.tr,
                           textAlign: TextAlign.center,
+                          overflow: TextOverflow.ellipsis,
                         ),
                       ),
                       MainTab(

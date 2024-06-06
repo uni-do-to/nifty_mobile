@@ -23,6 +23,7 @@ class QuantityIngredientDialogWidget extends StatelessWidget {
   final Function(Units?) onMeasurementUnitChange;
   final Function() onCancelClicked;
   final Function() onAddClicked;
+  final String? actionText;
 
   QuantityIngredientDialogWidget({
     Key? key,
@@ -34,6 +35,7 @@ class QuantityIngredientDialogWidget extends StatelessWidget {
     required this.onCancelClicked,
     required this.onAddClicked,
     required this.ingredientQuantity,
+    this.actionText
   }) : super(key: key);
 
   @override
@@ -142,7 +144,7 @@ class QuantityIngredientDialogWidget extends StatelessWidget {
                   height: 45,
                   margin: const EdgeInsets.only(bottom: 24),
                   child: SmallActionButton(
-                    text: LocaleKeys.add_to_meal_button_label.tr,
+                    text: actionText??LocaleKeys.add_to_meal_button_label.tr,
                     backgroundColor: selectedIngredient.value?.attributes != null
                         ? ColorConstants.accentColor
                         : ColorConstants.accentColor.withOpacity(0.4),

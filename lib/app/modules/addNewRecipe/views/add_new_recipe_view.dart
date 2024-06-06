@@ -167,7 +167,7 @@ class AddNewRecipeView extends GetView<AddNewRecipeController> {
                       Expanded(child: Container()),
                       Container(
                         height: 54,
-                        width: 191,
+                        width: 260,
                         child: SmallActionButton(
                           text: LocaleKeys.add_recipe_button_label.tr,
                           backgroundColor: state.value

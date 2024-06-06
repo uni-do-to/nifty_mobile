@@ -93,6 +93,7 @@ class AddNewRecipeController extends GetxController {
           Get.back();
         },
         onAddClicked: () => addIngredientsToRecipeImpl(),
+        actionText: LocaleKeys.add_to_recipe.tr
       ),
       clipBehavior: Clip.none,
       backgroundColor: ColorConstants.grayBackgroundColor,
