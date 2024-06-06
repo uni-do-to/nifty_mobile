@@ -91,9 +91,11 @@ class LocaleKeys {
   static const quantity_of_selected_item_hint =
       'quantity_of_selected_item_hint';
   static const add_to_meal_button_label = 'add_to_meal_button_label';
+  static const add_to_recipe = 'add_to_recipe';
   static const add_to_sport_screen_title = 'add_to_sport_screen_title';
   static const new_recipe_tab_label = 'new_recipe_tab_label';
   static const add_recipe_screen_title = 'add_recipe_screen_title';
+  static const add_element_to_recipe = 'add_element_to_recipe';
   static const recipe_name_label = 'recipe_name_label';
   static const recipe_name_hint = 'recipe_name_hint';
   static const add_recipe_button_label = 'add_recipe_button_label';
@@ -327,13 +329,15 @@ class Locales {
     'selected_ingredient_recipe_hint_label': 'Choose an item from the list',
     'quantity_of_selected_item_hint': 'QTY',
     'add_to_meal_button_label': 'Add to meal',
+    'add_to_recipe': 'Add',
     'add_to_sport_screen_title': 'Add to sport',
     'new_recipe_tab_label': 'New recipe',
     'add_recipe_screen_title': 'Add Recipe',
+    'add_element_to_recipe': 'Add Ingredient',
     'recipe_name_label': 'Recipe Name',
     'recipe_name_hint': 'My new recipe',
     'add_recipe_button_label': 'Add recipe',
-    'add_ingredient_to_recipe_title_page': 'Add TO recipe',
+    'add_ingredient_to_recipe_title_page': 'Add To recipe',
     'close_label': 'Close',
     'empty_meal_tab_hint':
         'You haven\'t eaten yet today, add an ingredient or recipe to your meal',
@@ -544,9 +548,11 @@ class Locales {
         'Choisissez un élément dans la liste',
     'quantity_of_selected_item_hint': 'Qté',
     'add_to_meal_button_label': 'Ajouter au repas',
+    'add_to_recipe': 'Ajouter',
     'add_to_sport_screen_title': 'Ajouter Au sport',
     'new_recipe_tab_label': 'Nouvelle recette',
-    'add_recipe_screen_title': 'Ajouter une recette',
+    'add_recipe_screen_title': 'Créer une recette',
+    'add_element_to_recipe': 'Ajouter un aliment',
     'recipe_name_label': 'Nom de la recette',
     'recipe_name_hint': 'Ma nouvelle recette',
     'add_recipe_button_label': 'Enregistrer la recette',

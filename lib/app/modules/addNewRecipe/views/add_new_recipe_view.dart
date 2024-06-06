@@ -102,7 +102,7 @@ class AddNewRecipeView extends GetView<AddNewRecipeController> {
                   Container(
                     height: 37.35,
                     child: SmallActionButton(
-                      text: LocaleKeys.add_new_ingredient_screen_sub_title.tr,
+                      text: LocaleKeys.add_element_to_recipe.tr,
                       backgroundColor: ColorConstants.mainThemeColor,
                       textColor: Colors.white,
                       fontSize: 14,

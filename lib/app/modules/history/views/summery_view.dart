@@ -45,6 +45,7 @@ class SummaryView extends StatelessWidget {
     var theme = NeumorphicTheme.of(context)?.current;
 
     final simpleCurrencyFormatter = charts.BasicNumericTickFormatterSpec(
+
       (measure) => "${measure?.toInt()} ${LocaleKeys.weight_measurement.tr}",
     );
 
@@ -114,7 +115,9 @@ class SummaryView extends StatelessWidget {
                   dateTimeFactory: LocalizedDateTimeFactory(Get.locale!),
                   primaryMeasureAxis: charts.NumericAxisSpec(
                       showAxisLine: true,
+
                       tickProviderSpec: const charts.BasicNumericTickProviderSpec(
+
                           zeroBound: false, desiredMinTickCount: 4),
                       tickFormatterSpec: simpleCurrencyFormatter,
                       renderSpec: charts.GridlineRendererSpec(
