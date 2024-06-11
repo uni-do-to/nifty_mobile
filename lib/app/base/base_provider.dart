@@ -21,6 +21,11 @@ class BaseProvider extends GetConnect {
   }
 
 
+  bool isRegisterRequest(request) {
+    return (ConfigAPI.baseApiUrl + ConfigAPI.signUpUrl == request.url.toString());
+  }
+
+
   T decode<T>(Response response, T Function(Map<String, dynamic>) decoder) {
     if (response.hasError) {
       if (response.body is Map) {
@@ -65,7 +70,7 @@ class BaseProvider extends GetConnect {
       // }
 
       // retry = httpClient.maxAuthRetries;
-      if (!isLoginRequest(request) && !isMeRequest(request)) {
+      if (!isLoginRequest(request) && !isMeRequest(request) && !isRegisterRequest(request)) {
         await authService.removeCredentials() ;
         Get.offAllNamed(Routes.LOGIN, arguments: {
           'message': {
@@ -90,7 +95,7 @@ class BaseProvider extends GetConnect {
 
     httpClient.addRequestModifier<dynamic>((request) async {
 
-      if (!isLoginRequest(request) && !authService.sessionIsEmpty()) {
+      if (!isLoginRequest(request) && !isRegisterRequest(request) &&  !authService.sessionIsEmpty()) {
         // log('Add Request Modifier is authenticated');
         request.headers['Authorization'] =
         'Bearer ${authService.credentials?.jwt}';
