@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:nifty_mobile/app/base/base_provider.dart';
+import 'package:nifty_mobile/app/data/models/apple_verification_response.dart';
 import 'package:nifty_mobile/app/data/models/checkout_session_response_model.dart';
 import 'package:nifty_mobile/app/data/models/customer_portal_session_response_model.dart';
 import 'package:nifty_mobile/app/data/models/subscription_plans_response_model.dart';
@@ -18,6 +19,13 @@ class SubscriptionProvider extends BaseProvider {
   Future<CheckoutUrlResponse?> createProductCheckoutSession(int productId) async {
     final response = await get('${ConfigAPI.createProductCheckoutSessionUrl}/$productId');
     return decode<CheckoutUrlResponse?>(response, CheckoutUrlResponse.fromJson);
+  }
+
+  Future<AppleVerificationResponse?> verifyAppleReceipt(String verificationData) async {
+    final response = await post('${ConfigAPI.verifyAppleReceipt}' , {
+      'receipt': verificationData
+    });
+    return decode<AppleVerificationResponse?>(response, AppleVerificationResponse.fromJson);
   }
 
   Future<CheckoutSessionResponse?> retrieveCheckoutSession(String sessionId) async {

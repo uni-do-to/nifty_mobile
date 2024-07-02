@@ -9,6 +9,7 @@ import 'app/data/auth_provider.dart';
 import 'app/services/auth_service.dart';
 
 void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
   await GetStorage.init("auth");
   await GetStorage.init(AppConstants.CONFIG_KEY);
   Get.put(AuthService());

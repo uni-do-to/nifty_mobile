@@ -40,7 +40,7 @@ class BaseProvider extends GetConnect {
           throw Exception(backendError.error?.message ?? 'Unknown error');
         }
       } else {
-        print(response.bodyString);
+        print("Base provider Response BodyString ${response.bodyString}" );
         throw Exception(response.body);
       }
     }

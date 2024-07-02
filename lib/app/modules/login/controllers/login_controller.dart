@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -52,7 +53,11 @@ class LoginController extends AuthController {
           if(auth?.user?.subscribed == true){
             Get.offAllNamed(Routes.HOME);
           }else {
-            showConfirmationMessage();
+            if(Platform.isIOS) {
+              Get.offAllNamed(Routes.APPLE_SUBSCRIPTION);
+            }else {
+              showConfirmationMessage();
+            }
           }
         }
       } catch (err, _) {

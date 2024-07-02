@@ -1,0 +1,139 @@
+{
+  "identifier" : "2DE3CC61",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "79.0",
+      "familyShareable" : false,
+      "internalID" : "6505100432",
+      "localizations" : [
+        {
+          "description" : "Lifetime app subscription ",
+          "displayName" : "Lifetime app subscription ",
+          "locale" : "en_US"
+        },
+        {
+          "description" : "Lifetime access to all the app features",
+          "displayName" : "Lifetime membership",
+          "locale" : "fr"
+        }
+      ],
+      "productID" : "lifetime_membership",
+      "referenceName" : "Lifetime membership ",
+      "type" : "NonConsumable"
+    },
+    {
+      "displayPrice" : "79.0",
+      "familyShareable" : false,
+      "internalID" : "6504736530",
+      "localizations" : [
+        {
+          "description" : "Le Nifty Bowl + un accès illimité à l'App",
+          "displayName" : "Le Nifty Bowl",
+          "locale" : "fr"
+        }
+      ],
+      "productID" : "nifty_pawl",
+      "referenceName" : "Nifty Pawl ",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6474664315",
+    "_askToBuyEnabled" : true,
+    "_developerTeamID" : "ZPAARTSBXS",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 741639044.38784397,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21506034",
+      "localizations" : [
+
+      ],
+      "name" : "App Access",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "17.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6505078682",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Full Access to the app",
+              "displayName" : "Full Access to the app",
+              "locale" : "fr"
+            }
+          ],
+          "productID" : "full_version",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "App full access",
+          "subscriptionGroupID" : "21506034",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

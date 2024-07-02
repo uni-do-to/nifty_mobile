@@ -1,5 +1,5 @@
 name: nifty_mobile
-version: 1.0.20+22
+version: 1.0.23+25
 publish_to: none
 description: A new Flutter project.
 environment: 
@@ -40,6 +40,8 @@ dependencies:
   flutter_custom_tabs: ^2.0.0+1
   firebase_core: ^2.24.2
   get_cli: ^1.8.1
+  in_app_purchase: ^3.1.13
+  flutter_inapp_purchase: ^5.6.1
 
 dev_dependencies: 
   flutter_lints: ^2.0.0

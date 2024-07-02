@@ -30,6 +30,7 @@ import '../modules/register/views/register_view.dart';
 import '../modules/splash/bindings/splash_binding.dart';
 import '../modules/splash/views/splash_view.dart';
 import '../modules/subscription/bindings/subscription_binding.dart';
+import '../modules/subscription/views/apple_subscription_view.dart';
 import '../modules/subscription/views/subscription_view.dart';
 import 'scale_widget.dart';
 
@@ -80,6 +81,14 @@ class AppPages {
             child: SubscriptionView()),
         binding: SubscriptionBinding(),
         middlewares: [AuthMiddleware(), NotSubscribedMiddleware()]),
+    GetPage(
+        name: _Paths.APPLE_SUBSCRIPTION,
+        page: () => ScaleWidget(
+            builder: (context, child) => scaleWidgetBuilder(context, child!),
+            child: SingleSubscriptionView()),
+        binding: SubscriptionBinding(),
+        // middlewares: [AuthMiddleware(), NotSubscribedMiddleware()]
+    ),
     GetPage(
       name: _Paths.HOME,
       page: () => ScaleWidget(

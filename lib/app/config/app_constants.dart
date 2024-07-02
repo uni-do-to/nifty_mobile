@@ -26,4 +26,11 @@ class AppConstants {
     "short" : "kCal" ,
       "long" : LocaleKeys.settings_calories
     }];
+
+  static const String kSilverSubscriptionId = 'lifetime_membership';
+  static const String kGoldSubscriptionId = 'full_version';
+  static const List<String> IAP_PRODUCT_IDS = <String>[
+    kSilverSubscriptionId,
+  ];
+
 }

@@ -10,6 +10,7 @@ abstract class Routes {
   static const YOUR_BMI = _Paths.YOUR_BMI;
   static const NIFTY_POINTS = _Paths.NIFTY_POINTS;
   static const SUBSCRIPTION = _Paths.SUBSCRIPTION;
+  static const APPLE_SUBSCRIPTION = _Paths.APPLE_SUBSCRIPTION;
   static const ADD_NEW_INGREDIENT = _Paths.ADD_NEW_INGREDIENT;
   static const ADD_SPORT = _Paths.ADD_SPORT;
   static const DAILY = _Paths.DAILY;
@@ -28,6 +29,7 @@ abstract class Routes {
 }
 
 abstract class _Paths {
+
   _Paths._();
 
   static const LOGIN = '/login';
@@ -52,4 +54,6 @@ abstract class _Paths {
   static const EDIT_HEALTH_PROFILE = '/edit-health-profile';
   static const NAME = '/name';
   static const HISTORY = '/history';
+  static const APPLE_SUBSCRIPTION = '/apple-subscription';
+
 }
