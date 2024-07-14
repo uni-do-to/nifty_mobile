@@ -12,25 +12,26 @@ import 'dart:convert';
 import 'package:nifty_mobile/app/config/app_constants.dart';
 import 'package:nifty_mobile/app/data/auth_provider.dart';
 import 'package:nifty_mobile/app/services/auth_service.dart';
+import '../../../controllers/auth_controller.dart';
 import '../../../data/providers/subscription_provider.dart';
 import '../../../routes/app_pages.dart';
 
-class SingleSubscriptionController extends GetxController {
+class SingleSubscriptionController extends AuthController {
   final SubscriptionProvider provider;
   final AuthProvider authProvider;
 
   RxBool loading = false.obs;
   RxBool checkoutSuccess = false.obs;
+  RxBool isSubscribed = false.obs;
 
   final InAppPurchase _inAppPurchase = InAppPurchase.instance;
   late StreamSubscription<List<PurchaseDetails>> _subscription;
   List<PurchaseDetails> _purchases = <PurchaseDetails>[];
 
-  SingleSubscriptionController(this.provider, this.authProvider);
+  SingleSubscriptionController(this.provider, this.authProvider) : super(authProvider);
 
   @override
   void onInit() {
-    print("on init") ;
     super.onInit();
     final Stream<List<PurchaseDetails>> purchaseUpdated = _inAppPurchase.purchaseStream;
     _subscription = purchaseUpdated.listen((List<PurchaseDetails> purchaseDetailsList) {
@@ -76,11 +77,6 @@ class SingleSubscriptionController extends GetxController {
     } else {
       purchaseParam = PurchaseParam(
         productDetails: productDetails,
-        // ProductDetails(
-        //     id: 'lifetime_membership',
-        //     title: '', description: '',currencyCode: '',rawPrice: 0,currencySymbol: '', price: ''
-        //
-        // ),
         applicationUserName: authProvider.authService.credentials?.user?.email,
       );
     }
@@ -93,6 +89,18 @@ class SingleSubscriptionController extends GetxController {
     _inAppPurchase.buyNonConsumable(purchaseParam: purchaseParam);
   }
 
+  Future<void> restorePurchases() async {
+    final bool available = await _inAppPurchase.isAvailable();
+    if (!available) {
+      Get.showSnackbar(GetSnackBar(message: "Store is unavailable", duration: Duration(seconds: 3)));
+      return;
+    }
+
+    loading.value = true;
+    await _inAppPurchase.restorePurchases();
+    loading.value = false;
+  }
+
   Future<void> _listenToPurchaseUpdated(List<PurchaseDetails> purchaseDetailsList) async {
     for (final PurchaseDetails purchaseDetails in purchaseDetailsList) {
       if (purchaseDetails.status == PurchaseStatus.pending) {
@@ -103,7 +111,7 @@ class SingleSubscriptionController extends GetxController {
         } else if (purchaseDetails.status == PurchaseStatus.purchased || purchaseDetails.status == PurchaseStatus.restored) {
           final bool valid = await _verifyPurchase(purchaseDetails);
           if (valid) {
-            _deliverProduct(purchaseDetails);
+            await _deliverProduct(purchaseDetails);
           } else {
             _handleInvalidPurchase(purchaseDetails);
           }
@@ -120,13 +128,13 @@ class SingleSubscriptionController extends GetxController {
   }
 
   Future<void> _deliverProduct(PurchaseDetails purchaseDetails) async {
-    final response = await _verifyPurchase(purchaseDetails);
-    if (response) {
       checkoutSuccess.value = true;
       loading.value = false;
-    } else {
-      _handleInvalidPurchase(purchaseDetails);
-    }
+      final user = await getMe();
+      if (user?.subscribed == true) {
+        Get.offNamed(Routes.HOME);
+      }
+      // Additional logic for delivering the product can be added here
   }
 
   void _handleError(IAPError error) {

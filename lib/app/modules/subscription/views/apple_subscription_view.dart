@@ -161,6 +161,30 @@ class SingleSubscriptionView extends GetView<SingleSubscriptionController> {
                                 Text(
                                   LocaleKeys.subscription_button_label.tr,
                                   style: theme?.textTheme.bodySmall?.copyWith(),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: 24),
+                      NeumorphicButton(
+                        onPressed: () {
+                          controller.restorePurchases();
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(2.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.restore,
+                                color: theme?.accentColor,
+                                size: 13,
+                              ),
+                              SizedBox(width: 12),
+                              Text(
+                                "Restore purchase",
+                                style: theme?.textTheme.bodySmall?.copyWith(),
                                 ),
                               ],
                             ),
@@ -168,8 +192,7 @@ class SingleSubscriptionView extends GetView<SingleSubscriptionController> {
                         ),
                       ],
                     ),
-                  ),
-                );
+                ));
               }),
             ),
             Expanded(child: Container()),

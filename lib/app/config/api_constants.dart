@@ -1,6 +1,6 @@
 class ConfigAPI {
   //Example: https://www.example.com without /
-  static const String baseUrl = 'http://192.168.1.104:1337';
+  static const String baseUrl = 'http://192.168.1.101:1337';
   static const String baseApiUrl = '$baseUrl/api';
   // static const stripePublishableKey =  "pk_test_51Lx4u5Lv66vTYu5L1v1BnJLM7AKDlwjGblIWAKR5Cmv2bhf45NHCbWlDWWVQ6BlDr6Cu24EsviLE1sTP60tVaId400DGESVSo1";
   static const stripePublishableKey =  "pk_live_51Lx4u5Lv66vTYu5LJpj4iHBOcUZn1k8mcASE0zqZznp0Rx5zswEqNCdqNwuBcNb6a10jhpj4w811y9OlpZo5kQuw006SzFlGDV";
