@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "114474626621",
-    "project_id": "nifty-diet",
-    "storage_bucket": "nifty-diet.appspot.com"
+    "project_number": "528380706090",
+    "project_id": "httpstheniftydietcom",
+    "storage_bucket": "httpstheniftydietcom.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:114474626621:android:f0a8246c276b46cba60454",
+        "mobilesdk_app_id": "1:528380706090:android:0d92e4bae9ff61c720b253",
         "android_client_info": {
-          "package_name": "com.unido.nifty_android"
+          "package_name": "com.uni_do.test"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCU4m-mYpZxS0nR4Gnavnex_9GYoj5FrHM"
+          "current_key": "AIzaSyDODHYukNd-HTT5F4bkB6Qncq7HBqekVFw"
         }
       ],
       "services": {
@@ -26,15 +26,15 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:114474626621:android:aa4eaecf34044c06a60454",
+        "mobilesdk_app_id": "1:528380706090:android:e8edff3a935030a720b253",
         "android_client_info": {
-          "package_name": "com.unido.nifty_mobile"
+          "package_name": "com.unido.nifty_android"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCU4m-mYpZxS0nR4Gnavnex_9GYoj5FrHM"
+          "current_key": "AIzaSyDODHYukNd-HTT5F4bkB6Qncq7HBqekVFw"
         }
       ],
       "services": {

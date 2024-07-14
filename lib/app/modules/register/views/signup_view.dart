@@ -123,7 +123,7 @@ class SignupView extends GetView<RegisterController> {
                         LocaleKeys.login_label.tr,
                         style: NeumorphicTheme.currentTheme(context)
                             .textTheme
-                            .bodyText1,
+                            .bodyMedium,
                       ),
                       onPressed: () {
                         Get.toNamed(Routes.LOGIN);

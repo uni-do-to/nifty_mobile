@@ -47,29 +47,30 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAQtKy6AU8Y-41HGHdiCHCeLaWzusMqWL0',
-    appId: '1:114474626621:web:d5d8df03fed61af8a60454',
-    messagingSenderId: '114474626621',
-    projectId: 'nifty-diet',
-    authDomain: 'nifty-diet.firebaseapp.com',
-    storageBucket: 'nifty-diet.appspot.com',
-    measurementId: 'G-1813JM4F4L',
+    apiKey: 'AIzaSyCvOlwG4mKbq82ttd90iQjmrFdRNsjTP2M',
+    appId: '1:528380706090:web:259e0b767491ca5b20b253',
+    messagingSenderId: '528380706090',
+    projectId: 'httpstheniftydietcom',
+    authDomain: 'httpstheniftydietcom.firebaseapp.com',
+    storageBucket: 'httpstheniftydietcom.appspot.com',
+    measurementId: 'G-8S4P2JN4NW',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCU4m-mYpZxS0nR4Gnavnex_9GYoj5FrHM',
-    appId: '1:114474626621:android:f0a8246c276b46cba60454',
-    messagingSenderId: '114474626621',
-    projectId: 'nifty-diet',
-    storageBucket: 'nifty-diet.appspot.com',
+    apiKey: 'AIzaSyDODHYukNd-HTT5F4bkB6Qncq7HBqekVFw',
+    appId: '1:528380706090:android:e8edff3a935030a720b253',
+    messagingSenderId: '528380706090',
+    projectId: 'httpstheniftydietcom',
+    storageBucket: 'httpstheniftydietcom.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyBI-7Rfu265JRLxn82QvJRxgnvagpHN868',
-    appId: '1:114474626621:ios:ae39a81b8f56ee00a60454',
-    messagingSenderId: '114474626621',
-    projectId: 'nifty-diet',
-    storageBucket: 'nifty-diet.appspot.com',
+    apiKey: 'AIzaSyA4WPHGQdi9CdGV_QP6JMmcbpUAMV9dStM',
+    appId: '1:528380706090:ios:1497b0bc0db9ff7e20b253',
+    messagingSenderId: '528380706090',
+    projectId: 'httpstheniftydietcom',
+    storageBucket: 'httpstheniftydietcom.appspot.com',
     iosBundleId: 'com.uni-do.niftyIos',
   );
+
 }
