@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -294,8 +295,12 @@ class RegisterController extends AuthController {
         if(auth?.user?.subscribed == true) {
           Get.offAllNamed(Routes.HOME);
         }else {
-          Get.offNamed(Routes.LOGIN);
-          showConfirmationMessage();
+          if(Platform.isIOS) {
+            Get.offAllNamed(Routes.APPLE_SUBSCRIPTION);
+          }else {
+            Get.offNamed(Routes.LOGIN);
+            showConfirmationMessage();
+          }
         }
       } catch (err, _) {
         // message = 'There is an issue with the app during request the data, '

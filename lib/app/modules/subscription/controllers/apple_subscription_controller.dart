@@ -82,9 +82,9 @@ class SingleSubscriptionController extends AuthController {
     }
 
     var transactions = await SKPaymentQueueWrapper().transactions();
-    transactions.forEach((skPaymentTransactionWrapper) {
-      SKPaymentQueueWrapper().finishTransaction(skPaymentTransactionWrapper);
-    });
+    for (var skPaymentTransactionWrapper in transactions) {
+      await SKPaymentQueueWrapper().finishTransaction(skPaymentTransactionWrapper);
+    }
 
     _inAppPurchase.buyNonConsumable(purchaseParam: purchaseParam);
   }
@@ -97,14 +97,21 @@ class SingleSubscriptionController extends AuthController {
     }
 
     loading.value = true;
-    await _inAppPurchase.restorePurchases();
-    loading.value = false;
+    try {
+      await _inAppPurchase.restorePurchases();
+    }catch (e){
+      Get.showSnackbar(GetSnackBar(message: "Can not restore purchase", duration: Duration(seconds: 3)));
+    }finally {
+      loading.value = false;
+    }
   }
 
   Future<void> _listenToPurchaseUpdated(List<PurchaseDetails> purchaseDetailsList) async {
     for (final PurchaseDetails purchaseDetails in purchaseDetailsList) {
       if (purchaseDetails.status == PurchaseStatus.pending) {
         loading.value = true;
+      }else if(purchaseDetails.status == PurchaseStatus.canceled){
+        loading.value = false;
       } else {
         if (purchaseDetails.status == PurchaseStatus.error) {
           _handleError(purchaseDetails.error!);
@@ -148,8 +155,15 @@ class SingleSubscriptionController extends AuthController {
   }
 
   Future<bool> _verifyPurchase(PurchaseDetails purchaseDetails) async {
-    final response = await provider.verifyAppleReceipt(purchaseDetails.verificationData.serverVerificationData);
-    return response?.status == 'success';
+    try {
+      final response = await provider.verifyAppleReceipt(
+          purchaseDetails.verificationData.serverVerificationData);
+      return response?.status == 'success';
+    }catch (e){
+      print("Error $e") ;
+      print(e);
+      return false;
+    }
   }
 
   void logout() async {
