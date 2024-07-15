@@ -44,6 +44,15 @@ class SummaryView extends StatelessWidget {
   Widget build(BuildContext context) {
     var theme = NeumorphicTheme.of(context)?.current;
 
+    var userData = Get.find<AuthService>().credentials?.user;
+    var userAge = calculateUserAge(userData!);
+    var targetWeight = userData.targetWeight ?? 60;
+
+    // Calculate max, min, and mid values from historyList including targetWeight
+    double maxWeight = max(historyList.map((h) => h.attributes!.weight??0).reduce(max), targetWeight);
+    double minWeight = min(historyList.map((h) => h.attributes!.weight??0).reduce(min), targetWeight);
+    double midWeight = (maxWeight + minWeight) / 2;
+
     final simpleCurrencyFormatter = charts.BasicNumericTickFormatterSpec(
 
       (measure) => "${measure?.toInt()} ${LocaleKeys.weight_measurement.tr}",
@@ -67,13 +76,6 @@ class SummaryView extends StatelessWidget {
       //   data: historyList,
       // )..setAttribute(charts.rendererIdKey, 'customPoint'),
     ];
-
-    var userData = Get.find<AuthService>()
-        .credentials
-        ?.user ;
-    var userAge = calculateUserAge(userData!) ;
-    var targetWeight =
-        userData.targetWeight?? 60;
 
     return Container(
       decoration: BoxDecoration(
@@ -115,11 +117,16 @@ class SummaryView extends StatelessWidget {
                   dateTimeFactory: LocalizedDateTimeFactory(Get.locale!),
                   primaryMeasureAxis: charts.NumericAxisSpec(
                       showAxisLine: true,
-
-                      tickProviderSpec: const charts.BasicNumericTickProviderSpec(
-
-                          zeroBound: false, desiredMinTickCount: 4),
-                      tickFormatterSpec: simpleCurrencyFormatter,
+                  tickProviderSpec: charts.StaticNumericTickProviderSpec(
+                    <charts.TickSpec<double>>[
+                      charts.TickSpec(minWeight-2),
+                      charts.TickSpec(midWeight),
+                      charts.TickSpec(maxWeight+2),
+                    ],
+                  ),
+                  tickFormatterSpec: charts.BasicNumericTickFormatterSpec(
+                    (num? value) => "${value?.toInt()} ${LocaleKeys.weight_measurement.tr}",
+                  ),
                       renderSpec: charts.GridlineRendererSpec(
                         labelStyle: charts.TextStyleSpec(
                             fontSize: 14, // size in Pts.
