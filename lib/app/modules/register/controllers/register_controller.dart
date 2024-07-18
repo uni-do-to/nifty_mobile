@@ -298,8 +298,9 @@ class RegisterController extends AuthController {
           if(Platform.isIOS) {
             Get.offAllNamed(Routes.APPLE_SUBSCRIPTION);
           }else {
-            Get.offNamed(Routes.LOGIN);
-            showConfirmationMessage();
+            Get.offAllNamed(Routes.SUBSCRIPTION);
+            // Get.offNamed(Routes.LOGIN);
+            // showConfirmationMessage();
           }
         }
       } catch (err, _) {

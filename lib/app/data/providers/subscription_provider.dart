@@ -16,8 +16,13 @@ class SubscriptionProvider extends BaseProvider {
     // httpClient.baseUrl = ConfigAPI.baseUrl;
   }
 
-  Future<CheckoutUrlResponse?> createProductCheckoutSession(int productId) async {
-    final response = await get('${ConfigAPI.createProductCheckoutSessionUrl}/$productId');
+  Future<CheckoutUrlResponse?> createSubCheckoutSession(int productId) async {
+    final response = await get('${ConfigAPI.createSubCheckoutSessionUrl}/$productId');
+    return decode<CheckoutUrlResponse?>(response, CheckoutUrlResponse.fromJson);
+  }
+
+  Future<CheckoutUrlResponse?> createBowlCheckoutSession() async {
+    final response = await get('${ConfigAPI.createBowlCheckoutSession}');
     return decode<CheckoutUrlResponse?>(response, CheckoutUrlResponse.fromJson);
   }
 
@@ -35,6 +40,11 @@ class SubscriptionProvider extends BaseProvider {
 
   Future<SubscriptionPlansResponse?> getSubscriptionPans() async {
     final response = await get(ConfigAPI.getSubscriptionsPlans);
+    return decode<SubscriptionPlansResponse?>(response, SubscriptionPlansResponse.fromJson);
+  }
+
+  Future<SubscriptionPlansResponse?> getProductsPlans() async {
+    final response = await get(ConfigAPI.getProductsPlans);
     return decode<SubscriptionPlansResponse?>(response, SubscriptionPlansResponse.fromJson);
   }
 

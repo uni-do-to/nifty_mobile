@@ -9,7 +9,7 @@ import '../../profile/views/profile_view.dart';
 import '../../register/views/register_views_title.dart';
 import '../controllers/apple_subscription_controller.dart';
 
-class SingleSubscriptionView extends GetView<SingleSubscriptionController> {
+class SingleSubscriptionView extends GetView<AppleSubscriptionController> {
 
   SingleSubscriptionView({Key? key}) : super(key: key);
 
@@ -81,6 +81,33 @@ class SingleSubscriptionView extends GetView<SingleSubscriptionController> {
                     ),
                   );
                 }
+
+                if (controller.loadProductError.value) {
+                  return Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          "Failed to load product",
+                          style: theme?.textTheme.titleLarge?.copyWith(
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        SizedBox(height: 16),
+                        NeumorphicButton(
+                          onPressed: controller.loadProductDetails,
+                          child: Text("Retry"),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+
+                final productDetails = controller.productDetails.value;
+                if (productDetails == null) {
+                  return Center(child: CircularProgressIndicator());
+                }
+
                 return Neumorphic(
                   padding: EdgeInsets.all(16),
                   child: Container(
@@ -93,17 +120,9 @@ class SingleSubscriptionView extends GetView<SingleSubscriptionController> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             Text(
-                              "49.99",
+                              productDetails.price,
                               style: theme?.textTheme.titleLarge?.copyWith(
                                 fontWeight: FontWeight.w900,
-                                fontSize: 48,
-                                height: 0.4,
-                              ),
-                            ),
-                            Text(
-                              NumberFormat.simpleCurrency(name: "USD").currencySymbol,
-                              style: theme?.textTheme.titleLarge?.copyWith(
-                                fontWeight: FontWeight.bold,
                                 fontSize: 48,
                                 height: 0.4,
                               ),
@@ -129,13 +148,13 @@ class SingleSubscriptionView extends GetView<SingleSubscriptionController> {
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: [
                             Text(
-                              "Lifetime Membership",
+                              productDetails.title,
                               textAlign: TextAlign.center,
                               style: theme?.textTheme.titleLarge,
                             ),
                             SizedBox(height: 24),
                             Text(
-                              "Get lifetime access to all features and updates",
+                              productDetails.description,
                               textAlign: TextAlign.center,
                               maxLines: 5,
                               style: theme?.textTheme.titleMedium,

@@ -26,13 +26,15 @@ class ConfigAPI {
 
 
   //subscription apis
-  static const String createProductCheckoutSessionUrl = '/createProductCheckoutSession';
+  static const String createSubCheckoutSessionUrl = '/createProductCheckoutSession';
+  static const String createBowlCheckoutSession = '/createBowlCheckoutSession';
   static const String retrieveCheckoutSessionUrl = '/retrieveCheckoutSession';
   static const String createCustomerPortalSession = '/createCustomerPortalSession';
   static const String deleteMyData = '/deleteMyData';
   static const String sendConfirmationEmail = '/sendConfirmationEmail';
 
   static const String getSubscriptionsPlans = '/getSubscriptionsPlans';
+  static const String getProductsPlans = '/getProductsPlan';
   static const String verifyAppleReceipt = '/verifyAppleReceipt';
 
 }

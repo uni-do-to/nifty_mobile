@@ -16,19 +16,20 @@ import '../../../controllers/auth_controller.dart';
 import '../../../data/providers/subscription_provider.dart';
 import '../../../routes/app_pages.dart';
 
-class SingleSubscriptionController extends AuthController {
+class AppleSubscriptionController extends AuthController {
   final SubscriptionProvider provider;
   final AuthProvider authProvider;
 
   RxBool loading = false.obs;
   RxBool checkoutSuccess = false.obs;
   RxBool isSubscribed = false.obs;
+  RxBool loadProductError = false.obs ;
 
   final InAppPurchase _inAppPurchase = InAppPurchase.instance;
   late StreamSubscription<List<PurchaseDetails>> _subscription;
-  List<PurchaseDetails> _purchases = <PurchaseDetails>[];
+  Rx<ProductDetails?> productDetails = Rx(null) ;
 
-  SingleSubscriptionController(this.provider, this.authProvider) : super(authProvider);
+  AppleSubscriptionController(this.provider, this.authProvider) : super(authProvider);
 
   @override
   void onInit() {
@@ -41,12 +42,36 @@ class SingleSubscriptionController extends AuthController {
     }, onError: (Object error) {
       // Handle error here.
     });
+    loadProductDetails();
   }
 
   @override
   void onClose() {
     _subscription.cancel();
     super.onClose();
+  }
+
+  void loadProductDetails() async {
+    loading.value = true;
+      loadProductError.value = false ;
+    productDetails.value = null;
+
+    const Set<String> _kIds = {'lifetime_membership'};
+
+    try {
+      final ProductDetailsResponse response = await _inAppPurchase.queryProductDetails(_kIds);
+      if (response.notFoundIDs.isNotEmpty) {
+        loadProductError.value = true;
+        Get.showSnackbar(GetSnackBar(message: "Product not found", duration: Duration(seconds: 3)));
+      } else {
+      productDetails.value = response.productDetails.first;
+      }
+    } catch (e) {
+      loadProductError.value = true ;
+      Get.showSnackbar(GetSnackBar(message: "Failed to load product", duration: Duration(seconds: 3)));
+    } finally {
+      loading.value = false;
+  }
   }
 
   Future<void> purchaseLifetimeMembership() async {
@@ -56,16 +81,11 @@ class SingleSubscriptionController extends AuthController {
       return;
     }
 
-    const Set<String> _kIds = {'lifetime_membership'};
-
-    final ProductDetailsResponse response = await _inAppPurchase.queryProductDetails(_kIds);
-
-    if (response.notFoundIDs.isNotEmpty) {
-      Get.showSnackbar(GetSnackBar(message: "Product not found", duration: Duration(seconds: 3)));
+    final ProductDetails? productDetails = this.productDetails.value;
+    if (productDetails == null) {
+      Get.showSnackbar(GetSnackBar(message: "Product not available", duration: Duration(seconds: 3)));
       return;
     }
-
-    final ProductDetails productDetails = response.productDetails.first;
 
     late PurchaseParam purchaseParam;
 
@@ -100,7 +120,7 @@ class SingleSubscriptionController extends AuthController {
     try {
       await _inAppPurchase.restorePurchases();
     }catch (e){
-      Get.showSnackbar(GetSnackBar(message: "Can not restore purchase", duration: Duration(seconds: 3)));
+      Get.showSnackbar(GetSnackBar(message: "Cannot restore purchases", duration: Duration(seconds: 3)));
     }finally {
       loading.value = false;
     }
@@ -139,7 +159,7 @@ class SingleSubscriptionController extends AuthController {
       loading.value = false;
       final user = await getMe();
       if (user?.subscribed == true) {
-        Get.offNamed(Routes.HOME);
+        Get.offNamed(Routes.BUY_BOWL);
       }
       // Additional logic for delivering the product can be added here
   }

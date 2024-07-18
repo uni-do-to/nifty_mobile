@@ -26,6 +26,7 @@ abstract class Routes {
   static const EDIT_HEALTH_PROFILE = _Paths.EDIT_HEALTH_PROFILE;
   static const NAME = _Paths.NAME;
   static const HISTORY = _Paths.HISTORY;
+  static const BUY_BOWL = _Paths.BUY_BOWL;
 }
 
 abstract class _Paths {
@@ -55,5 +56,6 @@ abstract class _Paths {
   static const NAME = '/name';
   static const HISTORY = '/history';
   static const APPLE_SUBSCRIPTION = '/apple-subscription';
+  static const BUY_BOWL = '/buy-bowl';
 
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:animations/animations.dart';
 import 'package:get/get.dart';
+import 'package:nifty_mobile/app/modules/subscription/views/buy_nifty_bowl_view.dart';
 
 import '../middleware/auth_middleware.dart';
 import '../modules/addNewIngredient/bindings/add_new_ingredient_binding.dart';
@@ -88,6 +89,14 @@ class AppPages {
             child: SingleSubscriptionView()),
         binding: SubscriptionBinding(),
         // middlewares: [AuthMiddleware(), NotSubscribedMiddleware()]
+    ),
+    GetPage(
+      name: _Paths.BUY_BOWL,
+      page: () => ScaleWidget(
+          builder: (context, child) => scaleWidgetBuilder(context, child!),
+          child: BuyNiftyBowlView()),
+      binding: SubscriptionBinding(),
+      // middlewares: [AuthMiddleware(), NotSubscribedMiddleware()]
     ),
     GetPage(
       name: _Paths.HOME,

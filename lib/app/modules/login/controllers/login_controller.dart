@@ -56,7 +56,7 @@ class LoginController extends AuthController {
             if(Platform.isIOS) {
               Get.offAllNamed(Routes.APPLE_SUBSCRIPTION);
             }else {
-              showConfirmationMessage();
+              Get.offAllNamed(Routes.SUBSCRIPTION);
             }
           }
         }

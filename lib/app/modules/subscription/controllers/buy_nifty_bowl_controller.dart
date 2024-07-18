@@ -15,7 +15,7 @@ import 'platforms/stripe_checkout.dart'
 
 import '../../../data/providers/subscription_provider.dart';
 
-class SubscriptionController extends AuthController {
+class BuyNiftyBowlController extends AuthController {
   final SubscriptionProvider provider;
 
   RxBool loading = false.obs;
@@ -25,19 +25,20 @@ class SubscriptionController extends AuthController {
 
   Rx<CheckoutSessionResponse?> checkoutSession = Rx(null);
 
-  SubscriptionController(this.provider, AuthProvider authProvider)
+  BuyNiftyBowlController(this.provider, AuthProvider authProvider)
       : super(authProvider);
 
   @override
   void onInit() {
     super.onInit();
-    initData();
+    initData() ;
+    // redirectToCheckoutSession();
   }
 
   Future initData() async {
     try {
       loading.value = true;
-      var response = await provider.getSubscriptionPans();
+      var response = await provider.getProductsPlans();
       plans.value = response?.subscriptionPlans ?? [];
       // url.value = urlResponse?.id ?? "";
     } catch (err, _) {
@@ -47,8 +48,8 @@ class SubscriptionController extends AuthController {
     }
   }
 
-  Future redirectToSubscription(int id) async {
-    final session = await provider.createSubCheckoutSession(id);
+  Future redirectToCheckoutSession() async {
+    final session = await provider.createBowlCheckoutSession();
 
     final result = await redirectToCheckout(
         context: Get.context!,
